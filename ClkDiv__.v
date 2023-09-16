@@ -2,8 +2,7 @@ module ClkDiv__ #(parameter NUMBER_OF_CLOCKS = 'd10)
 (
 input 	       i_ref_clk   ,
 input 	       i_rst_n     ,
-input 	       i_clk_en    ,
-input 	[31:0] i_div_ratio ,
+input 	[7:0] i_div_ratio ,
 
 output  reg       o_div_clk
 );
@@ -103,9 +102,9 @@ always @(*) begin
 case(current_state)
 
  IDLE: begin 
-         if(even_type && i_clk_en && !zero_or_one) next_state = EVEN_HIGH;
-         else if(i_clk_en && !zero_or_one)         next_state = ODD_HIGH;
-         else                                      next_state = IDLE;
+         if(even_type && !zero_or_one)    next_state = EVEN_HIGH;
+         else if(!zero_or_one)            next_state = ODD_HIGH;
+         else                             next_state = IDLE;
        end
 
 
@@ -219,7 +218,6 @@ wire           o_div_clk_tb   ;
 ClkDiv__ dut(
 .i_ref_clk   (i_ref_clk_tb),
 .i_rst_n     (i_rst_n_tb),
-.i_clk_en    (i_clk_en_tb),
 .i_div_ratio (i_div_ratio_tb),
 .o_div_clk   (o_div_clk_tb)
 );
@@ -241,7 +239,7 @@ begin
     
     #(PERIOD_CLOCK);
     
-    i_div_ratio_tb = 32;              // Try Different Divisors   
+    i_div_ratio_tb = 7;              // Try Different Divisors   
     i_clk_en_tb = 1;
     repeat(40) @(posedge i_ref_clk_tb);
 
