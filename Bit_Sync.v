@@ -34,9 +34,9 @@ generate
 	  	end
 
         
-        else if(i == NUM_STAGES - 1) begin
-            data_SYN2 <= FF_Stage [i-1]; 
-        end
+        // else if(i == NUM_STAGES - 1) begin
+        //     data_SYN2 <= FF_Stage [i-1]; 
+        // end
 	  	
 	  	else begin
 	        FF_Stage[i] <= FF_Stage[i-1];		
@@ -44,6 +44,14 @@ generate
 
 	  end
 	end  
+
+   always @(*) begin
+
+    if(!RST_n) data_SYN2 = 0;
+    else data_SYN2 = FF_Stage [NUM_STAGES - 1];
+  
+  end  
+
 	
 endgenerate
 
