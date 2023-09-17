@@ -427,12 +427,14 @@ wire  in_Data_Sys_en ;
 reg Data_Seed_Write_RF_h    [32:0];
 reg Data_Seed_Write_ALU_CMD_h [43:0];
 reg Data_Seed_Read_RF_h  [21:0];
+reg Data_Seed_Write_ALU_No_CMD_h [21:0];
 
 
 
 integer i ;
 integer j ;
 integer k ;
+integer n ;
  
 
 
@@ -595,6 +597,7 @@ UART_RX #(.PRESCALE(16)) UART_RX_dut (
      $readmemh ("Data_Seed_Write_RF_h.txt" , Data_Seed_Write_RF_h );
      $readmemh("Data_Seed_Write_ALU_CMD_h.txt",Data_Seed_Write_ALU_CMD_h);
      $readmemh("Data_Seed_Read_RF_h.txt", Data_Seed_Read_RF_h);
+     $readmemh("Data_Seed_Write_ALU_No_CMD_h.txt",Data_Seed_Write_ALU_No_CMD_h);
    
 
     RST = 0; 
@@ -772,9 +775,35 @@ UART_RX #(.PRESCALE(16)) UART_RX_dut (
       #(RX_CLK_PERIOD) ;
    
 
+  //============================================
+
+  //=============== READ FROM RF ===============
+
+   
+      for(n = 0 ; n < 11 ; n = n + 1)
+      begin
+      @(negedge RX_CLK);
+      RX_IN = Data_Seed_Write_ALU_No_CMD_h[n];
+      repeat(prescale_in) @(negedge RX_CLK);
+      end
+      
+      
+      #(RX_CLK_PERIOD) ;
 
 
-  
+  //============================================
+
+
+      for(n = 11 ; n < 22 ; n = n + 1)
+      begin
+      @(negedge RX_CLK);
+      RX_IN = Data_Seed_Write_ALU_No_CMD_h[n];
+      repeat(prescale_in) @(negedge RX_CLK);
+      end
+      
+      
+      #(RX_CLK_PERIOD) ;
+
 
 
 
