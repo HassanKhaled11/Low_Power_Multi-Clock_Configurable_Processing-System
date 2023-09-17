@@ -7,7 +7,7 @@ input R_RST                           ,
 input [WIDTH - 1: 0] wdata            ,
 input wclk_en                         ,
 input rclk_en                         ,
-//input write_op_en                     ,
+//input write_op_en                   ,
 input [$clog2(DEPTH) - 1 : 0] waddr   ,
 input [$clog2(DEPTH) - 1 : 0] raddr   ,
 
@@ -21,7 +21,7 @@ integer i ;
 
 
 
-//assign rdata = FIFO_MEM [raddr] ;
+//assign rdata = (rclk_en) ? FIFO_MEM [raddr] ;
 
 
 always @(posedge WCLK or negedge WRST )
@@ -41,15 +41,24 @@ end
 end
 
 
+always @(*) begin
 
-always @(posedge R_CLK or negedge R_RST) 
-begin
+ if(!R_RST)    
+   rdata =  0;
+ 
+ else if (rclk_en) rdata = FIFO_MEM [raddr];
 
-if(!R_RST) rdata <= 0;
-
-else if (rclk_en) 
-    rdata <= FIFO_MEM [raddr];
 end
+
+
+// always @(posedge R_CLK or negedge R_RST) 
+// begin
+
+// if(!R_RST) rdata <= 0;
+
+// else if (rclk_en) 
+//     rdata <= FIFO_MEM [raddr];
+// end
 
 
 endmodule
