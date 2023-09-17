@@ -4,7 +4,7 @@ module SYS_TOP
  input UART_CLK,
  input RST     ,
  input RX_IN   ,
-
+ 
  output TX_OUT
 );
 
