@@ -223,6 +223,7 @@ always @(*) begin
   IDLE  : begin
             DATA_Valid = 1'b0;
             if (!RX_IN ) begin
+            P_DATA = 0;
             DATA_Valid = 1'b0;
   	        data_samp_en = 1'b1  ;
   	        enable       = 1'b1  ;

@@ -48,13 +48,13 @@ reg [3:0] next_state    ;
 
 
 always @(posedge CLK or negedge RST) begin
-	if (!RST) begin
-		current_state <= IDLE;
-	end
+  if (!RST) begin
+    current_state <= IDLE;
+  end
 
-	else begin
-	   current_state <= next_state;	
-	end
+  else begin
+     current_state <= next_state; 
+  end
 end
 
 
@@ -187,7 +187,7 @@ WAIT_REG_OUT : begin
 WAIT_ALU_OUT : begin
                 if(OUT_VALID) next_state = WRITE_ALU_TO_FIFO;
                 else next_state = WAIT_ALU_OUT;
-	           end
+             end
 
 
 WRITE_REG_TO_FIFO : begin
@@ -196,7 +196,7 @@ WRITE_REG_TO_FIFO : begin
                   
                   else next_state = IDLE ;  
 
-	            end
+              end
 
 
 WRITE_ALU_TO_FIFO : begin
@@ -205,7 +205,7 @@ WRITE_ALU_TO_FIFO : begin
                   
                   else next_state = IDLE ;  
 
-	            end
+              end
 
 
 
@@ -251,7 +251,7 @@ RF_Wr_Addr : begin
 RF_Wr_Data : begin
               if(enable_pulse) begin
                 Wr_D = Data_sync;
-                WrEn = 1'b1     ;	
+                WrEn = 1'b1     ; 
                end
              end
 
@@ -284,7 +284,7 @@ Rd_Operand_A : begin
 Rd_Operand_B : begin
                 if(enable_pulse)
                  begin 
-	                Addr = 1 ;
+                  Addr = 1 ;
                   Wr_D = Data_sync;
                   WrEn = 1'b1;
                 end
@@ -311,23 +311,23 @@ Rd_ALU_FUN   : begin
 WRITE_REG_TO_FIFO : begin
                      RdEn = 1'b0;
                       if(!FIFO_FULL)
-                     	 begin
-                     	  WR_INC = 1'b1 ;	
-                     	  WR_DATA =  Rd_DATA ;   	
-                     	 end   
-	                end
+                       begin
+                        WR_INC = 1'b1 ; 
+                        WR_DATA =  Rd_DATA ;    
+                       end   
+                  end
 
 
 
 WRITE_ALU_TO_FIFO : begin
-	                   flag = 0;
+                     flag = 0;
                      EN = 1'b0;
                      if(!FIFO_FULL)
                        begin
-                         WR_INC  = 1'b1 ; 	
-                         WR_DATA =  ALU_OUT ;	
+                         WR_INC  = 1'b1 ;   
+                         WR_DATA =  ALU_OUT ; 
                        end 
-	                end
+                  end
 
 
 endcase
@@ -337,17 +337,17 @@ end
 
 
 always @(posedge CLK or negedge RST) begin
-	if (!RST) begin
-		Counter <= 0;
-	end
+  if (!RST) begin
+    Counter <= 0;
+  end
 
     else if (enable_pulse) Counter <= 0;
 
-	else if(Counter != 3) begin
-	    Counter <= Counter + 1;	
-	end
+  else if(Counter != 3) begin
+      Counter <= Counter + 1; 
+  end
 
-	else Counter <= 0 ;
+  else Counter <= 0 ;
 
 end
 
@@ -366,7 +366,10 @@ endmodule
 module SYS_CTRL_tb;
 
   parameter REF_CLK_PERIOD  = 10  ;               //100MHZ
-  parameter UART_CLK_PERIOD = 135.6336806;        // 3.6864 MHZ  , FOR PRESCALE = 1 -> 271.2673611 , PRESCALE = 2 -> 135.6336806    
+  parameter UART_CLK_PERIOD = 271.2673611;        // 3.6864 MHZ  , FOR PRESCALE = 1 -> 271.2673611 , PRESCALE = 2 -> 135.6336806
+  parameter RX_CLK_PERIOD =  135.6336806 ;  
+  
+  parameter PRESCALE = 'd16;
 
   // Inputs
   reg REF_CLK;
@@ -375,13 +378,15 @@ module SYS_CTRL_tb;
   reg RST;
  // reg [7:0] Data_sync;
   //reg enable_pulse;
+
+ reg RX_IN;
+
   reg FIFO_FULL;
 
 
   // Outputs
   wire [7:0] WR_DATA;
   wire WR_INC;
-  wire [3:0] FUN;
   wire Gate_En;
   wire [7:0] Wr_D;
   wire [7:0] Addr;
@@ -389,8 +394,7 @@ module SYS_CTRL_tb;
   wire WrEn;
 
   
-  reg bus_enable  ;
-  reg [7:0] data_in_syn ;
+  //wire [7:0] data_in_syn ;
   
   wire [7:0] SYNC_bus;
   wire enable_pulse;
@@ -409,13 +413,31 @@ wire [15:0] ALU_OUT;
 wire       OUT_VALID;
 wire [3:0] ALU_FUN ;
 
+reg [7:0] rx_div_ratio;
+reg [5:0] prescale_in;
+
+
+
+
+wire [7:0] in_Data_Sys;
+wire  in_Data_Sys_en ;
+
+reg Data_Seed_Write_RF_h [32:0];
+
+
+integer i ;
+
+
+ 
+
+
 
 Data_Sync #(.NUM_STAGES(2) , .BUS_WIDTH(8) )  Data_Sync_dut (
 
 .CLK        (REF_CLK) ,
 .RST_n      (RST),
-.bus_enable (bus_enable) ,
-.UNSYNC_bus (data_in_syn) ,
+.bus_enable (in_Data_Sys_en) ,
+.UNSYNC_bus (in_Data_Sys) ,
 
 .SYNC_bus     (SYNC_bus) ,
 .enable_pulse (enable_pulse)
@@ -432,6 +454,17 @@ CLK_GATE  CLK_GATE_dut
 .ECK(ALU_CLK)       
 );
 
+
+
+
+ClkDiv__ CLK_DIV_RX_dut
+(
+.i_ref_clk   (UART_CLK),
+.i_rst_n     (RST),
+.i_div_ratio (rx_div_ratio),
+
+.o_div_clk(RX_CLK)
+);
 
 
 
@@ -463,7 +496,7 @@ CLK_GATE  CLK_GATE_dut
 
 
   
-  Register_File  Reg_file_dut
+Register_File  Reg_file_dut
 (
 .CLK(REF_CLK),
 .RST_n(RST),
@@ -501,6 +534,24 @@ ALU #(.OPERAND_WIDTH ('d8) , .FUN_WIDTH('d4)) ALU_dut
 
 
 
+
+UART_RX #(.PRESCALE(16)) UART_RX_dut (
+
+ .CLK           (RX_CLK)     ,
+ .RST_n         (RST)     ,
+ .PAR_EN        (REG2[0])    ,
+ .PAR_TYP       (REG2[1])    ,
+ .Prescale      (prescale_in)  ,
+ .RX_IN         (RX_IN)      ,
+
+
+ .P_DATA    (in_Data_Sys)    ,
+ .DATA_Valid(in_Data_Sys_en)             
+
+);
+
+
+
   // Clock generation
   
   always begin
@@ -518,12 +569,15 @@ ALU #(.OPERAND_WIDTH ('d8) , .FUN_WIDTH('d4)) ALU_dut
     $dumpfile("SYS_CTRL_tb.vcd");
     $dumpvars(0, SYS_CTRL_tb);
 
+    rx_div_ratio = (PRESCALE == 32) ? 1 : (PRESCALE == 16) ? 2 : 4;
+     prescale_in = PRESCALE;
+
     // Initialize inputs
     REF_CLK = 0;
     UART_CLK =0;
-    
-    bus_enable = 0;
-    data_in_syn = 8'h00;
+    RX_IN = 0;
+    // bus_enable = 0;
+    // data_in_syn = 8'h00;
     //enable_pulse = 0;
     FIFO_FULL = 0;
     // // Rd_DATA = 8'h00;
@@ -531,85 +585,53 @@ ALU #(.OPERAND_WIDTH ('d8) , .FUN_WIDTH('d4)) ALU_dut
     // ALU_OUT = 16'h0000;
     // OUT_VALID = 0;
      
+    
+
+     $readmemh ("Data_Seed_Write_RF_h.txt" , Data_Seed_Write_RF_h );
+   
+
     RST = 0; 
     // Release reset
     #(REF_CLK_PERIOD) RST = 1; 
     #(2*REF_CLK_PERIOD);
 
 
-     // Register File Tesr write and read just change command
-     
-      data_in_syn = 8'hAA;             // COMMAND 
-      bus_enable = 1 ;
-      #(UART_CLK_PERIOD);
-      bus_enable = 0 ;
+
+
+
+
+      for(i = 0 ; i < 11 ; i = i + 1)
+      begin
+      @(negedge RX_CLK);
+      RX_IN = Data_Seed_Write_RF_h[i];
+      repeat(prescale_in) @(negedge RX_CLK);
+      end
+
+
+      #(RX_CLK_PERIOD) ;
+
+
+      for(i = 11 ; i < 22 ; i = i + 1)
+      begin
+      @(negedge RX_CLK);
+      RX_IN = Data_Seed_Write_RF_h[i];
+      repeat(prescale_in) @(negedge RX_CLK);
+      end
+
+     #(RX_CLK_PERIOD) ;
+
+    
+      for(i = 22 ; i < 33 ; i = i + 1)
+      begin
+      @(negedge RX_CLK);
+      RX_IN = Data_Seed_Write_RF_h[i];
+      repeat(prescale_in) @(negedge RX_CLK);
+      end
       
-      #(20 * REF_CLK_PERIOD);
-
-      data_in_syn = 8'd10 ;
-      bus_enable = 1'b1;
-      #(UART_CLK_PERIOD);
-      bus_enable = 0 ;
-     
-      #(REF_CLK_PERIOD);
-     
-      data_in_syn = 8'd50 ;
-      bus_enable = 1'b1;
-      #(UART_CLK_PERIOD);
-      bus_enable = 0 ;
       
-   
-      #(REF_CLK_PERIOD);
+      #(RX_CLK_PERIOD) ;
 
 
-
-
-     // Register File Tesr write and read just change command
-     
-      data_in_syn = 8'hBB;             // COMMAND 
-      bus_enable = 1 ;
-      #(UART_CLK_PERIOD);
-      bus_enable = 0 ;
-      
-      #(20 * REF_CLK_PERIOD);
-
-      data_in_syn = 8'd10 ;
-      bus_enable = 1'b1;
-      #(UART_CLK_PERIOD);
-      bus_enable = 0 ;
-  
-   
-      #(REF_CLK_PERIOD);
-
-
-
-     // ALU TEST 
-  
-      data_in_syn = 8'hCC;             // COMAND 
-      bus_enable = 1 ;
-      #(UART_CLK_PERIOD);
-      bus_enable = 0 ;
-      
-      #(20 * REF_CLK_PERIOD);
-
-      data_in_syn = 8'd10 ;
-      bus_enable = 1'b1;
-      #(UART_CLK_PERIOD);
-      bus_enable = 0 ;
-     
-      #(REF_CLK_PERIOD);
-     
-      data_in_syn = 8'd50 ;
-      bus_enable = 1'b1;
-      #(UART_CLK_PERIOD);
-      bus_enable = 0 ;
-
-      #(REF_CLK_PERIOD);
-      
-      data_in_syn = 8'd6 ;
-      bus_enable = 1'b1;
-      #(UART_CLK_PERIOD);
-      bus_enable = 0 ;
 
 
 

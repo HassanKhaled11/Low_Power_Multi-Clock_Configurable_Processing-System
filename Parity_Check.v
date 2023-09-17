@@ -16,8 +16,7 @@ always @(*)
 begin
 	
   if(par_chk_en) begin
-    if(par_typ) par_err = (sampled_bit && parity_value) ?  1'b0 : 1'b1 ;
-    else  par_err = (sampled_bit && parity_value) ? 1'b0 : 1'b1 ;
+     par_err = (sampled_bit == parity_value) ?  1'b0 : 1'b1 ;
   end
 
 

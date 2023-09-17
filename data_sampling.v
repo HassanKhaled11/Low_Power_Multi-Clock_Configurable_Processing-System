@@ -1,7 +1,7 @@
 module data_sampling  #(parameter PRESCALE = 'd16)(
 
 input RX_IN                                     ,
-input [4:0] Prescale                            ,
+input [5:0] Prescale                            ,
 input data_samp_en                              ,
 input [$clog2(PRESCALE) - 1 : 0]  edge_cnt      ,
 

@@ -55,7 +55,7 @@ wire [7:0] Wr_D;
 wire [7:0] Addr;
 wire RdEn ;
 wire WrEn ;
-
+wire [5:0] prescale_in;
 
 assign prescale_in = REG2[7:2] ;
 
@@ -112,7 +112,7 @@ ClkDiv__ CLK_DIV_RX_dut
 (
 .i_ref_clk   (UART_CLK),
 .i_rst_n     (RST_D2),
-.i_div_ratio (rc),
+.i_div_ratio (rx_div_ratio),
 
 .o_div_clk(RX_CLK)
 );
