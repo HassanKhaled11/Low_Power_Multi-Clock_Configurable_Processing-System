@@ -4,9 +4,9 @@ module SYS_CTRL
  input RST       ,
  input [7:0] Data_sync ,
  input enable_pulse    ,
- 
+
  input FIFO_FULL ,
-  
+ 
  input [7:0] Rd_DATA   ,
  input Rd_Valid  ,
  input [15:0] ALU_OUT   ,
@@ -422,11 +422,15 @@ reg [5:0] prescale_in;
 wire [7:0] in_Data_Sys;
 wire  in_Data_Sys_en ;
 
-reg Data_Seed_Write_RF_h [32:0];
+
+
+reg Data_Seed_Write_RF_h    [32:0];
+reg Data_Seed_Write_ALU_CMD_h [43:0];
+
 
 
 integer i ;
-
+integer j ;
 
  
 
@@ -588,6 +592,7 @@ UART_RX #(.PRESCALE(16)) UART_RX_dut (
     
 
      $readmemh ("Data_Seed_Write_RF_h.txt" , Data_Seed_Write_RF_h );
+     $readmemh("Data_Seed_Write_ALU_CMD_h.txt",Data_Seed_Write_ALU_CMD_h);
    
 
     RST = 0; 
@@ -598,6 +603,7 @@ UART_RX #(.PRESCALE(16)) UART_RX_dut (
 
 
 
+//=============== WRITE IN RF =========================
 
 
       for(i = 0 ; i < 11 ; i = i + 1)
@@ -630,6 +636,63 @@ UART_RX #(.PRESCALE(16)) UART_RX_dut (
       
       
       #(RX_CLK_PERIOD) ;
+
+
+       
+  //=================================================
+
+
+
+//=============== WRITE IN ALU WITH CMD ================
+
+
+      for(j = 0 ; j < 11 ; j = j + 1)
+      begin
+      @(negedge RX_CLK);
+      RX_IN = Data_Seed_Write_ALU_CMD_h[j];
+      repeat(prescale_in) @(negedge RX_CLK);
+      end
+
+
+      #(RX_CLK_PERIOD) ;
+
+
+      for(j = 11 ; j < 22 ; j = j + 1)
+      begin
+      @(negedge RX_CLK);
+      RX_IN = Data_Seed_Write_ALU_CMD_h[j];
+      repeat(prescale_in) @(negedge RX_CLK);
+      end
+
+     #(RX_CLK_PERIOD) ;
+
+    
+      for(j = 22 ; j < 33 ; j = j + 1)
+      begin
+      @(negedge RX_CLK);
+      RX_IN = Data_Seed_Write_ALU_CMD_h[j];
+      repeat(prescale_in) @(negedge RX_CLK);
+      end
+      
+      
+      #(RX_CLK_PERIOD) ;
+
+
+
+      for(j = 33 ; j < 44 ; j = j + 1)
+      begin
+      @(negedge RX_CLK);
+      RX_IN = Data_Seed_Write_ALU_CMD_h[j];
+      repeat(prescale_in) @(negedge RX_CLK);
+      end
+      
+      
+      #(RX_CLK_PERIOD) ;
+
+
+       
+  //==========================================
+
 
 
 
