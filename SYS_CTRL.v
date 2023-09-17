@@ -368,6 +368,7 @@ module SYS_CTRL_tb;
   parameter REF_CLK_PERIOD  = 10  ;               //100MHZ
   parameter UART_CLK_PERIOD = 271.2673611;        // 3.6864 MHZ  , FOR PRESCALE = 1 -> 271.2673611 , PRESCALE = 2 -> 135.6336806
   parameter RX_CLK_PERIOD =  135.6336806 ;  
+  parameter TX_CLK_PERIOD =  8680.555556 ;
   
   parameter PRESCALE = 'd16;
 
@@ -379,14 +380,16 @@ module SYS_CTRL_tb;
   wire RST_D1;
   wire RST_D2;
 
- reg RX_IN;
 
-  reg FIFO_FULL;
+wire RX_CLK;
+wire TX_CLK; 
+
+
+  reg RX_IN;
 
 
   // Outputs
-  wire [7:0] WR_DATA;
-  wire WR_INC;
+
   wire Gate_En;
   wire [7:0] Wr_D;
   wire [7:0] Addr;
@@ -421,6 +424,16 @@ reg [5:0] prescale_in;
 
 wire [7:0] in_Data_Sys;
 wire  in_Data_Sys_en ;
+
+
+
+wire WR_INC;
+wire [7:0] WR_DATA;
+wire F_Full;
+
+reg R_INC ;
+wire F_Empty;
+wire [7:0] in_DATA_tx;
 
 
 
@@ -465,7 +478,7 @@ Rst_Sync #(.NUM_STAGES(2) , .ACTIVE_TYP("LOW")) Rst_Sync_D2_dut (
 
 );
 
-
+/////////////////////////////////////////////////////////////////////////////////
 
 Data_Sync #(.NUM_STAGES(2) , .BUS_WIDTH(8) )  Data_Sync_dut (
 
@@ -480,6 +493,8 @@ Data_Sync #(.NUM_STAGES(2) , .BUS_WIDTH(8) )  Data_Sync_dut (
 );
 
 
+/////////////////////////////////////////////////////////////////////////////////
+
 
 
 CLK_GATE  CLK_GATE_dut
@@ -490,6 +505,8 @@ CLK_GATE  CLK_GATE_dut
 );
 
 
+
+/////////////////////////////////////////////////////////////////////////////////
 
 
 ClkDiv__ CLK_DIV_RX_dut
@@ -502,8 +519,17 @@ ClkDiv__ CLK_DIV_RX_dut
 );
 
 
+ClkDiv__ CLK_DIV_TX_dut
+(
+.i_ref_clk   (UART_CLK),
+.i_rst_n     (RST_D2),
+.i_div_ratio (REG3),
+
+.o_div_clk(TX_CLK)
+);
 
 
+/////////////////////////////////////////////////////////////////////////////////
 
 
   // Instantiate SYS_CTRL module
@@ -512,7 +538,7 @@ ClkDiv__ CLK_DIV_RX_dut
     .RST(RST_D1),
     .Data_sync(SYNC_bus),
     .enable_pulse(enable_pulse),
-    .FIFO_FULL(FIFO_FULL),
+    .FIFO_FULL(F_Full),
     .Rd_DATA(Rd_DATA),
     .Rd_Valid(Rd_Valid),
     .ALU_OUT(ALU_OUT),
@@ -587,6 +613,29 @@ UART_RX #(.PRESCALE(16)) UART_RX_dut (
 
 
 
+
+ASYNC_FIFO ASYNC_FIFO_dut
+(
+
+.W_CLK     (REF_CLK)     ,           
+.W_RST     (RST_D1)     ,        
+.W_INC     (WR_INC)           ,
+.WR_DATA   (WR_DATA)     ,
+.R_CLK     (TX_CLK)     ,
+.R_RST     (RST_D2)     ,
+.R_INC     (R_INC)      ,
+
+
+.FULL    (F_Full )       ,
+.EMPTY   (F_Empty)       ,
+.RD_DATA (in_DATA_tx)  
+
+);
+
+
+
+
+
   // Clock generation
   
   always begin
@@ -611,10 +660,11 @@ UART_RX #(.PRESCALE(16)) UART_RX_dut (
     REF_CLK = 0;
     UART_CLK =0;
     RX_IN = 0;
+    R_INC = 0 ;
     // bus_enable = 0;
     // data_in_syn = 8'h00;
     //enable_pulse = 0;
-    FIFO_FULL = 0;
+    // FIFO_FULL = 0;
     // // Rd_DATA = 8'h00;
     // Rd_Valid = 0;
     // ALU_OUT = 16'h0000;
@@ -776,8 +826,20 @@ UART_RX #(.PRESCALE(16)) UART_RX_dut (
       
       #(RX_CLK_PERIOD) ;
 
+      
+      R_INC = 1'b1;
+
+      #(3*TX_CLK_PERIOD);
+
+      R_INC = 0;
+
+     RST = 0; 
+    // Release reset
+    //#(REF_CLK_PERIOD) RST = 1; 
+    #(2*REF_CLK_PERIOD);
 
   //============================================
+      
 
 
     #50 $stop;
