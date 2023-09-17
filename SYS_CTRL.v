@@ -6,7 +6,7 @@ module SYS_CTRL
  input enable_pulse    ,
  
  input FIFO_FULL ,
- 
+  
  input [7:0] Rd_DATA   ,
  input Rd_Valid  ,
  input [15:0] ALU_OUT   ,
