@@ -381,8 +381,8 @@ module SYS_CTRL_tb;
   wire RST_D2;
 
 
-wire RX_CLK;
-wire TX_CLK; 
+  wire RX_CLK;
+  wire TX_CLK; 
 
 
   reg RX_IN;
@@ -431,9 +431,15 @@ wire WR_INC;
 wire [7:0] WR_DATA;
 wire F_Full;
 
-reg R_INC ;
+wire R_INC ;
 wire F_Empty;
 wire [7:0] in_DATA_tx;
+
+
+wire TX_OUT ;
+wire busy  ;
+
+
 
 
 
@@ -634,6 +640,35 @@ ASYNC_FIFO ASYNC_FIFO_dut
 
 
 
+PULSE_GENERATOR pulse_gen_dut
+(
+.CLK   (TX_CLK),
+.RST_n (RST_D2),  
+.in    (busy),
+
+.out   (R_INC)
+);
+
+
+
+
+
+UART_TX UART_TX_dut(
+
+.CLK      (TX_CLK)     ,
+.RST_n    (RST_D2)     ,
+.P_DATA   (in_DATA_tx) ,
+.PAR_EN   (REG2[0])    ,
+.PAR_TYP  (REG2[1])    ,
+.DATA_VALID (F_Empty)  ,
+
+.TX_OUT  (TX_OUT)      ,
+.Busy    (busy)    
+
+
+);
+
+
 
 
   // Clock generation
@@ -660,7 +695,7 @@ ASYNC_FIFO ASYNC_FIFO_dut
     REF_CLK = 0;
     UART_CLK =0;
     RX_IN = 0;
-    R_INC = 0 ;
+    // R_INC = 0 ;
     // bus_enable = 0;
     // data_in_syn = 8'h00;
     //enable_pulse = 0;
@@ -827,16 +862,16 @@ ASYNC_FIFO ASYNC_FIFO_dut
       #(RX_CLK_PERIOD) ;
 
       
-      R_INC = 1'b1;
+      // R_INC = 1'b1;
 
-      #(3*TX_CLK_PERIOD);
+       #(20*TX_CLK_PERIOD);
 
-      R_INC = 0;
+      // R_INC = 0;
 
-     RST = 0; 
-    // Release reset
-    //#(REF_CLK_PERIOD) RST = 1; 
-    #(2*REF_CLK_PERIOD);
+    //  RST = 0; 
+    // // Release reset
+    // //#(REF_CLK_PERIOD) RST = 1; 
+    // #(2*REF_CLK_PERIOD);
 
   //============================================
       
