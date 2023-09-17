@@ -28,11 +28,11 @@ wire [$clog2(DEPTH) - 1 : 0] raddr;
 
 wire  WFULL  ;
 wire  REMPTY ;
-wire  write_op_en;
 
 
-assign wclk_en    = !WFULL  & W_INC ;
-assign rclk_en    = !REMPTY & R_INC ;
+assign wclk_en    = (W_RST)? (!WFULL  & W_INC) : 0 ;
+assign rclk_en    = (R_RST)? (!REMPTY & R_INC) : 0 ;
+
 
 assign FULL       = WFULL ;
 assign EMPTY      = REMPTY; 
