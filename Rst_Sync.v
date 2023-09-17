@@ -46,13 +46,21 @@ generate
                 FF_Stage[i] <= 1'b0;
          	end
 
-         	else if(i == NUM_STAGES -1) 
-         		data_SYN <= FF_Stage[i - 1];
+         	// else if(i == NUM_STAGES -1) 
+         	// 	data_SYN <= FF_Stage[i - 1];
 
          	else FF_Stage[i] <= FF_Stage[i-1];
 
          end
     end
+
+
+  always @(*) begin
+
+    if(!RST) data_SYN = 0;
+    else data_SYN = FF_Stage [NUM_STAGES - 1];
+  
+  end  
     
 endgenerate
 
