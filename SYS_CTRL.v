@@ -341,7 +341,7 @@ always @(posedge CLK or negedge RST) begin
     Counter <= 0;
   end
 
-    else if (enable_pulse) Counter <= 0;
+  else if (enable_pulse) Counter <= 0;
 
   else if(Counter != 3) begin
       Counter <= Counter + 1; 
@@ -376,8 +376,8 @@ module SYS_CTRL_tb;
   reg UART_CLK;
 
   reg RST;
- // reg [7:0] Data_sync;
-  //reg enable_pulse;
+  wire RST_D1;
+  wire RST_D2;
 
  reg RX_IN;
 
@@ -439,10 +439,38 @@ integer n ;
 
 
 
+
+
+
+///////////////////////////////////////////////////////
+/////////////////// RST SYNCHRONIZER //////////////////
+///////////////////////////////////////////////////////
+
+
+Rst_Sync #(.NUM_STAGES(2) , .ACTIVE_TYP("LOW")) Rst_Sync_D1_dut (
+
+.RST       (RST),
+.CLK       (REF_CLK),
+.SYNC_RST  (RST_D1)
+
+);
+
+
+
+Rst_Sync #(.NUM_STAGES(2) , .ACTIVE_TYP("LOW")) Rst_Sync_D2_dut (
+
+.RST       (RST),
+.CLK       (UART_CLK),
+.SYNC_RST  (RST_D2)
+
+);
+
+
+
 Data_Sync #(.NUM_STAGES(2) , .BUS_WIDTH(8) )  Data_Sync_dut (
 
 .CLK        (REF_CLK) ,
-.RST_n      (RST),
+.RST_n      (RST_D1),
 .bus_enable (in_Data_Sys_en) ,
 .UNSYNC_bus (in_Data_Sys) ,
 
@@ -467,7 +495,7 @@ CLK_GATE  CLK_GATE_dut
 ClkDiv__ CLK_DIV_RX_dut
 (
 .i_ref_clk   (UART_CLK),
-.i_rst_n     (RST),
+.i_rst_n     (RST_D2),
 .i_div_ratio (rx_div_ratio),
 
 .o_div_clk(RX_CLK)
@@ -481,7 +509,7 @@ ClkDiv__ CLK_DIV_RX_dut
   // Instantiate SYS_CTRL module
   SYS_CTRL DUT (
     .CLK(REF_CLK),
-    .RST(RST),
+    .RST(RST_D1),
     .Data_sync(SYNC_bus),
     .enable_pulse(enable_pulse),
     .FIFO_FULL(FIFO_FULL),
@@ -506,7 +534,7 @@ ClkDiv__ CLK_DIV_RX_dut
 Register_File  Reg_file_dut
 (
 .CLK(REF_CLK),
-.RST_n(RST),
+.RST_n(RST_D1),
 .RdEn(RdEn),
 .WrEn(WrEn),
 .Address(Addr),
@@ -528,7 +556,7 @@ ALU #(.OPERAND_WIDTH ('d8) , .FUN_WIDTH('d4)) ALU_dut
 (
 
 .CLK        (ALU_CLK) ,
-.RST_n      (RST)  ,
+.RST_n      (RST_D1)  ,
 .A          (REG0)    ,
 .B          (REG1)    ,
 .ALU_FUN    (ALU_FUN)        ,
@@ -545,7 +573,7 @@ ALU #(.OPERAND_WIDTH ('d8) , .FUN_WIDTH('d4)) ALU_dut
 UART_RX #(.PRESCALE(16)) UART_RX_dut (
 
  .CLK           (RX_CLK)     ,
- .RST_n         (RST)     ,
+ .RST_n         (RST_D2)     ,
  .PAR_EN        (REG2[0])    ,
  .PAR_TYP       (REG2[1])    ,
  .Prescale      (prescale_in)  ,
@@ -592,6 +620,10 @@ UART_RX #(.PRESCALE(16)) UART_RX_dut (
     // ALU_OUT = 16'h0000;
     // OUT_VALID = 0;
      
+     RST = 0; 
+    // Release reset
+    #(REF_CLK_PERIOD) RST = 1; 
+    #(2*REF_CLK_PERIOD);
     
 
      $readmemh ("Data_Seed_Write_RF_h.txt" , Data_Seed_Write_RF_h );
@@ -599,13 +631,6 @@ UART_RX #(.PRESCALE(16)) UART_RX_dut (
      $readmemh("Data_Seed_Read_RF_h.txt", Data_Seed_Read_RF_h);
      $readmemh("Data_Seed_Write_ALU_No_CMD_h.txt",Data_Seed_Write_ALU_No_CMD_h);
    
-
-    RST = 0; 
-    // Release reset
-    #(REF_CLK_PERIOD) RST = 1; 
-    #(2*REF_CLK_PERIOD);
-
-
 
 
 //=============== WRITE IN RF =========================
@@ -699,56 +724,6 @@ UART_RX #(.PRESCALE(16)) UART_RX_dut (
   //====================================================
 
 
-  //=============== WRITE IN ALU WITH CMD ================
-
-
-      for(j = 0 ; j < 11 ; j = j + 1)
-      begin
-      @(negedge RX_CLK);
-      RX_IN = Data_Seed_Write_ALU_CMD_h[j];
-      repeat(prescale_in) @(negedge RX_CLK);
-      end
-
-
-      #(RX_CLK_PERIOD) ;
-
-
-      for(j = 11 ; j < 22 ; j = j + 1)
-      begin
-      @(negedge RX_CLK);
-      RX_IN = Data_Seed_Write_ALU_CMD_h[j];
-      repeat(prescale_in) @(negedge RX_CLK);
-      end
-
-     #(RX_CLK_PERIOD) ;
-
-    
-      for(j = 22 ; j < 33 ; j = j + 1)
-      begin
-      @(negedge RX_CLK);
-      RX_IN = Data_Seed_Write_ALU_CMD_h[j];
-      repeat(prescale_in) @(negedge RX_CLK);
-      end
-      
-      
-      #(RX_CLK_PERIOD) ;
-
-
-
-      for(j = 33 ; j < 44 ; j = j + 1)
-      begin
-      @(negedge RX_CLK);
-      RX_IN = Data_Seed_Write_ALU_CMD_h[j];
-      repeat(prescale_in) @(negedge RX_CLK);
-      end
-      
-      
-      #(RX_CLK_PERIOD) ;
-
-
-       
-  //============================================
-
   //=============== READ FROM RF ===============
 
    
@@ -777,7 +752,7 @@ UART_RX #(.PRESCALE(16)) UART_RX_dut (
 
   //============================================
 
-  //=============== READ FROM RF ===============
+  //=======  WRITE IN ALU WITH No OPERAND ======
 
    
       for(n = 0 ; n < 11 ; n = n + 1)
@@ -791,9 +766,6 @@ UART_RX #(.PRESCALE(16)) UART_RX_dut (
       #(RX_CLK_PERIOD) ;
 
 
-  //============================================
-
-
       for(n = 11 ; n < 22 ; n = n + 1)
       begin
       @(negedge RX_CLK);
@@ -805,11 +777,11 @@ UART_RX #(.PRESCALE(16)) UART_RX_dut (
       #(RX_CLK_PERIOD) ;
 
 
+  //============================================
 
 
     #50 $stop;
   end
 
-  
 
 endmodule
