@@ -426,12 +426,13 @@ wire  in_Data_Sys_en ;
 
 reg Data_Seed_Write_RF_h    [32:0];
 reg Data_Seed_Write_ALU_CMD_h [43:0];
+reg Data_Seed_Read_RF_h  [21:0];
 
 
 
 integer i ;
 integer j ;
-
+integer k ;
  
 
 
@@ -593,6 +594,7 @@ UART_RX #(.PRESCALE(16)) UART_RX_dut (
 
      $readmemh ("Data_Seed_Write_RF_h.txt" , Data_Seed_Write_RF_h );
      $readmemh("Data_Seed_Write_ALU_CMD_h.txt",Data_Seed_Write_ALU_CMD_h);
+     $readmemh("Data_Seed_Read_RF_h.txt", Data_Seed_Read_RF_h);
    
 
     RST = 0; 
@@ -691,10 +693,88 @@ UART_RX #(.PRESCALE(16)) UART_RX_dut (
 
 
        
-  //==========================================
+  //====================================================
+
+
+  //=============== WRITE IN ALU WITH CMD ================
+
+
+      for(j = 0 ; j < 11 ; j = j + 1)
+      begin
+      @(negedge RX_CLK);
+      RX_IN = Data_Seed_Write_ALU_CMD_h[j];
+      repeat(prescale_in) @(negedge RX_CLK);
+      end
+
+
+      #(RX_CLK_PERIOD) ;
+
+
+      for(j = 11 ; j < 22 ; j = j + 1)
+      begin
+      @(negedge RX_CLK);
+      RX_IN = Data_Seed_Write_ALU_CMD_h[j];
+      repeat(prescale_in) @(negedge RX_CLK);
+      end
+
+     #(RX_CLK_PERIOD) ;
+
+    
+      for(j = 22 ; j < 33 ; j = j + 1)
+      begin
+      @(negedge RX_CLK);
+      RX_IN = Data_Seed_Write_ALU_CMD_h[j];
+      repeat(prescale_in) @(negedge RX_CLK);
+      end
+      
+      
+      #(RX_CLK_PERIOD) ;
 
 
 
+      for(j = 33 ; j < 44 ; j = j + 1)
+      begin
+      @(negedge RX_CLK);
+      RX_IN = Data_Seed_Write_ALU_CMD_h[j];
+      repeat(prescale_in) @(negedge RX_CLK);
+      end
+      
+      
+      #(RX_CLK_PERIOD) ;
+
+
+       
+  //============================================
+
+  //=============== READ FROM RF ===============
+
+   
+      for(k = 0 ; k < 11 ; k = k + 1)
+      begin
+      @(negedge RX_CLK);
+      RX_IN = Data_Seed_Read_RF_h[k];
+      repeat(prescale_in) @(negedge RX_CLK);
+      end
+      
+      
+      #(RX_CLK_PERIOD) ;
+
+
+
+      for(k = 11 ; k < 22 ; k = k + 1)
+      begin
+      @(negedge RX_CLK);
+      RX_IN = Data_Seed_Read_RF_h[k];
+      repeat(prescale_in) @(negedge RX_CLK);
+      end
+      
+      
+      #(RX_CLK_PERIOD) ;
+   
+
+
+
+  
 
 
 
