@@ -4,7 +4,7 @@ module SYS_CTRL
  input RST       ,
  input [7:0] Data_sync ,
  input enable_pulse    ,
-
+ 
  input FIFO_FULL ,
  
  input [7:0] Rd_DATA   ,
