@@ -46,8 +46,7 @@ generate
                 FF_Stage[i] <= 1'b0;
          	end
 
-         	// else if(i == NUM_STAGES -1) 
-         	// 	data_SYN <= FF_Stage[i - 1];
+
 
          	else FF_Stage[i] <= FF_Stage[i-1];
 
@@ -72,52 +71,54 @@ endmodule
 
 
 
+///////////////////////////////////////////////////////////////////////////
+////////////////////////////TESTBENCH /////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 
 
 
 
+// module Rst_Sync_tb;
 
-module Rst_Sync_tb;
+// /************************************************************
+//  /////////TO MAKE IT ACTIVE HIGH SYNCHRONIZED RESET//////////
+// /*
 
-/************************************************************
- /////////TO MAKE IT ACTIVE HIGH SYNCHRONIZED RESET//////////
-/*
+// 1) Make all sensitivity list posedge RST instead of neg
+// 2) Make the parameter Type HiGH insted of LOW
+// 3) Modify the Test Stimulus
 
-1) Make all sensitivity list posedge RST instead of neg
-2) Make the parameter Type HiGH insted of LOW
-3) Modify the Test Stimulus
+// *///*********************************************************
 
-*///*********************************************************
+// parameter PERIOD_CLOCK = 100 ;
+// parameter NUM_STAGES = 'd4   ;         //Must be st least 2 as this is a synchronizer
+// parameter ACTIVE_TYP = "LOW" ;
 
-parameter PERIOD_CLOCK = 100 ;
-parameter NUM_STAGES = 'd4   ;         //Must be st least 2 as this is a synchronizer
-parameter ACTIVE_TYP = "LOW" ;
+// reg RST ;
+// reg CLK   ;
 
-reg RST ;
-reg CLK   ;
-
-wire SYNC_RST;
-
-
-Rst_Sync #(.NUM_STAGES(NUM_STAGES) , .ACTIVE_TYP(ACTIVE_TYP)) dut (.RST(RST), .CLK(CLK) ,.SYNC_RST(SYNC_RST));
+// wire SYNC_RST;
 
 
-always #(PERIOD_CLOCK/2) CLK = ~ CLK ;
+// Rst_Sync #(.NUM_STAGES(NUM_STAGES) , .ACTIVE_TYP(ACTIVE_TYP)) dut (.RST(RST), .CLK(CLK) ,.SYNC_RST(SYNC_RST));
 
 
-initial
-begin
-CLK   = 1'b0 ;
-RST = 1'b0 ;
-repeat(5) @(negedge CLK);
-RST = 1'b1; 
-#((NUM_STAGES+2) * PERIOD_CLOCK);
-@(negedge CLK);
-RST = 0;
-#(2*PERIOD_CLOCK);
-
-$stop;  
-end
+// always #(PERIOD_CLOCK/2) CLK = ~ CLK ;
 
 
-endmodule
+// initial
+// begin
+// CLK   = 1'b0 ;
+// RST = 1'b0 ;
+// repeat(5) @(negedge CLK);
+// RST = 1'b1; 
+// #((NUM_STAGES+2) * PERIOD_CLOCK);
+// @(negedge CLK);
+// RST = 0;
+// #(2*PERIOD_CLOCK);
+
+// $stop;  
+// end
+
+
+// endmodule

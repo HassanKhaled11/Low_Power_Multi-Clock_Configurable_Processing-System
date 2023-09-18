@@ -79,7 +79,7 @@ fifo_wrptr_full #(.WIDTH (WIDTH) , .DEPTH(DEPTH) ) fifo_wrptr_full_dut
  .WFULL(WFULL)                   ,
  .Waddr(Waddr)                   ,
  .gray_Wptr (Wptr)                    
- //.write_op_en(write_op_en) 
+
 );
 
 
@@ -112,10 +112,10 @@ FIFO_MEMORY #(.WIDTH (WIDTH) , .DEPTH(DEPTH) ) FIFO_MEMORY_dut
 .R_RST (R_RST)     ,
 .wdata (WR_DATA)   ,
 .wclk_en (wclk_en) ,
-.rclk_en (rclk_en) ,
+
 .waddr(Waddr)      ,
 .raddr(raddr)      ,
-//.write_op_en(write_op_en),
+
 
 .rdata(RD_DATA)  
 

@@ -1,25 +1,26 @@
 module SYS_CTRL
 (
- input CLK       ,
- input RST       ,
- input [7:0] Data_sync ,
- input enable_pulse    ,
 
- input FIFO_FULL ,
+ input CLK                 ,
+ input RST                 ,
+ input [7:0] Data_sync     ,
+ input enable_pulse        ,
+
+ input FIFO_FULL           ,
  
- input [7:0] Rd_DATA   ,
- input Rd_Valid  ,
- input [15:0] ALU_OUT   ,
- input OUT_VALID ,
+ input [7:0] Rd_DATA       ,
+ input Rd_Valid            ,
+ input [15:0] ALU_OUT      ,
+ input OUT_VALID           ,
 
  output reg [7:0] WR_DATA  ,
- output reg WR_INC   ,  
+ output reg WR_INC         ,  
  output reg [3:0] FUN      ,
- output reg EN       ,
- output reg Gate_En  ,
+ output reg EN             ,
+ output reg Gate_En        ,
  output reg [7:0] Wr_D     ,
  output reg [7:0] Addr     ,
- output reg RdEn     ,
+ output reg RdEn           ,
  output reg WrEn
 
 );
@@ -39,8 +40,8 @@ localparam WRITE_REG_TO_FIFO   = 4'b1010 ;
 
 
 
-reg [1:0] Counter;
-reg flag;
+reg [1:0] Counter       ;
+reg flag                ;
 
 reg [3:0] current_state ;
 reg [3:0] next_state    ;
@@ -49,11 +50,11 @@ reg [3:0] next_state    ;
 
 always @(posedge CLK or negedge RST) begin
   if (!RST) begin
-    current_state <= IDLE;
+    current_state <= IDLE        ;
   end
 
   else begin
-     current_state <= next_state; 
+     current_state <= next_state ; 
   end
 end
 
@@ -71,17 +72,17 @@ IDLE : begin
              
              case(Data_sync)
                
-               8'hAA : next_state = RF_Wr_Addr;
-               8'hBB : next_state = RF_Rd_Addr;
-               8'hCC : next_state = Rd_Operand_A;
-               8'hDD : next_state = Rd_ALU_FUN;  
+               8'hAA : next_state = RF_Wr_Addr   ;
+               8'hBB : next_state = RF_Rd_Addr   ;
+               8'hCC : next_state = Rd_Operand_A ;
+               8'hDD : next_state = Rd_ALU_FUN   ;  
 
              endcase
 
            end
 
 
-          else next_state = IDLE;
+          else next_state = IDLE  ;
             
        end
 
@@ -89,11 +90,11 @@ IDLE : begin
 RF_Wr_Addr : begin
               if(enable_pulse)
                 begin
-                 next_state = RF_Wr_Data;
+                 next_state = RF_Wr_Data ;
                 end
                
                else begin
-                 next_state = RF_Wr_Addr;
+                 next_state = RF_Wr_Addr ;
                 end 
 
               end
@@ -103,11 +104,11 @@ RF_Wr_Addr : begin
 RF_Wr_Data : begin
                if(enable_pulse)
                 begin
-                 next_state = IDLE;
+                 next_state = IDLE       ;
                 end
                
                else begin
-                 next_state = RF_Wr_Data;
+                 next_state = RF_Wr_Data ;
                 end 
                  
              end
@@ -119,12 +120,12 @@ RF_Rd_Addr : begin
               
                if(Rd_Valid)
                 begin
-                 next_state = WAIT_REG_OUT;
+                 next_state = WAIT_REG_OUT ;
                 end
                
 
                else begin
-                 next_state = RF_Rd_Addr;
+                 next_state = RF_Rd_Addr   ;
                 end              
 
              end 
@@ -152,7 +153,7 @@ Rd_Operand_B : begin
               
                if(enable_pulse)
                 begin
-                 next_state = Rd_ALU_FUN;
+                 next_state = Rd_ALU_FUN  ;
                 end
                
                else begin
@@ -171,7 +172,7 @@ Rd_ALU_FUN   : begin
                 end
                
                else begin
-                 next_state = Rd_ALU_FUN;
+                 next_state = Rd_ALU_FUN  ;
                 end                             
 
                end
@@ -179,7 +180,7 @@ Rd_ALU_FUN   : begin
 
 WAIT_REG_OUT : begin
                 if(Rd_Valid) next_state = WRITE_REG_TO_FIFO;
-                else next_state = WAIT_REG_OUT;
+                else next_state = WAIT_REG_OUT             ;
              end
 
 
@@ -272,9 +273,9 @@ RF_Rd_Addr : begin
 Rd_Operand_A : begin
                  if(enable_pulse) begin
 
-                    Addr = 0 ;
-                    Wr_D = Data_sync;
-                    WrEn = 1'b1;
+                    Addr = 0         ;
+                    Wr_D = Data_sync ;
+                    WrEn = 1'b1      ;
 
                  end
                end
@@ -284,9 +285,9 @@ Rd_Operand_A : begin
 Rd_Operand_B : begin
                 if(enable_pulse)
                  begin 
-                  Addr = 1 ;
-                  Wr_D = Data_sync;
-                  WrEn = 1'b1;
+                  Addr = 1         ;
+                  Wr_D = Data_sync ;
+                  WrEn = 1'b1      ;
                 end
                end
 
@@ -294,9 +295,9 @@ Rd_Operand_B : begin
 Rd_ALU_FUN   : begin
                   WrEn = 1'b0;
                 if(enable_pulse) begin
-                  FUN     = Data_sync;
-                  Gate_En = 1;
-                  flag = 1;
+                  FUN     = Data_sync ;
+                  Gate_En = 1         ;
+                  flag = 1            ;
                 end
 
                 if(Counter == 3 && flag) begin         // I did that to turn on clock gating of alu and give it time to read operands and fun before processing
@@ -309,10 +310,10 @@ Rd_ALU_FUN   : begin
 
 
 WRITE_REG_TO_FIFO : begin
-                     RdEn = 1'b0;
+                     RdEn = 1'b0           ;
                       if(!FIFO_FULL)
                        begin
-                        WR_INC = 1'b1 ; 
+                        WR_INC = 1'b1      ; 
                         WR_DATA =  Rd_DATA ;    
                        end   
                   end
@@ -321,10 +322,10 @@ WRITE_REG_TO_FIFO : begin
 
 WRITE_ALU_TO_FIFO : begin
                      flag = 0;
-                     EN = 1'b0;
+                     EN = 1'b0              ;
                      if(!FIFO_FULL)
                        begin
-                         WR_INC  = 1'b1 ;   
+                         WR_INC  = 1'b1     ;   
                          WR_DATA =  ALU_OUT ; 
                        end 
                   end
@@ -357,15 +358,15 @@ endmodule
 
 
 
-//=============================================================================================================
+//=================================== UNIT TESTING OF MODULES ==========================================================================
 
 
 
-// `timescale 1ns / 1fs                     // 1ns -- 1000000 precision (6 numbers prescision)
+// `timescale 1ns / 1fs                               // 1ns -- 1000000 precision (6 numbers prescision)
 
 // module SYS_CTRL_tb;
 
-//   parameter REF_CLK_PERIOD  = 10  ;               //100MHZ
+//   parameter REF_CLK_PERIOD  = 10         ;        //100MHZ
 //   parameter UART_CLK_PERIOD = 271.2673611;        // 3.6864 MHZ  , FOR PRESCALE = 1 -> 271.2673611 , PRESCALE = 2 -> 135.6336806
 //   parameter RX_CLK_PERIOD =  135.6336806 ;  
 //   parameter TX_CLK_PERIOD =  8680.555556 ;
@@ -695,17 +696,8 @@ endmodule
 //     REF_CLK  = 0;
 //     UART_CLK = 0;
 //     RX_IN    = 0;
-//     // R_INC = 0 ;
-//     // bus_enable = 0;
-//     // data_in_syn = 8'h00;
-//     //enable_pulse = 0;
-//     // FIFO_FULL = 0;
-//     // // Rd_DATA = 8'h00;
-//     // Rd_Valid = 0;
-//     // ALU_OUT = 16'h0000;
-//     // OUT_VALID = 0;
-     
-//      RST = 0; 
+
+//     RST = 0; 
 //     // Release reset
 //     #(REF_CLK_PERIOD) RST = 1; 
 //     #(2*REF_CLK_PERIOD);
@@ -770,7 +762,9 @@ endmodule
 //       end
 
 
+
 //       #(RX_CLK_PERIOD) ;
+
 
 
 //       for(j = 11 ; j < 22 ; j = j + 1)
@@ -780,7 +774,9 @@ endmodule
 //       repeat(prescale_in) @(negedge RX_CLK);
 //       end
 
+
 //      #(RX_CLK_PERIOD) ;
+
 
     
 //       for(j = 22 ; j < 33 ; j = j + 1)
@@ -790,8 +786,10 @@ endmodule
 //       repeat(prescale_in) @(negedge RX_CLK);
 //       end
       
+
       
 //       #(RX_CLK_PERIOD) ;
+
 
 
 
@@ -865,7 +863,7 @@ endmodule
       
 //       // R_INC = 1'b1;
 
-//        #(20*TX_CLK_PERIOD);
+       
 
 //       // R_INC = 0;
 
@@ -878,8 +876,8 @@ endmodule
       
 
 
-//    #50 $stop;
- // end
+//     #50 $stop;
+//   end
 
 
-//endmodule
+// endmodule

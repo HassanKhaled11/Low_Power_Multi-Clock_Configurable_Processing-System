@@ -42,7 +42,7 @@ parameter PERIOD_CLK = 5;
 reg  par_typ                 ;
 reg  par_chk_en              ;
 reg  sampled_bit             ;
-reg  [7:0] p_data  		     ;
+reg  [7:0] p_data  		       ;
    
 wire par_err                 ;
 
@@ -64,16 +64,16 @@ p_data = 0;
 
 
 
-par_typ = 1;
-#(PERIOD_CLK);
-sampled_bit = 1;
-#(PERIOD_CLK);
-p_data     = 8'b10111000; 
-par_chk_en = 1;
+par_typ = 1                ;
+#(PERIOD_CLK)              ;
+sampled_bit = 1            ;
+#(PERIOD_CLK)              ;
+p_data     = 8'b10111000   ; 
+par_chk_en = 1             ;
 
 
 
-#(200 * PERIOD_CLK);
+#(200 * PERIOD_CLK)        ;
 
 
 $stop;

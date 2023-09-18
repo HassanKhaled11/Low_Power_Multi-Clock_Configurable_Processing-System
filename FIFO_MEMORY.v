@@ -21,7 +21,6 @@ integer i ;
 
 
 
-//assign rdata = (rclk_en) ? FIFO_MEM [raddr] ;
 
 
 always @(posedge WCLK or negedge WRST )
@@ -51,14 +50,7 @@ always @(*) begin
 end
 
 
-// always @(posedge R_CLK or negedge R_RST) 
-// begin
 
-// if(!R_RST) rdata <= 0;
-
-// else if (rclk_en) 
-//     rdata <= FIFO_MEM [raddr];
-// end
 
 
 endmodule

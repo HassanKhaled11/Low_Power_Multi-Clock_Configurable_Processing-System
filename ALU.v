@@ -57,108 +57,110 @@ endmodule
 
 
 
+///////////////////////////////////////////////////////////////////////////
+////////////////////////////TESTBENCH /////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 
 
 
+// `timescale 1us / 100ns
 
-`timescale 1us / 100ns
+// module ALU_tb;
 
-module ALU_tb;
+// parameter OPERAND_WIDTH = 8 ;
+// parameter FUN_WIDTH = 4;
 
-parameter OPERAND_WIDTH = 8 ;
-parameter FUN_WIDTH = 4;
+// reg CLK_top;
+// reg RST_n_top;
+// reg [OPERAND_WIDTH-1 : 0] A_top,B_top;
+// reg [3:0]  ALU_FUN_top ;
+// reg Enable ;
 
-reg CLK_top;
-reg RST_n_top;
-reg [OPERAND_WIDTH-1 : 0] A_top,B_top;
-reg [3:0]  ALU_FUN_top ;
-reg Enable ;
-
-wire [(2 * OPERAND_WIDTH) - 1 :0] ALU_OUT;
-wire OUT_VALID;
-
-
-
-ALU #(.OPERAND_WIDTH(OPERAND_WIDTH) , .FUN_WIDTH(FUN_WIDTH)) DUT
-(
-.CLK(CLK_top),
-.RST_n(RST_n_top),
-.A(A_top),
-.B(B_top),  
-.ALU_FUN(ALU_FUN_top),
-.Enable(Enable),
-
-.OUT_VALID(OUT_VALID),
-.ALU_OUT (ALU_OUT)
-);
-
-
-// CLOCK GENERATION
-always #2 CLK_top = ~CLK_top ;
-
-
-initial begin 
-Enable = 0;
-A_top = 0;
-B_top = 0;
-ALU_FUN_top = 0;
-CLK_top = 0 ;
-
-RST_n_top = 0;
-#15;
-RST_n_top = 1;
-#10;
-
-
-Enable = 1;
-// ARITHMATTIC TEST
-A_top = 30;
-B_top = 15;
-ALU_FUN_top = 2 ;  
-#10;
-if(ALU_OUT == 450 ) $display("Arithmatic op RIGHT");
-else $display("Arithmatic op WRONG");
+// wire [(2 * OPERAND_WIDTH) - 1 :0] ALU_OUT;
+// wire OUT_VALID;
 
 
 
-// LOGIC TEST
-A_top = 5;
-B_top = 20;
-ALU_FUN_top = 4 ;     // A & B
-#10;
-if(ALU_OUT == 4) $display("Logic op RIGHT");
-else $display("Logic op WRONG");
+// ALU #(.OPERAND_WIDTH(OPERAND_WIDTH) , .FUN_WIDTH(FUN_WIDTH)) DUT
+// (
+// .CLK(CLK_top),
+// .RST_n(RST_n_top),
+// .A(A_top),
+// .B(B_top),  
+// .ALU_FUN(ALU_FUN_top),
+// .Enable(Enable),
+
+// .OUT_VALID(OUT_VALID),
+// .ALU_OUT (ALU_OUT)
+// );
 
 
-// Compare TEST
-A_top = 5;
-B_top = 20;
-ALU_FUN_top = 11 ;    // A < B
-#10;
-if(ALU_OUT == 0) $display("Compare op RIGHT");
-else $display("Compare op WRONG");
+// // CLOCK GENERATION
+// always #2 CLK_top = ~CLK_top ;
 
 
-// Shift TEST
-A_top = 5;
-B_top = 20;
-ALU_FUN_top = 14 ;  
-#10;                    
-if(ALU_OUT == 10 ) $display("Shift op RIGHT");
-else $display("Shift op WRONG");
+// initial begin 
+// Enable = 0;
+// A_top = 0;
+// B_top = 0;
+// ALU_FUN_top = 0;
+// CLK_top = 0 ;
+
+// RST_n_top = 0;
+// #15;
+// RST_n_top = 1;
+// #10;
 
 
-A_top = 10;
-B_top = 20;
-ALU_FUN_top = 13 ;  
-#10;      
+// Enable = 1;
+// // ARITHMATTIC TEST
+// A_top = 30;
+// B_top = 15;
+// ALU_FUN_top = 2 ;  
+// #10;
+// if(ALU_OUT == 450 ) $display("Arithmatic op RIGHT");
+// else $display("Arithmatic op WRONG");
 
 
-#30;
-$stop;
+
+// // LOGIC TEST
+// A_top = 5;
+// B_top = 20;
+// ALU_FUN_top = 4 ;     // A & B
+// #10;
+// if(ALU_OUT == 4) $display("Logic op RIGHT");
+// else $display("Logic op WRONG");
 
 
-end
+// // Compare TEST
+// A_top = 5;
+// B_top = 20;
+// ALU_FUN_top = 11 ;    // A < B
+// #10;
+// if(ALU_OUT == 0) $display("Compare op RIGHT");
+// else $display("Compare op WRONG");
 
 
-endmodule
+// // Shift TEST
+// A_top = 5;
+// B_top = 20;
+// ALU_FUN_top = 14 ;  
+// #10;                    
+// if(ALU_OUT == 10 ) $display("Shift op RIGHT");
+// else $display("Shift op WRONG");
+
+
+// A_top = 10;
+// B_top = 20;
+// ALU_FUN_top = 13 ;  
+// #10;      
+
+
+// #30;
+// $stop;
+
+
+// end
+
+
+// endmodule

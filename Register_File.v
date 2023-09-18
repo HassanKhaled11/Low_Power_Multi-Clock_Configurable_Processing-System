@@ -1,17 +1,17 @@
  module Register_File #(parameter WIDTH = 'd8 , parameter DEPTH = 'd16 , parameter PRESCALE = 6'd32 , parameter PAR_TYP = 1'b0 , parameter PAR_EN = 1'b1)
 (
-input CLK,
-input RST_n,
-input RdEn,WrEn,
-input [$clog2(DEPTH) - 1:0] Address,
-input [WIDTH - 1 :0] WrData,
+input CLK                             ,
+input RST_n                           ,
+input RdEn,WrEn                       ,
+input [$clog2(DEPTH) - 1:0] Address   ,
+input [WIDTH - 1 :0] WrData           ,
 
-output reg [15:0] RdData,
-output reg RdData_Valid,
+output reg [15:0] RdData              ,
+output reg RdData_Valid               ,
 
-output [WIDTH - 1 :0] REG0 ,
-output [WIDTH - 1 :0] REG1 ,
-output [WIDTH - 1 :0] REG2 ,
+output [WIDTH - 1 :0] REG0            ,
+output [WIDTH - 1 :0] REG1            ,
+output [WIDTH - 1 :0] REG2            ,
 output [WIDTH - 1 :0] REG3
 );
 

@@ -1,74 +1,91 @@
 module SYS_TOP
 (
- input REF_CLK ,
- input UART_CLK,
- input RST     ,
- input RX_IN   ,
+ input REF_CLK 			,
+ input UART_CLK			,
+ input RST     			,
+ input RX_IN   			,
 
  output TX_OUT
 );
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////// TASKS //////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 parameter PRESCALE = 'd32 ;
 parameter PAR_TYP  = 1'b0 ;
 parameter PAR_EN   = 1'b1 ;
 
-wire [7:0] REG0 ;      // ALU OPERAND A                       
-wire [7:0] REG1 ;      // ALU OPERAND B 
-wire [7:0] REG2 ;      // [7:2]--> Prescale , 1 --> PARITY TYPE , 0 --> PARITY ENABLE
-wire [7:0] REG3 ;      // DIVISION RATION OF CLK DIVIDER
 
-wire RST_D1 ;
-wire RST_D2 ;
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////// TASKS //////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-wire TX_CLK;
-wire RX_CLK;
+wire [7:0] REG0              ;      // ALU OPERAND A                       
+wire [7:0] REG1              ;      // ALU OPERAND B 
+wire [7:0] REG2              ;      // [7:2]--> Prescale , 1 --> PARITY TYPE , 0 --> PARITY ENABLE
+wire [7:0] REG3              ;      // DIVISION RATION OF CLK DIVIDER
 
-wire [7:0] rx_div_ratio ;
-wire [7:0] in_DATA_tx   ;   
-wire busy               ;
+wire RST_D1                  ;
+wire RST_D2                  ;
 
+wire TX_CLK                  ;
+wire RX_CLK                  ;
 
-wire R_INC ;
-wire WR_INC;
-
-
-wire in_Data_Sys_en ;
-wire [7:0] in_Data_Sys;
-
-
-wire F_Empty ;
-wire F_Full  ;
+wire [7:0] rx_div_ratio      ;
+wire [7:0] in_DATA_tx        ;   
+wire busy                    ;
 
 
-wire ALU_CLK;
-wire Gate_En;
+wire R_INC                   ;
+wire WR_INC                  ;
 
 
-wire [7:0] SYNC_bus;
-wire enable_pulse ;
-wire [7:0] RdData;
-wire  Rd_Valid ;
-wire [15:0] ALU_OUT ;
-wire OUT_VALID ;
-wire [3:0] ALU_FUN; 
-wire Enable ;
-wire [7:0] WR_DATA;
-wire [7:0] Wr_D;
-wire [7:0] Addr;
-wire RdEn ;
-wire WrEn ;
-wire [5:0] prescale_in;
-
-assign prescale_in = REG2[7:2] ;
-
-assign  rx_div_ratio = (REG2[7:2] == 32) ? 1 : (REG2[7:2] == 16) ? 2 : 4;
+wire in_Data_Sys_en          ;
+wire [7:0] in_Data_Sys       ;
 
 
-///////////////////////////////////////////////////////
-///////////////////////////////////////////////////////
-//////////////// BLOCKS CONNECTION ////////////////////
-///////////////////////////////////////////////////////
-///////////////////////////////////////////////////////
+wire F_Empty                 ;
+wire F_Full                  ;
+
+
+wire ALU_CLK                 ;
+wire Gate_En                 ;
+
+
+wire [7:0] SYNC_bus          ;
+wire enable_pulse            ;
+wire [7:0] RdData            ;
+wire  Rd_Valid               ;
+wire [15:0] ALU_OUT          ;
+wire OUT_VALID               ;
+wire [3:0] ALU_FUN           ; 
+wire Enable                  ;
+wire [7:0] WR_DATA           ;
+wire [7:0] Wr_D              ;
+wire [7:0] Addr              ;
+wire RdEn                    ;
+wire WrEn                    ;
+wire [5:0] prescale_in       ;
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////// TASKS //////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+assign  rx_div_ratio = (REG2[7:2] == 32) ? 1 : (REG2[7:2] == 16) ? 2 : 4  ;
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////// BLOCKS INSTANTIATION //////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 ///////////////////////////////////////////////////////
@@ -101,9 +118,9 @@ CLK_GATE  CLK_GATE_dut
 
 ClkDiv__  CLK_DIV_TX_dut
 (
-.i_ref_clk   (UART_CLK),
-.i_rst_n     (RST_D2),
-.i_div_ratio (REG3),
+.i_ref_clk   (UART_CLK)   ,
+.i_rst_n     (RST_D2)     ,
+.i_div_ratio (REG3)       ,
 
 .o_div_clk(TX_CLK)
 );
@@ -112,9 +129,9 @@ ClkDiv__  CLK_DIV_TX_dut
 
 ClkDiv__ CLK_DIV_RX_dut
 (
-.i_ref_clk   (UART_CLK),
-.i_rst_n     (RST_D2),
-.i_div_ratio (rx_div_ratio),
+.i_ref_clk   (UART_CLK)      ,
+.i_rst_n     (RST_D2)        ,
+.i_div_ratio (rx_div_ratio)  ,
 
 .o_div_clk(RX_CLK)
 );
@@ -127,8 +144,8 @@ ClkDiv__ CLK_DIV_RX_dut
 
 Rst_Sync #(.NUM_STAGES(2) , .ACTIVE_TYP("LOW")) Rst_Sync_D1_dut (
 
-.RST       (RST),
-.CLK       (REF_CLK),
+.RST       (RST)        ,
+.CLK       (REF_CLK)    ,
 .SYNC_RST  (RST_D1)
 
 );
@@ -137,8 +154,8 @@ Rst_Sync #(.NUM_STAGES(2) , .ACTIVE_TYP("LOW")) Rst_Sync_D1_dut (
 
 Rst_Sync #(.NUM_STAGES(2) , .ACTIVE_TYP("LOW")) Rst_Sync_D2_dut (
 
-.RST       (RST),
-.CLK       (UART_CLK),
+.RST       (RST)       ,
+.CLK       (UART_CLK)  ,
 .SYNC_RST  (RST_D2)
 
 );
@@ -152,12 +169,12 @@ Rst_Sync #(.NUM_STAGES(2) , .ACTIVE_TYP("LOW")) Rst_Sync_D2_dut (
 
 Data_Sync #(.NUM_STAGES(2) , .BUS_WIDTH(8) )  Data_Sync_dut (
 
-.CLK        (REF_CLK) ,
-.RST_n      (RST_D1),
-.bus_enable (in_Data_Sys_en) ,
-.UNSYNC_bus (in_Data_Sys) ,
+.CLK        (REF_CLK)           ,
+.RST_n      (RST_D1)            ,
+.bus_enable (in_Data_Sys_en)    ,
+.UNSYNC_bus (in_Data_Sys)       ,
 
-.SYNC_bus     (SYNC_bus) ,
+.SYNC_bus     (SYNC_bus)        ,
 .enable_pulse (enable_pulse)
 
 );
@@ -184,14 +201,14 @@ SYS_CTRL  SYS_CTRL_dut
  .OUT_VALID    (OUT_VALID)      ,
 
 
- .WR_DATA  (WR_DATA)       ,
- .WR_INC   (WR_INC)        ,  
- .FUN      (ALU_FUN)       ,
- .EN       (Enable)        ,
- .Gate_En  (Gate_En)       ,
- .Wr_D     (Wr_D)       ,
- .Addr     (Addr)       ,
- .RdEn     (RdEn)       ,
+ .WR_DATA  (WR_DATA)            ,
+ .WR_INC   (WR_INC)             ,  
+ .FUN      (ALU_FUN)            ,
+ .EN       (Enable)             ,
+ .Gate_En  (Gate_En)            ,
+ .Wr_D     (Wr_D)               ,
+ .Addr     (Addr)               ,
+ .RdEn     (RdEn)               ,
  .WrEn     (WrEn)
 
 );
@@ -205,19 +222,19 @@ SYS_CTRL  SYS_CTRL_dut
 
 Register_File  #(.PRESCALE(PRESCALE),.PAR_TYP(PAR_TYP) ,.PAR_EN(PAR_EN)) Reg_file_dut
 (
-.CLK(REF_CLK),
-.RST_n(RST_D1),
-.RdEn(RdEn),
-.WrEn(WrEn),
-.Address(Addr),
-.WrData(Wr_D),
+.CLK(REF_CLK)               ,
+.RST_n(RST_D1)              ,
+.RdEn(RdEn)                 ,
+.WrEn(WrEn)                 ,
+.Address(Addr)              ,
+.WrData(Wr_D)               ,
 
-.RdData  (RdData),
-.RdData_Valid(Rd_Valid),
+.RdData  (RdData)           ,
+.RdData_Valid(Rd_Valid)     ,
 
-.REG0(REG0) ,
-.REG1(REG1) ,
-.REG2(REG2) ,
+.REG0(REG0)                 ,
+.REG1(REG1)                 ,
+.REG2(REG2)                 ,
 .REG3(REG3)
 );
 
@@ -231,14 +248,14 @@ Register_File  #(.PRESCALE(PRESCALE),.PAR_TYP(PAR_TYP) ,.PAR_EN(PAR_EN)) Reg_fil
 ALU #(.OPERAND_WIDTH ('d8) , .FUN_WIDTH('d4)) ALU_dut
 (
 
-.CLK   		(ALU_CLK) ,
-.RST_n 		(RST_D1)  ,
-.A    		(REG0)    ,
-.B    		(REG1)    ,
-.ALU_FUN    (ALU_FUN)        ,
+.CLK   		(ALU_CLK)       ,
+.RST_n 		(RST_D1)        ,
+.A    		(REG0)          ,
+.B    		(REG1)          ,
+.ALU_FUN    (ALU_FUN)       ,
 .Enable     (Enable)        ,
 
-.ALU_OUT     (ALU_OUT)       ,
+.ALU_OUT     (ALU_OUT)      ,
 .OUT_VALID   (OUT_VALID)
 
 );
@@ -277,7 +294,7 @@ UART_RX #(.PRESCALE(PRESCALE)) UART_RX_dut (
  .RST_n         (RST_D2)     ,
  .PAR_EN        (REG2[0])    ,
  .PAR_TYP       (REG2[1])    ,
- .Prescale      (PRESCALE)  ,
+ .Prescale      (PRESCALE)   ,
  .RX_IN         (RX_IN)      ,
 
 
@@ -295,17 +312,17 @@ UART_RX #(.PRESCALE(PRESCALE)) UART_RX_dut (
 ASYNC_FIFO ASYNC_FIFO_dut
 (
 
-.W_CLK     (REF_CLK)     ,	         
+.W_CLK     (REF_CLK)    ,	         
 .W_RST     (RST_D1)     ,        
-.W_INC     (WR_INC)           ,
-.WR_DATA   (WR_DATA)     ,
+.W_INC     (WR_INC)     ,
+.WR_DATA   (WR_DATA)    ,
 .R_CLK     (TX_CLK)     ,
 .R_RST     (RST_D2)     ,
 .R_INC     (R_INC)      ,
 
 
-.FULL    (F_Full )       ,
-.EMPTY   (F_Empty)       ,
+.FULL    (F_Full )      ,
+.EMPTY   (F_Empty)      ,
 .RD_DATA (in_DATA_tx)  
 
 );
@@ -330,9 +347,6 @@ PULSE_GENERATOR pulse_gen_dut
 ///////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////
-
-
-
 
 
 

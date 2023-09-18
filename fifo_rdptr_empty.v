@@ -23,11 +23,10 @@ assign REMPTY = (Wptr[$clog2(DEPTH) : 0] == Rptr[$clog2(DEPTH) : 0])? 1'b1 : 1'b
 
 always @(posedge R_CLK or negedge R_RST) begin
 	if (!R_RST) begin
-	   	//REMPTY <= 1'b0;
 	   	Rptr  <= 0   ;
 	end
   
-    // if(Wptr[$clog2(DEPTH) : 0] == Rptr[$clog2(DEPTH) : 0]) REMPTY <= 1'b1;
+   
 
 	else if(R_INC && !REMPTY) 
 	begin

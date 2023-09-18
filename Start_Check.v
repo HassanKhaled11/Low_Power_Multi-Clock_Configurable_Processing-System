@@ -1,8 +1,8 @@
 module Start_Check(
-input CLK ,
-input RST_n ,
-input strt_chk_en ,
-input sampled_bit,
+input CLK              ,
+input RST_n            ,
+input strt_chk_en      ,
+input sampled_bit      ,
 
 output reg strt_glitch 
 
@@ -37,44 +37,44 @@ endmodule
 ///////////////////////////////////////////////////////////////////////////
 
 
-module Start_Check_tb();
+// module Start_Check_tb();
 
 
-parameter PRESCALE = 'd16;
-parameter PERIOD_CLK = 5;
+// parameter PRESCALE = 'd16;
+// parameter PERIOD_CLK = 5;
 
-reg CLK         ;        
-reg RST_n       ;
-reg strt_chk_en ;
-reg sampled_bit ;
+// reg CLK         ;        
+// reg RST_n       ;
+// reg strt_chk_en ;
+// reg sampled_bit ;
 
-wire strt_glitch ;
+// wire strt_glitch ;
 
-always #(PERIOD_CLK / 2) CLK = ~ CLK ;
-
-
-
-Start_Check dut (.CLK(CLK) , .RST_n(RST_n) ,.strt_chk_en(strt_chk_en) ,.sampled_bit(sampled_bit) ,.strt_glitch(strt_glitch));
+// always #(PERIOD_CLK / 2) CLK = ~ CLK ;
 
 
-initial begin
-CLK  = 0;
-strt_chk_en = 0;
-sampled_bit= 0;
 
-RST_n = 0;
-#(2 * PERIOD_CLK);
-RST_n = 1;
-
-strt_chk_en = 1;
-sampled_bit = 0;
+// Start_Check dut (.CLK(CLK) , .RST_n(RST_n) ,.strt_chk_en(strt_chk_en) ,.sampled_bit(sampled_bit) ,.strt_glitch(strt_glitch));
 
 
-#(200 * PERIOD_CLK);
+// initial begin
+// CLK  = 0;
+// strt_chk_en = 0;
+// sampled_bit= 0 ;
+
+// RST_n = 0        ;
+// #(2 * PERIOD_CLK);
+// RST_n = 1        ;
+
+// strt_chk_en = 1;
+// sampled_bit = 0;
 
 
-$stop;
-end
+// #(200 * PERIOD_CLK);
 
 
-endmodule
+// $stop;
+// end
+
+
+// endmodule

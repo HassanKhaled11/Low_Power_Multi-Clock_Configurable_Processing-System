@@ -73,7 +73,7 @@ initial begin
  WRITE_IN(80);
 
  WRITE_IN(90);
-// W_INC = 1'b0;
+
 
  ///////////// TEST READ  /////////////////////////////
  

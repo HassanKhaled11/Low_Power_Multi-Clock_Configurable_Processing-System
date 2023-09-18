@@ -72,64 +72,64 @@ endmodule
 ///////////////////////////////////////////////////////////////////////////
 
 
-module data_sampling_tb();
+// module data_sampling_tb();
 
 
-parameter PRESCALE = 'd16;
-parameter PERIOD_CLK = 5;
+// parameter PRESCALE = 'd16;
+// parameter PERIOD_CLK = 5;
 
 
-reg RX_IN         ;
-reg [4:0] Prescale ;
-reg data_samp_en  ;
-reg [$clog2(PRESCALE) - 1 : 0]  edge_cnt      ;
+// reg RX_IN         ;
+// reg [4:0] Prescale ;
+// reg data_samp_en  ;
+// reg [$clog2(PRESCALE) - 1 : 0]  edge_cnt      ;
 
-wire  sampled_bit ;
-
-
-integer i;
-integer j;
+// wire  sampled_bit ;
 
 
-
-data_sampling dut (.RX_IN(RX_IN) ,.Prescale(Prescale) ,.data_samp_en(data_samp_en) , .edge_cnt(edge_cnt) ,.sampled_bit(sampled_bit) );
-
-
-initial begin
-
-RX_IN = 1;
-data_samp_en = 0;
-edge_cnt = 0;
-
-#(2 * PERIOD_CLK);
-
-Prescale = 'd16;
-RX_IN = 1;
-
-#(PERIOD_CLK);
-data_samp_en = 1;
-
-for(i = 0 ; i < 6 ; i = i + 1) begin
-edge_cnt = edge_cnt + 1;
-#(PERIOD_CLK);
-end
-
-RX_IN = 0;
-data_samp_en = 1;
+// integer i;
+// integer j;
 
 
-for(i = 0 ; i < 15 ; i = i + 1) begin
-edge_cnt = edge_cnt + 1;
-#(PERIOD_CLK);
-end
 
-#(200 * PERIOD_CLK);
+// data_sampling dut (.RX_IN(RX_IN) ,.Prescale(Prescale) ,.data_samp_en(data_samp_en) , .edge_cnt(edge_cnt) ,.sampled_bit(sampled_bit) );
 
 
-$stop;
-end
+// initial begin
+
+// RX_IN = 1;
+// data_samp_en = 0;
+// edge_cnt = 0;
+
+// #(2 * PERIOD_CLK);
+
+// Prescale = 'd16;
+// RX_IN = 1;
+
+// #(PERIOD_CLK);
+// data_samp_en = 1;
+
+// for(i = 0 ; i < 6 ; i = i + 1) begin
+// edge_cnt = edge_cnt + 1;
+// #(PERIOD_CLK);
+// end
+
+// RX_IN = 0;
+// data_samp_en = 1;
 
 
-endmodule
+// for(i = 0 ; i < 15 ; i = i + 1) begin
+// edge_cnt = edge_cnt + 1;
+// #(PERIOD_CLK);
+// end
+
+// #(200 * PERIOD_CLK);
+
+
+// $stop;
+// end
+
+
+// endmodule
 
 

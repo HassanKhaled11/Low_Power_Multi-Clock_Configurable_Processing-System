@@ -76,49 +76,49 @@ endmodule
 
 
 ///////////////////////////////////////////////////////////////////////////
+////////////////////////////TESTBENCH /////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////
 
 
-module edge_bit_counter_tb;
+// module edge_bit_counter_tb;
 
-parameter PRESCALE = 'd16;
-parameter PERIOD_CLK = 5;
+// parameter PRESCALE = 'd16;
+// parameter PERIOD_CLK = 5;
 
-reg  CLK                ;
-reg  RST_n              ;
-reg  parity_en          ;
-reg  enable  			      ;
+// reg  CLK                ;
+// reg  RST_n              ;
+// reg  parity_en          ;
+// reg  enable  			      ;
    
-wire [3:0] bit_cnt      ;
-wire [$clog2(PRESCALE) - 1 : 0] edge_cnt;
+// wire [3:0] bit_cnt      ;
+// wire [$clog2(PRESCALE) - 1 : 0] edge_cnt;
 
-always #(PERIOD_CLK / 2) CLK = ~ CLK ;
-
-
-
-edge_bit_counter dut (.CLK(CLK) , .RST_n(RST_n) ,.parity_en(parity_en) ,.enable(enable) ,.bit_cnt(bit_cnt) ,.edge_cnt(edge_cnt));
-
-
-initial begin
-CLK  = 0;
-parity_en = 0;
-enable = 0;
-
-RST_n = 0;
-#(2 * PERIOD_CLK);
-RST_n = 1;
-
-parity_en = 1;
-enable = 1;
-
-#(200 * PERIOD_CLK);
-parity_en = 0;
-#(200 * PERIOD_CLK);
-
-$stop;
-end
+// always #(PERIOD_CLK / 2) CLK = ~ CLK ;
 
 
 
-endmodule
+// edge_bit_counter dut (.CLK(CLK) , .RST_n(RST_n) ,.parity_en(parity_en) ,.enable(enable) ,.bit_cnt(bit_cnt) ,.edge_cnt(edge_cnt));
+
+
+// initial begin
+// CLK  = 0;
+// parity_en = 0;
+// enable = 0;
+
+// RST_n = 0;
+// #(2 * PERIOD_CLK);
+// RST_n = 1;
+
+// parity_en = 1;
+// enable = 1;
+
+// #(200 * PERIOD_CLK);
+// parity_en = 0;
+// #(200 * PERIOD_CLK);
+
+// $stop;
+// end
+
+
+
+// endmodule

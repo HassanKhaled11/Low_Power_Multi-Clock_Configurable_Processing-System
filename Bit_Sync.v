@@ -33,10 +33,7 @@ generate
 	  		FF_Stage[i] <= ASYNC;
 	  	end
 
-        
-        // else if(i == NUM_STAGES - 1) begin
-        //     data_SYN2 <= FF_Stage [i-1]; 
-        // end
+
 	  	
 	  	else begin
 	        FF_Stage[i] <= FF_Stage[i-1];		
@@ -62,73 +59,76 @@ endmodule
 
 
 
+///////////////////////////////////////////////////////////////////////////
+////////////////////////////TESTBENCH /////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 
 
 
-module Bit_Sync_tb;
+// module Bit_Sync_tb;
 
-parameter PERIOD_CLOCK = 100;
-parameter BUS_WIDTH  = 'd1;
-parameter NUM_STAGES = 'd4;
+// parameter PERIOD_CLOCK = 100;
+// parameter BUS_WIDTH  = 'd1;
+// parameter NUM_STAGES = 'd4;
 
 
-reg  CLK     ;
-reg  RST_n   ;
-reg  [BUS_WIDTH -1  : 0] ASYNC ;
+// reg  CLK     ;
+// reg  RST_n   ;
+// reg  [BUS_WIDTH -1  : 0] ASYNC ;
  
-wire [BUS_WIDTH - 1 : 0] SYNC ;
+// wire [BUS_WIDTH - 1 : 0] SYNC ;
 
 
-Bit_Sync #(.BUS_WIDTH(BUS_WIDTH) , .NUM_STAGES(NUM_STAGES)) dut (.CLK(CLK) ,.RST_n(RST_n) ,.ASYNC(ASYNC) ,.SYNC(SYNC));
+// Bit_Sync #(.BUS_WIDTH(BUS_WIDTH) , .NUM_STAGES(NUM_STAGES)) dut (.CLK(CLK) ,.RST_n(RST_n) ,.ASYNC(ASYNC) ,.SYNC(SYNC));
 
 
-integer i;
+// integer i;
 
 
-always #(PERIOD_CLOCK/2) CLK = ~ CLK ;
+// always #(PERIOD_CLOCK/2) CLK = ~ CLK ;
 
 
-initial begin
+// initial begin
 
-CLK   = 0 ;
-ASYNC = 0 ; 
+// CLK   = 0 ;
+// ASYNC = 0 ; 
 
-RST_n = 1'b0 ;
-#(PERIOD_CLOCK);
-RST_n = 1'b1;
+// RST_n = 1'b0 ;
+// #(PERIOD_CLOCK);
+// RST_n = 1'b1;
 
-@(negedge CLK);
+// @(negedge CLK);
 
-for(i = 0 ; i < 50 ; i = i + 1)
-begin
-ASYNC = $random;
-CHECK_RESULT(ASYNC);
-#(PERIOD_CLOCK);
-end
+// for(i = 0 ; i < 50 ; i = i + 1)
+// begin
+// ASYNC = $random;
+// CHECK_RESULT(ASYNC);
+// #(PERIOD_CLOCK);
+// end
 
-RST_n = 1'b0 ;
-#(PERIOD_CLOCK);
-RST_n = 1'b1;
+// RST_n = 1'b0 ;
+// #(PERIOD_CLOCK);
+// RST_n = 1'b1;
 
-$stop;
+// $stop;
 
-end
-
-
+// end
 
 
-task CHECK_RESULT(input [BUS_WIDTH-1 : 0] expected_bit);
 
-begin
+
+// task CHECK_RESULT(input [BUS_WIDTH-1 : 0] expected_bit);
+
+// begin
 	
-#(NUM_STAGES * PERIOD_CLOCK);
-if(expected_bit == SYNC) $display("RIGHT LATENCY");
-else $display("WRONG LATENCY !");
+// #(NUM_STAGES * PERIOD_CLOCK);
+// if(expected_bit == SYNC) $display("RIGHT LATENCY");
+// else $display("WRONG LATENCY !");
 
-end
+// end
 
-endtask
+// endtask
 
 
 
-endmodule
+// endmodule
