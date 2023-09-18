@@ -4,7 +4,7 @@ module SYS_TOP
  input UART_CLK,
  input RST     ,
  input RX_IN   ,
- 
+
  output TX_OUT
 );
 
@@ -48,7 +48,7 @@ wire [7:0] RdData;
 wire  Rd_Valid ;
 wire [15:0] ALU_OUT ;
 wire OUT_VALID ;
-wire [7:0] ALU_FUN; 
+wire [3:0] ALU_FUN; 
 wire Enable ;
 wire [7:0] WR_DATA;
 wire [7:0] Wr_D;
@@ -125,7 +125,7 @@ ClkDiv__ CLK_DIV_RX_dut
 
 Rst_Sync #(.NUM_STAGES(2) , .ACTIVE_TYP("LOW")) Rst_Sync_D1_dut (
 
-.RST       (RST_n),
+.RST       (RST),
 .CLK       (REF_CLK),
 .SYNC_RST  (RST_D1)
 
@@ -135,7 +135,7 @@ Rst_Sync #(.NUM_STAGES(2) , .ACTIVE_TYP("LOW")) Rst_Sync_D1_dut (
 
 Rst_Sync #(.NUM_STAGES(2) , .ACTIVE_TYP("LOW")) Rst_Sync_D2_dut (
 
-.RST       (RST_n),
+.RST       (RST),
 .CLK       (UART_CLK),
 .SYNC_RST  (RST_D2)
 
@@ -316,7 +316,7 @@ ASYNC_FIFO ASYNC_FIFO_dut
 
 PULSE_GENERATOR pulse_gen_dut
 (
-.CLK   (UART_TX),
+.CLK   (TX_CLK),
 .RST_n (RST_D2),	
 .in    (busy),
 
