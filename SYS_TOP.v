@@ -8,7 +8,9 @@ module SYS_TOP
  output TX_OUT
 );
 
-parameter PRESCALE = 'd16;
+parameter PRESCALE = 'd32 ;
+parameter PAR_TYP  = 1'b0 ;
+parameter PAR_EN   = 1'b1 ;
 
 wire [7:0] REG0 ;      // ALU OPERAND A                       
 wire [7:0] REG1 ;      // ALU OPERAND B 
@@ -201,7 +203,7 @@ SYS_CTRL  SYS_CTRL_dut
 ///////////////////////////////////////////////////////
 
 
-Register_File  Reg_file_dut
+Register_File  #(.PRESCALE(PRESCALE),.PAR_TYP(PAR_TYP) ,.PAR_EN(PAR_EN)) Reg_file_dut
 (
 .CLK(REF_CLK),
 .RST_n(RST_D1),
@@ -275,7 +277,7 @@ UART_RX #(.PRESCALE(PRESCALE)) UART_RX_dut (
  .RST_n         (RST_D2)     ,
  .PAR_EN        (REG2[0])    ,
  .PAR_TYP       (REG2[1])    ,
- .Prescale      (prescale_in)  ,
+ .Prescale      (PRESCALE)  ,
  .RX_IN         (RX_IN)      ,
 
 

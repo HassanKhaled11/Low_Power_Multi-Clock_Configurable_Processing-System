@@ -14,15 +14,15 @@ module SYS_TOP_tb();
 
  parameter REF_CLK_PERIOD  =  10           ;        //100MHZ
  parameter UART_CLK_PERIOD =  271.2673611  ;        // 3.6864 MHZ  , FOR PRESCALE = 1 -> 271.2673611 , PRESCALE = 2 -> 135.6336806
- parameter RX_CLK_PERIOD   =  135.6336806  ;
- //parameter RX_CLK_PERIOD   =  271.2673611  ;        
+ parameter RX_CLK_PERIOD   =  135.6336806  ;      // in case of prescale = 16
+ //parameter RX_CLK_PERIOD   =  271.2673611  ;        // in case of prescale = 32 
  parameter TX_CLK_PERIOD   =  8680.555556  ;        // 115.200 KHZ
  
 
- parameter PRESCALE        =  'd16         ;
+ parameter PRESCALE        =  6'd16         ;
 
- parameter PARITY_EN       =  1'b1         ;
- parameter PARITY_TYP      =  1'b1         ;
+ parameter PARITY_EN       =  1'b1          ;
+ parameter PARITY_TYP      =  1'b1          ;        // 0 --> EVEN  , 1 --> ODD
 
 
  parameter EVEN_PARITY     = 2'b10         ; 
@@ -46,6 +46,8 @@ module SYS_TOP_tb();
  wire TX_CLK      ;
 
  reg [1:0] parity_test  ;
+
+ reg [7:0] rx_divide_ratio ;
 
  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
@@ -98,7 +100,7 @@ integer m ;
 
 
 
-SYS_TOP SYS_TOP_dut
+SYS_TOP #(.PRESCALE(PRESCALE) , .PAR_TYP(PARITY_TYP) , .PAR_EN(PARITY_EN)) SYS_TOP_dut
 (
  .REF_CLK  (REF_CLK)     ,
  .UART_CLK (UART_CLK)    ,
@@ -140,7 +142,7 @@ ClkDiv__ CLK_DIV_RX_dut
 (
 .i_ref_clk   (UART_CLK),
 .i_rst_n     (RST_D2),
-.i_div_ratio (2),
+.i_div_ratio (rx_divide_ratio),                          // 1 ---> Prescale 32    ,  2 --> Prescale 16
 
 .o_div_clk(RX_CLK)
 );
@@ -345,7 +347,7 @@ case (parity_test)
 
 
                         for (j = 0; j < 40; j = j + 1) begin
-                        	//@(negedge RX_CLK);
+                        	// @(negedge RX_CLK);
 				transmit(Data_Seed_Write_ALU_CMD_NO_h[j]);          // TESTING WRITE IN ALU WITH OPERANDS                                       
 				if(j == 9 ) #(RX_CLK_PERIOD);                      // AFTER SENDING CMD TAKE A DELAY THEN SEND OPERAND_A                       
 				if(j == 18) #(RX_CLK_PERIOD);                      // AFTER SENDING OPER_A TAKE A DELAY THEN SEND OPERAND_B                     
@@ -357,7 +359,7 @@ case (parity_test)
                          
 
                         for (k = 0; k < 20; k = k + 1) begin
-                        	//@(negedge RX_CLK);
+                        	// @(negedge RX_CLK);
 				transmit(Data_Seed_Read_RF_NO_h[k]);                 // TESTING READ FROM REGISTER FILE
 				if(k == 9 ) #(RX_CLK_PERIOD);                       // AFTER SENDING CMD TAKE A DELAY THEN SEND ADDR
 				if(k == 19) #(RX_CLK_PERIOD);                       // AFTER SENDING ADDR TAKE A DELAY THEN BE PREPARED FOR SENDING ANOTHER COMMAND
@@ -368,7 +370,7 @@ case (parity_test)
 
 
                         for (n = 0; n < 20; n = n + 1) begin
-                        	//@(negedge RX_CLK); 
+                        	// @(negedge RX_CLK); 
 				transmit(Data_Seed_Write_ALU_No_CMD_NO_h[n]);         // TESTING ALU OPERATION WITH NO OPERAND   
 				if(n == 9 ) #(RX_CLK_PERIOD);                        // AFTER SENDING CMD TAKE DELAY THEN SEND FUN
 				if(n == 19) #(RX_CLK_PERIOD);                        // AFTER SENDING FUN TAKE A DELAY THEN BE PREPARED FOR SENDING ANOTHER COMMAND
@@ -400,7 +402,7 @@ case (parity_test)
 
 
                         for (j = 0; j < 40; j = j + 1) begin
-                        	//@(negedge RX_CLK);
+                        	// @(negedge RX_CLK);
 				transmit(Data_Seed_Write_ALU_CMD_NO_h[j]);          // TESTING WRITE IN ALU WITH OPERANDS                                       
 				if(j == 9 ) #(RX_CLK_PERIOD);                      // AFTER SENDING CMD TAKE A DELAY THEN SEND OPERAND_A                       
 				if(j == 18) #(RX_CLK_PERIOD);                      // AFTER SENDING OPER_A TAKE A DELAY THEN SEND OPERAND_B                     
@@ -412,7 +414,7 @@ case (parity_test)
                          
 
                         for (k = 0; k < 20; k = k + 1) begin
-                        	//@(negedge RX_CLK);
+                        	// @(negedge RX_CLK);
 				transmit(Data_Seed_Read_RF_NO_h[k]);                 // TESTING READ FROM REGISTER FILE
 				if(k == 9 ) #(RX_CLK_PERIOD);                       // AFTER SENDING CMD TAKE A DELAY THEN SEND ADDR
 				if(k == 19) #(RX_CLK_PERIOD);                       // AFTER SENDING ADDR TAKE A DELAY THEN BE PREPARED FOR SENDING ANOTHER COMMAND
@@ -423,7 +425,7 @@ case (parity_test)
 
 
                         for (n = 0; n < 20; n = n + 1) begin
-                        	//@(negedge RX_CLK); 
+                        	// @(negedge RX_CLK); 
 				transmit(Data_Seed_Write_ALU_No_CMD_NO_h[n]);         // TESTING ALU OPERATION WITH NO OPERAND   
 				if(n == 9 ) #(RX_CLK_PERIOD);                        // AFTER SENDING CMD TAKE DELAY THEN SEND FUN
 				if(n == 19) #(RX_CLK_PERIOD);                        // AFTER SENDING FUN TAKE A DELAY THEN BE PREPARED FOR SENDING ANOTHER COMMAND
@@ -459,6 +461,7 @@ end
 task initialize();
  begin	
     parity_test = {PARITY_EN , PARITY_TYP} ;
+    rx_divide_ratio = (PRESCALE == 32) ? 1 : (PRESCALE == 16) ? 2 : 4;
     i = 0                                  ;
     j = 0                                  ;
     k = 0                                  ;          
