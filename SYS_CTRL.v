@@ -361,99 +361,99 @@ endmodule
 
 
 
-`timescale 1ns / 1fs                     // 1ns -- 1000000 precision (6 numbers prescision)
+// `timescale 1ns / 1fs                     // 1ns -- 1000000 precision (6 numbers prescision)
 
-module SYS_CTRL_tb;
+// module SYS_CTRL_tb;
 
-  parameter REF_CLK_PERIOD  = 10  ;               //100MHZ
-  parameter UART_CLK_PERIOD = 271.2673611;        // 3.6864 MHZ  , FOR PRESCALE = 1 -> 271.2673611 , PRESCALE = 2 -> 135.6336806
-  parameter RX_CLK_PERIOD =  135.6336806 ;  
-  parameter TX_CLK_PERIOD =  8680.555556 ;
+//   parameter REF_CLK_PERIOD  = 10  ;               //100MHZ
+//   parameter UART_CLK_PERIOD = 271.2673611;        // 3.6864 MHZ  , FOR PRESCALE = 1 -> 271.2673611 , PRESCALE = 2 -> 135.6336806
+//   parameter RX_CLK_PERIOD =  135.6336806 ;  
+//   parameter TX_CLK_PERIOD =  8680.555556 ;
   
-  parameter PRESCALE = 'd16;
+//   parameter PRESCALE = 'd16;
 
-  // Inputs
-  reg REF_CLK;
-  reg UART_CLK;
+//   // Inputs
+//   reg REF_CLK;
+//   reg UART_CLK;
 
-  reg RST;
-  wire RST_D1;
-  wire RST_D2;
-
-
-  wire RX_CLK;
-  wire TX_CLK; 
+//   reg RST;
+//   wire RST_D1;
+//   wire RST_D2;
 
 
-  reg RX_IN;
+//   wire RX_CLK;
+//   wire TX_CLK; 
 
 
-  // Outputs
+//   reg RX_IN;
 
-  wire Gate_En;
-  wire [7:0] Wr_D;
-  wire [7:0] Addr;
-  wire RdEn;
-  wire WrEn;
+
+//   // Outputs
+
+//   wire Gate_En;
+//   wire [7:0] Wr_D;
+//   wire [7:0] Addr;
+//   wire RdEn;
+//   wire WrEn;
 
   
-  //wire [7:0] data_in_syn ;
+//   //wire [7:0] data_in_syn ;
   
-  wire [7:0] SYNC_bus;
-  wire enable_pulse;
+//   wire [7:0] SYNC_bus;
+//   wire enable_pulse;
 
 
 
-wire [7:0] REG0;
-wire [7:0] REG1;
-wire [7:0] REG2;
-wire [7:0] REG3;
-wire [7:0] Rd_DATA ;
-wire Rd_Valid;
+// wire [7:0] REG0;
+// wire [7:0] REG1;
+// wire [7:0] REG2;
+// wire [7:0] REG3;
+// wire [7:0] Rd_DATA ;
+// wire Rd_Valid;
 
-wire Enable ;
-wire [15:0] ALU_OUT;
-wire       OUT_VALID;
-wire [3:0] ALU_FUN ;
+// wire Enable ;
+// wire [15:0] ALU_OUT;
+// wire       OUT_VALID;
+// wire [3:0] ALU_FUN ;
 
-reg [7:0] rx_div_ratio;
-reg [5:0] prescale_in;
-
-
-
-
-wire [7:0] in_Data_Sys;
-wire  in_Data_Sys_en ;
-
-
-
-wire WR_INC;
-wire [7:0] WR_DATA;
-wire F_Full;
-
-wire R_INC ;
-wire F_Empty;
-wire [7:0] in_DATA_tx;
-
-
-wire TX_OUT ;
-wire busy  ;
+// reg [7:0] rx_div_ratio;
+// reg [5:0] prescale_in;
 
 
 
 
-
-reg Data_Seed_Write_RF_h    [32:0];
-reg Data_Seed_Write_ALU_CMD_h [43:0];
-reg Data_Seed_Read_RF_h  [21:0];
-reg Data_Seed_Write_ALU_No_CMD_h [21:0];
+// wire [7:0] in_Data_Sys;
+// wire  in_Data_Sys_en ;
 
 
 
-integer i ;
-integer j ;
-integer k ;
-integer n ;
+// wire WR_INC;
+// wire [7:0] WR_DATA;
+// wire F_Full;
+
+// wire R_INC ;
+// wire F_Empty;
+// wire [7:0] in_DATA_tx;
+
+
+// wire TX_OUT ;
+// wire busy  ;
+
+
+
+
+
+// reg Data_Seed_Write_RF_h    [32:0];
+// reg Data_Seed_Write_ALU_CMD_h [43:0];
+// reg Data_Seed_Read_RF_h  [21:0];
+// reg Data_Seed_Write_ALU_No_CMD_h [21:0];
+
+
+
+// integer i ;
+// integer j ;
+// integer k ;
+// integer n ;
  
 
 
@@ -461,424 +461,425 @@ integer n ;
 
 
 
-///////////////////////////////////////////////////////
-/////////////////// RST SYNCHRONIZER //////////////////
-///////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////
+// /////////////////// RST SYNCHRONIZER //////////////////
+// ///////////////////////////////////////////////////////
 
 
-Rst_Sync #(.NUM_STAGES(2) , .ACTIVE_TYP("LOW")) Rst_Sync_D1_dut (
+// Rst_Sync #(.NUM_STAGES(2) , .ACTIVE_TYP("LOW")) Rst_Sync_D1_dut (
 
-.RST       (RST),
-.CLK       (REF_CLK),
-.SYNC_RST  (RST_D1)
+// .RST       (RST),
+// .CLK       (REF_CLK),
+// .SYNC_RST  (RST_D1)
 
-);
-
-
-
-Rst_Sync #(.NUM_STAGES(2) , .ACTIVE_TYP("LOW")) Rst_Sync_D2_dut (
-
-.RST       (RST),
-.CLK       (UART_CLK),
-.SYNC_RST  (RST_D2)
-
-);
-
-/////////////////////////////////////////////////////////////////////////////////
-
-Data_Sync #(.NUM_STAGES(2) , .BUS_WIDTH(8) )  Data_Sync_dut (
-
-.CLK        (REF_CLK) ,
-.RST_n      (RST_D1),
-.bus_enable (in_Data_Sys_en) ,
-.UNSYNC_bus (in_Data_Sys) ,
-
-.SYNC_bus     (SYNC_bus) ,
-.enable_pulse (enable_pulse)
-
-);
-
-
-/////////////////////////////////////////////////////////////////////////////////
+// );
 
 
 
-CLK_GATE  CLK_GATE_dut
-(
-.E  (Gate_En)     ,
-.CK (REF_CLK)     , 
-.ECK(ALU_CLK)       
-);
+// Rst_Sync #(.NUM_STAGES(2) , .ACTIVE_TYP("LOW")) Rst_Sync_D2_dut (
+
+// .RST       (RST),
+// .CLK       (UART_CLK),
+// .SYNC_RST  (RST_D2)
+
+// );
+
+// /////////////////////////////////////////////////////////////////////////////////
+
+// Data_Sync #(.NUM_STAGES(2) , .BUS_WIDTH(8) )  Data_Sync_dut (
+
+// .CLK        (REF_CLK) ,
+// .RST_n      (RST_D1),
+// .bus_enable (in_Data_Sys_en) ,
+// .UNSYNC_bus (in_Data_Sys) ,
+
+// .SYNC_bus     (SYNC_bus) ,
+// .enable_pulse (enable_pulse)
+
+// );
+
+
+// /////////////////////////////////////////////////////////////////////////////////
 
 
 
-/////////////////////////////////////////////////////////////////////////////////
+// CLK_GATE  CLK_GATE_dut
+// (
+// .E  (Gate_En)     ,
+// .CK (REF_CLK)     , 
+// .ECK(ALU_CLK)       
+// );
 
 
-ClkDiv__ CLK_DIV_RX_dut
-(
-.i_ref_clk   (UART_CLK),
-.i_rst_n     (RST_D2),
-.i_div_ratio (rx_div_ratio),
 
-.o_div_clk(RX_CLK)
-);
+// /////////////////////////////////////////////////////////////////////////////////
 
 
-ClkDiv__ CLK_DIV_TX_dut
-(
-.i_ref_clk   (UART_CLK),
-.i_rst_n     (RST_D2),
-.i_div_ratio (REG3),
+// ClkDiv__ CLK_DIV_RX_dut
+// (
+// .i_ref_clk   (UART_CLK),
+// .i_rst_n     (RST_D2),
+// .i_div_ratio (rx_div_ratio),
 
-.o_div_clk(TX_CLK)
-);
-
-
-/////////////////////////////////////////////////////////////////////////////////
+// .o_div_clk(RX_CLK)
+// );
 
 
-  // Instantiate SYS_CTRL module
-  SYS_CTRL DUT (
-    .CLK(REF_CLK),
-    .RST(RST_D1),
-    .Data_sync(SYNC_bus),
-    .enable_pulse(enable_pulse),
-    .FIFO_FULL(F_Full),
-    .Rd_DATA(Rd_DATA),
-    .Rd_Valid(Rd_Valid),
-    .ALU_OUT(ALU_OUT),
-    .OUT_VALID(OUT_VALID),
-    .WR_DATA(WR_DATA),
-    .WR_INC(WR_INC),
-    .FUN(ALU_FUN),
-    .EN(Enable),
-    .Gate_En(Gate_En),
-    .Wr_D(Wr_D),
-    .Addr(Addr),
-    .RdEn(RdEn),
-    .WrEn(WrEn)
-  );
+// ClkDiv__ CLK_DIV_TX_dut
+// (
+// .i_ref_clk   (UART_CLK),
+// .i_rst_n     (RST_D2),
+// .i_div_ratio (REG3),
+
+// .o_div_clk(TX_CLK)
+// );
+
+
+// /////////////////////////////////////////////////////////////////////////////////
+
+
+//   // Instantiate SYS_CTRL module
+//   SYS_CTRL DUT (
+//     .CLK(REF_CLK),
+//     .RST(RST_D1),
+//     .Data_sync(SYNC_bus),
+//     .enable_pulse(enable_pulse),
+//     .FIFO_FULL(F_Full),
+//     .Rd_DATA(Rd_DATA),
+//     .Rd_Valid(Rd_Valid),
+//     .ALU_OUT(ALU_OUT),
+//     .OUT_VALID(OUT_VALID),
+//     .WR_DATA(WR_DATA),
+//     .WR_INC(WR_INC),
+//     .FUN(ALU_FUN),
+//     .EN(Enable),
+//     .Gate_En(Gate_En),
+//     .Wr_D(Wr_D),
+//     .Addr(Addr),
+//     .RdEn(RdEn),
+//     .WrEn(WrEn)
+//   );
 
 
 
   
-Register_File  Reg_file_dut
-(
-.CLK(REF_CLK),
-.RST_n(RST_D1),
-.RdEn(RdEn),
-.WrEn(WrEn),
-.Address(Addr),
-.WrData(Wr_D),
+// Register_File  Reg_file_dut
+// (
+// .CLK(REF_CLK),
+// .RST_n(RST_D1),
+// .RdEn(RdEn),
+// .WrEn(WrEn),
+// .Address(Addr),
+// .WrData(Wr_D),
 
-.RdData  (Rd_DATA),
-.RdData_Valid(Rd_Valid),
+// .RdData  (Rd_DATA),
+// .RdData_Valid(Rd_Valid),
 
-.REG0(REG0) ,
-.REG1(REG1) ,
-.REG2(REG2) ,
-.REG3(REG3)
-);
-
-
-
-
-ALU #(.OPERAND_WIDTH ('d8) , .FUN_WIDTH('d4)) ALU_dut
-(
-
-.CLK        (ALU_CLK) ,
-.RST_n      (RST_D1)  ,
-.A          (REG0)    ,
-.B          (REG1)    ,
-.ALU_FUN    (ALU_FUN)        ,
-.Enable     (Enable)        ,
-
-.ALU_OUT     (ALU_OUT)       ,
-.OUT_VALID   (OUT_VALID)
-
-);
+// .REG0(REG0) ,
+// .REG1(REG1) ,
+// .REG2(REG2) ,
+// .REG3(REG3)
+// );
 
 
 
 
-UART_RX #(.PRESCALE(16)) UART_RX_dut (
+// ALU #(.OPERAND_WIDTH ('d8) , .FUN_WIDTH('d4)) ALU_dut
+// (
 
- .CLK           (RX_CLK)     ,
- .RST_n         (RST_D2)     ,
- .PAR_EN        (REG2[0])    ,
- .PAR_TYP       (REG2[1])    ,
- .Prescale      (prescale_in)  ,
- .RX_IN         (RX_IN)      ,
+// .CLK        (ALU_CLK) ,
+// .RST_n      (RST_D1)  ,
+// .A          (REG0)    ,
+// .B          (REG1)    ,
+// .ALU_FUN    (ALU_FUN)        ,
+// .Enable     (Enable)        ,
 
+// .ALU_OUT     (ALU_OUT)       ,
+// .OUT_VALID   (OUT_VALID)
 
- .P_DATA    (in_Data_Sys)    ,
- .DATA_Valid(in_Data_Sys_en)             
-
-);
-
-
-
-
-ASYNC_FIFO ASYNC_FIFO_dut
-(
-
-.W_CLK     (REF_CLK)     ,           
-.W_RST     (RST_D1)     ,        
-.W_INC     (WR_INC)           ,
-.WR_DATA   (WR_DATA)     ,
-.R_CLK     (TX_CLK)     ,
-.R_RST     (RST_D2)     ,
-.R_INC     (R_INC)      ,
-
-
-.FULL    (F_Full )       ,
-.EMPTY   (F_Empty)       ,
-.RD_DATA (in_DATA_tx)  
-
-);
-
-
-
-PULSE_GENERATOR pulse_gen_dut
-(
-.CLK   (TX_CLK),
-.RST_n (RST_D2),  
-.in    (busy),
-
-.out   (R_INC)
-);
+// );
 
 
 
 
+// UART_RX #(.PRESCALE(16)) UART_RX_dut (
 
-UART_TX UART_TX_dut(
-
-.CLK      (TX_CLK)     ,
-.RST_n    (RST_D2)     ,
-.P_DATA   (in_DATA_tx) ,
-.PAR_EN   (REG2[0])    ,
-.PAR_TYP  (REG2[1])    ,
-.DATA_VALID (F_Empty)  ,
-
-.TX_OUT  (TX_OUT)      ,
-.Busy    (busy)    
+//  .CLK           (RX_CLK)     ,
+//  .RST_n         (RST_D2)     ,
+//  .PAR_EN        (REG2[0])    ,
+//  .PAR_TYP       (REG2[1])    ,
+//  .Prescale      (prescale_in)  ,
+//  .RX_IN         (RX_IN)      ,
 
 
-);
+//  .P_DATA    (in_Data_Sys)    ,
+//  .DATA_Valid(in_Data_Sys_en)             
 
+// );
 
 
 
-  // Clock generation
+
+// ASYNC_FIFO ASYNC_FIFO_dut
+// (
+
+// .W_CLK     (REF_CLK)     ,           
+// .W_RST     (RST_D1)     ,        
+// .W_INC     (WR_INC)           ,
+// .WR_DATA   (WR_DATA)     ,
+// .R_CLK     (TX_CLK)     ,
+// .R_RST     (RST_D2)     ,
+// .R_INC     (R_INC)      ,
+
+
+// .FULL    (F_Full )       ,
+// .EMPTY   (F_Empty)       ,
+// .RD_DATA (in_DATA_tx)  
+
+// );
+
+
+
+// PULSE_GENERATOR pulse_gen_dut
+// (
+// .CLK   (TX_CLK),
+// .RST_n (RST_D2),  
+// .in    (busy),
+
+// .out   (R_INC)
+// );
+
+
+
+
+
+// UART_TX UART_TX_dut(
+
+// .CLK      (TX_CLK)     ,
+// .RST_n    (RST_D2)     ,
+// .P_DATA   (in_DATA_tx) ,
+// .PAR_EN   (REG2[0])    ,
+// .PAR_TYP  (REG2[1])    ,
+// .DATA_VALID (F_Empty)  ,
+
+// .TX_OUT  (TX_OUT)      ,
+// .Busy    (busy)    
+
+
+// );
+
+
+
+
+//   // Clock generation
   
-  always begin
-    #(REF_CLK_PERIOD / 2) REF_CLK = ~REF_CLK;
-  end
+//   always begin
+//     #(REF_CLK_PERIOD / 2) REF_CLK = ~REF_CLK;
+//   end
 
 
-  always begin
-    #(UART_CLK_PERIOD / 2)  UART_CLK = ~UART_CLK;
-  end
+//   always begin
+//     #(UART_CLK_PERIOD / 2)  UART_CLK = ~UART_CLK;
+//   end
 
 
-  // Test stimulus
-  initial begin
-    $dumpfile("SYS_CTRL_tb.vcd");
-    $dumpvars(0, SYS_CTRL_tb);
+//   // Test stimulus
+//   initial begin
+//     $dumpfile("SYS_CTRL_tb.vcd");
+//     $dumpvars(0, SYS_CTRL_tb);
 
-    rx_div_ratio = (PRESCALE == 32) ? 1 : (PRESCALE == 16) ? 2 : 4;
-     prescale_in = PRESCALE;
+//     rx_div_ratio = (PRESCALE == 32) ? 1 : (PRESCALE == 16) ? 2 : 4;
+//      prescale_in = PRESCALE;
 
-    // Initialize inputs
-    REF_CLK = 0;
-    UART_CLK =0;
-    RX_IN = 0;
-    // R_INC = 0 ;
-    // bus_enable = 0;
-    // data_in_syn = 8'h00;
-    //enable_pulse = 0;
-    // FIFO_FULL = 0;
-    // // Rd_DATA = 8'h00;
-    // Rd_Valid = 0;
-    // ALU_OUT = 16'h0000;
-    // OUT_VALID = 0;
+//     // Initialize inputs
+//     REF_CLK  = 0;
+//     UART_CLK = 0;
+//     RX_IN    = 0;
+//     // R_INC = 0 ;
+//     // bus_enable = 0;
+//     // data_in_syn = 8'h00;
+//     //enable_pulse = 0;
+//     // FIFO_FULL = 0;
+//     // // Rd_DATA = 8'h00;
+//     // Rd_Valid = 0;
+//     // ALU_OUT = 16'h0000;
+//     // OUT_VALID = 0;
      
-     RST = 0; 
-    // Release reset
-    #(REF_CLK_PERIOD) RST = 1; 
-    #(2*REF_CLK_PERIOD);
+//      RST = 0; 
+//     // Release reset
+//     #(REF_CLK_PERIOD) RST = 1; 
+//     #(2*REF_CLK_PERIOD);
+
     
 
-     $readmemh ("Data_Seed_Write_RF_h.txt" , Data_Seed_Write_RF_h );
-     $readmemh("Data_Seed_Write_ALU_CMD_h.txt",Data_Seed_Write_ALU_CMD_h);
-     $readmemh("Data_Seed_Read_RF_h.txt", Data_Seed_Read_RF_h);
-     $readmemh("Data_Seed_Write_ALU_No_CMD_h.txt",Data_Seed_Write_ALU_No_CMD_h);
+//      $readmemh("Data_Seed_Write_RF_h.txt" , Data_Seed_Write_RF_h );
+//      $readmemh("Data_Seed_Write_ALU_CMD_h.txt",Data_Seed_Write_ALU_CMD_h);
+//      $readmemh("Data_Seed_Read_RF_h.txt", Data_Seed_Read_RF_h);
+//      $readmemh("Data_Seed_Write_ALU_No_CMD_h.txt",Data_Seed_Write_ALU_No_CMD_h);
    
 
 
-//=============== WRITE IN RF =========================
+// //=============== WRITE IN RF =========================
 
 
-      for(i = 0 ; i < 11 ; i = i + 1)
-      begin
-      @(negedge RX_CLK);
-      RX_IN = Data_Seed_Write_RF_h[i];
-      repeat(prescale_in) @(negedge RX_CLK);
-      end
+//       for(i = 0 ; i < 11 ; i = i + 1)
+//       begin
+//       @(negedge RX_CLK);
+//       RX_IN = Data_Seed_Write_RF_h[i];
+//       repeat(prescale_in) @(negedge RX_CLK);
+//       end
 
 
-      #(RX_CLK_PERIOD) ;
+//       #(RX_CLK_PERIOD) ;
 
 
-      for(i = 11 ; i < 22 ; i = i + 1)
-      begin
-      @(negedge RX_CLK);
-      RX_IN = Data_Seed_Write_RF_h[i];
-      repeat(prescale_in) @(negedge RX_CLK);
-      end
+//       for(i = 11 ; i < 22 ; i = i + 1)
+//       begin
+//       @(negedge RX_CLK);
+//       RX_IN = Data_Seed_Write_RF_h[i];
+//       repeat(prescale_in) @(negedge RX_CLK);
+//       end
 
-     #(RX_CLK_PERIOD) ;
+//      #(RX_CLK_PERIOD) ;
 
     
-      for(i = 22 ; i < 33 ; i = i + 1)
-      begin
-      @(negedge RX_CLK);
-      RX_IN = Data_Seed_Write_RF_h[i];
-      repeat(prescale_in) @(negedge RX_CLK);
-      end
+//       for(i = 22 ; i < 33 ; i = i + 1)
+//       begin
+//       @(negedge RX_CLK);
+//       RX_IN = Data_Seed_Write_RF_h[i];
+//       repeat(prescale_in) @(negedge RX_CLK);
+//       end
       
       
-      #(RX_CLK_PERIOD) ;
+//       #(RX_CLK_PERIOD) ;
 
 
        
-  //=================================================
+//   //=================================================
 
 
 
-//=============== WRITE IN ALU WITH CMD ================
+// //=============== WRITE IN ALU WITH CMD ================
 
 
-      for(j = 0 ; j < 11 ; j = j + 1)
-      begin
-      @(negedge RX_CLK);
-      RX_IN = Data_Seed_Write_ALU_CMD_h[j];
-      repeat(prescale_in) @(negedge RX_CLK);
-      end
+//       for(j = 0 ; j < 11 ; j = j + 1)
+//       begin
+//       @(negedge RX_CLK);
+//       RX_IN = Data_Seed_Write_ALU_CMD_h[j];
+//       repeat(prescale_in) @(negedge RX_CLK);
+//       end
 
 
-      #(RX_CLK_PERIOD) ;
+//       #(RX_CLK_PERIOD) ;
 
 
-      for(j = 11 ; j < 22 ; j = j + 1)
-      begin
-      @(negedge RX_CLK);
-      RX_IN = Data_Seed_Write_ALU_CMD_h[j];
-      repeat(prescale_in) @(negedge RX_CLK);
-      end
+//       for(j = 11 ; j < 22 ; j = j + 1)
+//       begin
+//       @(negedge RX_CLK);
+//       RX_IN = Data_Seed_Write_ALU_CMD_h[j];
+//       repeat(prescale_in) @(negedge RX_CLK);
+//       end
 
-     #(RX_CLK_PERIOD) ;
+//      #(RX_CLK_PERIOD) ;
 
     
-      for(j = 22 ; j < 33 ; j = j + 1)
-      begin
-      @(negedge RX_CLK);
-      RX_IN = Data_Seed_Write_ALU_CMD_h[j];
-      repeat(prescale_in) @(negedge RX_CLK);
-      end
+//       for(j = 22 ; j < 33 ; j = j + 1)
+//       begin
+//       @(negedge RX_CLK);
+//       RX_IN = Data_Seed_Write_ALU_CMD_h[j];
+//       repeat(prescale_in) @(negedge RX_CLK);
+//       end
       
       
-      #(RX_CLK_PERIOD) ;
+//       #(RX_CLK_PERIOD) ;
 
 
 
-      for(j = 33 ; j < 44 ; j = j + 1)
-      begin
-      @(negedge RX_CLK);
-      RX_IN = Data_Seed_Write_ALU_CMD_h[j];
-      repeat(prescale_in) @(negedge RX_CLK);
-      end
+//       for(j = 33 ; j < 44 ; j = j + 1)
+//       begin
+//       @(negedge RX_CLK);
+//       RX_IN = Data_Seed_Write_ALU_CMD_h[j];
+//       repeat(prescale_in) @(negedge RX_CLK);
+//       end
       
       
-      #(RX_CLK_PERIOD) ;
+//       #(RX_CLK_PERIOD) ;
 
 
        
-  //====================================================
+//   //====================================================
 
 
-  //=============== READ FROM RF ===============
-
-   
-      for(k = 0 ; k < 11 ; k = k + 1)
-      begin
-      @(negedge RX_CLK);
-      RX_IN = Data_Seed_Read_RF_h[k];
-      repeat(prescale_in) @(negedge RX_CLK);
-      end
-      
-      
-      #(RX_CLK_PERIOD) ;
-
-
-
-      for(k = 11 ; k < 22 ; k = k + 1)
-      begin
-      @(negedge RX_CLK);
-      RX_IN = Data_Seed_Read_RF_h[k];
-      repeat(prescale_in) @(negedge RX_CLK);
-      end
-      
-      
-      #(RX_CLK_PERIOD) ;
-   
-
-  //============================================
-
-  //=======  WRITE IN ALU WITH No OPERAND ======
+//   //=============== READ FROM RF ===============
 
    
-      for(n = 0 ; n < 11 ; n = n + 1)
-      begin
-      @(negedge RX_CLK);
-      RX_IN = Data_Seed_Write_ALU_No_CMD_h[n];
-      repeat(prescale_in) @(negedge RX_CLK);
-      end
+//       for(k = 0 ; k < 11 ; k = k + 1)
+//       begin
+//       @(negedge RX_CLK);
+//       RX_IN = Data_Seed_Read_RF_h[k];
+//       repeat(prescale_in) @(negedge RX_CLK);
+//       end
       
       
-      #(RX_CLK_PERIOD) ;
+//       #(RX_CLK_PERIOD) ;
 
 
-      for(n = 11 ; n < 22 ; n = n + 1)
-      begin
-      @(negedge RX_CLK);
-      RX_IN = Data_Seed_Write_ALU_No_CMD_h[n];
-      repeat(prescale_in) @(negedge RX_CLK);
-      end
+
+//       for(k = 11 ; k < 22 ; k = k + 1)
+//       begin
+//       @(negedge RX_CLK);
+//       RX_IN = Data_Seed_Read_RF_h[k];
+//       repeat(prescale_in) @(negedge RX_CLK);
+//       end
       
       
-      #(RX_CLK_PERIOD) ;
+//       #(RX_CLK_PERIOD) ;
+   
+
+//   //============================================
+
+//   //=======  WRITE IN ALU WITH No OPERAND ======
+
+   
+//       for(n = 0 ; n < 11 ; n = n + 1)
+//       begin
+//       @(negedge RX_CLK);
+//       RX_IN = Data_Seed_Write_ALU_No_CMD_h[n];
+//       repeat(prescale_in) @(negedge RX_CLK);
+//       end
+      
+      
+//       #(RX_CLK_PERIOD) ;
+
+
+//       for(n = 11 ; n < 22 ; n = n + 1)
+//       begin
+//       @(negedge RX_CLK);
+//       RX_IN = Data_Seed_Write_ALU_No_CMD_h[n];
+//       repeat(prescale_in) @(negedge RX_CLK);
+//       end
+      
+      
+//       #(RX_CLK_PERIOD) ;
 
       
-      // R_INC = 1'b1;
+//       // R_INC = 1'b1;
 
-       #(20*TX_CLK_PERIOD);
+//        #(20*TX_CLK_PERIOD);
 
-      // R_INC = 0;
+//       // R_INC = 0;
 
-    //  RST = 0; 
-    // // Release reset
-    // //#(REF_CLK_PERIOD) RST = 1; 
-    // #(2*REF_CLK_PERIOD);
+//     //  RST = 0; 
+//     // // Release reset
+//     // //#(REF_CLK_PERIOD) RST = 1; 
+//     // #(2*REF_CLK_PERIOD);
 
-  //============================================
+//   //============================================
       
 
 
-    #50 $stop;
-  end
+//    #50 $stop;
+ // end
 
 
-endmodule
+//endmodule

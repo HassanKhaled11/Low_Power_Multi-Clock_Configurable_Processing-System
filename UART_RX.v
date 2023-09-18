@@ -133,7 +133,7 @@ deserializer deser_dut(
 
 assign  middle_sample_point = (Prescale >> 1) - 1 ;
 assign  Prescale = PRESCALE;
-assign  flag_out = (current_state == CHECKING && !par_err && !stp_err && !strt_glitch) ? 1'b1 : 1'b0;
+//assign  flag_out = (current_state == CHECKING && !par_err && !stp_err && !strt_glitch) ? 1'b1 : 1'b0;
 
 always @(posedge CLK or negedge RST_n) begin
 	

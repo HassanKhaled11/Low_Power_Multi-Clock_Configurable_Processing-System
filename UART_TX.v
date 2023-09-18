@@ -8,7 +8,7 @@ input 		   PAR_TYP		         ,
 input 		   DATA_VALID	 	     ,
 
 output reg         TX_OUT		     ,
-output reg          Busy  
+output           Busy  
 );
 
 
@@ -30,7 +30,7 @@ localparam STOP     = 2'b11;
 
 
 assign serial_data = (RST_n) ? shift_reg[0] : 1'b1 ;
-//assign Busy        = (current_state != IDLE) ? 1'b1 : 1'b0;
+assign Busy        = (current_state != IDLE) ? 1'b1 : 1'b0;
 
 
 always @(posedge CLK or negedge RST_n) begin
@@ -51,7 +51,7 @@ begin
   case(current_state)
 
   IDLE : begin
-               if(DATA_VALID && !Busy)
+               if(!DATA_VALID && !Busy)
                 begin
                   next_state   = START;
                 end
@@ -95,7 +95,7 @@ end
 always @(*)
 begin
 
- Busy = 1'b1;
+// Busy = 1'b1;
  TX_OUT     = 1'b1;
  shift_en = 1'b0;
 
@@ -103,11 +103,11 @@ begin
 
   IDLE : begin
          // Counter = 1'b0 ; 
-         TX_OUT  = 1'b1 ;
-         Busy    = 1'b0 ;
 
-         if(DATA_VALID && !Busy)
+         if(!DATA_VALID && !Busy)
               begin
+                   TX_OUT  = 1'b1 ;
+                //   Busy    = 1'b0 ;
                   //shift_reg  = P_DATA ;
                   p_data     = P_DATA ;
               end 
@@ -116,8 +116,8 @@ begin
 
 
  START : begin
-         Busy = 1'b1;
- 	 TX_OUT = 1'b0;
+         //Busy = 1'b1;
+ 	     TX_OUT = 1'b0;
          p_data = P_DATA;
  	 end
 
@@ -152,7 +152,7 @@ begin
 
 
    default : begin
-                Busy = 1'b1;
+               // Busy = 1'b1;
                 TX_OUT     = 1'b1;
                 p_data  = 8'hFF;
                 shift_en = 1'b0;
@@ -172,7 +172,7 @@ begin
 		Counter   <= 0;
 	end
 
-	else if(current_state == IDLE && DATA_VALID && !Busy)  shift_reg  <= P_DATA ;
+	else if(current_state == IDLE && !DATA_VALID && !Busy)  shift_reg  <= P_DATA ;
 	
 	else if(shift_en) 
 	begin

@@ -14,12 +14,20 @@ module SYS_TOP_tb();
 
  parameter REF_CLK_PERIOD  =  10           ;        //100MHZ
  parameter UART_CLK_PERIOD =  271.2673611  ;        // 3.6864 MHZ  , FOR PRESCALE = 1 -> 271.2673611 , PRESCALE = 2 -> 135.6336806
- parameter RX_CLK_PERIOD   =  135.6336806  ;        // 115.200 KHZ
- parameter TX_CLK_PERIOD   =  8680.555556  ;
+ parameter RX_CLK_PERIOD   =  135.6336806  ;
+ //parameter RX_CLK_PERIOD   =  271.2673611  ;        
+ parameter TX_CLK_PERIOD   =  8680.555556  ;        // 115.200 KHZ
  
- parameter PRESCALE = 'd16                 ;
+
+ parameter PRESCALE        =  'd16         ;
+
+ parameter PARITY_EN       =  1'b1         ;
+ parameter PARITY_TYP      =  1'b1         ;
 
 
+ parameter EVEN_PARITY     = 2'b10         ; 
+ parameter ODD_PARITY      = 2'b11         ; 
+ parameter NO_PARITY       = 2'b00         ;
 
  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
@@ -27,15 +35,17 @@ module SYS_TOP_tb();
  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
- reg REF_CLK     ;
- reg UART_CLK    ;
- reg RST         ;
- reg RX_IN       ;
+ reg REF_CLK      ;
+ reg UART_CLK     ;
+ reg RST          ;
+ reg RX_IN        ;
 
- wire TX_OUT     ;
+ wire TX_OUT      ;
 
- wire RX_CLK     ;
- wire TX_CLK     ;
+ wire RX_CLK      ;
+ wire TX_CLK      ;
+
+ reg [1:0] parity_test  ;
 
  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
@@ -44,11 +54,27 @@ module SYS_TOP_tb();
  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-reg Data_Seed_Write_RF_h           [32:0];
-reg Data_Seed_Write_ALU_CMD_h      [43:0];
-reg Data_Seed_Read_RF_h            [21:0];
-reg Data_Seed_Write_ALU_No_CMD_h   [21:0];
+reg Data_Seed_Write_RF_h              [32:0];
+reg Data_Seed_Write_ALU_CMD_h         [43:0];
+reg Data_Seed_Read_RF_h               [21:0];
+reg Data_Seed_Write_ALU_No_CMD_h      [21:0];
 
+
+reg Data_Seed_Write_RF_O_h            [32:0];
+reg Data_Seed_Write_ALU_CMD_O_h       [43:0];
+reg Data_Seed_Read_RF_O_h             [21:0];
+reg Data_Seed_Write_ALU_No_CMD_O_h    [21:0];
+
+
+
+reg Data_Seed_Write_RF_NO_h           [29:0];
+reg Data_Seed_Write_ALU_CMD_NO_h      [39:0];
+reg Data_Seed_Read_RF_NO_h            [19:0];
+reg Data_Seed_Write_ALU_No_CMD_NO_h   [19:0];
+
+
+
+reg [10:0] Data_Expected_h            [8 :0];
 
  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
@@ -61,6 +87,7 @@ integer i ;
 integer j ;
 integer k ;
 integer n ;
+integer m ;
  
 
  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -103,7 +130,7 @@ SYS_TOP SYS_TOP_dut
 
  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
- ////////////////////////////////////////////// CLOCK DOMAINS GENERATION ////////////////////////////////////////////////
+ ////////////////////////////////////////////// CLOCK & RST DOMAINS INSTANTIATIONS //////////////////////////////////////
  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -152,258 +179,404 @@ Rst_Sync #(.NUM_STAGES(2) , .ACTIVE_TYP("LOW")) Rst_Sync_D2_dut (
 
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////// TASKS //////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+initial begin
+
+
+$readmemh ("Data_Seed_Write_RF_h.txt" , Data_Seed_Write_RF_h );
+$readmemh("Data_Seed_Write_ALU_CMD_h.txt",Data_Seed_Write_ALU_CMD_h);
+$readmemh("Data_Seed_Read_RF_h.txt", Data_Seed_Read_RF_h);
+$readmemh("Data_Seed_Write_ALU_No_CMD_h.txt",Data_Seed_Write_ALU_No_CMD_h);
+
+
+$readmemh ("Data_Seed_Write_RF_O_h.txt" , Data_Seed_Write_RF_O_h );
+$readmemh("Data_Seed_Write_ALU_CMD_O_h.txt",Data_Seed_Write_ALU_CMD_O_h);
+$readmemh("Data_Seed_Read_RF_O_h.txt", Data_Seed_Read_RF_O_h);
+$readmemh("Data_Seed_Write_ALU_No_CMD_O_h.txt",Data_Seed_Write_ALU_No_CMD_O_h);	
+
+
+$readmemh ("Data_Seed_Write_RF_NO_h.txt" , Data_Seed_Write_RF_NO_h );
+$readmemh("Data_Seed_Write_ALU_CMD_NO_h.txt",Data_Seed_Write_ALU_CMD_NO_h);
+$readmemh("Data_Seed_Read_RF_NO_h.txt", Data_Seed_Read_RF_NO_h);
+$readmemh("Data_Seed_Write_ALU_No_CMD_NO_h.txt",Data_Seed_Write_ALU_No_CMD_NO_h);	
+
+
+
+$readmemh("Data_Expected_h.txt", Data_Expected_h);
+
+	
+
+initialize();
+
+
+case (parity_test)
+
+
+        EVEN_PARITY : begin 
+                
+                $display("================== TESTING THE FOUR SCENARIOS WITH EVEN PARITY =================================");
+
+                        for (i = 0; i < 33; i = i + 1) begin                   //TESTING WRITE IN REGISTER FILE
+	 			transmit(Data_Seed_Write_RF_h[i]);
+	 			if(i == 10) #(RX_CLK_PERIOD);                      // AFTER SENDING CMD TAKE A DELAY THEN SEND ADDR
+	 			if(i == 21) #(RX_CLK_PERIOD);                      // AFTER SENDING ADDR TAKE A DELAY THEN SEND DATA
+	 			if(i == 32) #(RX_CLK_PERIOD);                      // TAKE A DELAY AFTER SENDING DATA AND BE PREPARED FOR SENDING ANOTHER COMMAND
+	 		end
+
+
+                        for (j = 0; j < 44; j = j + 1) begin
+			       	transmit(Data_Seed_Write_ALU_CMD_h[j]);            // TESTING WRITE IN ALU WITH OPERANDS                                       
+			       	if(j == 10) #(RX_CLK_PERIOD);                      // AFTER SENDING CMD TAKE A DELAY THEN SEND OPERAND_A                       
+			       	if(j == 21) #(RX_CLK_PERIOD);                      // AFTER SENDING OPER_A TAKE A DELAY THEN SEND OPERAND_B                     
+			       	if(j == 32) #(RX_CLK_PERIOD);                      // AFTER SENDING OPER_B TAKE A DELAY THEN SEND FUN                           
+			       	if(j == 43) #(RX_CLK_PERIOD);                      // AFTER SENDING FUN TAKE A DELAY AND BE PREPARED FOR SENDING ANOTHER COMMAND
+			 end
+                        
+                         CHECKOUT(Data_Expected_h[0]);                         // CHECK THE READED DATA FROM ALU_OUT
+                         
+
+                        for (k = 0; k < 22; k = k + 1) begin
+			       transmit(Data_Seed_Read_RF_h[k]);                   // TESTING READ FROM REGISTER FILE
+			       if(k == 10) #(RX_CLK_PERIOD);                       // AFTER SENDING CMD TAKE A DELAY THEN SEND ADDR
+			       if(k == 21) #(RX_CLK_PERIOD);                       // AFTER SENDING ADDR TAKE A DELAY THEN BE PREPARED FOR SENDING ANOTHER COMMAND
+			 end
+
+                        
+                        CHECKOUT(Data_Expected_h[1]);                           //CHECK THE READED DATA FROM RF
+
+
+                        for (n = 0; n < 22; n = n + 1) begin
+			        transmit(Data_Seed_Write_ALU_No_CMD_h[n]);          // TESTING ALU OPERATION WITH NO OPERAND   
+			        if(n == 10) #(RX_CLK_PERIOD);                       // AFTER SENDING CMD TAKE DELAY THEN SEND FUN
+			        if(n == 21) #(RX_CLK_PERIOD);                       // AFTER SENDING FUN TAKE A DELAY THEN BE PREPARED FOR SENDING ANOTHER COMMAND
+		        end
+
+
+			CHECKOUT(Data_Expected_h[2]);
+
+                $display("===================================================================================================");
+
+                      end
+
+
+        
+
+
+
+        ODD_PARITY  : begin 
+
+                $display("================== TESTING THE FOUR SCENARIOS WITH ODD PARITY =================================");
+
+                        for (i = 0; i < 33; i = i + 1) begin                   //TESTING WRITE IN REGISTER FILE
+                       // @(negedge RX_CLK);
+				transmit(Data_Seed_Write_RF_O_h[i]);
+				if(i == 10) #(RX_CLK_PERIOD);                      // AFTER SENDING CMD TAKE A DELAY THEN SEND ADDR
+				if(i == 21) #(RX_CLK_PERIOD);                      // AFTER SENDING ADDR TAKE A DELAY THEN SEND DATA
+				if(i == 32) #(RX_CLK_PERIOD);                      // TAKE A DELAY AFTER SENDING DATA AND BE PREPARED FOR SENDING ANOTHER COMMAND
+			end
 
 
 
 
 
 
-///////////////////////////////////////////////////
+                        for (j = 0; j < 44; j = j + 1) begin
+                       //	@(negedge RX_CLK);
+				transmit(Data_Seed_Write_ALU_CMD_O_h[j]);          // TESTING WRITE IN ALU WITH OPERANDS                                       
+				if(j == 10) #(RX_CLK_PERIOD);                      // AFTER SENDING CMD TAKE A DELAY THEN SEND OPERAND_A                       
+				if(j == 21) #(RX_CLK_PERIOD);                      // AFTER SENDING OPER_A TAKE A DELAY THEN SEND OPERAND_B                     
+				if(j == 32) #(RX_CLK_PERIOD);                      // AFTER SENDING OPER_B TAKE A DELAY THEN SEND FUN                           
+				if(j == 43) #(RX_CLK_PERIOD);                      // AFTER SENDING FUN TAKE A DELAY AND BE PREPARED FOR SENDING ANOTHER COMMAND
+			end
+                        
+                         CHECKOUT(Data_Expected_h[3]);                         // CHECK THE READED DATA FROM ALU_OUT
+                         
+
+                        for (k = 0; k < 22; k = k + 1) begin
+                        // @(negedge RX_CLK);
+				transmit(Data_Seed_Read_RF_O_h[k]);                 // TESTING READ FROM REGISTER FILE
+				if(k == 10) #(RX_CLK_PERIOD);                       // AFTER SENDING CMD TAKE A DELAY THEN SEND ADDR
+				if(k == 21) #(RX_CLK_PERIOD);                       // AFTER SENDING ADDR TAKE A DELAY THEN BE PREPARED FOR SENDING ANOTHER COMMAND
+			end
+
+                        
+                        CHECKOUT(Data_Expected_h[4]);                           //CHECK THE READED DATA FROM RF
 
 
- initial begin
-
-     $readmemh ("Data_Seed_Write_RF_h.txt" , Data_Seed_Write_RF_h );
-     $readmemh("Data_Seed_Write_ALU_CMD_h.txt",Data_Seed_Write_ALU_CMD_h);
-     $readmemh("Data_Seed_Read_RF_h.txt", Data_Seed_Read_RF_h);
-     $readmemh("Data_Seed_Write_ALU_No_CMD_h.txt",Data_Seed_Write_ALU_No_CMD_h);
-   
-    // Initialize inputs
-    REF_CLK = 0;
-    UART_CLK =0;
-    RX_IN = 0;
-    i = 0 ;
-    j = 0;
-    k = 0; 
-    n =0 ;
-    
-    // R_INC = 0 ;
-    // bus_enable = 0;
-    // data_in_syn = 8'h00;
-    //enable_pulse = 0;
-    // FIFO_FULL = 0;
-    // // Rd_DATA = 8'h00;
-    // Rd_Valid = 0;
-    // ALU_OUT = 16'h0000;
-    // OUT_VALID = 0;
-     
-     RST = 0; 
-    // Release reset
-    #(REF_CLK_PERIOD) RST = 1; 
-    #(2*REF_CLK_PERIOD);
-    
+                        for (n = 0; n < 22; n = n + 1) begin
+                   //    	@(negedge RX_CLK); 
+					transmit(Data_Seed_Write_ALU_No_CMD_O_h[n]);          // TESTING ALU OPERATION WITH NO OPERAND   
+					if(n == 10) #(RX_CLK_PERIOD);                       // AFTER SENDING CMD TAKE DELAY THEN SEND FUN
+					if(n == 21) #(RX_CLK_PERIOD);                       // AFTER SENDING FUN TAKE A DELAY THEN BE PREPARED FOR SENDING ANOTHER COMMAND
+				end
 
 
+						CHECKOUT(Data_Expected_h[5]);
 
+                $display("====================================================================================================");
 
-//=============== WRITE IN RF =========================
-
-
-      for(i = 0 ; i < 11 ; i = i + 1)
-      begin
-      @(negedge RX_CLK);
-      RX_IN = Data_Seed_Write_RF_h[i];
-      repeat(PRESCALE) @(negedge RX_CLK);
-      end
-
-
-      #(RX_CLK_PERIOD) ;
-
-
-      for(i = 11 ; i < 22 ; i = i + 1)
-      begin
-      @(negedge RX_CLK);
-      RX_IN = Data_Seed_Write_RF_h[i];
-      repeat(PRESCALE) @(negedge RX_CLK);
-      end
-
-     #(RX_CLK_PERIOD) ;
-
-    
-      for(i = 22 ; i < 33 ; i = i + 1)
-      begin
-      @(negedge RX_CLK);
-      RX_IN = Data_Seed_Write_RF_h[i];
-      repeat(PRESCALE) @(negedge RX_CLK);
-      end
-      
-      
-      #(RX_CLK_PERIOD) ;
-
-
-       
-  //=================================================
+                       end
 
 
 
-//=============== WRITE IN ALU WITH CMD ================
 
 
-      for(j = 0 ; j < 11 ; j = j + 1)
-      begin
-      @(negedge RX_CLK);
-      RX_IN = Data_Seed_Write_ALU_CMD_h[j];
-      repeat(PRESCALE) @(negedge RX_CLK);
-      end
+        NO_PARITY   : begin 
+
+                $display("================== TESTING THE FOUR SCENARIOS WITH NO PARITY =================================");
 
 
-      #(RX_CLK_PERIOD) ;
-
-
-      for(j = 11 ; j < 22 ; j = j + 1)
-      begin
-      @(negedge RX_CLK);
-      RX_IN = Data_Seed_Write_ALU_CMD_h[j];
-      repeat(PRESCALE) @(negedge RX_CLK);
-      end
-
-     #(RX_CLK_PERIOD) ;
-
-    
-      for(j = 22 ; j < 33 ; j = j + 1)
-      begin
-      @(negedge RX_CLK);
-      RX_IN = Data_Seed_Write_ALU_CMD_h[j];
-      repeat(PRESCALE) @(negedge RX_CLK);
-      end
-      
-      
-      #(RX_CLK_PERIOD) ;
+                        for (i = 0; i < 29; i = i + 1) begin                   //TESTING WRITE IN REGISTER FILE
+                               @(negedge RX_CLK);
+				transmit(Data_Seed_Write_RF_NO_h[i]);
+				if(i == 9 )  #(RX_CLK_PERIOD);                      // AFTER SENDING CMD TAKE A DELAY THEN SEND ADDR
+				if(i == 18)  #(RX_CLK_PERIOD);                      // AFTER SENDING ADDR TAKE A DELAY THEN SEND DATA
+				if(i == 29)  #(RX_CLK_PERIOD);                      // TAKE A DELAY AFTER SENDING DATA AND BE PREPARED FOR SENDING ANOTHER COMMAND
+			end
 
 
 
-      for(j = 33 ; j < 44 ; j = j + 1)
-      begin
-      @(negedge RX_CLK);
-      RX_IN = Data_Seed_Write_ALU_CMD_h[j];
-      repeat(PRESCALE) @(negedge RX_CLK);
-      end
-      
-      
-      #(RX_CLK_PERIOD) ;
+                        for (j = 0; j < 40; j = j + 1) begin
+                        	//@(negedge RX_CLK);
+				transmit(Data_Seed_Write_ALU_CMD_NO_h[j]);          // TESTING WRITE IN ALU WITH OPERANDS                                       
+				if(j == 9 ) #(RX_CLK_PERIOD);                      // AFTER SENDING CMD TAKE A DELAY THEN SEND OPERAND_A                       
+				if(j == 18) #(RX_CLK_PERIOD);                      // AFTER SENDING OPER_A TAKE A DELAY THEN SEND OPERAND_B                     
+				if(j == 29) #(RX_CLK_PERIOD);                      // AFTER SENDING OPER_B TAKE A DELAY THEN SEND FUN                           
+				if(j == 39) #(RX_CLK_PERIOD);                      // AFTER SENDING FUN TAKE A DELAY AND BE PREPARED FOR SENDING ANOTHER COMMAND
+				end
+                        
+                        CHECKOUT(Data_Expected_h[6]);                         // CHECK THE READED DATA FROM ALU_OUT
+                         
+
+                        for (k = 0; k < 20; k = k + 1) begin
+                        	//@(negedge RX_CLK);
+				transmit(Data_Seed_Read_RF_NO_h[k]);                 // TESTING READ FROM REGISTER FILE
+				if(k == 9 ) #(RX_CLK_PERIOD);                       // AFTER SENDING CMD TAKE A DELAY THEN SEND ADDR
+				if(k == 19) #(RX_CLK_PERIOD);                       // AFTER SENDING ADDR TAKE A DELAY THEN BE PREPARED FOR SENDING ANOTHER COMMAND
+			end
+
+                        
+                        CHECKOUT(Data_Expected_h[7]);                           //CHECK THE READED DATA FROM RF
 
 
-       
-  //====================================================
+                        for (n = 0; n < 20; n = n + 1) begin
+                        	//@(negedge RX_CLK); 
+				transmit(Data_Seed_Write_ALU_No_CMD_NO_h[n]);         // TESTING ALU OPERATION WITH NO OPERAND   
+				if(n == 9 ) #(RX_CLK_PERIOD);                        // AFTER SENDING CMD TAKE DELAY THEN SEND FUN
+				if(n == 19) #(RX_CLK_PERIOD);                        // AFTER SENDING FUN TAKE A DELAY THEN BE PREPARED FOR SENDING ANOTHER COMMAND
+			end
 
 
-  //=============== READ FROM RF ===============
+		         CHECKOUT(Data_Expected_h[8]);
 
-   
-      for(k = 0 ; k < 11 ; k = k + 1)
-      begin
-      @(negedge RX_CLK);
-      RX_IN = Data_Seed_Read_RF_h[k];
-      repeat(PRESCALE) @(negedge RX_CLK);
-      end
-      
-      
-      #(RX_CLK_PERIOD) ;
+                $display("====================================================================================================");        	
+                      
+                      end
 
 
 
-      for(k = 11 ; k < 22 ; k = k + 1)
-      begin
-      @(negedge RX_CLK);
-      RX_IN = Data_Seed_Read_RF_h[k];
-      repeat(PRESCALE) @(negedge RX_CLK);
-      end
-      
-      
-      #(RX_CLK_PERIOD) ;
-   
+        default     : begin 
 
-  //============================================
-
-  //=======  WRITE IN ALU WITH No OPERAND ======
-
-   
-      for(n = 0 ; n < 11 ; n = n + 1)
-      begin
-      @(negedge RX_CLK);
-      RX_IN = Data_Seed_Write_ALU_No_CMD_h[n];
-      repeat(PRESCALE) @(negedge RX_CLK);
-      end
-      
-      
-      #(RX_CLK_PERIOD) ;
+                $display("================== TESTING THE FOUR SCENARIOS WITH NO PARITY =================================");
 
 
-      for(n = 11 ; n < 22 ; n = n + 1)
-      begin
-      @(negedge RX_CLK);
-      RX_IN = Data_Seed_Write_ALU_No_CMD_h[n];
-      repeat(PRESCALE) @(negedge RX_CLK);
-      end
-      
-      
-      #(RX_CLK_PERIOD) ;
-
-      
-      // R_INC = 1'b1;
-
-       #(20*TX_CLK_PERIOD);
-
-      // R_INC = 0;
-
-    //  RST = 0; 
-    // // Release reset
-    // //#(REF_CLK_PERIOD) RST = 1; 
-    // #(2*REF_CLK_PERIOD);
-
-  //============================================
-      
+                        for (i = 0; i < 29; i = i + 1) begin                   //TESTING WRITE IN REGISTER FILE
+                               @(negedge RX_CLK);
+				transmit(Data_Seed_Write_RF_NO_h[i]);
+				if(i == 9 )  #(RX_CLK_PERIOD);                      // AFTER SENDING CMD TAKE A DELAY THEN SEND ADDR
+				if(i == 18)  #(RX_CLK_PERIOD);                      // AFTER SENDING ADDR TAKE A DELAY THEN SEND DATA
+				if(i == 29)  #(RX_CLK_PERIOD);                      // TAKE A DELAY AFTER SENDING DATA AND BE PREPARED FOR SENDING ANOTHER COMMAND
+			end
 
 
-    #50 $stop;
-  end
+
+
+                        for (j = 0; j < 40; j = j + 1) begin
+                        	//@(negedge RX_CLK);
+				transmit(Data_Seed_Write_ALU_CMD_NO_h[j]);          // TESTING WRITE IN ALU WITH OPERANDS                                       
+				if(j == 9 ) #(RX_CLK_PERIOD);                      // AFTER SENDING CMD TAKE A DELAY THEN SEND OPERAND_A                       
+				if(j == 18) #(RX_CLK_PERIOD);                      // AFTER SENDING OPER_A TAKE A DELAY THEN SEND OPERAND_B                     
+				if(j == 29) #(RX_CLK_PERIOD);                      // AFTER SENDING OPER_B TAKE A DELAY THEN SEND FUN                           
+				if(j == 39) #(RX_CLK_PERIOD);                      // AFTER SENDING FUN TAKE A DELAY AND BE PREPARED FOR SENDING ANOTHER COMMAND
+				end
+                        
+                        CHECKOUT(Data_Expected_h[6]);                         // CHECK THE READED DATA FROM ALU_OUT
+                         
+
+                        for (k = 0; k < 20; k = k + 1) begin
+                        	//@(negedge RX_CLK);
+				transmit(Data_Seed_Read_RF_NO_h[k]);                 // TESTING READ FROM REGISTER FILE
+				if(k == 9 ) #(RX_CLK_PERIOD);                       // AFTER SENDING CMD TAKE A DELAY THEN SEND ADDR
+				if(k == 19) #(RX_CLK_PERIOD);                       // AFTER SENDING ADDR TAKE A DELAY THEN BE PREPARED FOR SENDING ANOTHER COMMAND
+			end
+
+                        
+                        CHECKOUT(Data_Expected_h[7]);                           //CHECK THE READED DATA FROM RF
+
+
+                        for (n = 0; n < 20; n = n + 1) begin
+                        	//@(negedge RX_CLK); 
+				transmit(Data_Seed_Write_ALU_No_CMD_NO_h[n]);         // TESTING ALU OPERATION WITH NO OPERAND   
+				if(n == 9 ) #(RX_CLK_PERIOD);                        // AFTER SENDING CMD TAKE DELAY THEN SEND FUN
+				if(n == 19) #(RX_CLK_PERIOD);                        // AFTER SENDING FUN TAKE A DELAY THEN BE PREPARED FOR SENDING ANOTHER COMMAND
+			end
+
+
+		         CHECKOUT(Data_Expected_h[8]);
+
+                $display("====================================================================================================");        	
+                      
+                      end
+
+ 
+endcase
+
+
+#(20*TX_CLK_PERIOD);
+
+$stop;
+
+end
 
 
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////// CLOCK DOMAINS GENERATION ////////////////////////////////////////////////
+/////////////////////////////////////////////////////////// TASKS //////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 task initialize();
  begin	
-
-    REF_CLK  = 0 ;
-    UART_CLK = 0 ;
-    RX_IN    = 0 ;
+    parity_test = {PARITY_EN , PARITY_TYP} ;
+    i = 0                                  ;
+    j = 0                                  ;
+    k = 0                                  ;          
+    n = 0                                  ;
+    m = 0                                  ;    
+    REF_CLK  = 0                           ;
+    UART_CLK = 0                           ;
+    RX_IN    = 0                           ;
+    RESET()                                ;
 
  end	
 endtask 
 
 
 
+
 task RESET();
  begin
  	
-    RST = 0 ;
+    RST = 0             ;
     #(2*REF_CLK_PERIOD) ; 
-    RST = 1 ; 
-    #(2*REF_CLK_PERIOD) ;
+    RST = 1             ; 
+    #(3*REF_CLK_PERIOD) ;
 
  end
 endtask 
 
 
 
+
 task transmit(input Data_in);
  begin
- 	
- 	RX_IN = Data_in ;
- 	// repeat(PRESCALE) @(negedge rst_n);
-
+ 	@(negedge RX_CLK);
+ 	RX_IN = Data_in                   ;
+ 	repeat(PRESCALE) @(negedge RX_CLK);
 
  end
 endtask
 
 
+
+
+task CHECKOUT (input [10:0] Data_Expected);
+ reg [10 : 0]  data_collected_parity     ;	
+ reg [9  : 0]  data_collected_no_parity  ;
+ 
+ begin
+ 
+ 	case (parity_test)
+
+ 	   
+        EVEN_PARITY : begin 
+ 	                  
+ 	                    @(negedge TX_OUT);
+ 	                     for (m = 0; m < 11; m = m + 1) begin
+                            data_collected_parity [m] = TX_OUT;
+                            @(posedge TX_CLK)                 ;	 	
+ 	                     end
+ 	                     
+ 	                     if (data_collected_parity == Data_Expected)  $display("TEST SUCCEEDED") ;
+                         else  $display("TEST SUCCEEDED")                                        ;                          
+                      
+                      end
+        
+
+
+
+        ODD_PARITY  : begin
+ 	                    
+ 	                    @(negedge TX_OUT);
+ 	                     for (m = 0; m < 11; m = m + 1) begin
+                            data_collected_parity [m] = TX_OUT  ;
+                            @(posedge TX_CLK)                   ;	 	
+ 	                     end
+ 	                     
+ 	                     if (data_collected_parity == Data_Expected)  $display("TEST SUCCEEDED") ;
+                         else  $display("TEST SUCCEEDED")                                        ;          
+                      
+                      end
+
+
+
+
+        NO_PARITY   : begin 
+
+ 	                    @(negedge TX_OUT);
+ 	                     for (m = 0; m < 10; m = m + 1) begin
+                            data_collected_no_parity [m] = TX_OUT     ;
+                            @(posedge TX_CLK)                         ;	 	
+ 	                     end
+ 	                     
+ 	                     if (data_collected_parity == Data_Expected)  $display("TEST SUCCEEDED") ;
+                         else  $display("TEST SUCCEEDED")                                        ; 
+
+                      
+                      end
+
+
+          default   : begin 
+
+ 	                    @(negedge TX_OUT);
+ 	                     for (m = 0; m < 10; m = m + 1) begin
+                            data_collected_no_parity [m] = TX_OUT     ;
+                            @(posedge TX_CLK)                         ;	 	
+ 	                     end
+ 	                     
+ 	                     if (data_collected_parity == Data_Expected)  $display("TEST SUCCEEDED") ;
+                         else  $display("TEST SUCCEEDED")                                        ; 
+
+                      
+                      end            
+
+ 	endcase
+ 	
+ 	
+
+ end
+endtask
 
 
 endmodule
