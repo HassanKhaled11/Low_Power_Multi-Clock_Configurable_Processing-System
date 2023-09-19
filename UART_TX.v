@@ -2,20 +2,21 @@ module UART_TX(
 
 input 		   CLK			         ,
 input 		   RST_n		         ,
-input      [7:0]   P_DATA		     ,
+input        [7:0]   P_DATA		 ,
 input 		   PAR_EN		         ,
-input 		   PAR_TYP		         ,
+input 		   PAR_TYP		       ,
 input 		   DATA_VALID	 	     ,
 
-output reg         TX_OUT		     ,
-output           Busy  
+output reg   TX_OUT		         ,
+output       Busy  
 );
 
 
+reg parity_value       ;
 
 reg [2:0] current_state;
 reg [2:0] next_state   ;
-reg [3:0] Counter      ;
+reg [2:0] Counter      ;
 reg [7:0] p_data       ;
 
 
@@ -23,10 +24,30 @@ reg [7:0] shift_reg ;
 reg shift_en ;
 
 
-localparam IDLE     = 2'b00;
-localparam START    = 2'b01;
-localparam TRANSMIT = 2'b10;
-localparam STOP     = 2'b11;
+localparam IDLE     = 3'b000;
+localparam START    = 3'b001;
+localparam TRANSMIT = 3'b010;
+localparam STOP     = 3'b011;
+localparam PARITY   = 3'b100;
+localparam GEDATA   = 3'b111;
+
+always @(*) begin
+  
+    case (current_state)
+     
+     IDLE     : TX_OUT = 1'b1            ;
+     GEDATA   : TX_OUT = 1'b1            ;
+     START    : TX_OUT = 1'b0            ;
+     TRANSMIT : TX_OUT = P_DATA[Counter] ;
+     PARITY   : TX_OUT = parity_value    ;
+     STOP     : TX_OUT = 1'b1            ;
+
+
+    default : TX_OUT = 1'b1;
+  endcase
+
+end
+
 
 
 assign serial_data = (RST_n) ? shift_reg[0] : 1'b1 ;
@@ -53,11 +74,14 @@ begin
   IDLE : begin
                if(!DATA_VALID && !Busy)
                 begin
-                  next_state   = START;
+                  next_state   = GEDATA;
                 end
 
                 else next_state = IDLE;
          end
+
+
+GEDATA : next_state = START ;
 
 
  START : next_state = TRANSMIT;
@@ -65,19 +89,27 @@ begin
 
  TRANSMIT: begin
              if(PAR_EN) begin 
-               if(Counter == 'd8) next_state = STOP;
+               if(Counter == 'd7) next_state = PARITY;
                else next_state = TRANSMIT;
               end
 
               else begin
-                 if (Counter == 'd8)
-                 next_state = IDLE;
+                 if (Counter == 'd7)
+                  next_state = STOP;
                  else next_state = TRANSMIT;
               end
            end
 
 
- STOP :    begin
+PARITY : begin
+
+         next_state = STOP ;
+
+         end
+
+
+
+STOP :    begin
                next_state = IDLE ;
            end
 
@@ -96,65 +128,86 @@ always @(*)
 begin
 
 // Busy = 1'b1;
- TX_OUT     = 1'b1;
- shift_en = 1'b0;
+// TX_OUT     = 1'b1;
+ // shift_en = 1'b0;
 
   case(current_state)
 
   IDLE : begin
          // Counter = 1'b0 ; 
-
+         parity_value = 0;
          if(!DATA_VALID && !Busy)
               begin
-                   TX_OUT  = 1'b1 ;
-                //   Busy    = 1'b0 ;
+                  
+                  // TX_OUT  = 1'b1 ;
+                 //   Busy    = 1'b0 ;
                   //shift_reg  = P_DATA ;
-                  p_data     = P_DATA ;
+            //      p_data     = 0;
+                  shift_en   = 0 ;
               end 
          end
 
 
+  GEDATA : begin
+                parity_value = 0;
+         //       p_data  = P_DATA;
+                shift_en = 1'b0;
+           end
+
 
  START : begin
          //Busy = 1'b1;
- 	     TX_OUT = 1'b0;
-         p_data = P_DATA;
+ 	       //TX_OUT = 1'b0;
+         shift_en = 0 ;
+       //  p_data   = 0 ;
  	 end
 
 
 
  TRANSMIT: begin
-             p_data = P_DATA;
-               if(Counter < 'd8)
+               parity_value = 0;
+          //     p_data = P_DATA;
+               if(Counter != 'd7)
                  begin
                  shift_en = 1'b1;
-                 TX_OUT = p_data[Counter] ;
+                 //TX_OUT = p_data[Counter] ;
                  end
 
                else if(PAR_EN)
                  begin
                  shift_en = 1'b0;
-                 TX_OUT = (PAR_TYP)? ((^p_data)? 1'b0: 1'b1) : ((^p_data)? 1'b1 : 1'b0);
+                // p_data = (PAR_TYP)? ((^p_data)? 1'b0: 1'b1) : ((^p_data)? 1'b1 : 1'b0);
                  end
 
                else begin
                 shift_en = 1'b0;
-                TX_OUT = 1'b1; 
+                //p_data = 1'b1; 
                 end
            end
 
 
+ PARITY : begin
+         // p_data = P_DATA ;
+          parity_value = (PAR_TYP)? ((^P_DATA)? 1'b0: 1'b1) : ((^P_DATA)? 1'b1 : 1'b0);
+          shift_en = 0;
+          end
+ 
+
+
 
    STOP : begin
-           TX_OUT     = 1'b1;
-           p_data = P_DATA;
+           //TX_OUT     = 1'b1;
+           parity_value = 0;
+           shift_en = 0;
+           //p_data = P_DATA ;
           end        
 
 
    default : begin
                // Busy = 1'b1;
-                TX_OUT     = 1'b1;
-                p_data  = 8'hFF;
+                //TX_OUT     = 1'b1;
+                parity_value = 0;
+            //    p_data  = 8'hFF;
                 shift_en = 1'b0;
               end
 

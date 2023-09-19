@@ -196,7 +196,7 @@ PARITY : begin
 
 
 STOP  : begin
-          if(!PAR_EN && bit_cnt == 9 && edge_cnt == middle_sample_point + 'd3) next_state = CHECKING ;
+          if(!PAR_EN && bit_cnt == 9 && edge_cnt == middle_sample_point + 'd2) next_state = CHECKING ;
           else if(PAR_EN && bit_cnt == 10 && edge_cnt == middle_sample_point + 'd3) next_state = CHECKING ;
           else next_state = STOP ;
         end          
@@ -244,6 +244,7 @@ always @(*) begin
  DESERI: begin
            strt_chk_en = 1'b0 ;
            if(bit_cnt == 1) deser_en = 1'b1 ;
+
          end
 
 

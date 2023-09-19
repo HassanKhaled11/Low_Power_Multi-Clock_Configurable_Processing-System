@@ -116,7 +116,7 @@ FIFO_MEMORY #(.WIDTH (WIDTH) , .DEPTH(DEPTH) ) FIFO_MEMORY_dut
 .waddr(Waddr)      ,
 .raddr(raddr)      ,
 
-
+.rclk_en(rclk_en)  ,
 .rdata(RD_DATA)  
 
 );

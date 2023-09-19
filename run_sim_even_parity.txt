@@ -1,0 +1,17 @@
+vlib work
+
+vlog  ALU.v  ASYNC_FIFO.v  Bit_Sync.v  CLK_GATE.v  CLKDiv__.v   Data_Sync.v  FIFO_MEMORY.v  fifo_rdptr_empty.v  fifo_wrptr_full.v  UART_RX.v  data_sampling.v  deserializer.v  edge_bit_counter.v  Parity_Check.v  Start_Check.v   Stop_Check.v  PULSE_GENERATOR.v  Register_File.v  Rst_Sync.v   SYS_CTRL.v  SYS_TOP.v  SYS_TOP_tb_evenP.v  UART_TX.v
+
+vsim -voptargs=+acc  work.SYS_TOP_tb_evenP
+
+add wave *
+
+add wave -position insertpoint sim:/SYS_TOP_tb_evenP/SYS_TOP_dut/*
+
+
+
+
+
+run -all
+
+# quit -sim

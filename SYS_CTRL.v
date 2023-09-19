@@ -72,10 +72,11 @@ IDLE : begin
              
              case(Data_sync)
                
-               8'hAA : next_state = RF_Wr_Addr   ;
-               8'hBB : next_state = RF_Rd_Addr   ;
-               8'hCC : next_state = Rd_Operand_A ;
-               8'hDD : next_state = Rd_ALU_FUN   ;  
+               8'hAA  : next_state = RF_Wr_Addr   ;
+               8'hBB  : next_state = RF_Rd_Addr   ;
+               8'hCC  : next_state = Rd_Operand_A ;
+               8'hDD  : next_state = Rd_ALU_FUN   ;
+               default: next_state = IDLE         ;  
 
              endcase
 

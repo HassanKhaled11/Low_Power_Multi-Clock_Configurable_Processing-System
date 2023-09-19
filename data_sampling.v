@@ -15,7 +15,7 @@ wire [$clog2(PRESCALE) - 1 : 0] middle_sample_point;
 wire [$clog2(PRESCALE) - 1 : 0] third_sample_point ;
 
 
-assign middle_sample_point =  (PRESCALE >> 1) - 1     ;
+assign middle_sample_point =  (PRESCALE >> 1)         ;
 assign first_sample_point  =  middle_sample_point - 1 ;
 assign third_sample_point  =  middle_sample_point + 1 ;
 
