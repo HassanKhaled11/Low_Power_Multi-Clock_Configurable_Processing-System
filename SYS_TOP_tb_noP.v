@@ -15,7 +15,7 @@ module SYS_TOP_tb_noP();
  parameter REF_CLK_PERIOD  =  10           ;        //100MHZ
  parameter UART_CLK_PERIOD =  271.2673611  ;        // 3.6864 MHZ  , FOR PRESCALE = 1 -> 271.2673611 , PRESCALE = 2 -> 135.6336806
  parameter RX_CLK_PERIOD   =  135.6336806  ;        // in case of prescale = 16
- //parameter RX_CLK_PERIOD =  271.2673611  ;      // in case of prescale = 32 
+ //parameter RX_CLK_PERIOD =  271.2673611    ;      // in case of prescale = 32 
  parameter TX_CLK_PERIOD   =  8680.555556  ;        // 115.200 KHZ
  
 
@@ -149,7 +149,6 @@ ClkDiv__ CLK_DIV_RX_dut
 .i_ref_clk   (UART_CLK),
 .i_rst_n     (RST_D2),
 .i_div_ratio (rx_divide_ratio),                          // 1 ---> Prescale 32    ,  2 --> Prescale 16
-
 .o_div_clk(RX_CLK)
 );
 
@@ -159,9 +158,9 @@ ClkDiv__ CLK_DIV_TX_dut
 .i_ref_clk   (UART_CLK),
 .i_rst_n     (RST_D2),
 .i_div_ratio (32),
-
 .o_div_clk(TX_CLK)
 );
+
 
 
 

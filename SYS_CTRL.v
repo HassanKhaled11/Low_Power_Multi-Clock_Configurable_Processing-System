@@ -42,9 +42,13 @@ localparam WRITE_REG_TO_FIFO   = 4'b1010 ;
 
 reg [1:0] Counter       ;
 reg flag                ;
+reg flag_1              ;
 
 reg [3:0] current_state ;
 reg [3:0] next_state    ;
+
+reg [7:0] Addr_next     ;
+//reg [3:0] fun_next      ;
 
 
 
@@ -167,7 +171,7 @@ Rd_Operand_B : begin
 
 Rd_ALU_FUN   : begin
               
-               if(Counter == 3 && flag == 1)
+               if(Counter == 3 && flag)
                 begin
                  next_state = WAIT_ALU_OUT;
                 end
@@ -245,25 +249,69 @@ IDLE       : begin
 
 
 RF_Wr_Addr : begin
-              if(enable_pulse) Addr = Data_sync ; 
+
+               WR_DATA   = 0 ;
+               WR_INC    = 0 ;
+               FUN       = 0 ;
+               EN        = 0 ;
+               Gate_En   = 0 ;
+               Wr_D      = 0 ;
+               RdEn      = 0 ;
+               WrEn      = 0 ;
+               flag      = 0 ;
+
+              if(enable_pulse) Addr = Data_sync ;
+              else Addr      = 0 ; 
+
              end
 
 
-
 RF_Wr_Data : begin
+
+               WR_DATA   = 0 ;
+               WR_INC    = 0 ;
+               FUN       = 0 ;
+               EN        = 0 ;
+               Gate_En   = 0 ;
+               RdEn      = 0 ;               
+               flag      = 0 ;
+
               if(enable_pulse) begin
+                Addr = Addr_next;                     // Note that to prevent any loops and to keep the value without Latching
                 Wr_D = Data_sync;
                 WrEn = 1'b1     ; 
                end
+
+              else begin
+                Addr      = Data_sync;
+                WrEn      = 0        ;
+                Wr_D      = 0        ;
+              end 
+
              end
 
 
 
 
 RF_Rd_Addr : begin
+
+               WR_DATA   = 0 ;
+               WR_INC    = 0 ;
+               FUN       = 0 ;
+               EN        = 0 ;
+               Gate_En   = 0 ;
+               Wr_D      = 0 ;
+               WrEn      = 0 ;
+               flag      = 0 ;
+
                if(enable_pulse) begin
                  Addr = Data_sync;
                  RdEn = 1'b1 ;
+               end
+
+               else begin
+                 Addr      = 0 ;
+                 RdEn      = 0 ;
                end
              end 
 
@@ -272,69 +320,214 @@ RF_Rd_Addr : begin
 
 
 Rd_Operand_A : begin
+
+                Addr = 0 ;
+                WR_DATA   = 0 ;
+                WR_INC    = 0 ;
+                FUN       = 0 ;
+                EN        = 0 ;
+                Gate_En   = 0 ;
+                RdEn      = 0 ;
+                flag      = 0 ;
+
                  if(enable_pulse) begin
 
-                    Addr = 0         ;
-                    Wr_D = Data_sync ;
-                    WrEn = 1'b1      ;
+                   Wr_D = Data_sync ;
+                   WrEn = 1'b1      ;
 
+                 end
+
+                 else begin
+                   Wr_D      = 0 ;        
+                   WrEn      = 0 ;
                  end
                end
 
 
 
 Rd_Operand_B : begin
-                if(enable_pulse)
-                 begin 
-                  Addr = 1         ;
-                  Wr_D = Data_sync ;
-                  WrEn = 1'b1      ;
-                end
+
+               WR_DATA   = 0 ;
+               WR_INC    = 0 ;
+               FUN       = 0 ;
+               EN        = 0 ;
+               Gate_En   = 0 ;
+               RdEn      = 0 ;
+               flag      = 0 ;
+
+                 if(enable_pulse) begin
+                   Addr = 1         ;
+                   Wr_D = Data_sync ;
+                   WrEn = 1'b1      ;
+                 end
+
+                 else begin
+                   Addr      = 0 ;
+                   Wr_D      = 0 ;        
+                   WrEn      = 0 ;
+                 end
                end
 
 
+
 Rd_ALU_FUN   : begin
-                  WrEn = 1'b0;
-                if(enable_pulse) begin
-                  FUN     = Data_sync ;
-                  Gate_En = 1         ;
-                  flag = 1            ;
-                end
+
+               WR_DATA   = 0 ;
+               WR_INC    = 0 ;
+               Wr_D      = 0 ;
+               Addr      = 0 ;
+               RdEn      = 0 ;
+               WrEn      = 0 ;
+               // FUN     = Data_sync ;
+               // Gate_En = 1'b1      ;
+               // flag    = 1'b1      ; 
 
                 if(Counter == 3 && flag) begin         // I did that to turn on clock gating of alu and give it time to read operands and fun before processing
-                  EN = 1'b1;
+                  EN = 1'b1   ;
+                end
+
+                else begin
+                  EN  = 1'b0 ; 
+                end
+
+
+                if(enable_pulse || flag_1) begin
+                  FUN     = Data_sync ;
+                  Gate_En = 1'b1      ;
+                  flag    = 1'b1      ;
+                 end
+
+                else begin
+                  flag      = 1'b0;
+                  FUN       = 0 ;
+                  Gate_En   = 0 ;
                 end
 
                end                         
 
 
+WAIT_ALU_OUT : begin
+
+               WR_DATA   = 0 ;
+               WR_INC    = 0 ;
+               Wr_D      = 0 ;
+               Addr      = 0 ;
+               RdEn      = 0 ;
+               WrEn      = 0 ;
+               flag      = 0 ; 
+
+               if(OUT_VALID) begin
+                 Gate_En = 0 ;
+                 EN      = 0 ;
+                 FUN     = 0 ;
+               end 
+
+               else begin
+                 FUN       = Data_sync ;
+                 EN        = 1 ;
+                 Gate_En   = 1 ;  
+               end
+
+               end
+
+
+
+WAIT_REG_OUT : begin
+
+               WR_DATA   = 0 ;
+               WR_INC    = 0 ;
+               FUN       = 0 ;
+               EN        = 0 ;
+               Gate_En   = 0 ;
+               Wr_D      = 0 ;
+               WrEn      = 0 ;
+               flag      = 0 ;  
+               RdEn      = 0 ;
+
+               if(Rd_Valid) begin
+                 Addr    = 0 ;
+                 RdEn    = 0 ;
+               end 
+
+               else begin
+                 Addr    = Data_sync ;
+                 RdEn    = 1         ;
+               end
+               end
+
+
+
 
 
 WRITE_REG_TO_FIFO : begin
-                     RdEn = 1'b0           ;
-                      if(!FIFO_FULL)
-                       begin
-                        WR_INC = 1'b1      ; 
-                        WR_DATA =  Rd_DATA ;    
-                       end   
-                  end
+
+               WR_DATA = Rd_DATA   ;
+               FUN       = 0 ;
+               EN        = 0 ;
+               Gate_En   = 0 ;
+               Wr_D      = 0 ;
+               Addr      = 0 ;
+               RdEn      = 0 ;
+               WrEn      = 0 ;
+               flag      = 0 ;  
+
+              
+              if(!FIFO_FULL)
+                 begin
+                  WR_INC  = 1'b1     ; 
+                 end 
+
+               else begin
+                  WR_INC  = 1'b0      ;
+               end    
+
+              end
 
 
 
 WRITE_ALU_TO_FIFO : begin
-                     flag = 0;
-                     EN = 1'b0              ;
-                     if(!FIFO_FULL)
-                       begin
-                         WR_INC  = 1'b1     ;   
-                         WR_DATA =  ALU_OUT ; 
-                       end 
-                  end
 
+               WR_DATA =  ALU_OUT ;
+               FUN       = 0 ;
+               EN        = 0 ;
+               Gate_En   = 0 ;
+               Wr_D      = 0 ;
+               Addr      = 0 ;
+               RdEn      = 0 ;
+               WrEn      = 0 ;
+               flag      = 0 ;  
+               EN = 1'b0     ;
+
+              
+               if(!FIFO_FULL)
+                 begin
+                   WR_INC  = 1'b1     ;    
+                 end
+
+               else begin
+                   WR_INC    = 0 ;
+               end
+              end
+
+
+
+default  :  begin
+
+               WR_DATA   = 0 ;
+               WR_INC    = 0 ;
+               FUN       = 0 ;
+               EN        = 0 ;
+               Gate_En   = 0 ;
+               Wr_D      = 0 ;
+               Addr      = 0 ;
+               RdEn      = 0 ;
+               WrEn      = 0 ;
+               flag      = 0 ; 
+              
+            end
 
 endcase
 end
-
 
 
 
@@ -350,6 +543,25 @@ always @(posedge CLK or negedge RST) begin
   end
 
   else Counter <= 0 ;
+
+end
+
+
+
+
+always @(posedge CLK or negedge RST) begin
+
+  if(~RST) begin
+    // fun_next  <= 0     ;
+     Addr_next <= 0     ;
+     flag_1    <= 0     ;
+  end 
+
+  else begin
+    //fun_next  <= FUN ;
+    Addr_next <= Addr ;
+    flag_1    <= flag ;
+  end
 
 end
 

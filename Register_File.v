@@ -6,7 +6,7 @@ input RdEn,WrEn                       ,
 input [$clog2(DEPTH) - 1:0] Address   ,
 input [WIDTH - 1 :0] WrData           ,
 
-output reg [15:0] RdData              ,
+output reg [WIDTH - 1 :0] RdData      ,
 output reg RdData_Valid               ,
 
 output [WIDTH - 1 :0] REG0            ,

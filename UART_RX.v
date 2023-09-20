@@ -1,4 +1,4 @@
-module UART_RX #(parameter PRESCALE = 'd16) (
+module UART_RX #(parameter PRESCALE = 6'd16) (
 
 input CLK                ,
 input RST_n              ,
@@ -37,6 +37,8 @@ wire strt_glitch  ;
 wire stp_err      ;
 wire [7:0] p_data ;
 wire [$clog2(PRESCALE) - 1 : 0] middle_sample_point;
+reg [7:0] out_next ;
+
 
 localparam IDLE      = 3'b000;
 localparam START     = 3'b001;
@@ -52,8 +54,9 @@ localparam CHECKING  = 3'b101;
 
 
 
-data_sampling  dut_sample(
-
+data_sampling #(.PRESCALE(PRESCALE)) dut_sample(
+.CLK          (CLK)          ,
+.RST_n        (RST_n)        ,
 .RX_IN        (RX_IN)        ,
 .Prescale     (Prescale)     ,
 .data_samp_en (data_samp_en) ,
@@ -209,6 +212,8 @@ CHECKING : begin
            end        
 
 
+default : next_state = IDLE ;
+
 endcase
 end
 
@@ -221,82 +226,196 @@ always @(*) begin
  	
 
   IDLE  : begin
-            DATA_Valid = 1'b0;
+
+            DATA_Valid   = 1'b0   ;
+            deser_en     =  0     ;
+            stp_chk_en   =  0     ;
+            strt_chk_en  =  0     ;
+            par_chk_en   =  0     ;            
+
+            
             if (!RX_IN ) begin
-            P_DATA = 0;
-            DATA_Valid = 1'b0;
-  	        data_samp_en = 1'b1  ;
-  	        enable       = 1'b1  ;
+
+            P_DATA = 0           ;
+            DATA_Valid = 1'b0    ;
+            data_samp_en = 1'b1  ;
+            enable       = 1'b1  ;
+
             end
-          end  
+
+            else begin
+
+            P_DATA       = 0           ;
+            DATA_Valid   = 1'b0        ;
+            data_samp_en = 1'b0        ;
+            enable       = 1'b0        ;            
+
+            end
+
+          end 
 
 
 
   START :  begin
-           
+
+            P_DATA       = out_next    ;
+            DATA_Valid   = 1'b0        ;
+            deser_en     =  0          ;
+            stp_chk_en   =  0          ;
+            par_chk_en   =  0          ;
+            data_samp_en = 1           ;
+            enable       = 1           ;            
+
+
             if(edge_cnt == middle_sample_point + 'd3 && bit_cnt == 0)
-            strt_chk_en = 1'b1 ;
-           
+             strt_chk_en = 1'b1 ;
+
+            else strt_chk_en = 1'b0;
+
            end
  
 
 
  DESERI: begin
-           strt_chk_en = 1'b0 ;
-           if(bit_cnt == 1) deser_en = 1'b1 ;
 
+            P_DATA       = out_next    ;
+            DATA_Valid   = 1'b0        ;
+            stp_chk_en   =  0          ;
+            par_chk_en   =  0          ;  
+            strt_chk_en  = 1'b0        ;
+            data_samp_en = 1           ;
+            enable       = 1           ;
+            deser_en     = 1           ;            
+
+           // if( bit_cnt == 1 || (bit_cnt != 'd8 && edge_cnt != middle_sample_point + 'd3) ) deser_en = 1'b1 ;
+           // else deser_en = 1'b0 ;
          end
 
 
 
  PARITY : begin
-           deser_en = 1'b0 ;
+
+            P_DATA       = out_next    ;
+            DATA_Valid   = 1'b0        ;
+            deser_en     =  0          ;
+            stp_chk_en   =  0          ;
+            strt_chk_en = 1'b0         ;
+            data_samp_en = 1           ;
+            enable       = 1           ;
+
+
            if(edge_cnt == middle_sample_point + 'd3 && bit_cnt == 'd9)
+
            begin
               par_chk_en = 1'b1   ;
             end
+
+            else par_chk_en = 1'b0;
           end  
 
 
  STOP  : begin
-          deser_en = 1'b0;
-          par_chk_en = 1'b0;
-          if(!PAR_EN && bit_cnt == 9 && edge_cnt == middle_sample_point + 'd3)     stp_chk_en = 1'b1;
-          else if(PAR_EN && bit_cnt == 10 && edge_cnt == middle_sample_point + 'd3) stp_chk_en = 1'b1 ;
+
+            P_DATA       = out_next    ;
+            DATA_Valid   = 1'b0        ;
+            deser_en     =  0          ; 
+            //stp_chk_en =  0          ;
+            par_chk_en   =  0          ;
+            strt_chk_en  = 1'b0        ;
+            data_samp_en = 1           ;
+            enable       = 1           ;            
+
+
+            if(!PAR_EN && bit_cnt == 9 && edge_cnt == middle_sample_point + 'd3)     stp_chk_en = 1'b1;
+            else if(PAR_EN && bit_cnt == 10 && edge_cnt == middle_sample_point + 'd3) stp_chk_en = 1'b1 ;
+            else stp_chk_en = 1'b0;
+
         end  
 
 
+
+
+
 CHECKING: begin
-           stp_chk_en = 0;
+
+            //P_DATA     = out_next    ;
+            DATA_Valid   = 1'b0        ;
+            deser_en     =  0          ; 
+            stp_chk_en   =  0          ;
+            strt_chk_en  =  0          ;
+            par_chk_en   =  0          ;
+            strt_chk_en  = 1'b0        ;  
+            stp_chk_en   = 0           ;
+
            
+
            if(edge_cnt == Prescale - 1) begin
 
             data_samp_en = 0;
             enable = 0;
+
 
              if(PAR_EN && !strt_glitch && !par_err && !stp_err) begin            // IN CASE PARITY ENABLE IS HIGH
                DATA_Valid = 1'b1;
                P_DATA = p_data;
              end
 
+
              else if(!PAR_EN && !strt_glitch  && !stp_err) begin                 // IN CASE PARITY DISABLED NO PARITY
-                 DATA_Valid = 1'b1; 
-                 P_DATA = p_data;
+              DATA_Valid = 1'b1; 
+              P_DATA = p_data;
              end
+
 
              else begin
-   
+
              DATA_Valid = 1'b0;
-             P_DATA = 1'b0;
-             
-             end
+             P_DATA = out_next;
+
+             end  
 
          end 
-        
+
+    
+          else begin
+
+          P_DATA = out_next; 
+          data_samp_en = 1 ;
+          enable       = 1 ;
+          
+          end 
         end
+
+
+default : begin
+             deser_en     =  0     ;
+             stp_chk_en   =  0     ;
+             strt_chk_en  =  0     ;
+             par_chk_en   =  0     ;
+             enable       =  0     ;
+             P_DATA       = out_next ;
+             DATA_Valid   =  0     ;
+             data_samp_en =  0     ;
+          end
 endcase
 
 end
+
+
+
+always @(posedge CLK or negedge RST_n) begin
+
+  if(~RST_n) begin
+     out_next <= 0     ;
+  end 
+
+  else begin
+
+    out_next <= P_DATA ;
+
+  end
+end
+
 
 
 

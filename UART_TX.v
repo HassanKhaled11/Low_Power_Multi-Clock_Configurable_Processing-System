@@ -136,15 +136,8 @@ begin
   IDLE : begin
          // Counter = 1'b0 ; 
          parity_value = 0;
-         if(!DATA_VALID && !Busy)
-              begin
-                  
-                  // TX_OUT  = 1'b1 ;
-                 //   Busy    = 1'b0 ;
-                  //shift_reg  = P_DATA ;
-            //      p_data     = 0;
-                  shift_en   = 0 ;
-              end 
+         shift_en   = 0 ;
+         
          end
 
 
@@ -156,6 +149,7 @@ begin
 
 
  START : begin
+         parity_value = 0;
          //Busy = 1'b1;
  	       //TX_OUT = 1'b0;
          shift_en = 0 ;

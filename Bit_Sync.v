@@ -42,6 +42,8 @@ generate
 	  end
 	end  
 
+
+
    always @(*) begin
 
     if(!RST_n) data_SYN2 = 0;

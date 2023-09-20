@@ -149,7 +149,6 @@ ClkDiv__ CLK_DIV_RX_dut
 .i_ref_clk   (UART_CLK),
 .i_rst_n     (RST_D2),
 .i_div_ratio (rx_divide_ratio),                          // 1 ---> Prescale 32    ,  2 --> Prescale 16
-
 .o_div_clk(RX_CLK)
 );
 
@@ -159,7 +158,6 @@ ClkDiv__ CLK_DIV_TX_dut
 .i_ref_clk   (UART_CLK),
 .i_rst_n     (RST_D2),
 .i_div_ratio (32),
-
 .o_div_clk(TX_CLK)
 );
 
@@ -589,3 +587,4 @@ endtask
 
 
 endmodule
+

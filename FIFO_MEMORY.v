@@ -19,7 +19,8 @@ reg [WIDTH - 1 : 0] FIFO_MEM [DEPTH -1 : 0];
 
 integer i ;
 
-
+reg [WIDTH - 1 : 0] out_next ;
+reg [WIDTH - 1 : 0] read_next ;
 
 
 
@@ -37,6 +38,8 @@ end
  else if(wclk_en) 
      FIFO_MEM [waddr] <= wdata ;
 
+ else FIFO_MEM[waddr] <= out_next;
+
 end
 
 
@@ -47,10 +50,24 @@ always @(*) begin
  
  else if (rclk_en) rdata = FIFO_MEM [raddr];
 
+ else rdata = read_next;
+
 end
 
 
 
+// THIS blOCK TO AVOID LATCH OF FIFO_MEM 
+
+always @(posedge WCLK or negedge WRST)
+
+if(!WRST) begin 
+  out_next <= 0;
+end
+
+else begin
+  out_next <= FIFO_MEM [waddr] ;
+  read_next    <= rdata;
+end 
 
 
 endmodule

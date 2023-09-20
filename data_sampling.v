@@ -1,5 +1,6 @@
-module data_sampling  #(parameter PRESCALE = 'd16)(
-
+module data_sampling  #(parameter PRESCALE = 6'd16)(
+input CLK                                       ,
+input RST_n                                     ,
 input RX_IN                                     ,
 input [5:0] Prescale                            ,
 input data_samp_en                              ,
@@ -8,6 +9,10 @@ input [$clog2(PRESCALE) - 1 : 0]  edge_cnt      ,
 output reg    sampled_bit 
 );
 
+
+reg out_next_1 ;
+reg out_next_2 ;
+reg out_next_3 ;
 
 
 wire [$clog2(PRESCALE) - 1 : 0] first_sample_point ; 
@@ -49,19 +54,77 @@ end
 always @(*)
 begin
 
-	if(data_samp_en)
-	begin
-        if(edge_cnt == first_sample_point)         first_value   <= RX_IN;
-        else if (edge_cnt == middle_sample_point)  second_value  <= RX_IN;
-        else if (edge_cnt == third_sample_point)   third_value   <= RX_IN;                     
-    end                                            
-	
+first_value  = out_next_1 ; 
+second_value = out_next_2 ;
+third_value  = out_next_3 ;
+
+    if(data_samp_en) begin
+     
+     case (edge_cnt)
+          
+          first_sample_point: first_value    = RX_IN;
+
+          middle_sample_point: second_value  = RX_IN;
+
+          third_sample_point: third_value   = RX_IN;
+
+     endcase
+       
+    end
+   
+  
+  else begin
+      
+      first_value  = out_next_1 ; 
+      second_value = out_next_2 ;
+      third_value  = out_next_3 ;
+
+
+  end
+
+    // begin
+    //     if(edge_cnt == first_sample_point)         first_value   <= RX_IN;
+    //     else if (edge_cnt == middle_sample_point)  second_value  <= RX_IN;
+    //     else if (edge_cnt == third_sample_point)   third_value   <= RX_IN;                     
+    // end                                            
+    
 end
 
 
 
-endmodule
+always @(posedge CLK or negedge RST_n)
 
+begin
+
+    if(!RST_n) begin
+
+        out_next_1 = 0 ;
+        out_next_2 = 0 ;
+        out_next_3 = 0 ;
+    end
+
+
+
+    else begin
+
+        out_next_1 = first_value  ;
+        out_next_2 = second_value ;
+        out_next_3 = third_value  ; 
+
+    end
+end
+
+
+
+
+
+
+
+
+
+
+
+endmodule
 
 
 

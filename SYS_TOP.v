@@ -14,7 +14,7 @@ module SYS_TOP
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-parameter PRESCALE = 'd32 ;
+parameter PRESCALE = 6'd16 ;
 parameter PAR_TYP  = 1'b0 ;
 parameter PAR_EN   = 1'b1 ;
 
@@ -78,7 +78,7 @@ wire WrEn                    ;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-assign  rx_div_ratio = (REG2[7:2] == 32) ? 1 : (REG2[7:2] == 16) ? 2 : 4  ;
+assign  rx_div_ratio = (PRESCALE == 32) ? 1 : (PRESCALE == 16) ? 2 : 4  ;
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -100,20 +100,39 @@ CLK_GATE  CLK_GATE_dut
 );
 
 
-// ((( IMPORTANT ))) At synthesing replace inst above this line with the full custom ICG from the std library beneath this line to overcome wiring delays
-
-
-// TLATNCAX3M ICG_DUT
-// (
-// .E(Gate_En)     ,
-// .CK(REF_CLK)    , 
-// .ECK(ALU_CLK)   
-// );
 
 
 ///////////////////////////////////////////////////////
 //////////////////// CLOCK DIVIDER ////////////////////
 ///////////////////////////////////////////////////////
+
+
+
+// ClkDiv__ #( 
+// .RATIO_WD(8) 
+// )  CLK_DIV_TX_dut
+// (
+//  .i_ref_clk (UART_CLK) ,             // Reference clock
+//  .i_rst_n   (RST_D2) ,                 // Reset Signal
+//  .i_clk_en   (1'b1),               // clock divider enable
+//  .i_div_ratio (REG3)  ,            // clock division ratio
+//  .o_div_clk (TX_CLK)               // Divided clock
+// );
+
+
+
+// ClkDiv__ #( 
+// .RATIO_WD (8) 
+// ) CLK_DIV_RX_dut
+// (
+//  .i_ref_clk (UART_CLK) ,             // Reference clock
+//  .i_rst_n   (RST_D2) ,                 // Reset Signal
+//  .i_clk_en   (1'b1),               // clock divider enable
+//  .i_div_ratio (rx_div_ratio)  ,            // clock division ratio
+//  .o_div_clk (RX_CLK)               // Divided clock
+// );
+
+
 
 
 ClkDiv__  CLK_DIV_TX_dut
@@ -226,7 +245,7 @@ Register_File  #(.PRESCALE(PRESCALE),.PAR_TYP(PAR_TYP) ,.PAR_EN(PAR_EN)) Reg_fil
 .RST_n(RST_D1)              ,
 .RdEn(RdEn)                 ,
 .WrEn(WrEn)                 ,
-.Address(Addr)              ,
+.Address(Addr[3:0])         ,
 .WrData(Wr_D)               ,
 
 .RdData  (RdData)           ,
