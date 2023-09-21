@@ -1,0 +1,7 @@
+     1  source -echo -verbose syn_fm_script.tcl
+
+Received Signal 1 from: PID=5969 (UID=501)
+
+
+Process terminated by hangup.
+

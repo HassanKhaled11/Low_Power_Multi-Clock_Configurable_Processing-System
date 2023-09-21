@@ -1,0 +1,2850 @@
+                                        
+                           Design Compiler Graphical 
+                                 DC Ultra (TM)
+                                  DFTMAX (TM)
+                              Power Compiler (TM)
+                                 DesignWare (R)
+                                 DC Expert (TM)
+                               Design Vision (TM)
+                               HDL Compiler (TM)
+                               VHDL Compiler (TM)
+                                  DFT Compiler
+                               Design Compiler(R)
+                                        
+                 Version K-2015.06 for linux64 - May 28, 2015 
+                                        
+                    Copyright (c) 1988 - 2015 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+            or distribution of this software is strictly prohibited.
+Initializing...
+Initializing gui preferences from file  /home/IC/.synopsys_dv_prefs.tcl
+########################### Define Top Module ############################
+set top_module SYS_TOP_dft
+SYS_TOP_dft
+##################### Define Working Library Directory ######################
+define_design_lib work -path ./work
+1
+############################# Formality Setup File ##########################
+set_svf $top_module.svf
+1
+################## Design Compiler Library Files #setup ######################
+puts "###########################################"
+###########################################
+puts "#      #setting Design Libraries          #"
+#      #setting Design Libraries          #
+puts "###########################################"
+###########################################
+#Add the path of the libraries and RTL files to the search_path variable
+set PROJECT_PATH /home/IC/final_system
+/home/IC/final_system
+set LIB_PATH     /home/IC/tsmc_fb_cl013g_sc/aci/sc-m
+/home/IC/tsmc_fb_cl013g_sc/aci/sc-m
+lappend search_path $LIB_PATH/synopsys
+. /opt/Synopsys/Synplify2015/libraries/syn /opt/Synopsys/Synplify2015/minpower/syn /opt/Synopsys/Synplify2015/dw/syn_ver /opt/Synopsys/Synplify2015/dw/sim_ver /home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys
+lappend search_path $PROJECT_PATH/RTL/ALU
+. /opt/Synopsys/Synplify2015/libraries/syn /opt/Synopsys/Synplify2015/minpower/syn /opt/Synopsys/Synplify2015/dw/syn_ver /opt/Synopsys/Synplify2015/dw/sim_ver /home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys /home/IC/final_system/RTL/ALU
+lappend search_path $PROJECT_PATH/RTL/ASYNC_FIFO
+. /opt/Synopsys/Synplify2015/libraries/syn /opt/Synopsys/Synplify2015/minpower/syn /opt/Synopsys/Synplify2015/dw/syn_ver /opt/Synopsys/Synplify2015/dw/sim_ver /home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys /home/IC/final_system/RTL/ALU /home/IC/final_system/RTL/ASYNC_FIFO
+lappend search_path $PROJECT_PATH/RTL/Clock_Divider
+. /opt/Synopsys/Synplify2015/libraries/syn /opt/Synopsys/Synplify2015/minpower/syn /opt/Synopsys/Synplify2015/dw/syn_ver /opt/Synopsys/Synplify2015/dw/sim_ver /home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys /home/IC/final_system/RTL/ALU /home/IC/final_system/RTL/ASYNC_FIFO /home/IC/final_system/RTL/Clock_Divider
+lappend search_path $PROJECT_PATH/RTL/Clock_Gating
+. /opt/Synopsys/Synplify2015/libraries/syn /opt/Synopsys/Synplify2015/minpower/syn /opt/Synopsys/Synplify2015/dw/syn_ver /opt/Synopsys/Synplify2015/dw/sim_ver /home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys /home/IC/final_system/RTL/ALU /home/IC/final_system/RTL/ASYNC_FIFO /home/IC/final_system/RTL/Clock_Divider /home/IC/final_system/RTL/Clock_Gating
+lappend search_path $PROJECT_PATH/RTL/DATA_SYNC
+. /opt/Synopsys/Synplify2015/libraries/syn /opt/Synopsys/Synplify2015/minpower/syn /opt/Synopsys/Synplify2015/dw/syn_ver /opt/Synopsys/Synplify2015/dw/sim_ver /home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys /home/IC/final_system/RTL/ALU /home/IC/final_system/RTL/ASYNC_FIFO /home/IC/final_system/RTL/Clock_Divider /home/IC/final_system/RTL/Clock_Gating /home/IC/final_system/RTL/DATA_SYNC
+lappend search_path $PROJECT_PATH/RTL/Reg_File
+. /opt/Synopsys/Synplify2015/libraries/syn /opt/Synopsys/Synplify2015/minpower/syn /opt/Synopsys/Synplify2015/dw/syn_ver /opt/Synopsys/Synplify2015/dw/sim_ver /home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys /home/IC/final_system/RTL/ALU /home/IC/final_system/RTL/ASYNC_FIFO /home/IC/final_system/RTL/Clock_Divider /home/IC/final_system/RTL/Clock_Gating /home/IC/final_system/RTL/DATA_SYNC /home/IC/final_system/RTL/Reg_File
+lappend search_path $PROJECT_PATH/RTL/PULSE_GEN
+. /opt/Synopsys/Synplify2015/libraries/syn /opt/Synopsys/Synplify2015/minpower/syn /opt/Synopsys/Synplify2015/dw/syn_ver /opt/Synopsys/Synplify2015/dw/sim_ver /home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys /home/IC/final_system/RTL/ALU /home/IC/final_system/RTL/ASYNC_FIFO /home/IC/final_system/RTL/Clock_Divider /home/IC/final_system/RTL/Clock_Gating /home/IC/final_system/RTL/DATA_SYNC /home/IC/final_system/RTL/Reg_File /home/IC/final_system/RTL/PULSE_GEN
+lappend search_path $PROJECT_PATH/RTL/RST_SYNC
+. /opt/Synopsys/Synplify2015/libraries/syn /opt/Synopsys/Synplify2015/minpower/syn /opt/Synopsys/Synplify2015/dw/syn_ver /opt/Synopsys/Synplify2015/dw/sim_ver /home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys /home/IC/final_system/RTL/ALU /home/IC/final_system/RTL/ASYNC_FIFO /home/IC/final_system/RTL/Clock_Divider /home/IC/final_system/RTL/Clock_Gating /home/IC/final_system/RTL/DATA_SYNC /home/IC/final_system/RTL/Reg_File /home/IC/final_system/RTL/PULSE_GEN /home/IC/final_system/RTL/RST_SYNC
+lappend search_path $PROJECT_PATH/RTL/SYS_CTRL
+. /opt/Synopsys/Synplify2015/libraries/syn /opt/Synopsys/Synplify2015/minpower/syn /opt/Synopsys/Synplify2015/dw/syn_ver /opt/Synopsys/Synplify2015/dw/sim_ver /home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys /home/IC/final_system/RTL/ALU /home/IC/final_system/RTL/ASYNC_FIFO /home/IC/final_system/RTL/Clock_Divider /home/IC/final_system/RTL/Clock_Gating /home/IC/final_system/RTL/DATA_SYNC /home/IC/final_system/RTL/Reg_File /home/IC/final_system/RTL/PULSE_GEN /home/IC/final_system/RTL/RST_SYNC /home/IC/final_system/RTL/SYS_CTRL
+lappend search_path $PROJECT_PATH/RTL/UART/UART_RX
+. /opt/Synopsys/Synplify2015/libraries/syn /opt/Synopsys/Synplify2015/minpower/syn /opt/Synopsys/Synplify2015/dw/syn_ver /opt/Synopsys/Synplify2015/dw/sim_ver /home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys /home/IC/final_system/RTL/ALU /home/IC/final_system/RTL/ASYNC_FIFO /home/IC/final_system/RTL/Clock_Divider /home/IC/final_system/RTL/Clock_Gating /home/IC/final_system/RTL/DATA_SYNC /home/IC/final_system/RTL/Reg_File /home/IC/final_system/RTL/PULSE_GEN /home/IC/final_system/RTL/RST_SYNC /home/IC/final_system/RTL/SYS_CTRL /home/IC/final_system/RTL/UART/UART_RX
+lappend search_path $PROJECT_PATH/RTL/UART/UART_TX
+. /opt/Synopsys/Synplify2015/libraries/syn /opt/Synopsys/Synplify2015/minpower/syn /opt/Synopsys/Synplify2015/dw/syn_ver /opt/Synopsys/Synplify2015/dw/sim_ver /home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys /home/IC/final_system/RTL/ALU /home/IC/final_system/RTL/ASYNC_FIFO /home/IC/final_system/RTL/Clock_Divider /home/IC/final_system/RTL/Clock_Gating /home/IC/final_system/RTL/DATA_SYNC /home/IC/final_system/RTL/Reg_File /home/IC/final_system/RTL/PULSE_GEN /home/IC/final_system/RTL/RST_SYNC /home/IC/final_system/RTL/SYS_CTRL /home/IC/final_system/RTL/UART/UART_RX /home/IC/final_system/RTL/UART/UART_TX
+lappend search_path $PROJECT_PATH/RTL/MUX_2x1
+. /opt/Synopsys/Synplify2015/libraries/syn /opt/Synopsys/Synplify2015/minpower/syn /opt/Synopsys/Synplify2015/dw/syn_ver /opt/Synopsys/Synplify2015/dw/sim_ver /home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys /home/IC/final_system/RTL/ALU /home/IC/final_system/RTL/ASYNC_FIFO /home/IC/final_system/RTL/Clock_Divider /home/IC/final_system/RTL/Clock_Gating /home/IC/final_system/RTL/DATA_SYNC /home/IC/final_system/RTL/Reg_File /home/IC/final_system/RTL/PULSE_GEN /home/IC/final_system/RTL/RST_SYNC /home/IC/final_system/RTL/SYS_CTRL /home/IC/final_system/RTL/UART/UART_RX /home/IC/final_system/RTL/UART/UART_TX /home/IC/final_system/RTL/MUX_2x1
+lappend search_path $PROJECT_PATH/RTL/Top
+. /opt/Synopsys/Synplify2015/libraries/syn /opt/Synopsys/Synplify2015/minpower/syn /opt/Synopsys/Synplify2015/dw/syn_ver /opt/Synopsys/Synplify2015/dw/sim_ver /home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys /home/IC/final_system/RTL/ALU /home/IC/final_system/RTL/ASYNC_FIFO /home/IC/final_system/RTL/Clock_Divider /home/IC/final_system/RTL/Clock_Gating /home/IC/final_system/RTL/DATA_SYNC /home/IC/final_system/RTL/Reg_File /home/IC/final_system/RTL/PULSE_GEN /home/IC/final_system/RTL/RST_SYNC /home/IC/final_system/RTL/SYS_CTRL /home/IC/final_system/RTL/UART/UART_RX /home/IC/final_system/RTL/UART/UART_TX /home/IC/final_system/RTL/MUX_2x1 /home/IC/final_system/RTL/Top
+set SSLIB "scmetro_tsmc_cl013g_rvt_ss_1p08v_125c.db"
+scmetro_tsmc_cl013g_rvt_ss_1p08v_125c.db
+set TTLIB "scmetro_tsmc_cl013g_rvt_tt_1p2v_25c.db"
+scmetro_tsmc_cl013g_rvt_tt_1p2v_25c.db
+set FFLIB "scmetro_tsmc_cl013g_rvt_ff_1p32v_m40c.db"
+scmetro_tsmc_cl013g_rvt_ff_1p32v_m40c.db
+## Standard Cell libraries 
+set target_library [list $SSLIB $TTLIB $FFLIB]
+scmetro_tsmc_cl013g_rvt_ss_1p08v_125c.db scmetro_tsmc_cl013g_rvt_tt_1p2v_25c.db scmetro_tsmc_cl013g_rvt_ff_1p32v_m40c.db
+## Standard Cell & Hard Macros libraries 
+set link_library [list * $SSLIB $TTLIB $FFLIB]  
+* scmetro_tsmc_cl013g_rvt_ss_1p08v_125c.db scmetro_tsmc_cl013g_rvt_tt_1p2v_25c.db scmetro_tsmc_cl013g_rvt_ff_1p32v_m40c.db
+######################## Reading RTL Files #################################
+puts "###########################################"
+###########################################
+puts "#             Reading RTL Files           #"
+#             Reading RTL Files           #
+puts "###########################################"
+###########################################
+set file_format verilog
+verilog
+#ALU
+analyze -format $file_format ALU.v
+Running PRESTO HDLC
+Compiling source file /home/IC/final_system/RTL/ALU/ALU.v
+Presto compilation completed successfully.
+Loading db file '/home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys/scmetro_tsmc_cl013g_rvt_ss_1p08v_125c.db'
+Loading db file '/home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys/scmetro_tsmc_cl013g_rvt_tt_1p2v_25c.db'
+Loading db file '/home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys/scmetro_tsmc_cl013g_rvt_ff_1p32v_m40c.db'
+1
+#FIFO
+analyze -format $file_format Bit_Sync.v
+Running PRESTO HDLC
+Compiling source file /home/IC/final_system/RTL/ASYNC_FIFO/Bit_Sync.v
+Warning:  /home/IC/final_system/RTL/ASYNC_FIFO/Bit_Sync.v:21: A unnamed generate block with an LRM-defined name 'genblk1' is detected, which is incompatible with Verilog standard 2001 or 1995. (VER-944)
+Presto compilation completed successfully.
+1
+analyze -format $file_format FIFO_MEMORY.v
+Running PRESTO HDLC
+Compiling source file /home/IC/final_system/RTL/ASYNC_FIFO/FIFO_MEMORY.v
+Presto compilation completed successfully.
+1
+analyze -format $file_format fifo_rdptr_empty.v
+Running PRESTO HDLC
+Compiling source file /home/IC/final_system/RTL/ASYNC_FIFO/fifo_rdptr_empty.v
+Presto compilation completed successfully.
+1
+analyze -format $file_format fifo_wrptr_full.v
+Running PRESTO HDLC
+Compiling source file /home/IC/final_system/RTL/ASYNC_FIFO/fifo_wrptr_full.v
+Presto compilation completed successfully.
+1
+analyze -format $file_format ASYNC_FIFO.v
+Running PRESTO HDLC
+Compiling source file /home/IC/final_system/RTL/ASYNC_FIFO/ASYNC_FIFO.v
+Warning:  /home/IC/final_system/RTL/ASYNC_FIFO/ASYNC_FIFO.v:33: the undeclared symbol 'wclk_en' assumed to have the default net type, which is 'wire'. (VER-936)
+Warning:  /home/IC/final_system/RTL/ASYNC_FIFO/ASYNC_FIFO.v:34: the undeclared symbol 'rclk_en' assumed to have the default net type, which is 'wire'. (VER-936)
+Presto compilation completed successfully.
+1
+#CLK_DIVIDER
+analyze -format $file_format ClkDiv__.v
+Running PRESTO HDLC
+Compiling source file /home/IC/final_system/RTL/Clock_Divider/ClkDiv__.v
+Warning:  /home/IC/final_system/RTL/Clock_Divider/ClkDiv__.v:28: Parameter keyword used in local parameter declaration. (VER-329)
+Warning:  /home/IC/final_system/RTL/Clock_Divider/ClkDiv__.v:39: the undeclared symbol 'zero_or_one' assumed to have the default net type, which is 'wire'. (VER-936)
+Presto compilation completed successfully.
+1
+#CLK_GATING
+analyze -format $file_format CLK_GATE.v
+Running PRESTO HDLC
+Compiling source file /home/IC/final_system/RTL/Clock_Gating/CLK_GATE.v
+Presto compilation completed successfully.
+1
+#DATA_SYNC
+analyze -format $file_format Data_Sync.v
+Running PRESTO HDLC
+Compiling source file /home/IC/final_system/RTL/DATA_SYNC/Data_Sync.v
+Warning:  /home/IC/final_system/RTL/DATA_SYNC/Data_Sync.v:23: A unnamed generate block with an LRM-defined name 'genblk1' is detected, which is incompatible with Verilog standard 2001 or 1995. (VER-944)
+Presto compilation completed successfully.
+1
+#REGISTER_FILE
+analyze -format $file_format Register_File.v
+Running PRESTO HDLC
+Compiling source file /home/IC/final_system/RTL/Reg_File/Register_File.v
+Presto compilation completed successfully.
+1
+#PULSE_GENERATOR
+analyze -format $file_format PULSE_GENERATOR.v
+Running PRESTO HDLC
+Compiling source file /home/IC/final_system/RTL/PULSE_GEN/PULSE_GENERATOR.v
+Presto compilation completed successfully.
+1
+#RST_SYNC
+analyze -format $file_format Rst_Sync.v
+Running PRESTO HDLC
+Compiling source file /home/IC/final_system/RTL/RST_SYNC/Rst_Sync.v
+Warning:  /home/IC/final_system/RTL/RST_SYNC/Rst_Sync.v:59: A unnamed generate block with an LRM-defined name 'genblk1' is detected, which is incompatible with Verilog standard 2001 or 1995. (VER-944)
+Presto compilation completed successfully.
+1
+#SYS_CONTROLLER
+analyze -format $file_format SYS_CTRL.v
+Running PRESTO HDLC
+Compiling source file /home/IC/final_system/RTL/SYS_CTRL/SYS_CTRL.v
+Presto compilation completed successfully.
+1
+#UART_RX
+analyze -format $file_format data_sampling.v
+Running PRESTO HDLC
+Compiling source file /home/IC/final_system/RTL/UART/UART_RX/data_sampling.v
+Presto compilation completed successfully.
+1
+analyze -format $file_format deserializer.v
+Running PRESTO HDLC
+Compiling source file /home/IC/final_system/RTL/UART/UART_RX/deserializer.v
+Presto compilation completed successfully.
+1
+analyze -format $file_format edge_bit_counter.v
+Running PRESTO HDLC
+Compiling source file /home/IC/final_system/RTL/UART/UART_RX/edge_bit_counter.v
+Presto compilation completed successfully.
+1
+analyze -format $file_format Parity_Check.v
+Running PRESTO HDLC
+Compiling source file /home/IC/final_system/RTL/UART/UART_RX/Parity_Check.v
+Presto compilation completed successfully.
+1
+analyze -format $file_format Stop_Check.v
+Running PRESTO HDLC
+Compiling source file /home/IC/final_system/RTL/UART/UART_RX/Stop_Check.v
+Presto compilation completed successfully.
+1
+analyze -format $file_format Start_Check.v
+Running PRESTO HDLC
+Compiling source file /home/IC/final_system/RTL/UART/UART_RX/Start_Check.v
+Presto compilation completed successfully.
+1
+analyze -format $file_format UART_RX.v
+Running PRESTO HDLC
+Compiling source file /home/IC/final_system/RTL/UART/UART_RX/UART_RX.v
+Presto compilation completed successfully.
+1
+#UART_TX
+analyze -format $file_format UART_TX.v
+Running PRESTO HDLC
+Compiling source file /home/IC/final_system/RTL/UART/UART_TX/UART_TX.v
+Warning:  /home/IC/final_system/RTL/UART/UART_TX/UART_TX.v:53: the undeclared symbol 'serial_data' assumed to have the default net type, which is 'wire'. (VER-936)
+Presto compilation completed successfully.
+1
+#Mux_2x1
+analyze -format $file_format mux2X1.v
+Running PRESTO HDLC
+Compiling source file /home/IC/final_system/RTL/MUX_2x1/mux2X1.v
+Presto compilation completed successfully.
+1
+#SYS_TOP
+analyze -format $file_format SYS_TOP_dft.v
+Running PRESTO HDLC
+Compiling source file /home/IC/final_system/RTL/Top/SYS_TOP_dft.v
+Presto compilation completed successfully.
+1
+elaborate -lib WORK SYS_TOP
+Loading db file '/opt/Synopsys/Synplify2015/libraries/syn/gtech.db'
+Loading db file '/opt/Synopsys/Synplify2015/libraries/syn/standard.sldb'
+  Loading link library 'scmetro_tsmc_cl013g_rvt_ss_1p08v_125c'
+  Loading link library 'scmetro_tsmc_cl013g_rvt_tt_1p2v_25c'
+  Loading link library 'scmetro_tsmc_cl013g_rvt_ff_1p32v_m40c'
+  Loading link library 'gtech'
+Running PRESTO HDLC
+Warning:  /home/IC/final_system/RTL/Top/SYS_TOP_dft.v:172: signed to unsigned assignment occurs. (VER-318)
+Presto compilation completed successfully.
+Elaborated 1 design.
+Current design is now 'SYS_TOP'.
+Information: Building the design 'mux2X1'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'CLK_GATE'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'ClkDiv__'. (HDL-193)
+
+Statistics for case statements in always block at line 100 in file
+	'/home/IC/final_system/RTL/Clock_Divider/ClkDiv__.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           102            |    auto/auto     |
+===============================================
+
+Statistics for case statements in always block at line 148 in file
+	'/home/IC/final_system/RTL/Clock_Divider/ClkDiv__.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           156            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine ClkDiv__ line 47 in file
+		'/home/IC/final_system/RTL/Clock_Divider/ClkDiv__.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    Counter_3_reg    | Flip-flop |  10   |  Y  | N  | Y  | N  | N  | N  | N  |
+|    Counter_4_reg    | Flip-flop |  10   |  Y  | N  | Y  | N  | N  | N  | N  |
+|    Counter_1_reg    | Flip-flop |  10   |  Y  | N  | Y  | N  | N  | N  | N  |
+|    Counter_2_reg    | Flip-flop |  10   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine ClkDiv__ line 89 in file
+		'/home/IC/final_system/RTL/Clock_Divider/ClkDiv__.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  current_state_reg  | Flip-flop |   3   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'Rst_Sync' instantiated from design 'SYS_TOP' with
+	the parameters "NUM_STAGES=2,ACTIVE_TYP="LOW"". (HDL-193)
+
+Inferred memory devices in process
+	in routine Rst_Sync_NUM_STAGES2_ACTIVE_TYPLOW line 63 in file
+		'/home/IC/final_system/RTL/RST_SYNC/Rst_Sync.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    FF_Stage_reg     | Flip-flop |   2   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'Data_Sync' instantiated from design 'SYS_TOP' with
+	the parameters "NUM_STAGES=2,BUS_WIDTH=8". (HDL-193)
+
+Inferred memory devices in process
+	in routine Data_Sync_NUM_STAGES2_BUS_WIDTH8 line 26 in file
+		'/home/IC/final_system/RTL/DATA_SYNC/Data_Sync.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    FF_Stage_reg     | Flip-flop |   2   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine Data_Sync_NUM_STAGES2_BUS_WIDTH8 line 67 in file
+		'/home/IC/final_system/RTL/DATA_SYNC/Data_Sync.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      Q_in_reg       | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|    pulse_gen_reg    | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine Data_Sync_NUM_STAGES2_BUS_WIDTH8 line 86 in file
+		'/home/IC/final_system/RTL/DATA_SYNC/Data_Sync.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    SYNC_bus_reg     | Flip-flop |   8   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine Data_Sync_NUM_STAGES2_BUS_WIDTH8 line 102 in file
+		'/home/IC/final_system/RTL/DATA_SYNC/Data_Sync.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  enable_pulse_reg   | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'SYS_CTRL'. (HDL-193)
+
+Statistics for case statements in always block at line 68 in file
+	'/home/IC/final_system/RTL/SYS_CTRL/SYS_CTRL.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            71            |    auto/auto     |
+|            77            |    auto/auto     |
+===============================================
+
+Statistics for case statements in always block at line 227 in file
+	'/home/IC/final_system/RTL/SYS_CTRL/SYS_CTRL.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           230            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine SYS_CTRL line 55 in file
+		'/home/IC/final_system/RTL/SYS_CTRL/SYS_CTRL.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  current_state_reg  | Flip-flop |   4   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine SYS_CTRL line 534 in file
+		'/home/IC/final_system/RTL/SYS_CTRL/SYS_CTRL.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     Counter_reg     | Flip-flop |   2   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine SYS_CTRL line 552 in file
+		'/home/IC/final_system/RTL/SYS_CTRL/SYS_CTRL.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    Addr_next_reg    | Flip-flop |   8   |  Y  | N  | Y  | N  | N  | N  | N  |
+|     flag_1_reg      | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'Register_File' instantiated from design 'SYS_TOP' with
+	the parameters "PRESCALE=6'h10,PAR_TYP=1'h0,PAR_EN=1'h1". (HDL-193)
+Warning:  /home/IC/final_system/RTL/Reg_File/Register_File.v:44: signed to unsigned conversion occurs. (VER-318)
+
+Inferred memory devices in process
+	in routine Register_File_10_0_1 line 31 in file
+		'/home/IC/final_system/RTL/Reg_File/Register_File.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  RdData_Valid_reg   | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|     RdData_reg      | Flip-flop |   8   |  Y  | N  | Y  | N  | N  | N  | N  |
+|    reg_file_reg     | Flip-flop |  125  |  Y  | N  | Y  | N  | N  | N  | N  |
+|    reg_file_reg     | Flip-flop |   3   |  Y  | N  | N  | Y  | N  | N  | N  |
+===============================================================================
+Statistics for MUX_OPs
+==================================================================
+|    block name/line      | Inputs | Outputs | # sel inputs | MB |
+==================================================================
+| Register_File_10_0_1/55 |   16   |    8    |      4       | N  |
+==================================================================
+Presto compilation completed successfully.
+Information: Building the design 'ALU' instantiated from design 'SYS_TOP' with
+	the parameters "OPERAND_WIDTH=32'h00000008,FUN_WIDTH=32'h00000004". (HDL-193)
+
+Statistics for case statements in always block at line 16 in file
+	'/home/IC/final_system/RTL/ALU/ALU.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            26            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine ALU_00000008_00000004 line 16 in file
+		'/home/IC/final_system/RTL/ALU/ALU.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     ALU_OUT_reg     | Flip-flop |  16   |  Y  | N  | Y  | N  | N  | N  | N  |
+|    OUT_VALID_reg    | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'UART_TX'. (HDL-193)
+
+Statistics for case statements in always block at line 34 in file
+	'/home/IC/final_system/RTL/UART/UART_TX/UART_TX.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            36            |    auto/auto     |
+===============================================
+
+Statistics for case statements in always block at line 69 in file
+	'/home/IC/final_system/RTL/UART/UART_TX/UART_TX.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            72            |    auto/auto     |
+===============================================
+
+Statistics for case statements in always block at line 127 in file
+	'/home/IC/final_system/RTL/UART/UART_TX/UART_TX.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           134            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine UART_TX line 57 in file
+		'/home/IC/final_system/RTL/UART/UART_TX/UART_TX.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  current_state_reg  | Flip-flop |   3   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine UART_TX line 215 in file
+		'/home/IC/final_system/RTL/UART/UART_TX/UART_TX.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     Counter_reg     | Flip-flop |   3   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Statistics for MUX_OPs
+===========================================================
+| block name/line  | Inputs | Outputs | # sel inputs | MB |
+===========================================================
+|    UART_TX/41    |   8    |    1    |      3       | N  |
+===========================================================
+Presto compilation completed successfully.
+Information: Building the design 'UART_RX' instantiated from design 'SYS_TOP' with
+	the parameters "PRESCALE=6'h10". (HDL-193)
+
+Statistics for case statements in always block at line 159 in file
+	'/home/IC/final_system/RTL/UART/UART_RX/UART_RX.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           161            |    auto/auto     |
+===============================================
+
+Statistics for case statements in always block at line 223 in file
+	'/home/IC/final_system/RTL/UART/UART_RX/UART_RX.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           225            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine UART_RX_10 line 141 in file
+		'/home/IC/final_system/RTL/UART/UART_RX/UART_RX.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  current_state_reg  | Flip-flop |   3   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine UART_RX_10 line 406 in file
+		'/home/IC/final_system/RTL/UART/UART_RX/UART_RX.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    out_next_reg     | Flip-flop |   8   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'ASYNC_FIFO'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'PULSE_GENERATOR'. (HDL-193)
+
+Inferred memory devices in process
+	in routine PULSE_GENERATOR line 13 in file
+		'/home/IC/final_system/RTL/PULSE_GEN/PULSE_GENERATOR.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      Q_in_reg       | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|       out_reg       | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'data_sampling' instantiated from design 'UART_RX_10' with
+	the parameters "PRESCALE=6'h10". (HDL-193)
+Warning:  /home/IC/final_system/RTL/UART/UART_RX/data_sampling.v:35: DEFAULT branch of CASE statement cannot be reached. (ELAB-311)
+
+Statistics for case statements in always block at line 33 in file
+	'/home/IC/final_system/RTL/UART/UART_RX/data_sampling.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            35            |    auto/auto     |
+===============================================
+
+Statistics for case statements in always block at line 54 in file
+	'/home/IC/final_system/RTL/UART/UART_RX/data_sampling.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            63            |      no/no       |
+===============================================
+
+Inferred memory devices in process
+	in routine data_sampling_10 line 95 in file
+		'/home/IC/final_system/RTL/UART/UART_RX/data_sampling.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|   out_next_2_reg    | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|   out_next_3_reg    | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|   out_next_1_reg    | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'edge_bit_counter' instantiated from design 'UART_RX_10' with
+	the parameters "PRESCALE=6'h10". (HDL-193)
+
+Inferred memory devices in process
+	in routine edge_bit_counter_10 line 21 in file
+		'/home/IC/final_system/RTL/UART/UART_RX/edge_bit_counter.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  Edge_Counter_reg   | Flip-flop |   5   |  Y  | N  | Y  | N  | N  | N  | N  |
+|   Bit_Counter_reg   | Flip-flop |   4   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'Parity_Check'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'Start_Check'. (HDL-193)
+
+Inferred memory devices in process
+	in routine Start_Check line 17 in file
+		'/home/IC/final_system/RTL/UART/UART_RX/Start_Check.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|   strt_glitch_reg   | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'Stop_Check'. (HDL-193)
+
+Inferred memory devices in process
+	in routine Stop_Check line 16 in file
+		'/home/IC/final_system/RTL/UART/UART_RX/Stop_Check.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     stp_err_reg     | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'deserializer'. (HDL-193)
+
+Inferred memory devices in process
+	in routine deserializer line 19 in file
+		'/home/IC/final_system/RTL/UART/UART_RX/deserializer.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     P_DATA_reg      | Flip-flop |   8   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'Bit_Sync' instantiated from design 'ASYNC_FIFO' with
+	the parameters "NUM_STAGES=32'h00000002,BUS_WIDTH=32'h00000005". (HDL-193)
+Warning:  /home/IC/final_system/RTL/ASYNC_FIFO/Bit_Sync.v:45: signed to unsigned conversion occurs. (VER-318)
+
+Inferred memory devices in process
+	in routine Bit_Sync_00000002_00000005 line 24 in file
+		'/home/IC/final_system/RTL/ASYNC_FIFO/Bit_Sync.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    FF_Stage_reg     | Flip-flop |  10   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'fifo_wrptr_full' instantiated from design 'ASYNC_FIFO' with
+	the parameters "WIDTH=32'h00000008,DEPTH=32'h00000010". (HDL-193)
+
+Statistics for case statements in always block at line 81 in file
+	'/home/IC/final_system/RTL/ASYNC_FIFO/fifo_wrptr_full.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            95            |    auto/auto     |
+===============================================
+
+Statistics for case statements in always block at line 149 in file
+	'/home/IC/final_system/RTL/ASYNC_FIFO/fifo_wrptr_full.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           153            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine fifo_wrptr_full_00000008_00000010 line 43 in file
+		'/home/IC/final_system/RTL/ASYNC_FIFO/fifo_wrptr_full.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      Wptr_reg       | Flip-flop |   5   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine fifo_wrptr_full_00000008_00000010 line 81 in file
+		'/home/IC/final_system/RTL/ASYNC_FIFO/fifo_wrptr_full.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    gray_Wptr_reg    | Flip-flop |   5   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'fifo_rdptr_empty' instantiated from design 'ASYNC_FIFO' with
+	the parameters "WIDTH=32'h00000008,DEPTH=32'h00000010". (HDL-193)
+
+Statistics for case statements in always block at line 83 in file
+	'/home/IC/final_system/RTL/ASYNC_FIFO/fifo_rdptr_empty.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            97            |    auto/auto     |
+===============================================
+
+Statistics for case statements in always block at line 151 in file
+	'/home/IC/final_system/RTL/ASYNC_FIFO/fifo_rdptr_empty.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           155            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine fifo_rdptr_empty_00000008_00000010 line 47 in file
+		'/home/IC/final_system/RTL/ASYNC_FIFO/fifo_rdptr_empty.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      Rptr_reg       | Flip-flop |   5   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine fifo_rdptr_empty_00000008_00000010 line 83 in file
+		'/home/IC/final_system/RTL/ASYNC_FIFO/fifo_rdptr_empty.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    gray_Rptr_reg    | Flip-flop |   5   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'FIFO_MEMORY' instantiated from design 'ASYNC_FIFO' with
+	the parameters "WIDTH=32'h00000008,DEPTH=32'h00000010". (HDL-193)
+Warning:  /home/IC/final_system/RTL/ASYNC_FIFO/FIFO_MEMORY.v:35: signed to unsigned conversion occurs. (VER-318)
+
+Inferred memory devices in process
+	in routine FIFO_MEMORY_00000008_00000010 line 27 in file
+		'/home/IC/final_system/RTL/ASYNC_FIFO/FIFO_MEMORY.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    FIFO_MEM_reg     | Flip-flop |  128  |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine FIFO_MEMORY_00000008_00000010 line 61 in file
+		'/home/IC/final_system/RTL/ASYNC_FIFO/FIFO_MEMORY.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    read_next_reg    | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|    out_next_reg     | Flip-flop |   8   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Statistics for MUX_OPs
+===========================================================================
+|         block name/line          | Inputs | Outputs | # sel inputs | MB |
+===========================================================================
+| FIFO_MEMORY_00000008_00000010/51 |   16   |    8    |      4       | N  |
+| FIFO_MEMORY_00000008_00000010/68 |   16   |    8    |      4       | N  |
+===========================================================================
+Presto compilation completed successfully.
+1
+###################### Defining toplevel ###################################
+current_design $top_module
+Error: Can't find design 'SYS_TOP_dft'. (UID-109)
+Current design is 'SYS_TOP'.
+{SYS_TOP}
+#################### Liniking All The Design Parts #########################
+puts "###############################################"
+###############################################
+puts "######## Liniking All The Design Parts ########"
+######## Liniking All The Design Parts ########
+puts "###############################################"
+###############################################
+link 
+
+  Linking design 'SYS_TOP'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  * (23 designs)              /home/IC/final_system/DFT/SYS_TOP.db, etc
+  scmetro_tsmc_cl013g_rvt_ss_1p08v_125c (library) /home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys/scmetro_tsmc_cl013g_rvt_ss_1p08v_125c.db
+  scmetro_tsmc_cl013g_rvt_tt_1p2v_25c (library) /home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys/scmetro_tsmc_cl013g_rvt_tt_1p2v_25c.db
+  scmetro_tsmc_cl013g_rvt_ff_1p32v_m40c (library) /home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys/scmetro_tsmc_cl013g_rvt_ff_1p32v_m40c.db
+
+1
+#################### Liniking All The Design Parts #########################
+puts "###############################################"
+###############################################
+puts "######## checking design consistency ##########"
+######## checking design consistency ##########
+puts "###############################################"
+###############################################
+check_design >> reports/check_design.rpt
+#################### Define Design Constraints #########################
+puts "###############################################"
+###############################################
+puts "############ Design Constraints #### ##########"
+############ Design Constraints #### ##########
+puts "###############################################"
+###############################################
+source -echo ./cons.tcl
+####################################################################################
+# Constraints
+# ----------------------------------------------------------------------------
+#
+# 0. Design Compiler variables
+#
+# 1. Master Clock Definitions
+#
+# 2. Generated Clock Definitions
+#
+# 3. Clock Uncertainties
+#
+# 4. Clock Latencies 
+#
+# 5. Clock Relationships
+#
+# 6. #set input/output delay on ports
+#
+# 7. Driving cells
+#
+# 8. Output load
+####################################################################################
+#########################################################
+#### Section 0 : DC Variables ####
+#########################################################
+#################################################################################### 
+# Prevent assign statements in the generated netlist (must be applied before compile command)
+set_fix_multiple_port_nets -all -buffer_constants -feedthroughs
+####################################################################################
+#########################################################
+#### Section 1 : Clock Definition ####
+#########################################################
+#################################################################################### 
+# 1. Master Clock Definitions 
+# 2. Generated Clock Definitions
+# 3. Clock Latencies
+# 4. Clock Uncertainties
+# 4. Clock Transitions
+####################################################################################
+# REF CLOCK (100 MHz)
+set CLK1_NAME REF_CLK
+set CLK1_PER 10
+#2. UART_RX CLOCK (115.2 KHz * 32)
+set CLK2_NAME UART_CLK
+set CLK2_PER 271.267
+#3. SCAN_CLK (10 MHZ)
+set CLK3_NAME SCAN_CLK
+set CLK3_PER 100
+# Skew
+set CLK_SETUP_SKEW 0.2
+set CLK_HOLD_SKEW 0.1
+#1. Master Clocks
+create_clock -name $CLK1_NAME -period $CLK1_PER -waveform "0 [expr $CLK1_PER/2]" [get_ports REF_CLK]
+set_clock_uncertainty -setup $CLK_SETUP_SKEW [get_clocks $CLK1_NAME]
+set_clock_uncertainty -hold $CLK_HOLD_SKEW  [get_clocks $CLK1_NAME]
+create_clock -name $CLK2_NAME -period $CLK2_PER -waveform "0 [expr $CLK2_PER/2]" [get_ports UART_CLK]
+set_clock_uncertainty -setup $CLK_SETUP_SKEW [get_clocks $CLK2_NAME]
+set_clock_uncertainty -hold $CLK_HOLD_SKEW  [get_clocks $CLK2_NAME]
+#2. Generated clocks
+create_generated_clock -master_clock $CLK2_NAME -source [get_ports UART_CLK]                        -name "UART_RX_CLK" [get_port U1_ClkDiv/o_div_clk]                        -divide_by 1
+Warning: Can't find port 'U1_ClkDiv/o_div_clk' in design 'SYS_TOP'. (UID-95)
+Error: Value for list 'source_objects' must have 1 elements. (CMD-036)
+set_clock_uncertainty -setup $CLK_SETUP_SKEW [get_clocks "UART_RX_CLK"]
+Warning: Can't find clock 'UART_RX_CLK' in design 'SYS_TOP'. (UID-95)
+Error: Value for list 'object_list' must have 1 elements. (CMD-036)
+set_clock_uncertainty -hold $CLK_HOLD_SKEW   [get_clocks "UART_RX_CLK"]
+Warning: Can't find clock 'UART_RX_CLK' in design 'SYS_TOP'. (UID-95)
+Error: Value for list 'object_list' must have 1 elements. (CMD-036)
+create_generated_clock -master_clock $CLK2_NAME -source [get_ports UART_CLK]                        -name "UART_TX_CLK" [get_port U0_ClkDiv/o_div_clk]                        -divide_by 32
+Warning: Can't find port 'U0_ClkDiv/o_div_clk' in design 'SYS_TOP'. (UID-95)
+Error: Value for list 'source_objects' must have 1 elements. (CMD-036)
+set_clock_uncertainty -setup $CLK_SETUP_SKEW [get_clocks "UART_TX_CLK"]
+Warning: Can't find clock 'UART_TX_CLK' in design 'SYS_TOP'. (UID-95)
+Error: Value for list 'object_list' must have 1 elements. (CMD-036)
+set_clock_uncertainty -hold $CLK_HOLD_SKEW   [get_clocks "UART_TX_CLK"]
+Warning: Can't find clock 'UART_TX_CLK' in design 'SYS_TOP'. (UID-95)
+Error: Value for list 'object_list' must have 1 elements. (CMD-036)
+create_generated_clock -master_clock $CLK1_NAME -source [get_ports REF_CLK]                        -name "ALU_CLK" [get_port U0_CLK_GATE/GATED_CLK]                        -divide_by 1
+Warning: Can't find port 'U0_CLK_GATE/GATED_CLK' in design 'SYS_TOP'. (UID-95)
+Error: Value for list 'source_objects' must have 1 elements. (CMD-036)
+set_clock_uncertainty -setup $CLK_SETUP_SKEW [get_clocks "ALU_CLK"]
+Warning: Can't find clock 'ALU_CLK' in design 'SYS_TOP'. (UID-95)
+Error: Value for list 'object_list' must have 1 elements. (CMD-036)
+set_clock_uncertainty -hold $CLK_HOLD_SKEW   [get_clocks "ALU_CLK"]
+Warning: Can't find clock 'ALU_CLK' in design 'SYS_TOP'. (UID-95)
+Error: Value for list 'object_list' must have 1 elements. (CMD-036)
+#3. Scan clocks
+####################################################################################
+#########################################################
+#### Section 2 : Clocks Relationship ####
+#########################################################
+####################################################################################
+set_clock_groups -asynchronous -group [get_clocks "$CLK1_NAME ALU_CLK"]                                 -group [get_clocks "$CLK2_NAME UART_TX_CLK UART_RX_CLK"] 
+Warning: Can't find clock 'ALU_CLK' in design 'SYS_TOP'. (UID-95)
+Warning: Can't find clock 'UART_TX_CLK' in design 'SYS_TOP'. (UID-95)
+Warning: Can't find clock 'UART_RX_CLK' in design 'SYS_TOP'. (UID-95)
+####################################################################################
+#########################################################
+#### Section 3 : #set input/output delay on ports ####
+#########################################################
+####################################################################################
+set in_delay  [expr 0.2*$CLK2_PER]
+set out_delay [expr 0.2*$CLK2_PER]
+#Constrain Input Paths
+set_input_delay $in_delay -clock $CLK2_NAME [get_port UART_RX_IN]
+Warning: Can't find port 'UART_RX_IN' in design 'SYS_TOP'. (UID-95)
+Error: Value for list 'port_pin_list' must have 1 elements. (CMD-036)
+#Constrain Output Paths
+set_output_delay $out_delay -clock UART_TX_CLK [get_port UART_TX_O]
+Warning: Can't find port 'UART_TX_O' in design 'SYS_TOP'. (UID-95)
+Warning: Can't find clock 'UART_TX_CLK' in design 'SYS_TOP'. (UID-95)
+Error: Value for list '-clock' must have 1 elements. (CMD-036)
+Error: Value for list 'port_pin_list' must have 1 elements. (CMD-036)
+set_output_delay $out_delay -clock $CLK2_NAME [get_port parity_error]
+Warning: Can't find port 'parity_error' in design 'SYS_TOP'. (UID-95)
+Error: Value for list 'port_pin_list' must have 1 elements. (CMD-036)
+set_output_delay $out_delay -clock $CLK2_NAME [get_port framing_error]
+Warning: Can't find port 'framing_error' in design 'SYS_TOP'. (UID-95)
+Error: Value for list 'port_pin_list' must have 1 elements. (CMD-036)
+####################################################################################
+#########################################################
+#### Section 4 : Driving cells ####
+#########################################################
+####################################################################################
+set_driving_cell -library scmetro_tsmc_cl013g_rvt_ss_1p08v_125c -lib_cell BUFX2M -pin Y [get_port UART_RX_IN]
+Warning: Can't find port 'UART_RX_IN' in design 'SYS_TOP'. (UID-95)
+Error: Value for list 'port_list' must have 1 elements. (CMD-036)
+####################################################################################
+#########################################################
+#### Section 5 : Output load ####
+#########################################################
+####################################################################################
+set_load 0.5 [get_port UART_TX_O]
+Warning: Can't find port 'UART_TX_O' in design 'SYS_TOP'. (UID-95)
+Error: Value for list 'objects' must have 1 elements. (CMD-036)
+####################################################################################
+#########################################################
+#### Section 6 : Operating Condition ####
+#########################################################
+####################################################################################
+# Define the Worst Library for Max(#setup) analysis
+# Define the Best Library for Min(hold) analysis
+set_operating_conditions -min_library "scmetro_tsmc_cl013g_rvt_ff_1p32v_m40c" -min "scmetro_tsmc_cl013g_rvt_ff_1p32v_m40c" -max_library "scmetro_tsmc_cl013g_rvt_ss_1p08v_125c" -max "scmetro_tsmc_cl013g_rvt_ss_1p08v_125c"
+Using operating conditions 'scmetro_tsmc_cl013g_rvt_ss_1p08v_125c' found in library 'scmetro_tsmc_cl013g_rvt_ss_1p08v_125c'.
+Using operating conditions 'scmetro_tsmc_cl013g_rvt_ff_1p32v_m40c' found in library 'scmetro_tsmc_cl013g_rvt_ff_1p32v_m40c'.
+####################################################################################
+#########################################################
+#### Section 7 : wireload Model ####
+#########################################################
+####################################################################################
+#set_wire_load_model -name tsmc13_wl30 -library scmetro_tsmc_cl013g_rvt_ss_1p08v_125c
+####################################################################################
+#########################################################
+#### Section 8 : set_case_analysis ####
+#########################################################
+####################################################################################
+####################################################################################
+#################### Archirecture Scan Chains #########################
+puts "###############################################"
+###############################################
+puts "############ Configure scan chains ############"
+############ Configure scan chains ############
+puts "###############################################"
+###############################################
+set_scan_configuration -clock_mixing no_mix  -style multiplexed_flip_flop -replace true -max_length 100  
+Accepted scan configuration for modes: all_dft
+1
+###################### Mapping and optimization ########################
+puts "###############################################"
+###############################################
+puts "########## Mapping & Optimization #############"
+########## Mapping & Optimization #############
+puts "###############################################"
+###############################################
+compile -scan
+Information: Choosing a test methodology will restrict the optimization of sequential cells. (UIO-12)
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | K-2015.06-DWBB_201506.0 |     *     |
+| Licensed DW Building Blocks        |                         |           |
+============================================================================
+
+
+Information: There are 81 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+
+Warning: Operating condition scmetro_tsmc_cl013g_rvt_ss_1p08v_125c set on design SYS_TOP has different process,
+voltage and temperatures parameters than the parameters at which target library 
+scmetro_tsmc_cl013g_rvt_tt_1p2v_25c is characterized. Delays may be inaccurate as a result. (OPT-998)
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'PULSE_GENERATOR'
+  Processing 'FIFO_MEMORY_00000008_00000010'
+  Processing 'fifo_rdptr_empty_00000008_00000010'
+Information: The register 'gray_Rptr_reg[4]' is a constant and will be removed. (OPT-1206)
+  Processing 'fifo_wrptr_full_00000008_00000010'
+Information: The register 'gray_Wptr_reg[4]' is a constant and will be removed. (OPT-1206)
+  Processing 'Bit_Sync_00000002_00000005_0'
+  Processing 'ASYNC_FIFO'
+  Processing 'deserializer'
+  Processing 'Stop_Check'
+  Processing 'Start_Check'
+  Processing 'Parity_Check'
+  Processing 'edge_bit_counter_10'
+  Processing 'data_sampling_10'
+  Processing 'UART_RX_10'
+  Processing 'UART_TX'
+  Processing 'ALU_00000008_00000004'
+  Processing 'Register_File_10_0_1'
+Information: The register 'reg_file_reg[2][7]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_file_reg[2][6]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_file_reg[2][5]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_file_reg[2][4]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_file_reg[2][3]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_file_reg[2][2]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_file_reg[2][1]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_file_reg[2][0]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_file_reg[3][7]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_file_reg[3][6]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_file_reg[3][5]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_file_reg[3][4]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_file_reg[3][3]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_file_reg[3][2]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_file_reg[3][1]' is a constant and will be removed. (OPT-1206)
+Information: The register 'reg_file_reg[3][0]' is a constant and will be removed. (OPT-1206)
+  Processing 'SYS_CTRL'
+  Processing 'Data_Sync_NUM_STAGES2_BUS_WIDTH8'
+  Processing 'Rst_Sync_NUM_STAGES2_ACTIVE_TYPLOW_0'
+  Processing 'ClkDiv___0'
+  Processing 'CLK_GATE'
+  Processing 'mux2X1_0'
+  Processing 'SYS_TOP'
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+
+  Beginning Implementation Selection
+  ----------------------------------
+  Processing 'fifo_rdptr_empty_00000008_00000010_DW01_inc_0'
+  Processing 'fifo_rdptr_empty_00000008_00000010_DW01_cmp6_0'
+  Processing 'fifo_wrptr_full_00000008_00000010_DW01_inc_0'
+  Processing 'UART_RX_10_DW01_cmp6_0'
+  Processing 'UART_RX_10_DW01_add_0'
+  Processing 'UART_RX_10_DW01_cmp6_1'
+  Processing 'UART_RX_10_DW01_dec_0'
+  Processing 'UART_RX_10_DW01_cmp6_2'
+  Processing 'UART_RX_10_DW01_add_1'
+  Processing 'edge_bit_counter_10_DW01_inc_0'
+  Processing 'ALU_00000008_00000004_DW_div_uns_0'
+  Processing 'ALU_00000008_00000004_DW01_sub_0'
+  Processing 'ALU_00000008_00000004_DW01_add_0'
+  Processing 'ALU_00000008_00000004_DW01_cmp6_0'
+  Processing 'ClkDiv___1_DW01_inc_0'
+  Processing 'ClkDiv___1_DW01_inc_1'
+  Processing 'ClkDiv___1_DW01_inc_2'
+  Processing 'ClkDiv___1_DW01_inc_3'
+  Processing 'ClkDiv___1_DW01_cmp6_0'
+  Processing 'ClkDiv___1_DW01_inc_4'
+  Processing 'ClkDiv___1_DW01_cmp6_1'
+  Processing 'ClkDiv___1_DW01_cmp6_2'
+  Processing 'ClkDiv___1_DW01_cmp6_3'
+  Processing 'ClkDiv___1_DW01_dec_0'
+  Processing 'ClkDiv___0_DW01_inc_0'
+  Processing 'ClkDiv___0_DW01_inc_1'
+  Processing 'ClkDiv___0_DW01_inc_2'
+  Processing 'ClkDiv___0_DW01_inc_3'
+  Processing 'ClkDiv___0_DW01_cmp6_0'
+  Processing 'ClkDiv___0_DW01_inc_4'
+  Processing 'ClkDiv___0_DW01_cmp6_1'
+  Processing 'ClkDiv___0_DW01_cmp6_2'
+  Processing 'ClkDiv___0_DW01_cmp6_3'
+  Processing 'ClkDiv___0_DW01_dec_0'
+  Processing 'ALU_00000008_00000004_DW02_mult_0'
+  Processing 'ALU_00000008_00000004_DW01_add_1'
+
+  Beginning Mapping Optimizations  (Medium effort)
+  -------------------------------
+  Mapping Optimization (Phase 1)
+  Mapping Optimization (Phase 2)
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:18   64807.9      0.61       0.6       1.2                          
+    0:00:19   64763.2      0.94       0.9       1.2                          
+    0:00:19   64763.2      0.94       0.9       1.2                          
+    0:00:19   64685.6      0.79       0.8       1.2                          
+    0:00:19   64685.6      0.79       0.8       1.2                          
+    0:00:22   36488.3      2.47       3.2       0.0                          
+    0:00:23   36451.8      2.14       2.6       0.0                          
+    0:00:23   36442.4      2.22       2.7       0.0                          
+    0:00:24   36458.9      1.74       1.9       0.0                          
+    0:00:24   36461.2      1.67       1.7       0.0                          
+    0:00:24   36424.7      1.66       1.7       0.0                          
+    0:00:24   36484.8      1.67       1.7       0.0                          
+    0:00:24   36438.9      1.66       1.7       0.0                          
+    0:00:24   36433.0      1.47       1.5       0.0                          
+    0:00:24   36427.1      1.44       1.4       0.0                          
+    0:00:25   36427.1      1.44       1.4       0.0                          
+    0:00:25   36427.1      1.44       1.4       0.0                          
+    0:00:25   36427.1      1.44       1.4       0.0                          
+    0:00:25   36427.1      1.44       1.4       0.0                          
+    0:00:25   36427.1      1.44       1.4       0.0                          
+    0:00:25   36427.1      1.44       1.4       0.0                          
+    0:00:25   36643.6      0.65       0.6       0.0 ALU_dut/ALU_OUT_reg[0]/D 
+    0:00:25   36680.1      0.62       0.6       0.0                          
+
+
+
+  Beginning Delay Optimization Phase
+  ----------------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:25   36680.1      0.62       0.6       0.0                          
+    0:00:26   36701.3      0.00       0.0       0.0 ALU_dut/ALU_OUT_reg[0]/D 
+    0:00:26   36701.3      0.00       0.0       0.0                          
+    0:00:29   36696.6      0.00       0.0       0.0                          
+
+
+  Beginning Area-Recovery Phase  (cleanup)
+  -----------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:29   36696.6      0.00       0.0       0.0                          
+    0:00:29   36696.6      0.00       0.0       0.0                          
+    0:00:29   36500.1      0.04       0.0       0.0                          
+    0:00:29   36428.3      0.04       0.0       0.0                          
+    0:00:29   36402.4      0.04       0.0       0.0                          
+    0:00:29   36387.1      0.04       0.0       0.0                          
+    0:00:29   36375.3      0.04       0.0       0.0                          
+    0:00:29   36375.3      0.04       0.0       0.0                          
+    0:00:30   36411.8      0.00       0.0       0.0                          
+    0:00:30   35864.6      1.19       1.8       0.0                          
+    0:00:30   35774.0      1.28       1.9       0.0                          
+    0:00:30   35765.8      1.28       1.9       0.0                          
+    0:00:30   35765.8      1.28       1.9       0.0                          
+    0:00:30   35765.8      1.28       1.9       0.0                          
+    0:00:30   35765.8      1.28       1.9       0.0                          
+    0:00:30   35765.8      1.28       1.9       0.0                          
+    0:00:30   35765.8      1.28       1.9       0.0                          
+    0:00:30   36111.7      0.15       0.1       0.0 ALU_dut/ALU_OUT_reg[0]/D 
+    0:00:31   36228.2      0.00       0.0       0.0                          
+Loading db file '/home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys/scmetro_tsmc_cl013g_rvt_ss_1p08v_125c.db'
+Loading db file '/home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys/scmetro_tsmc_cl013g_rvt_tt_1p2v_25c.db'
+Loading db file '/home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys/scmetro_tsmc_cl013g_rvt_ff_1p32v_m40c.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+1
+################################################################### 
+# Setting Test Timing Variables
+################################################################### 
+# Preclock Measure Protocol (default protocol)
+set test_default_period 100
+100
+set test_default_delay 0
+0
+set test_default_bidir_delay 0
+0
+set test_default_strobe 20
+20
+set test_default_strobe_width 0
+0
+########################## Define DFT Signals ##########################
+set_dft_signal -port [get_ports scan_clk]  -type ScanClock   -view existing_dft  -timing {30 60}
+Accepted dft signal specification for modes: all_dft
+1
+set_dft_signal -port [get_ports scan_rst]  -type Reset       -view existing_dft  -active_state 0
+Accepted dft signal specification for modes: all_dft
+1
+set_dft_signal -port [get_ports test_mode] -type Constant    -view existing_dft  -active_state 1 
+Accepted dft signal specification for modes: all_dft
+1
+set_dft_signal -port [get_ports test_mode] -type TestMode    -view spec          -active_state 1 
+Accepted dft signal specification for modes: all_dft
+1
+set_dft_signal -port [get_ports SE]        -type ScanEnable  -view spec          -active_state 1   -usage scan
+Accepted dft signal specification for modes: all_dft
+1
+set_dft_signal -port [get_ports SI]        -type ScanDataIn  -view spec 
+Accepted dft signal specification for modes: all_dft
+1
+set_dft_signal -port [get_ports SO]        -type ScanDataOut -view spec  
+Accepted dft signal specification for modes: all_dft
+1
+############################# Create Test Protocol #####################
+create_test_protocol
+In mode: all_dft...
+
+Information: Starting test protocol creation. (TEST-219)
+  ...reading user specified clock signals...
+Information: Identified system/test clock port scan_clk (30.0,60.0). (TEST-265)
+  ...reading user specified asynchronous signals...
+Information: Identified active low asynchronous control port scan_rst. (TEST-266)
+1
+###################### Pre-DFT Design Rule Checking ####################
+dft_drc -verbose
+In mode: all_dft...
+  Pre-DFT DRC enabled
+
+Information: Starting test design rule checking. (TEST-222)
+  Loading test protocol
+  ...basic checks...
+  ...basic sequential cell checks...
+  	...checking for scan equivalents...
+  ...checking vector rules...
+  ...checking pre-dft rules...
+
+-----------------------------------------------------------------
+Begin Pre-DFT violations...
+
+ Warning: Clock scan_rst connects to data input (D) of DFF Data_Sync_dut/SYNC_bus_reg[7]. (D10-1)
+ Warning: Clock scan_rst connects to data input (D) of DFF Data_Sync_dut/SYNC_bus_reg[4]. (D10-2)
+ Warning: Clock scan_rst connects to data input (D) of DFF Data_Sync_dut/SYNC_bus_reg[6]. (D10-3)
+ Warning: Clock scan_rst connects to data input (D) of DFF Data_Sync_dut/SYNC_bus_reg[5]. (D10-4)
+ Warning: Clock scan_rst connects to data input (D) of DFF Data_Sync_dut/pulse_gen_reg. (D10-5)
+ Warning: Clock scan_rst connects to data input (D) of DFF Data_Sync_dut/SYNC_bus_reg[3]. (D10-6)
+ Warning: Clock scan_rst connects to data input (D) of DFF Data_Sync_dut/SYNC_bus_reg[0]. (D10-7)
+ Warning: Clock scan_rst connects to data input (D) of DFF Data_Sync_dut/SYNC_bus_reg[2]. (D10-8)
+ Warning: Clock scan_rst connects to data input (D) of DFF Data_Sync_dut/SYNC_bus_reg[1]. (D10-9)
+ Warning: Clock scan_rst connects to data input (D) of DFF Data_Sync_dut/FF_Stage_reg[0]. (D10-10)
+ Warning: Clock scan_rst connects to data input (D) of DFF SYS_CTRL_dut/current_state_reg[3]. (D10-11)
+ Warning: Clock scan_rst connects to data input (D) of DFF SYS_CTRL_dut/current_state_reg[1]. (D10-12)
+ Warning: Clock scan_rst connects to data input (D) of DFF UART_TX_dut/Counter_reg[2]. (D10-13)
+ Warning: Clock scan_rst connects to data input (D) of DFF UART_TX_dut/current_state_reg[0]. (D10-14)
+ Warning: Clock scan_rst connects to data input (D) of DFF UART_TX_dut/current_state_reg[2]. (D10-15)
+ Warning: Clock scan_rst connects to data input (D) of DFF UART_TX_dut/Counter_reg[1]. (D10-16)
+ Warning: Clock scan_rst connects to data input (D) of DFF UART_TX_dut/current_state_reg[1]. (D10-17)
+ Warning: Clock scan_rst connects to data input (D) of DFF UART_TX_dut/Counter_reg[0]. (D10-18)
+ Warning: Clock scan_rst connects to data input (D) of DFF UART_RX_dut/out_next_reg[7]. (D10-19)
+ Warning: Clock scan_rst connects to data input (D) of DFF UART_RX_dut/out_next_reg[6]. (D10-20)
+ Warning: Clock scan_rst connects to data input (D) of DFF UART_RX_dut/out_next_reg[5]. (D10-21)
+ Warning: Clock scan_rst connects to data input (D) of DFF UART_RX_dut/out_next_reg[4]. (D10-22)
+ Warning: Clock scan_rst connects to data input (D) of DFF UART_RX_dut/out_next_reg[3]. (D10-23)
+ Warning: Clock scan_rst connects to data input (D) of DFF UART_RX_dut/out_next_reg[2]. (D10-24)
+ Warning: Clock scan_rst connects to data input (D) of DFF UART_RX_dut/out_next_reg[1]. (D10-25)
+ Warning: Clock scan_rst connects to data input (D) of DFF UART_RX_dut/out_next_reg[0]. (D10-26)
+ Warning: Clock scan_rst connects to data input (D) of DFF UART_RX_dut/current_state_reg[2]. (D10-27)
+ Warning: Clock scan_rst connects to data input (D) of DFF UART_RX_dut/current_state_reg[0]. (D10-28)
+ Warning: Clock scan_rst connects to data input (D) of DFF UART_RX_dut/current_state_reg[1]. (D10-29)
+ Warning: Clock scan_rst connects to data input (D) of DFF UART_RX_dut/dut_sample/out_next_2_reg. (D10-30)
+ Warning: Clock scan_rst connects to data input (D) of DFF UART_RX_dut/dut_sample/out_next_1_reg. (D10-31)
+ Warning: Clock scan_rst connects to data input (D) of DFF UART_RX_dut/dut_sample/out_next_3_reg. (D10-32)
+ Warning: Clock scan_rst connects to data input (D) of DFF UART_RX_dut/edge_bit_dut/Edge_Counter_reg[4]. (D10-33)
+ Warning: Clock scan_rst connects to data input (D) of DFF UART_RX_dut/edge_bit_dut/Bit_Counter_reg[2]. (D10-34)
+ Warning: Clock scan_rst connects to data input (D) of DFF UART_RX_dut/edge_bit_dut/Bit_Counter_reg[3]. (D10-35)
+ Warning: Clock scan_rst connects to data input (D) of DFF UART_RX_dut/edge_bit_dut/Bit_Counter_reg[1]. (D10-36)
+ Warning: Clock scan_rst connects to data input (D) of DFF UART_RX_dut/edge_bit_dut/Bit_Counter_reg[0]. (D10-37)
+ Warning: Clock scan_rst connects to data input (D) of DFF UART_RX_dut/edge_bit_dut/Edge_Counter_reg[1]. (D10-38)
+ Warning: Clock scan_rst connects to data input (D) of DFF UART_RX_dut/edge_bit_dut/Edge_Counter_reg[2]. (D10-39)
+ Warning: Clock scan_rst connects to data input (D) of DFF UART_RX_dut/edge_bit_dut/Edge_Counter_reg[3]. (D10-40)
+ Warning: Clock scan_rst connects to data input (D) of DFF UART_RX_dut/edge_bit_dut/Edge_Counter_reg[0]. (D10-41)
+ Warning: Clock scan_rst connects to data input (D) of DFF UART_RX_dut/srt_dut/strt_glitch_reg. (D10-42)
+ Warning: Clock scan_rst connects to data input (D) of DFF UART_RX_dut/stp_dut/stp_err_reg. (D10-43)
+ Warning: Clock scan_rst connects to data input (D) of DFF UART_RX_dut/deser_dut/P_DATA_reg[5]. (D10-44)
+ Warning: Clock scan_rst connects to data input (D) of DFF UART_RX_dut/deser_dut/P_DATA_reg[1]. (D10-45)
+ Warning: Clock scan_rst connects to data input (D) of DFF UART_RX_dut/deser_dut/P_DATA_reg[4]. (D10-46)
+ Warning: Clock scan_rst connects to data input (D) of DFF UART_RX_dut/deser_dut/P_DATA_reg[0]. (D10-47)
+ Warning: Clock scan_rst connects to data input (D) of DFF UART_RX_dut/deser_dut/P_DATA_reg[7]. (D10-48)
+ Warning: Clock scan_rst connects to data input (D) of DFF UART_RX_dut/deser_dut/P_DATA_reg[3]. (D10-49)
+ Warning: Clock scan_rst connects to data input (D) of DFF UART_RX_dut/deser_dut/P_DATA_reg[6]. (D10-50)
+ Warning: Clock scan_rst connects to data input (D) of DFF UART_RX_dut/deser_dut/P_DATA_reg[2]. (D10-51)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/fifo_wrptr_full_dut/Wptr_reg[3]. (D10-52)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/fifo_wrptr_full_dut/Wptr_reg[0]. (D10-53)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/fifo_wrptr_full_dut/Wptr_reg[2]. (D10-54)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/fifo_wrptr_full_dut/Wptr_reg[1]. (D10-55)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/fifo_wrptr_full_dut/Wptr_reg[4]. (D10-56)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/fifo_rdptr_empty_dut/Rptr_reg[4]. (D10-57)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/fifo_rdptr_empty_dut/Rptr_reg[0]. (D10-58)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/fifo_rdptr_empty_dut/Rptr_reg[3]. (D10-59)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/fifo_rdptr_empty_dut/Rptr_reg[1]. (D10-60)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/fifo_rdptr_empty_dut/Rptr_reg[2]. (D10-61)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/out_next_reg[7]. (D10-62)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/out_next_reg[6]. (D10-63)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/out_next_reg[5]. (D10-64)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/out_next_reg[4]. (D10-65)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/out_next_reg[3]. (D10-66)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/out_next_reg[2]. (D10-67)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/out_next_reg[1]. (D10-68)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/out_next_reg[0]. (D10-69)
+ Warning: Clock scan_rst connects to data input () of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/read_next_reg[6]. (D10-70)
+ Warning: Clock scan_rst connects to data input () of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/read_next_reg[5]. (D10-71)
+ Warning: Clock scan_rst connects to data input () of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/read_next_reg[4]. (D10-72)
+ Warning: Clock scan_rst connects to data input () of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/read_next_reg[3]. (D10-73)
+ Warning: Clock scan_rst connects to data input () of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/read_next_reg[2]. (D10-74)
+ Warning: Clock scan_rst connects to data input () of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/read_next_reg[1]. (D10-75)
+ Warning: Clock scan_rst connects to data input () of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/read_next_reg[0]. (D10-76)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[13][7]. (D10-77)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[9][7]. (D10-78)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[5][7]. (D10-79)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[1][7]. (D10-80)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[13][6]. (D10-81)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[9][6]. (D10-82)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[5][6]. (D10-83)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[1][6]. (D10-84)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[13][5]. (D10-85)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[9][5]. (D10-86)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[5][5]. (D10-87)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[1][5]. (D10-88)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[13][4]. (D10-89)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[9][4]. (D10-90)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[5][4]. (D10-91)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[1][4]. (D10-92)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[13][3]. (D10-93)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[9][3]. (D10-94)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[5][3]. (D10-95)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[1][3]. (D10-96)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[13][2]. (D10-97)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[9][2]. (D10-98)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[5][2]. (D10-99)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[1][2]. (D10-100)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[13][1]. (D10-101)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[9][1]. (D10-102)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[5][1]. (D10-103)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[1][1]. (D10-104)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[13][0]. (D10-105)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[9][0]. (D10-106)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[5][0]. (D10-107)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[1][0]. (D10-108)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[15][7]. (D10-109)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[11][7]. (D10-110)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[7][7]. (D10-111)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[3][7]. (D10-112)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[15][6]. (D10-113)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[11][6]. (D10-114)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[7][6]. (D10-115)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[3][6]. (D10-116)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[15][5]. (D10-117)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[11][5]. (D10-118)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[7][5]. (D10-119)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[3][5]. (D10-120)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[15][4]. (D10-121)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[11][4]. (D10-122)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[7][4]. (D10-123)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[3][4]. (D10-124)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[15][3]. (D10-125)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[11][3]. (D10-126)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[7][3]. (D10-127)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[3][3]. (D10-128)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[15][2]. (D10-129)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[11][2]. (D10-130)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[7][2]. (D10-131)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[3][2]. (D10-132)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[15][1]. (D10-133)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[11][1]. (D10-134)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[7][1]. (D10-135)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[3][1]. (D10-136)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[15][0]. (D10-137)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[11][0]. (D10-138)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[7][0]. (D10-139)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[3][0]. (D10-140)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[14][7]. (D10-141)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[10][7]. (D10-142)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[6][7]. (D10-143)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[2][7]. (D10-144)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[14][6]. (D10-145)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[10][6]. (D10-146)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[6][6]. (D10-147)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[2][6]. (D10-148)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[14][5]. (D10-149)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[10][5]. (D10-150)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[6][5]. (D10-151)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[2][5]. (D10-152)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[14][4]. (D10-153)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[10][4]. (D10-154)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[6][4]. (D10-155)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[2][4]. (D10-156)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[14][3]. (D10-157)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[10][3]. (D10-158)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[6][3]. (D10-159)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[2][3]. (D10-160)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[14][2]. (D10-161)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[10][2]. (D10-162)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[6][2]. (D10-163)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[2][2]. (D10-164)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[14][1]. (D10-165)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[10][1]. (D10-166)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[6][1]. (D10-167)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[2][1]. (D10-168)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[14][0]. (D10-169)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[10][0]. (D10-170)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[6][0]. (D10-171)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[2][0]. (D10-172)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[12][7]. (D10-173)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[8][7]. (D10-174)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[4][7]. (D10-175)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][7]. (D10-176)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[12][6]. (D10-177)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[8][6]. (D10-178)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[4][6]. (D10-179)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][6]. (D10-180)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[12][5]. (D10-181)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[8][5]. (D10-182)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[4][5]. (D10-183)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][5]. (D10-184)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[12][4]. (D10-185)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[8][4]. (D10-186)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[4][4]. (D10-187)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][4]. (D10-188)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[12][3]. (D10-189)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[8][3]. (D10-190)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[4][3]. (D10-191)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][3]. (D10-192)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[12][2]. (D10-193)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[8][2]. (D10-194)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[4][2]. (D10-195)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][2]. (D10-196)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[12][1]. (D10-197)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[8][1]. (D10-198)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[4][1]. (D10-199)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][1]. (D10-200)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[12][0]. (D10-201)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[8][0]. (D10-202)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[4][0]. (D10-203)
+ Warning: Clock scan_rst connects to data input (D) of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][0]. (D10-204)
+ Warning: Clock scan_rst connects to data input () of DFF ASYNC_FIFO_dut/FIFO_MEMORY_dut/read_next_reg[7]. (D10-205)
+
+Pre-DFT violations completed...
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+Begin Other violations...
+
+Warning: Cell CLK_GATE_dut/ICG_DUT has constant 1 value. (TEST-505)
+
+Other violations completed...
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+  DRC Report
+
+  Total violations: 206
+
+-----------------------------------------------------------------
+
+205 PRE-DFT VIOLATIONS
+   205 Clock feeding data input violations (D10)
+
+1 OTHER VIOLATION
+     1 Cell is constant 1 violation (TEST-505)
+
+
+Warning: Violations occurred during test design rule checking. (TEST-124)
+
+-----------------------------------------------------------------
+  Sequential Cell Report
+
+  1 out of 480 sequential cells have violations
+
+-----------------------------------------------------------------
+
+SEQUENTIAL CELLS WITH VIOLATIONS
+      *   1 cell has constant 1 value
+         CLK_GATE_dut/ICG_DUT
+SEQUENTIAL CELLS WITHOUT VIOLATIONS
+      * 479 cells are valid scan cells
+         CLK_DIV_TX_dut/Counter_4_reg[9]
+         CLK_DIV_TX_dut/Counter_3_reg[9]
+         CLK_DIV_TX_dut/current_state_reg[2]
+         CLK_DIV_TX_dut/current_state_reg[0]
+         CLK_DIV_TX_dut/current_state_reg[1]
+         CLK_DIV_TX_dut/Counter_4_reg[8]
+         CLK_DIV_TX_dut/Counter_3_reg[8]
+         CLK_DIV_TX_dut/Counter_4_reg[4]
+         CLK_DIV_TX_dut/Counter_4_reg[6]
+         CLK_DIV_TX_dut/Counter_3_reg[6]
+         CLK_DIV_TX_dut/Counter_3_reg[4]
+         CLK_DIV_TX_dut/Counter_4_reg[5]
+         CLK_DIV_TX_dut/Counter_3_reg[5]
+         CLK_DIV_TX_dut/Counter_4_reg[7]
+         CLK_DIV_TX_dut/Counter_3_reg[7]
+         CLK_DIV_TX_dut/Counter_1_reg[6]
+         CLK_DIV_TX_dut/Counter_1_reg[4]
+         CLK_DIV_TX_dut/Counter_1_reg[7]
+         CLK_DIV_TX_dut/Counter_1_reg[9]
+         CLK_DIV_TX_dut/Counter_2_reg[9]
+         CLK_DIV_TX_dut/Counter_4_reg[0]
+         CLK_DIV_TX_dut/Counter_3_reg[0]
+         CLK_DIV_TX_dut/Counter_1_reg[0]
+         CLK_DIV_TX_dut/Counter_2_reg[0]
+         CLK_DIV_TX_dut/Counter_1_reg[8]
+         CLK_DIV_TX_dut/Counter_4_reg[1]
+         CLK_DIV_TX_dut/Counter_4_reg[2]
+         CLK_DIV_TX_dut/Counter_4_reg[3]
+         CLK_DIV_TX_dut/Counter_3_reg[3]
+         CLK_DIV_TX_dut/Counter_3_reg[2]
+         CLK_DIV_TX_dut/Counter_3_reg[1]
+         CLK_DIV_TX_dut/Counter_1_reg[5]
+         CLK_DIV_TX_dut/Counter_1_reg[3]
+         CLK_DIV_TX_dut/Counter_1_reg[2]
+         CLK_DIV_TX_dut/Counter_1_reg[1]
+         CLK_DIV_TX_dut/Counter_2_reg[2]
+         CLK_DIV_TX_dut/Counter_2_reg[3]
+         CLK_DIV_TX_dut/Counter_2_reg[4]
+         CLK_DIV_TX_dut/Counter_2_reg[5]
+         CLK_DIV_TX_dut/Counter_2_reg[6]
+         CLK_DIV_TX_dut/Counter_2_reg[7]
+         CLK_DIV_TX_dut/Counter_2_reg[8]
+         CLK_DIV_TX_dut/Counter_2_reg[1]
+         Rst_Sync_D1_dut/FF_Stage_reg[0]
+         Rst_Sync_D1_dut/FF_Stage_reg[1]
+         Data_Sync_dut/FF_Stage_reg[1]
+         Data_Sync_dut/Q_in_reg
+         Data_Sync_dut/SYNC_bus_reg[7]
+         Data_Sync_dut/SYNC_bus_reg[4]
+         Data_Sync_dut/SYNC_bus_reg[6]
+         Data_Sync_dut/SYNC_bus_reg[5]
+         Data_Sync_dut/pulse_gen_reg
+         Data_Sync_dut/SYNC_bus_reg[3]
+         Data_Sync_dut/SYNC_bus_reg[0]
+         Data_Sync_dut/SYNC_bus_reg[2]
+         Data_Sync_dut/SYNC_bus_reg[1]
+         Data_Sync_dut/enable_pulse_reg
+         Data_Sync_dut/FF_Stage_reg[0]
+         SYS_CTRL_dut/Addr_next_reg[7]
+         SYS_CTRL_dut/Addr_next_reg[6]
+         SYS_CTRL_dut/Addr_next_reg[5]
+         SYS_CTRL_dut/Addr_next_reg[4]
+         SYS_CTRL_dut/Addr_next_reg[3]
+         SYS_CTRL_dut/Addr_next_reg[2]
+         SYS_CTRL_dut/Addr_next_reg[1]
+         SYS_CTRL_dut/Addr_next_reg[0]
+         SYS_CTRL_dut/Counter_reg[1]
+         SYS_CTRL_dut/Counter_reg[0]
+         SYS_CTRL_dut/flag_1_reg
+         SYS_CTRL_dut/current_state_reg[2]
+         SYS_CTRL_dut/current_state_reg[3]
+         SYS_CTRL_dut/current_state_reg[0]
+         SYS_CTRL_dut/current_state_reg[1]
+         Reg_file_dut/reg_file_reg[1][0]
+         Reg_file_dut/reg_file_reg[5][7]
+         Reg_file_dut/reg_file_reg[5][6]
+         Reg_file_dut/reg_file_reg[5][5]
+         Reg_file_dut/reg_file_reg[5][4]
+         Reg_file_dut/reg_file_reg[5][3]
+         Reg_file_dut/reg_file_reg[5][2]
+         Reg_file_dut/reg_file_reg[5][1]
+         Reg_file_dut/reg_file_reg[5][0]
+         Reg_file_dut/reg_file_reg[9][7]
+         Reg_file_dut/reg_file_reg[9][6]
+         Reg_file_dut/reg_file_reg[9][5]
+         Reg_file_dut/reg_file_reg[9][4]
+         Reg_file_dut/reg_file_reg[9][3]
+         Reg_file_dut/reg_file_reg[9][2]
+         Reg_file_dut/reg_file_reg[9][1]
+         Reg_file_dut/reg_file_reg[9][0]
+         Reg_file_dut/reg_file_reg[13][7]
+         Reg_file_dut/reg_file_reg[13][6]
+         Reg_file_dut/reg_file_reg[13][5]
+         Reg_file_dut/reg_file_reg[13][4]
+         Reg_file_dut/reg_file_reg[13][3]
+         Reg_file_dut/reg_file_reg[13][2]
+         Reg_file_dut/reg_file_reg[13][1]
+         Reg_file_dut/reg_file_reg[13][0]
+         Reg_file_dut/reg_file_reg[7][7]
+         Reg_file_dut/reg_file_reg[7][6]
+         Reg_file_dut/reg_file_reg[7][5]
+         Reg_file_dut/reg_file_reg[7][4]
+         Reg_file_dut/reg_file_reg[7][3]
+         Reg_file_dut/reg_file_reg[7][2]
+         Reg_file_dut/reg_file_reg[7][1]
+         Reg_file_dut/reg_file_reg[7][0]
+         Reg_file_dut/reg_file_reg[11][7]
+         Reg_file_dut/reg_file_reg[11][6]
+         Reg_file_dut/reg_file_reg[11][5]
+         Reg_file_dut/reg_file_reg[11][4]
+         Reg_file_dut/reg_file_reg[11][3]
+         Reg_file_dut/reg_file_reg[11][2]
+         Reg_file_dut/reg_file_reg[11][1]
+         Reg_file_dut/reg_file_reg[11][0]
+         Reg_file_dut/reg_file_reg[15][7]
+         Reg_file_dut/reg_file_reg[15][6]
+         Reg_file_dut/reg_file_reg[15][5]
+         Reg_file_dut/reg_file_reg[15][4]
+         Reg_file_dut/reg_file_reg[15][3]
+         Reg_file_dut/reg_file_reg[15][2]
+         Reg_file_dut/reg_file_reg[15][1]
+         Reg_file_dut/reg_file_reg[15][0]
+         Reg_file_dut/reg_file_reg[6][7]
+         Reg_file_dut/reg_file_reg[6][6]
+         Reg_file_dut/reg_file_reg[6][5]
+         Reg_file_dut/reg_file_reg[6][4]
+         Reg_file_dut/reg_file_reg[6][3]
+         Reg_file_dut/reg_file_reg[6][2]
+         Reg_file_dut/reg_file_reg[6][1]
+         Reg_file_dut/reg_file_reg[6][0]
+         Reg_file_dut/reg_file_reg[10][7]
+         Reg_file_dut/reg_file_reg[10][6]
+         Reg_file_dut/reg_file_reg[10][5]
+         Reg_file_dut/reg_file_reg[10][4]
+         Reg_file_dut/reg_file_reg[10][3]
+         Reg_file_dut/reg_file_reg[10][2]
+         Reg_file_dut/reg_file_reg[10][1]
+         Reg_file_dut/reg_file_reg[10][0]
+         Reg_file_dut/reg_file_reg[14][7]
+         Reg_file_dut/reg_file_reg[14][6]
+         Reg_file_dut/reg_file_reg[14][5]
+         Reg_file_dut/reg_file_reg[14][4]
+         Reg_file_dut/reg_file_reg[14][3]
+         Reg_file_dut/reg_file_reg[14][2]
+         Reg_file_dut/reg_file_reg[14][1]
+         Reg_file_dut/reg_file_reg[14][0]
+         Reg_file_dut/reg_file_reg[4][7]
+         Reg_file_dut/reg_file_reg[4][6]
+         Reg_file_dut/reg_file_reg[4][5]
+         Reg_file_dut/reg_file_reg[4][4]
+         Reg_file_dut/reg_file_reg[4][3]
+         Reg_file_dut/reg_file_reg[4][2]
+         Reg_file_dut/reg_file_reg[4][1]
+         Reg_file_dut/reg_file_reg[4][0]
+         Reg_file_dut/reg_file_reg[8][7]
+         Reg_file_dut/reg_file_reg[8][6]
+         Reg_file_dut/reg_file_reg[8][5]
+         Reg_file_dut/reg_file_reg[8][4]
+         Reg_file_dut/reg_file_reg[8][3]
+         Reg_file_dut/reg_file_reg[8][2]
+         Reg_file_dut/reg_file_reg[8][1]
+         Reg_file_dut/reg_file_reg[8][0]
+         Reg_file_dut/reg_file_reg[12][7]
+         Reg_file_dut/reg_file_reg[12][6]
+         Reg_file_dut/reg_file_reg[12][5]
+         Reg_file_dut/reg_file_reg[12][4]
+         Reg_file_dut/reg_file_reg[12][3]
+         Reg_file_dut/reg_file_reg[12][2]
+         Reg_file_dut/reg_file_reg[12][1]
+         Reg_file_dut/reg_file_reg[12][0]
+         Reg_file_dut/RdData_reg[7]
+         Reg_file_dut/RdData_reg[6]
+         Reg_file_dut/RdData_reg[5]
+         Reg_file_dut/RdData_reg[4]
+         Reg_file_dut/RdData_reg[3]
+         Reg_file_dut/RdData_reg[2]
+         Reg_file_dut/RdData_reg[1]
+         Reg_file_dut/RdData_reg[0]
+         Reg_file_dut/RdData_Valid_reg
+         Reg_file_dut/reg_file_reg[0][2]
+         Reg_file_dut/reg_file_reg[0][0]
+         Reg_file_dut/reg_file_reg[0][3]
+         Reg_file_dut/reg_file_reg[0][4]
+         Reg_file_dut/reg_file_reg[0][1]
+         Reg_file_dut/reg_file_reg[0][6]
+         Reg_file_dut/reg_file_reg[0][7]
+         Reg_file_dut/reg_file_reg[1][7]
+         Reg_file_dut/reg_file_reg[1][3]
+         Reg_file_dut/reg_file_reg[1][6]
+         Reg_file_dut/reg_file_reg[1][5]
+         Reg_file_dut/reg_file_reg[1][4]
+         Reg_file_dut/reg_file_reg[0][5]
+         Reg_file_dut/reg_file_reg[1][1]
+         Reg_file_dut/reg_file_reg[1][2]
+         ALU_dut/ALU_OUT_reg[8]
+         ALU_dut/ALU_OUT_reg[15]
+         ALU_dut/ALU_OUT_reg[14]
+         ALU_dut/ALU_OUT_reg[13]
+         ALU_dut/ALU_OUT_reg[12]
+         ALU_dut/ALU_OUT_reg[11]
+         ALU_dut/ALU_OUT_reg[10]
+         ALU_dut/ALU_OUT_reg[9]
+         ALU_dut/ALU_OUT_reg[7]
+         ALU_dut/ALU_OUT_reg[6]
+         ALU_dut/ALU_OUT_reg[5]
+         ALU_dut/ALU_OUT_reg[4]
+         ALU_dut/ALU_OUT_reg[3]
+         ALU_dut/ALU_OUT_reg[2]
+         ALU_dut/OUT_VALID_reg
+         ALU_dut/ALU_OUT_reg[0]
+         ALU_dut/ALU_OUT_reg[1]
+         UART_TX_dut/Counter_reg[2]
+         UART_TX_dut/current_state_reg[0]
+         UART_TX_dut/current_state_reg[2]
+         UART_TX_dut/Counter_reg[1]
+         UART_TX_dut/current_state_reg[1]
+         UART_TX_dut/Counter_reg[0]
+         UART_RX_dut/out_next_reg[7]
+         UART_RX_dut/out_next_reg[6]
+         UART_RX_dut/out_next_reg[5]
+         UART_RX_dut/out_next_reg[4]
+         UART_RX_dut/out_next_reg[3]
+         UART_RX_dut/out_next_reg[2]
+         UART_RX_dut/out_next_reg[1]
+         UART_RX_dut/out_next_reg[0]
+         UART_RX_dut/current_state_reg[2]
+         UART_RX_dut/current_state_reg[0]
+         UART_RX_dut/current_state_reg[1]
+         pulse_gen_dut/Q_in_reg
+         pulse_gen_dut/out_reg
+         UART_RX_dut/dut_sample/out_next_2_reg
+         UART_RX_dut/dut_sample/out_next_1_reg
+         UART_RX_dut/dut_sample/out_next_3_reg
+         UART_RX_dut/edge_bit_dut/Edge_Counter_reg[4]
+         UART_RX_dut/edge_bit_dut/Bit_Counter_reg[2]
+         UART_RX_dut/edge_bit_dut/Bit_Counter_reg[3]
+         UART_RX_dut/edge_bit_dut/Bit_Counter_reg[1]
+         UART_RX_dut/edge_bit_dut/Bit_Counter_reg[0]
+         UART_RX_dut/edge_bit_dut/Edge_Counter_reg[1]
+         UART_RX_dut/edge_bit_dut/Edge_Counter_reg[2]
+         UART_RX_dut/edge_bit_dut/Edge_Counter_reg[3]
+         UART_RX_dut/edge_bit_dut/Edge_Counter_reg[0]
+         UART_RX_dut/srt_dut/strt_glitch_reg
+         UART_RX_dut/stp_dut/stp_err_reg
+         UART_RX_dut/deser_dut/P_DATA_reg[5]
+         UART_RX_dut/deser_dut/P_DATA_reg[1]
+         UART_RX_dut/deser_dut/P_DATA_reg[4]
+         UART_RX_dut/deser_dut/P_DATA_reg[0]
+         UART_RX_dut/deser_dut/P_DATA_reg[7]
+         UART_RX_dut/deser_dut/P_DATA_reg[3]
+         UART_RX_dut/deser_dut/P_DATA_reg[6]
+         UART_RX_dut/deser_dut/P_DATA_reg[2]
+         ASYNC_FIFO_dut/sync_w2r/FF_Stage_reg[1][2]
+         ASYNC_FIFO_dut/sync_w2r/FF_Stage_reg[1][0]
+         ASYNC_FIFO_dut/sync_w2r/FF_Stage_reg[1][3]
+         ASYNC_FIFO_dut/sync_w2r/FF_Stage_reg[1][1]
+         ASYNC_FIFO_dut/sync_w2r/FF_Stage_reg[0][4]
+         ASYNC_FIFO_dut/sync_w2r/FF_Stage_reg[0][3]
+         ASYNC_FIFO_dut/sync_w2r/FF_Stage_reg[0][2]
+         ASYNC_FIFO_dut/sync_w2r/FF_Stage_reg[0][1]
+         ASYNC_FIFO_dut/sync_w2r/FF_Stage_reg[0][0]
+         ASYNC_FIFO_dut/sync_w2r/FF_Stage_reg[1][4]
+         ASYNC_FIFO_dut/fifo_wrptr_full_dut/gray_Wptr_reg[3]
+         ASYNC_FIFO_dut/fifo_wrptr_full_dut/gray_Wptr_reg[2]
+         ASYNC_FIFO_dut/fifo_wrptr_full_dut/gray_Wptr_reg[1]
+         ASYNC_FIFO_dut/fifo_wrptr_full_dut/gray_Wptr_reg[0]
+         ASYNC_FIFO_dut/fifo_wrptr_full_dut/Wptr_reg[3]
+         ASYNC_FIFO_dut/fifo_wrptr_full_dut/Wptr_reg[0]
+         ASYNC_FIFO_dut/fifo_wrptr_full_dut/Wptr_reg[2]
+         ASYNC_FIFO_dut/fifo_wrptr_full_dut/Wptr_reg[1]
+         ASYNC_FIFO_dut/fifo_wrptr_full_dut/Wptr_reg[4]
+         ASYNC_FIFO_dut/fifo_rdptr_empty_dut/gray_Rptr_reg[3]
+         ASYNC_FIFO_dut/fifo_rdptr_empty_dut/gray_Rptr_reg[2]
+         ASYNC_FIFO_dut/fifo_rdptr_empty_dut/gray_Rptr_reg[1]
+         ASYNC_FIFO_dut/fifo_rdptr_empty_dut/gray_Rptr_reg[0]
+         ASYNC_FIFO_dut/fifo_rdptr_empty_dut/Rptr_reg[4]
+         ASYNC_FIFO_dut/fifo_rdptr_empty_dut/Rptr_reg[0]
+         ASYNC_FIFO_dut/fifo_rdptr_empty_dut/Rptr_reg[3]
+         ASYNC_FIFO_dut/fifo_rdptr_empty_dut/Rptr_reg[1]
+         ASYNC_FIFO_dut/fifo_rdptr_empty_dut/Rptr_reg[2]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/out_next_reg[7]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/out_next_reg[6]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/out_next_reg[5]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/out_next_reg[4]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/out_next_reg[3]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/out_next_reg[2]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/out_next_reg[1]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/out_next_reg[0]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/read_next_reg[6]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/read_next_reg[5]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/read_next_reg[4]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/read_next_reg[3]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/read_next_reg[2]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/read_next_reg[1]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/read_next_reg[0]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[13][7]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[9][7]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[5][7]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[1][7]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[13][6]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[9][6]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[5][6]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[1][6]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[13][5]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[9][5]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[5][5]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[1][5]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[13][4]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[9][4]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[5][4]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[1][4]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[13][3]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[9][3]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[5][3]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[1][3]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[13][2]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[9][2]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[5][2]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[1][2]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[13][1]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[9][1]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[5][1]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[1][1]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[13][0]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[9][0]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[5][0]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[1][0]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[15][7]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[11][7]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[7][7]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[3][7]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[15][6]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[11][6]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[7][6]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[3][6]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[15][5]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[11][5]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[7][5]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[3][5]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[15][4]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[11][4]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[7][4]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[3][4]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[15][3]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[11][3]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[7][3]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[3][3]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[15][2]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[11][2]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[7][2]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[3][2]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[15][1]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[11][1]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[7][1]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[3][1]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[15][0]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[11][0]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[7][0]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[3][0]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[14][7]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[10][7]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[6][7]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[2][7]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[14][6]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[10][6]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[6][6]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[2][6]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[14][5]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[10][5]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[6][5]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[2][5]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[14][4]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[10][4]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[6][4]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[2][4]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[14][3]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[10][3]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[6][3]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[2][3]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[14][2]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[10][2]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[6][2]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[2][2]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[14][1]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[10][1]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[6][1]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[2][1]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[14][0]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[10][0]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[6][0]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[2][0]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[12][7]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[8][7]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[4][7]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][7]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[12][6]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[8][6]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[4][6]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][6]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[12][5]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[8][5]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[4][5]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][5]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[12][4]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[8][4]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[4][4]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][4]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[12][3]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[8][3]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[4][3]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][3]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[12][2]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[8][2]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[4][2]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][2]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[12][1]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[8][1]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[4][1]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][1]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[12][0]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[8][0]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[4][0]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][0]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/read_next_reg[7]
+         CLK_DIV_RX_dut/Counter_4_reg[9]
+         CLK_DIV_RX_dut/Counter_3_reg[9]
+         CLK_DIV_RX_dut/current_state_reg[2]
+         CLK_DIV_RX_dut/current_state_reg[0]
+         CLK_DIV_RX_dut/current_state_reg[1]
+         CLK_DIV_RX_dut/Counter_4_reg[8]
+         CLK_DIV_RX_dut/Counter_3_reg[8]
+         CLK_DIV_RX_dut/Counter_4_reg[4]
+         CLK_DIV_RX_dut/Counter_4_reg[6]
+         CLK_DIV_RX_dut/Counter_3_reg[6]
+         CLK_DIV_RX_dut/Counter_3_reg[4]
+         CLK_DIV_RX_dut/Counter_4_reg[2]
+         CLK_DIV_RX_dut/Counter_4_reg[3]
+         CLK_DIV_RX_dut/Counter_4_reg[5]
+         CLK_DIV_RX_dut/Counter_3_reg[5]
+         CLK_DIV_RX_dut/Counter_3_reg[3]
+         CLK_DIV_RX_dut/Counter_3_reg[2]
+         CLK_DIV_RX_dut/Counter_4_reg[7]
+         CLK_DIV_RX_dut/Counter_3_reg[7]
+         CLK_DIV_RX_dut/Counter_1_reg[6]
+         CLK_DIV_RX_dut/Counter_1_reg[4]
+         CLK_DIV_RX_dut/Counter_1_reg[7]
+         CLK_DIV_RX_dut/Counter_1_reg[9]
+         CLK_DIV_RX_dut/Counter_2_reg[9]
+         CLK_DIV_RX_dut/Counter_4_reg[0]
+         CLK_DIV_RX_dut/Counter_3_reg[0]
+         CLK_DIV_RX_dut/Counter_1_reg[0]
+         CLK_DIV_RX_dut/Counter_2_reg[0]
+         CLK_DIV_RX_dut/Counter_1_reg[8]
+         CLK_DIV_RX_dut/Counter_4_reg[1]
+         CLK_DIV_RX_dut/Counter_3_reg[1]
+         CLK_DIV_RX_dut/Counter_1_reg[5]
+         CLK_DIV_RX_dut/Counter_1_reg[3]
+         CLK_DIV_RX_dut/Counter_1_reg[2]
+         CLK_DIV_RX_dut/Counter_1_reg[1]
+         CLK_DIV_RX_dut/Counter_2_reg[2]
+         CLK_DIV_RX_dut/Counter_2_reg[3]
+         CLK_DIV_RX_dut/Counter_2_reg[4]
+         CLK_DIV_RX_dut/Counter_2_reg[5]
+         CLK_DIV_RX_dut/Counter_2_reg[6]
+         CLK_DIV_RX_dut/Counter_2_reg[7]
+         CLK_DIV_RX_dut/Counter_2_reg[8]
+         CLK_DIV_RX_dut/Counter_2_reg[1]
+         Rst_Sync_D2_dut/FF_Stage_reg[0]
+         Rst_Sync_D2_dut/FF_Stage_reg[1]
+         ASYNC_FIFO_dut/sync_r2w/FF_Stage_reg[1][0]
+         ASYNC_FIFO_dut/sync_r2w/FF_Stage_reg[1][3]
+         ASYNC_FIFO_dut/sync_r2w/FF_Stage_reg[1][2]
+         ASYNC_FIFO_dut/sync_r2w/FF_Stage_reg[1][1]
+         ASYNC_FIFO_dut/sync_r2w/FF_Stage_reg[0][4]
+         ASYNC_FIFO_dut/sync_r2w/FF_Stage_reg[0][3]
+         ASYNC_FIFO_dut/sync_r2w/FF_Stage_reg[0][2]
+         ASYNC_FIFO_dut/sync_r2w/FF_Stage_reg[0][1]
+         ASYNC_FIFO_dut/sync_r2w/FF_Stage_reg[0][0]
+         ASYNC_FIFO_dut/sync_r2w/FF_Stage_reg[1][4]
+
+Information: Test design rule checking completed. (TEST-123)
+1
+############################# Preview DFT ##############################
+preview_dft -show scan_summary
+  Information: Using test design rule information from previous dft_drc run.
+  Architecting Scan Chains
+
+****************************************
+Preview_dft report
+For    : 'Insert_dft' command
+Design : SYS_TOP
+Version: K-2015.06
+Date   : Thu Sep 21 05:54:45 2023
+****************************************
+
+Number of chains: 5
+Scan methodology: full_scan
+Scan style: multiplexed_flip_flop
+Clock domain: no_mix
+
+Chain      Scan Ports (si --> so)        # of Cells   Inst/Chain               Clock (port, time, edge)
+-----      ----------------------        ----------   ----------               ------------------------
+S 1        SI -->  SO                            96   ALU_dut/ALU_OUT_reg[0]   (scan_clk, 30.0, rising) 
+S 2        test_si2 -->  test_so2                96   ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[9][7]
+                            (scan_clk, 30.0, rising) 
+S 3        test_si3 -->  test_so3                96   ASYNC_FIFO_dut/sync_w2r/FF_Stage_reg[0][3]
+                            (scan_clk, 30.0, rising) 
+S 4        test_si4 -->  test_so4                96   Data_Sync_dut/SYNC_bus_reg[0]
+                            (scan_clk, 30.0, rising) 
+S 5        test_si5 -->  test_so5                95   Reg_file_dut/reg_file_reg[11][5]
+                            (scan_clk, 30.0, rising) 
+1
+############################# Insert DFT ###############################
+insert_dft
+Loading db file '/home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys/scmetro_tsmc_cl013g_rvt_ss_1p08v_125c.db'
+Loading db file '/home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys/scmetro_tsmc_cl013g_rvt_tt_1p2v_25c.db'
+Loading db file '/home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys/scmetro_tsmc_cl013g_rvt_ff_1p32v_m40c.db'
+  Information: Using test design rule information from previous dft_drc run.
+  Architecting Scan Chains
+  Routing Scan Chains
+  Routing Global Signals
+  Mapping New Logic
+Resetting current test mode
+  Beginning Mapping Optimizations
+  -------------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+
+1
+######################## Optimize Logic post DFT #######################
+compile -scan -incremental
+Information: Choosing a test methodology will restrict the optimization of sequential cells. (UIO-12)
+
+Information: There are 94 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+
+Warning: Operating condition scmetro_tsmc_cl013g_rvt_ss_1p08v_125c set on design SYS_TOP has different process,
+voltage and temperatures parameters than the parameters at which target library 
+scmetro_tsmc_cl013g_rvt_tt_1p2v_25c is characterized. Delays may be inaccurate as a result. (OPT-998)
+
+  Beginning Pass 1 Mapping  (Incremental)
+  ------------------------
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+
+  Beginning Mapping Optimizations  (Medium effort)  (Incremental)
+  -------------------------------
+
+  Beginning Incremental Implementation Selection
+  ----------------------------------------------
+  Selecting implementations
+  Selecting implementations
+  Selecting implementations
+
+  Beginning Delay Optimization Phase
+  ----------------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:05   36258.8      0.01       0.0       0.0                          
+    0:00:07   36247.1      0.00       0.0       0.0                          
+    0:00:09   36244.7      0.00       0.0       0.0                          
+    0:00:09   36308.3      0.00       0.0       0.0                          
+Loading db file '/home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys/scmetro_tsmc_cl013g_rvt_ss_1p08v_125c.db'
+Loading db file '/home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys/scmetro_tsmc_cl013g_rvt_tt_1p2v_25c.db'
+Loading db file '/home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys/scmetro_tsmc_cl013g_rvt_ff_1p32v_m40c.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+1
+###################### Design Rule Checking post DFT ###################
+dft_drc -verbose -coverage_estimate
+In mode: Internal_scan...
+  Design has scan chains in this mode
+  Design is scan routed
+  Post-DFT DRC enabled
+
+Information: Starting test design rule checking. (TEST-222)
+  Loading test protocol
+  ...basic checks...
+  ...basic sequential cell checks...
+  ...checking vector rules...
+  ...checking clock rules...
+  ...checking scan chain rules...
+  ...checking scan compression rules...
+  ...checking X-state rules...
+  ...checking tristate rules...
+  ...extracting scan details...
+
+-----------------------------------------------------------------
+Begin Clock violations...
+
+ Warning: Clock scan_rst is connected to primary output TX_OUT. (C17-1)
+ Warning: Path from clock scan_rst to PO TX_OUT affected by new captured data. (C18-1)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (Data_Sync_dut/SYNC_bus_reg[7]). (C26-1)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (Data_Sync_dut/SYNC_bus_reg[4]). (C26-2)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (Data_Sync_dut/SYNC_bus_reg[6]). (C26-3)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (Data_Sync_dut/SYNC_bus_reg[5]). (C26-4)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (Data_Sync_dut/pulse_gen_reg). (C26-5)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (Data_Sync_dut/SYNC_bus_reg[3]). (C26-6)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (Data_Sync_dut/SYNC_bus_reg[0]). (C26-7)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (Data_Sync_dut/SYNC_bus_reg[2]). (C26-8)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (Data_Sync_dut/SYNC_bus_reg[1]). (C26-9)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (Data_Sync_dut/FF_Stage_reg[0]). (C26-10)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (SYS_CTRL_dut/current_state_reg[3]). (C26-11)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (SYS_CTRL_dut/current_state_reg[1]). (C26-12)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (UART_TX_dut/Counter_reg[2]). (C26-13)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (UART_TX_dut/current_state_reg[0]). (C26-14)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (UART_TX_dut/current_state_reg[2]). (C26-15)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (UART_TX_dut/Counter_reg[1]). (C26-16)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (UART_TX_dut/current_state_reg[1]). (C26-17)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (UART_TX_dut/Counter_reg[0]). (C26-18)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (UART_RX_dut/out_next_reg[7]). (C26-19)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (UART_RX_dut/out_next_reg[6]). (C26-20)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (UART_RX_dut/out_next_reg[5]). (C26-21)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (UART_RX_dut/out_next_reg[4]). (C26-22)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (UART_RX_dut/out_next_reg[3]). (C26-23)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (UART_RX_dut/out_next_reg[2]). (C26-24)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (UART_RX_dut/out_next_reg[1]). (C26-25)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (UART_RX_dut/out_next_reg[0]). (C26-26)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (UART_RX_dut/current_state_reg[2]). (C26-27)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (UART_RX_dut/current_state_reg[0]). (C26-28)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (UART_RX_dut/current_state_reg[1]). (C26-29)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (UART_RX_dut/dut_sample/out_next_2_reg). (C26-30)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (UART_RX_dut/dut_sample/out_next_1_reg). (C26-31)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (UART_RX_dut/dut_sample/out_next_3_reg). (C26-32)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (UART_RX_dut/edge_bit_dut/Edge_Counter_reg[4]). (C26-33)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (UART_RX_dut/edge_bit_dut/Bit_Counter_reg[2]). (C26-34)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (UART_RX_dut/edge_bit_dut/Bit_Counter_reg[3]). (C26-35)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (UART_RX_dut/edge_bit_dut/Bit_Counter_reg[1]). (C26-36)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (UART_RX_dut/edge_bit_dut/Bit_Counter_reg[0]). (C26-37)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (UART_RX_dut/edge_bit_dut/Edge_Counter_reg[1]). (C26-38)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (UART_RX_dut/edge_bit_dut/Edge_Counter_reg[2]). (C26-39)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (UART_RX_dut/edge_bit_dut/Edge_Counter_reg[3]). (C26-40)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (UART_RX_dut/edge_bit_dut/Edge_Counter_reg[0]). (C26-41)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (UART_RX_dut/srt_dut/strt_glitch_reg). (C26-42)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (UART_RX_dut/stp_dut/stp_err_reg). (C26-43)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (UART_RX_dut/deser_dut/P_DATA_reg[5]). (C26-44)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (UART_RX_dut/deser_dut/P_DATA_reg[1]). (C26-45)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (UART_RX_dut/deser_dut/P_DATA_reg[4]). (C26-46)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (UART_RX_dut/deser_dut/P_DATA_reg[0]). (C26-47)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (UART_RX_dut/deser_dut/P_DATA_reg[7]). (C26-48)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (UART_RX_dut/deser_dut/P_DATA_reg[3]). (C26-49)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (UART_RX_dut/deser_dut/P_DATA_reg[6]). (C26-50)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (UART_RX_dut/deser_dut/P_DATA_reg[2]). (C26-51)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/fifo_wrptr_full_dut/Wptr_reg[3]). (C26-52)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/fifo_wrptr_full_dut/Wptr_reg[0]). (C26-53)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/fifo_wrptr_full_dut/Wptr_reg[2]). (C26-54)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/fifo_wrptr_full_dut/Wptr_reg[1]). (C26-55)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/fifo_wrptr_full_dut/Wptr_reg[4]). (C26-56)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/fifo_rdptr_empty_dut/Rptr_reg[4]). (C26-57)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/fifo_rdptr_empty_dut/Rptr_reg[0]). (C26-58)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/fifo_rdptr_empty_dut/Rptr_reg[3]). (C26-59)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/fifo_rdptr_empty_dut/Rptr_reg[1]). (C26-60)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/fifo_rdptr_empty_dut/Rptr_reg[2]). (C26-61)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/out_next_reg[7]). (C26-62)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/out_next_reg[6]). (C26-63)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/out_next_reg[5]). (C26-64)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/out_next_reg[4]). (C26-65)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/out_next_reg[3]). (C26-66)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/out_next_reg[2]). (C26-67)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/out_next_reg[1]). (C26-68)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/out_next_reg[0]). (C26-69)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs  of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/read_next_reg[6]). (C26-70)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs  of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/read_next_reg[5]). (C26-71)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs  of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/read_next_reg[4]). (C26-72)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs  of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/read_next_reg[3]). (C26-73)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs  of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/read_next_reg[2]). (C26-74)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs  of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/read_next_reg[1]). (C26-75)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs  of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/read_next_reg[0]). (C26-76)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[13][7]). (C26-77)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[9][7]). (C26-78)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[5][7]). (C26-79)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[1][7]). (C26-80)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[13][6]). (C26-81)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[9][6]). (C26-82)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[5][6]). (C26-83)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[1][6]). (C26-84)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[13][5]). (C26-85)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[9][5]). (C26-86)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[5][5]). (C26-87)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[1][5]). (C26-88)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[13][4]). (C26-89)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[9][4]). (C26-90)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[5][4]). (C26-91)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[1][4]). (C26-92)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[13][3]). (C26-93)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[9][3]). (C26-94)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[5][3]). (C26-95)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[1][3]). (C26-96)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[13][2]). (C26-97)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[9][2]). (C26-98)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[5][2]). (C26-99)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[1][2]). (C26-100)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[13][1]). (C26-101)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[9][1]). (C26-102)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[5][1]). (C26-103)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[1][1]). (C26-104)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[13][0]). (C26-105)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[9][0]). (C26-106)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[5][0]). (C26-107)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[1][0]). (C26-108)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[15][7]). (C26-109)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[11][7]). (C26-110)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[7][7]). (C26-111)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[3][7]). (C26-112)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[15][6]). (C26-113)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[11][6]). (C26-114)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[7][6]). (C26-115)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[3][6]). (C26-116)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[15][5]). (C26-117)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[11][5]). (C26-118)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[7][5]). (C26-119)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[3][5]). (C26-120)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[15][4]). (C26-121)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[11][4]). (C26-122)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[7][4]). (C26-123)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[3][4]). (C26-124)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[15][3]). (C26-125)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[11][3]). (C26-126)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[7][3]). (C26-127)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[3][3]). (C26-128)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[15][2]). (C26-129)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[11][2]). (C26-130)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[7][2]). (C26-131)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[3][2]). (C26-132)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[15][1]). (C26-133)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[11][1]). (C26-134)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[7][1]). (C26-135)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[3][1]). (C26-136)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[15][0]). (C26-137)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[11][0]). (C26-138)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[7][0]). (C26-139)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[3][0]). (C26-140)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[14][7]). (C26-141)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[10][7]). (C26-142)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[6][7]). (C26-143)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[2][7]). (C26-144)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[14][6]). (C26-145)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[10][6]). (C26-146)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[6][6]). (C26-147)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[2][6]). (C26-148)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[14][5]). (C26-149)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[10][5]). (C26-150)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[6][5]). (C26-151)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[2][5]). (C26-152)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[14][4]). (C26-153)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[10][4]). (C26-154)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[6][4]). (C26-155)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[2][4]). (C26-156)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[14][3]). (C26-157)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[10][3]). (C26-158)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[6][3]). (C26-159)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[2][3]). (C26-160)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[14][2]). (C26-161)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[10][2]). (C26-162)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[6][2]). (C26-163)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[2][2]). (C26-164)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[14][1]). (C26-165)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[10][1]). (C26-166)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[6][1]). (C26-167)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[2][1]). (C26-168)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[14][0]). (C26-169)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[10][0]). (C26-170)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[6][0]). (C26-171)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[2][0]). (C26-172)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[12][7]). (C26-173)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[8][7]). (C26-174)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[4][7]). (C26-175)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][7]). (C26-176)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[12][6]). (C26-177)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[8][6]). (C26-178)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[4][6]). (C26-179)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][6]). (C26-180)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[12][5]). (C26-181)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[8][5]). (C26-182)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[4][5]). (C26-183)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][5]). (C26-184)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[12][4]). (C26-185)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[8][4]). (C26-186)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[4][4]). (C26-187)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][4]). (C26-188)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[12][3]). (C26-189)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[8][3]). (C26-190)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[4][3]). (C26-191)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][3]). (C26-192)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[12][2]). (C26-193)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[8][2]). (C26-194)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[4][2]). (C26-195)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][2]). (C26-196)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[12][1]). (C26-197)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[8][1]). (C26-198)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[4][1]). (C26-199)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][1]). (C26-200)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[12][0]). (C26-201)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[8][0]). (C26-202)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[4][0]). (C26-203)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs CK/D of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][0]). (C26-204)
+ Warning: Clock scan_rst used as data is different than capture clock scan_clk for inputs  of stable DFF (ASYNC_FIFO_dut/FIFO_MEMORY_dut/read_next_reg[7]). (C26-205)
+
+Clock violations completed...
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+Begin Other violations...
+
+Warning: Cell CLK_GATE_dut/ICG_DUT has constant 1 value. (TEST-505)
+
+Other violations completed...
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+  DRC Report
+
+  Total violations: 208
+
+-----------------------------------------------------------------
+
+207 CLOCK VIOLATIONS
+     1 Clock connected to primary output violation (C17)
+     1 Clock connected to primary output affected by new capture violation (C18)
+   205 Clock as data different from capture clock for stable cell violations (C26)
+
+1 OTHER VIOLATION
+     1 Cell is constant 1 violation (TEST-505)
+
+
+Warning: Violations occurred during test design rule checking. (TEST-124)
+
+-----------------------------------------------------------------
+  Sequential Cell Report
+
+  1 out of 480 sequential cells have violations
+
+-----------------------------------------------------------------
+
+SEQUENTIAL CELLS WITH VIOLATIONS
+      *   1 cell has constant 1 value
+         CLK_GATE_dut/ICG_DUT
+SEQUENTIAL CELLS WITHOUT VIOLATIONS
+      * 479 cells are valid scan cells
+         CLK_DIV_TX_dut/Counter_4_reg[9]
+         CLK_DIV_TX_dut/Counter_3_reg[9]
+         CLK_DIV_TX_dut/current_state_reg[2]
+         CLK_DIV_TX_dut/current_state_reg[0]
+         CLK_DIV_TX_dut/current_state_reg[1]
+         CLK_DIV_TX_dut/Counter_4_reg[8]
+         CLK_DIV_TX_dut/Counter_3_reg[8]
+         CLK_DIV_TX_dut/Counter_4_reg[4]
+         CLK_DIV_TX_dut/Counter_4_reg[6]
+         CLK_DIV_TX_dut/Counter_3_reg[6]
+         CLK_DIV_TX_dut/Counter_3_reg[4]
+         CLK_DIV_TX_dut/Counter_4_reg[5]
+         CLK_DIV_TX_dut/Counter_3_reg[5]
+         CLK_DIV_TX_dut/Counter_4_reg[7]
+         CLK_DIV_TX_dut/Counter_3_reg[7]
+         CLK_DIV_TX_dut/Counter_1_reg[6]
+         CLK_DIV_TX_dut/Counter_1_reg[4]
+         CLK_DIV_TX_dut/Counter_1_reg[7]
+         CLK_DIV_TX_dut/Counter_1_reg[9]
+         CLK_DIV_TX_dut/Counter_2_reg[9]
+         CLK_DIV_TX_dut/Counter_4_reg[0]
+         CLK_DIV_TX_dut/Counter_3_reg[0]
+         CLK_DIV_TX_dut/Counter_1_reg[0]
+         CLK_DIV_TX_dut/Counter_2_reg[0]
+         CLK_DIV_TX_dut/Counter_1_reg[8]
+         CLK_DIV_TX_dut/Counter_4_reg[1]
+         CLK_DIV_TX_dut/Counter_4_reg[2]
+         CLK_DIV_TX_dut/Counter_4_reg[3]
+         CLK_DIV_TX_dut/Counter_3_reg[3]
+         CLK_DIV_TX_dut/Counter_3_reg[2]
+         CLK_DIV_TX_dut/Counter_3_reg[1]
+         CLK_DIV_TX_dut/Counter_1_reg[5]
+         CLK_DIV_TX_dut/Counter_1_reg[3]
+         CLK_DIV_TX_dut/Counter_1_reg[2]
+         CLK_DIV_TX_dut/Counter_1_reg[1]
+         CLK_DIV_TX_dut/Counter_2_reg[2]
+         CLK_DIV_TX_dut/Counter_2_reg[3]
+         CLK_DIV_TX_dut/Counter_2_reg[4]
+         CLK_DIV_TX_dut/Counter_2_reg[5]
+         CLK_DIV_TX_dut/Counter_2_reg[6]
+         CLK_DIV_TX_dut/Counter_2_reg[7]
+         CLK_DIV_TX_dut/Counter_2_reg[8]
+         CLK_DIV_TX_dut/Counter_2_reg[1]
+         CLK_DIV_RX_dut/Counter_4_reg[9]
+         CLK_DIV_RX_dut/Counter_3_reg[9]
+         CLK_DIV_RX_dut/current_state_reg[0]
+         CLK_DIV_RX_dut/current_state_reg[1]
+         CLK_DIV_RX_dut/Counter_4_reg[8]
+         CLK_DIV_RX_dut/Counter_3_reg[8]
+         CLK_DIV_RX_dut/Counter_4_reg[4]
+         CLK_DIV_RX_dut/Counter_4_reg[6]
+         CLK_DIV_RX_dut/Counter_3_reg[6]
+         CLK_DIV_RX_dut/Counter_3_reg[4]
+         CLK_DIV_RX_dut/Counter_4_reg[2]
+         CLK_DIV_RX_dut/Counter_4_reg[3]
+         CLK_DIV_RX_dut/Counter_4_reg[5]
+         CLK_DIV_RX_dut/Counter_3_reg[5]
+         CLK_DIV_RX_dut/Counter_3_reg[3]
+         CLK_DIV_RX_dut/Counter_3_reg[2]
+         CLK_DIV_RX_dut/Counter_4_reg[7]
+         CLK_DIV_RX_dut/Counter_3_reg[7]
+         CLK_DIV_RX_dut/Counter_1_reg[6]
+         CLK_DIV_RX_dut/Counter_1_reg[4]
+         CLK_DIV_RX_dut/Counter_1_reg[7]
+         CLK_DIV_RX_dut/Counter_1_reg[9]
+         CLK_DIV_RX_dut/Counter_2_reg[9]
+         CLK_DIV_RX_dut/Counter_4_reg[0]
+         CLK_DIV_RX_dut/Counter_3_reg[0]
+         CLK_DIV_RX_dut/Counter_1_reg[0]
+         CLK_DIV_RX_dut/Counter_2_reg[0]
+         CLK_DIV_RX_dut/Counter_1_reg[8]
+         CLK_DIV_RX_dut/Counter_4_reg[1]
+         CLK_DIV_RX_dut/Counter_3_reg[1]
+         CLK_DIV_RX_dut/Counter_1_reg[5]
+         CLK_DIV_RX_dut/Counter_1_reg[3]
+         CLK_DIV_RX_dut/Counter_1_reg[2]
+         CLK_DIV_RX_dut/Counter_1_reg[1]
+         CLK_DIV_RX_dut/Counter_2_reg[2]
+         CLK_DIV_RX_dut/Counter_2_reg[3]
+         CLK_DIV_RX_dut/Counter_2_reg[4]
+         CLK_DIV_RX_dut/Counter_2_reg[5]
+         CLK_DIV_RX_dut/Counter_2_reg[6]
+         CLK_DIV_RX_dut/Counter_2_reg[7]
+         CLK_DIV_RX_dut/Counter_2_reg[8]
+         CLK_DIV_RX_dut/Counter_2_reg[1]
+         CLK_DIV_RX_dut/current_state_reg[2]
+         Rst_Sync_D1_dut/FF_Stage_reg[0]
+         Rst_Sync_D1_dut/FF_Stage_reg[1]
+         Data_Sync_dut/FF_Stage_reg[1]
+         Data_Sync_dut/Q_in_reg
+         Data_Sync_dut/SYNC_bus_reg[7]
+         Data_Sync_dut/SYNC_bus_reg[4]
+         Data_Sync_dut/SYNC_bus_reg[6]
+         Data_Sync_dut/SYNC_bus_reg[5]
+         Data_Sync_dut/pulse_gen_reg
+         Data_Sync_dut/SYNC_bus_reg[3]
+         Data_Sync_dut/SYNC_bus_reg[0]
+         Data_Sync_dut/SYNC_bus_reg[2]
+         Data_Sync_dut/SYNC_bus_reg[1]
+         Data_Sync_dut/enable_pulse_reg
+         Data_Sync_dut/FF_Stage_reg[0]
+         SYS_CTRL_dut/Addr_next_reg[7]
+         SYS_CTRL_dut/Addr_next_reg[6]
+         SYS_CTRL_dut/Addr_next_reg[5]
+         SYS_CTRL_dut/Addr_next_reg[4]
+         SYS_CTRL_dut/Addr_next_reg[3]
+         SYS_CTRL_dut/Addr_next_reg[2]
+         SYS_CTRL_dut/Addr_next_reg[1]
+         SYS_CTRL_dut/Addr_next_reg[0]
+         SYS_CTRL_dut/Counter_reg[1]
+         SYS_CTRL_dut/Counter_reg[0]
+         SYS_CTRL_dut/flag_1_reg
+         SYS_CTRL_dut/current_state_reg[2]
+         SYS_CTRL_dut/current_state_reg[3]
+         SYS_CTRL_dut/current_state_reg[0]
+         SYS_CTRL_dut/current_state_reg[1]
+         Reg_file_dut/reg_file_reg[1][0]
+         Reg_file_dut/reg_file_reg[5][7]
+         Reg_file_dut/reg_file_reg[5][6]
+         Reg_file_dut/reg_file_reg[5][5]
+         Reg_file_dut/reg_file_reg[5][4]
+         Reg_file_dut/reg_file_reg[5][3]
+         Reg_file_dut/reg_file_reg[5][2]
+         Reg_file_dut/reg_file_reg[5][1]
+         Reg_file_dut/reg_file_reg[5][0]
+         Reg_file_dut/reg_file_reg[9][7]
+         Reg_file_dut/reg_file_reg[9][6]
+         Reg_file_dut/reg_file_reg[9][5]
+         Reg_file_dut/reg_file_reg[9][4]
+         Reg_file_dut/reg_file_reg[9][3]
+         Reg_file_dut/reg_file_reg[9][2]
+         Reg_file_dut/reg_file_reg[9][1]
+         Reg_file_dut/reg_file_reg[9][0]
+         Reg_file_dut/reg_file_reg[13][7]
+         Reg_file_dut/reg_file_reg[13][6]
+         Reg_file_dut/reg_file_reg[13][5]
+         Reg_file_dut/reg_file_reg[13][4]
+         Reg_file_dut/reg_file_reg[13][3]
+         Reg_file_dut/reg_file_reg[13][2]
+         Reg_file_dut/reg_file_reg[13][1]
+         Reg_file_dut/reg_file_reg[13][0]
+         Reg_file_dut/reg_file_reg[7][7]
+         Reg_file_dut/reg_file_reg[7][6]
+         Reg_file_dut/reg_file_reg[7][5]
+         Reg_file_dut/reg_file_reg[7][4]
+         Reg_file_dut/reg_file_reg[7][3]
+         Reg_file_dut/reg_file_reg[7][2]
+         Reg_file_dut/reg_file_reg[7][1]
+         Reg_file_dut/reg_file_reg[7][0]
+         Reg_file_dut/reg_file_reg[11][7]
+         Reg_file_dut/reg_file_reg[11][6]
+         Reg_file_dut/reg_file_reg[11][5]
+         Reg_file_dut/reg_file_reg[11][4]
+         Reg_file_dut/reg_file_reg[11][3]
+         Reg_file_dut/reg_file_reg[11][2]
+         Reg_file_dut/reg_file_reg[11][1]
+         Reg_file_dut/reg_file_reg[11][0]
+         Reg_file_dut/reg_file_reg[15][7]
+         Reg_file_dut/reg_file_reg[15][6]
+         Reg_file_dut/reg_file_reg[15][5]
+         Reg_file_dut/reg_file_reg[15][4]
+         Reg_file_dut/reg_file_reg[15][3]
+         Reg_file_dut/reg_file_reg[15][2]
+         Reg_file_dut/reg_file_reg[15][1]
+         Reg_file_dut/reg_file_reg[15][0]
+         Reg_file_dut/reg_file_reg[6][7]
+         Reg_file_dut/reg_file_reg[6][6]
+         Reg_file_dut/reg_file_reg[6][5]
+         Reg_file_dut/reg_file_reg[6][4]
+         Reg_file_dut/reg_file_reg[6][3]
+         Reg_file_dut/reg_file_reg[6][2]
+         Reg_file_dut/reg_file_reg[6][1]
+         Reg_file_dut/reg_file_reg[6][0]
+         Reg_file_dut/reg_file_reg[10][7]
+         Reg_file_dut/reg_file_reg[10][6]
+         Reg_file_dut/reg_file_reg[10][5]
+         Reg_file_dut/reg_file_reg[10][4]
+         Reg_file_dut/reg_file_reg[10][3]
+         Reg_file_dut/reg_file_reg[10][2]
+         Reg_file_dut/reg_file_reg[10][1]
+         Reg_file_dut/reg_file_reg[10][0]
+         Reg_file_dut/reg_file_reg[14][7]
+         Reg_file_dut/reg_file_reg[14][6]
+         Reg_file_dut/reg_file_reg[14][5]
+         Reg_file_dut/reg_file_reg[14][4]
+         Reg_file_dut/reg_file_reg[14][3]
+         Reg_file_dut/reg_file_reg[14][2]
+         Reg_file_dut/reg_file_reg[14][1]
+         Reg_file_dut/reg_file_reg[14][0]
+         Reg_file_dut/reg_file_reg[4][7]
+         Reg_file_dut/reg_file_reg[4][6]
+         Reg_file_dut/reg_file_reg[4][5]
+         Reg_file_dut/reg_file_reg[4][4]
+         Reg_file_dut/reg_file_reg[4][3]
+         Reg_file_dut/reg_file_reg[4][2]
+         Reg_file_dut/reg_file_reg[4][1]
+         Reg_file_dut/reg_file_reg[4][0]
+         Reg_file_dut/reg_file_reg[8][7]
+         Reg_file_dut/reg_file_reg[8][6]
+         Reg_file_dut/reg_file_reg[8][5]
+         Reg_file_dut/reg_file_reg[8][4]
+         Reg_file_dut/reg_file_reg[8][3]
+         Reg_file_dut/reg_file_reg[8][2]
+         Reg_file_dut/reg_file_reg[8][1]
+         Reg_file_dut/reg_file_reg[8][0]
+         Reg_file_dut/reg_file_reg[12][7]
+         Reg_file_dut/reg_file_reg[12][6]
+         Reg_file_dut/reg_file_reg[12][5]
+         Reg_file_dut/reg_file_reg[12][4]
+         Reg_file_dut/reg_file_reg[12][3]
+         Reg_file_dut/reg_file_reg[12][2]
+         Reg_file_dut/reg_file_reg[12][1]
+         Reg_file_dut/reg_file_reg[12][0]
+         Reg_file_dut/RdData_reg[7]
+         Reg_file_dut/RdData_reg[6]
+         Reg_file_dut/RdData_reg[5]
+         Reg_file_dut/RdData_reg[4]
+         Reg_file_dut/RdData_reg[3]
+         Reg_file_dut/RdData_reg[2]
+         Reg_file_dut/RdData_reg[1]
+         Reg_file_dut/RdData_reg[0]
+         Reg_file_dut/RdData_Valid_reg
+         Reg_file_dut/reg_file_reg[0][2]
+         Reg_file_dut/reg_file_reg[0][0]
+         Reg_file_dut/reg_file_reg[0][3]
+         Reg_file_dut/reg_file_reg[0][4]
+         Reg_file_dut/reg_file_reg[0][1]
+         Reg_file_dut/reg_file_reg[0][6]
+         Reg_file_dut/reg_file_reg[0][7]
+         Reg_file_dut/reg_file_reg[1][7]
+         Reg_file_dut/reg_file_reg[1][3]
+         Reg_file_dut/reg_file_reg[1][6]
+         Reg_file_dut/reg_file_reg[1][5]
+         Reg_file_dut/reg_file_reg[1][4]
+         Reg_file_dut/reg_file_reg[0][5]
+         Reg_file_dut/reg_file_reg[1][1]
+         Reg_file_dut/reg_file_reg[1][2]
+         ALU_dut/ALU_OUT_reg[8]
+         ALU_dut/ALU_OUT_reg[15]
+         ALU_dut/ALU_OUT_reg[14]
+         ALU_dut/ALU_OUT_reg[13]
+         ALU_dut/ALU_OUT_reg[12]
+         ALU_dut/ALU_OUT_reg[11]
+         ALU_dut/ALU_OUT_reg[10]
+         ALU_dut/ALU_OUT_reg[9]
+         ALU_dut/ALU_OUT_reg[7]
+         ALU_dut/ALU_OUT_reg[6]
+         ALU_dut/ALU_OUT_reg[5]
+         ALU_dut/ALU_OUT_reg[4]
+         ALU_dut/ALU_OUT_reg[3]
+         ALU_dut/ALU_OUT_reg[2]
+         ALU_dut/OUT_VALID_reg
+         ALU_dut/ALU_OUT_reg[0]
+         ALU_dut/ALU_OUT_reg[1]
+         UART_TX_dut/Counter_reg[2]
+         UART_TX_dut/current_state_reg[0]
+         UART_TX_dut/current_state_reg[2]
+         UART_TX_dut/Counter_reg[1]
+         UART_TX_dut/current_state_reg[1]
+         UART_TX_dut/Counter_reg[0]
+         UART_RX_dut/out_next_reg[7]
+         UART_RX_dut/out_next_reg[6]
+         UART_RX_dut/out_next_reg[5]
+         UART_RX_dut/out_next_reg[4]
+         UART_RX_dut/out_next_reg[3]
+         UART_RX_dut/out_next_reg[2]
+         UART_RX_dut/out_next_reg[1]
+         UART_RX_dut/out_next_reg[0]
+         UART_RX_dut/current_state_reg[2]
+         UART_RX_dut/current_state_reg[0]
+         UART_RX_dut/current_state_reg[1]
+         pulse_gen_dut/Q_in_reg
+         pulse_gen_dut/out_reg
+         UART_RX_dut/dut_sample/out_next_2_reg
+         UART_RX_dut/dut_sample/out_next_1_reg
+         UART_RX_dut/dut_sample/out_next_3_reg
+         UART_RX_dut/edge_bit_dut/Edge_Counter_reg[4]
+         UART_RX_dut/edge_bit_dut/Bit_Counter_reg[2]
+         UART_RX_dut/edge_bit_dut/Bit_Counter_reg[3]
+         UART_RX_dut/edge_bit_dut/Bit_Counter_reg[1]
+         UART_RX_dut/edge_bit_dut/Bit_Counter_reg[0]
+         UART_RX_dut/edge_bit_dut/Edge_Counter_reg[1]
+         UART_RX_dut/edge_bit_dut/Edge_Counter_reg[2]
+         UART_RX_dut/edge_bit_dut/Edge_Counter_reg[3]
+         UART_RX_dut/edge_bit_dut/Edge_Counter_reg[0]
+         UART_RX_dut/srt_dut/strt_glitch_reg
+         UART_RX_dut/stp_dut/stp_err_reg
+         UART_RX_dut/deser_dut/P_DATA_reg[5]
+         UART_RX_dut/deser_dut/P_DATA_reg[1]
+         UART_RX_dut/deser_dut/P_DATA_reg[4]
+         UART_RX_dut/deser_dut/P_DATA_reg[0]
+         UART_RX_dut/deser_dut/P_DATA_reg[7]
+         UART_RX_dut/deser_dut/P_DATA_reg[3]
+         UART_RX_dut/deser_dut/P_DATA_reg[6]
+         UART_RX_dut/deser_dut/P_DATA_reg[2]
+         ASYNC_FIFO_dut/sync_w2r/FF_Stage_reg[1][2]
+         ASYNC_FIFO_dut/sync_w2r/FF_Stage_reg[1][0]
+         ASYNC_FIFO_dut/sync_w2r/FF_Stage_reg[1][3]
+         ASYNC_FIFO_dut/sync_w2r/FF_Stage_reg[1][1]
+         ASYNC_FIFO_dut/sync_w2r/FF_Stage_reg[0][4]
+         ASYNC_FIFO_dut/sync_w2r/FF_Stage_reg[0][3]
+         ASYNC_FIFO_dut/sync_w2r/FF_Stage_reg[0][2]
+         ASYNC_FIFO_dut/sync_w2r/FF_Stage_reg[0][1]
+         ASYNC_FIFO_dut/sync_w2r/FF_Stage_reg[0][0]
+         ASYNC_FIFO_dut/sync_w2r/FF_Stage_reg[1][4]
+         ASYNC_FIFO_dut/sync_r2w/FF_Stage_reg[1][0]
+         ASYNC_FIFO_dut/sync_r2w/FF_Stage_reg[1][3]
+         ASYNC_FIFO_dut/sync_r2w/FF_Stage_reg[1][2]
+         ASYNC_FIFO_dut/sync_r2w/FF_Stage_reg[1][1]
+         ASYNC_FIFO_dut/sync_r2w/FF_Stage_reg[0][4]
+         ASYNC_FIFO_dut/sync_r2w/FF_Stage_reg[0][3]
+         ASYNC_FIFO_dut/sync_r2w/FF_Stage_reg[0][2]
+         ASYNC_FIFO_dut/sync_r2w/FF_Stage_reg[0][1]
+         ASYNC_FIFO_dut/sync_r2w/FF_Stage_reg[0][0]
+         ASYNC_FIFO_dut/sync_r2w/FF_Stage_reg[1][4]
+         ASYNC_FIFO_dut/fifo_wrptr_full_dut/gray_Wptr_reg[3]
+         ASYNC_FIFO_dut/fifo_wrptr_full_dut/gray_Wptr_reg[2]
+         ASYNC_FIFO_dut/fifo_wrptr_full_dut/gray_Wptr_reg[1]
+         ASYNC_FIFO_dut/fifo_wrptr_full_dut/gray_Wptr_reg[0]
+         ASYNC_FIFO_dut/fifo_wrptr_full_dut/Wptr_reg[3]
+         ASYNC_FIFO_dut/fifo_wrptr_full_dut/Wptr_reg[0]
+         ASYNC_FIFO_dut/fifo_wrptr_full_dut/Wptr_reg[2]
+         ASYNC_FIFO_dut/fifo_wrptr_full_dut/Wptr_reg[1]
+         ASYNC_FIFO_dut/fifo_wrptr_full_dut/Wptr_reg[4]
+         ASYNC_FIFO_dut/fifo_rdptr_empty_dut/gray_Rptr_reg[3]
+         ASYNC_FIFO_dut/fifo_rdptr_empty_dut/gray_Rptr_reg[2]
+         ASYNC_FIFO_dut/fifo_rdptr_empty_dut/gray_Rptr_reg[1]
+         ASYNC_FIFO_dut/fifo_rdptr_empty_dut/gray_Rptr_reg[0]
+         ASYNC_FIFO_dut/fifo_rdptr_empty_dut/Rptr_reg[4]
+         ASYNC_FIFO_dut/fifo_rdptr_empty_dut/Rptr_reg[0]
+         ASYNC_FIFO_dut/fifo_rdptr_empty_dut/Rptr_reg[3]
+         ASYNC_FIFO_dut/fifo_rdptr_empty_dut/Rptr_reg[1]
+         ASYNC_FIFO_dut/fifo_rdptr_empty_dut/Rptr_reg[2]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/out_next_reg[7]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/out_next_reg[6]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/out_next_reg[5]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/out_next_reg[4]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/out_next_reg[3]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/out_next_reg[2]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/out_next_reg[1]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/out_next_reg[0]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/read_next_reg[6]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/read_next_reg[5]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/read_next_reg[4]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/read_next_reg[3]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/read_next_reg[2]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/read_next_reg[1]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/read_next_reg[0]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[13][7]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[9][7]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[5][7]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[1][7]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[13][6]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[9][6]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[5][6]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[1][6]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[13][5]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[9][5]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[5][5]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[1][5]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[13][4]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[9][4]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[5][4]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[1][4]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[13][3]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[9][3]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[5][3]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[1][3]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[13][2]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[9][2]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[5][2]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[1][2]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[13][1]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[9][1]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[5][1]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[1][1]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[13][0]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[9][0]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[5][0]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[1][0]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[15][7]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[11][7]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[7][7]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[3][7]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[15][6]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[11][6]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[7][6]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[3][6]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[15][5]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[11][5]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[7][5]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[3][5]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[15][4]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[11][4]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[7][4]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[3][4]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[15][3]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[11][3]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[7][3]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[3][3]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[15][2]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[11][2]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[7][2]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[3][2]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[15][1]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[11][1]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[7][1]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[3][1]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[15][0]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[11][0]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[7][0]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[3][0]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[14][7]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[10][7]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[6][7]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[2][7]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[14][6]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[10][6]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[6][6]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[2][6]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[14][5]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[10][5]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[6][5]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[2][5]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[14][4]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[10][4]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[6][4]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[2][4]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[14][3]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[10][3]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[6][3]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[2][3]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[14][2]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[10][2]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[6][2]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[2][2]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[14][1]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[10][1]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[6][1]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[2][1]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[14][0]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[10][0]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[6][0]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[2][0]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[12][7]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[8][7]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[4][7]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][7]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[12][6]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[8][6]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[4][6]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][6]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[12][5]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[8][5]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[4][5]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][5]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[12][4]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[8][4]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[4][4]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][4]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[12][3]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[8][3]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[4][3]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][3]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[12][2]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[8][2]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[4][2]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][2]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[12][1]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[8][1]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[4][1]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][1]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[12][0]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[8][0]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[4][0]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][0]
+         ASYNC_FIFO_dut/FIFO_MEMORY_dut/read_next_reg[7]
+         Rst_Sync_D2_dut/FF_Stage_reg[0]
+         Rst_Sync_D2_dut/FF_Stage_reg[1]
+
+....Inferring feed-through connections....
+Information: Test design rule checking completed. (TEST-123)
+  Running test coverage estimation...
+ 21326 faults were added to fault list.
+ 0           10278   6394         0/0/0    68.93%      0.02
+ 0            2347   4047         0/0/0    80.20%      0.03
+ 0            1039   3005         3/0/1    85.19%      0.05
+ 0             791   2213         4/0/1    89.00%      0.05
+ 0             408   1800         8/1/3    90.97%      0.06
+ 0             293   1502        11/1/4    92.40%      0.06
+ 0             228   1272        13/1/4    93.50%      0.08
+ 0             230   1039        15/1/4    94.62%      0.09
+ 0             166    864        20/1/4    95.46%      0.09
+ 0             158    703        23/1/4    96.23%      0.10
+ 0             123    556        34/2/7    96.93%      0.10
+ 0             123    421        41/3/8    97.57%      0.11
+ 0              99    309        48/7/9    98.09%      0.12
+ 0              75    224       57/7/10    98.50%      0.13
+ 0              56    153      65/10/13    98.82%      0.13
+ 0              48     80      81/13/15    99.16%      0.15
+ 0              37     21      99/16/16    99.43%      0.15
+ 
+            Pattern Summary Report
+ -----------------------------------------------
+ #internal patterns                           0
+ -----------------------------------------------
+ 
+
+     Uncollapsed Stuck Fault Summary Report
+ -----------------------------------------------
+ fault class                     code   #faults
+ ------------------------------  ----  ---------
+ Detected                         DT      20587
+ Possibly detected                PT          0
+ Undetectable                     UD        620
+ ATPG untestable                  AU         98
+ Not detected                     ND         21
+ -----------------------------------------------
+ total faults                             21326
+ test coverage                            99.43%
+ -----------------------------------------------
+  Information: The test coverage above may be inferior
+               than the real test coverage with customized
+               protocol and test simulation library.
+1
+##################### Close Formality Setup file ###########################
+set_svf -off
+1
+#############################################################################
+# Write out files
+#############################################################################
+write_file -format verilog -hierarchy -output netlists/$top_module.ddc
+Writing verilog file '/home/IC/final_system/DFT/netlists/SYS_TOP_dft.ddc'.
+Warning: Verilog 'assign' or 'tran' statements are written out. (VO-4)
+Warning: Verilog writer has added 2 nets to module ASYNC_FIFO_test_1 using SYNOPSYS_UNCONNECTED_ as prefix.  Please use the change_names command to make the correct changes before invoking the verilog writer.  (VO-11)
+Warning: Verilog writer has added 4 nets to module SYS_TOP using SYNOPSYS_UNCONNECTED_ as prefix.  Please use the change_names command to make the correct changes before invoking the verilog writer.  (VO-11)
+1
+write_file -format verilog -hierarchy -output netlists/$top_module.v
+Writing verilog file '/home/IC/final_system/DFT/netlists/SYS_TOP_dft.v'.
+Warning: Verilog 'assign' or 'tran' statements are written out. (VO-4)
+Warning: Verilog writer has added 2 nets to module ASYNC_FIFO_test_1 using SYNOPSYS_UNCONNECTED_ as prefix.  Please use the change_names command to make the correct changes before invoking the verilog writer.  (VO-11)
+Warning: Verilog writer has added 4 nets to module SYS_TOP using SYNOPSYS_UNCONNECTED_ as prefix.  Please use the change_names command to make the correct changes before invoking the verilog writer.  (VO-11)
+1
+write_sdf  sdf/$top_module.sdf
+Information: Annotated 'cell' delays are assumed to include load delay. (UID-282)
+Information: Writing timing information to file '/home/IC/final_system/DFT/sdf/SYS_TOP_dft.sdf'. (WT-3)
+Information: Updating design information... (UID-85)
+1
+write_sdc  -nosplit sdc/$top_module.sdc
+1
+####################### reporting ##########################################
+report_area -hierarchy > reports/area.rpt
+report_power -hierarchy > reports/power.rpt
+report_timing -delay_type min -max_paths 20 > reports/hold.rpt
+report_timing -delay_type max -max_paths 20 > reports/setup.rpt
+report_clock -attributes > reports/clocks.rpt
+report_constraint -all_violators -nosplit > reports/constraints.rpt
+################# starting graphical user interface #######################
+gui_start
+Current design is 'SYS_TOP'.
+#exit
+dc_shell> dc_shell> Loading db file '/opt/Synopsys/Synplify2015/libraries/syn/generic.sdb'
+Current design is 'SYS_TOP'.

@@ -1,0 +1,2744 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 20
+Design : SYS_TOP
+Version: K-2015.06
+Date   : Thu Sep 21 05:55:15 2023
+****************************************
+
+Operating Conditions: scmetro_tsmc_cl013g_rvt_ss_1p08v_125c   Library: scmetro_tsmc_cl013g_rvt_ss_1p08v_125c
+Wire Load Model Mode: top
+
+  Startpoint: Reg_file_dut/reg_file_reg[1][2]
+              (rising edge-triggered flip-flop clocked by REF_CLK)
+  Endpoint: ALU_dut/ALU_OUT_reg[0]
+            (rising edge-triggered flip-flop clocked by REF_CLK)
+  Path Group: REF_CLK
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock REF_CLK (rise edge)                               0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  Reg_file_dut/reg_file_reg[1][2]/CK (SDFFRHQX2M)         0.00       0.00 r
+  Reg_file_dut/reg_file_reg[1][2]/Q (SDFFRHQX2M)          0.30       0.30 f
+  Reg_file_dut/REG1[2] (Register_File_10_0_1_test_1)      0.00       0.30 f
+  ALU_dut/B[2] (ALU_00000008_00000004_test_1)             0.00       0.30 f
+  ALU_dut/div_32/b[2] (ALU_00000008_00000004_DW_div_uns_1)
+                                                          0.00       0.30 f
+  ALU_dut/div_32/U15/Y (INVX4M)                           0.35       0.65 r
+  ALU_dut/div_32/U113/Y (AND3X4M)                         0.25       0.91 r
+  ALU_dut/div_32/U56/Y (NAND2X6M)                         0.07       0.97 f
+  ALU_dut/div_32/U55/Y (MXI2X6M)                          0.13       1.10 f
+  ALU_dut/div_32/U5/Y (INVX8M)                            0.07       1.17 r
+  ALU_dut/div_32/U21/Y (NAND2X3M)                         0.06       1.24 f
+  ALU_dut/div_32/U29/Y (NAND3X4M)                         0.09       1.33 r
+  ALU_dut/div_32/U28/Y (NAND2X4M)                         0.06       1.39 f
+  ALU_dut/div_32/U64/Y (CLKINVX3M)                        0.06       1.45 r
+  ALU_dut/div_32/U32/Y (NAND2X4M)                         0.06       1.51 f
+  ALU_dut/div_32/U66/Y (NAND2X6M)                         0.09       1.60 r
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_5_1/CO (ADDFHX8M)
+                                                          0.32       1.92 r
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_5_2/CO (ADDFHX4M)
+                                                          0.16       2.09 r
+  ALU_dut/div_32/U54/Y (NOR2BX4M)                         0.18       2.27 r
+  ALU_dut/div_32/U23/Y (MXI2X3M)                          0.16       2.43 r
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_4_2/CO (ADDFHX2M)
+                                                          0.43       2.86 r
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_4_3/CO (ADDFHX2M)
+                                                          0.15       3.01 r
+  ALU_dut/div_32/U30/Y (CLKINVX1M)                        0.07       3.09 f
+  ALU_dut/div_32/U60/Y (NAND2BX2M)                        0.18       3.27 f
+  ALU_dut/div_32/U58/Y (INVX3M)                           0.11       3.38 r
+  ALU_dut/div_32/U27/Y (NAND2X4M)                         0.07       3.44 f
+  ALU_dut/div_32/U45/Y (NAND2X4M)                         0.11       3.56 r
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_3_2/CO (ADDFHX4M)
+                                                          0.36       3.92 r
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_3_3/CO (ADDFHX2M)
+                                                          0.16       4.08 r
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_3_4/CO (ADDFHX2M)
+                                                          0.17       4.25 r
+  ALU_dut/div_32/U24/Y (CLKINVX3M)                        0.07       4.32 f
+  ALU_dut/div_32/U39/Y (OR2X4M)                           0.22       4.53 f
+  ALU_dut/div_32/U14/Y (MXI2X6M)                          0.13       4.66 f
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_2_1/CO (ADDFHX4M)
+                                                          0.23       4.89 f
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_2_2/CO (ADDFHX4M)
+                                                          0.22       5.11 f
+  ALU_dut/div_32/U44/Y (NAND2X1M)                         0.08       5.19 r
+  ALU_dut/div_32/U47/Y (NAND3X2M)                         0.13       5.32 f
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_2_4/CO (ADDFHX4M)
+                                                          0.24       5.55 f
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_2_5/CO (ADDFHX4M)
+                                                          0.22       5.77 f
+  ALU_dut/div_32/U38/Y (CLKINVX6M)                        0.05       5.82 r
+  ALU_dut/div_32/U96/Y (NAND2BX2M)                        0.12       5.94 r
+  ALU_dut/div_32/U78/Y (INVX3M)                           0.07       6.01 f
+  ALU_dut/div_32/U10/Y (MXI2X1M)                          0.14       6.14 r
+  ALU_dut/div_32/U73/Y (INVX2M)                           0.11       6.26 f
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_1_2/CO (ADDFHX4M)
+                                                          0.35       6.61 f
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_1_3/CO (ADDFHX4M)
+                                                          0.22       6.83 f
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_1_4/CO (ADDFHX4M)
+                                                          0.22       7.05 f
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_1_5/CO (ADDFHX4M)
+                                                          0.22       7.27 f
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_1_6/CO (ADDFHX4M)
+                                                          0.21       7.48 f
+  ALU_dut/div_32/U77/Y (NOR2BX2M)                         0.15       7.64 f
+  ALU_dut/div_32/U72/Y (MXI2X2M)                          0.15       7.78 f
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_0_1/CO (ADDFHX4M)
+                                                          0.22       8.00 f
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_0_2/CO (ADDFHX1M)
+                                                          0.26       8.26 f
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_0_3/CO (ADDFHX2M)
+                                                          0.26       8.52 f
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_0_4/CO (ADDFHX4M)
+                                                          0.23       8.74 f
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_0_5/CO (ADDFHX4M)
+                                                          0.21       8.95 f
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_0_6/CO (ADDFHX2M)
+                                                          0.23       9.18 f
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_0_7/CO (ADDFHX2M)
+                                                          0.22       9.40 f
+  ALU_dut/div_32/quotient[0] (ALU_00000008_00000004_DW_div_uns_1)
+                                                          0.00       9.40 f
+  ALU_dut/U11/Y (CLKNAND2X2M)                             0.06       9.46 r
+  ALU_dut/U19/Y (NAND4X2M)                                0.09       9.55 f
+  ALU_dut/ALU_OUT_reg[0]/D (SDFFRHQX1M)                   0.00       9.55 f
+  data arrival time                                                  9.55
+
+  clock REF_CLK (rise edge)                              10.00      10.00
+  clock network delay (ideal)                             0.00      10.00
+  clock uncertainty                                      -0.20       9.80
+  ALU_dut/ALU_OUT_reg[0]/CK (SDFFRHQX1M)                  0.00       9.80 r
+  library setup time                                     -0.24       9.56
+  data required time                                                 9.56
+  --------------------------------------------------------------------------
+  data required time                                                 9.56
+  data arrival time                                                 -9.55
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.01
+
+
+  Startpoint: Reg_file_dut/reg_file_reg[1][2]
+              (rising edge-triggered flip-flop clocked by REF_CLK)
+  Endpoint: ALU_dut/ALU_OUT_reg[1]
+            (rising edge-triggered flip-flop clocked by REF_CLK)
+  Path Group: REF_CLK
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock REF_CLK (rise edge)                               0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  Reg_file_dut/reg_file_reg[1][2]/CK (SDFFRHQX2M)         0.00       0.00 r
+  Reg_file_dut/reg_file_reg[1][2]/Q (SDFFRHQX2M)          0.30       0.30 f
+  Reg_file_dut/REG1[2] (Register_File_10_0_1_test_1)      0.00       0.30 f
+  ALU_dut/B[2] (ALU_00000008_00000004_test_1)             0.00       0.30 f
+  ALU_dut/div_32/b[2] (ALU_00000008_00000004_DW_div_uns_1)
+                                                          0.00       0.30 f
+  ALU_dut/div_32/U15/Y (INVX4M)                           0.35       0.65 r
+  ALU_dut/div_32/U113/Y (AND3X4M)                         0.25       0.91 r
+  ALU_dut/div_32/U56/Y (NAND2X6M)                         0.07       0.97 f
+  ALU_dut/div_32/U55/Y (MXI2X6M)                          0.13       1.10 f
+  ALU_dut/div_32/U5/Y (INVX8M)                            0.07       1.17 r
+  ALU_dut/div_32/U21/Y (NAND2X3M)                         0.06       1.24 f
+  ALU_dut/div_32/U29/Y (NAND3X4M)                         0.09       1.33 r
+  ALU_dut/div_32/U28/Y (NAND2X4M)                         0.06       1.39 f
+  ALU_dut/div_32/U64/Y (CLKINVX3M)                        0.06       1.45 r
+  ALU_dut/div_32/U32/Y (NAND2X4M)                         0.06       1.51 f
+  ALU_dut/div_32/U66/Y (NAND2X6M)                         0.09       1.60 r
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_5_1/CO (ADDFHX8M)
+                                                          0.32       1.92 r
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_5_2/CO (ADDFHX4M)
+                                                          0.16       2.09 r
+  ALU_dut/div_32/U54/Y (NOR2BX4M)                         0.18       2.27 r
+  ALU_dut/div_32/U23/Y (MXI2X3M)                          0.16       2.43 r
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_4_2/CO (ADDFHX2M)
+                                                          0.43       2.86 r
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_4_3/CO (ADDFHX2M)
+                                                          0.15       3.01 r
+  ALU_dut/div_32/U30/Y (CLKINVX1M)                        0.07       3.09 f
+  ALU_dut/div_32/U60/Y (NAND2BX2M)                        0.18       3.27 f
+  ALU_dut/div_32/U58/Y (INVX3M)                           0.11       3.38 r
+  ALU_dut/div_32/U27/Y (NAND2X4M)                         0.07       3.44 f
+  ALU_dut/div_32/U45/Y (NAND2X4M)                         0.11       3.56 r
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_3_2/CO (ADDFHX4M)
+                                                          0.36       3.92 r
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_3_3/CO (ADDFHX2M)
+                                                          0.16       4.08 r
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_3_4/CO (ADDFHX2M)
+                                                          0.17       4.25 r
+  ALU_dut/div_32/U24/Y (CLKINVX3M)                        0.07       4.32 f
+  ALU_dut/div_32/U39/Y (OR2X4M)                           0.22       4.53 f
+  ALU_dut/div_32/U14/Y (MXI2X6M)                          0.13       4.66 f
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_2_1/CO (ADDFHX4M)
+                                                          0.23       4.89 f
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_2_2/CO (ADDFHX4M)
+                                                          0.22       5.11 f
+  ALU_dut/div_32/U44/Y (NAND2X1M)                         0.08       5.19 r
+  ALU_dut/div_32/U47/Y (NAND3X2M)                         0.13       5.32 f
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_2_4/CO (ADDFHX4M)
+                                                          0.24       5.55 f
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_2_5/CO (ADDFHX4M)
+                                                          0.22       5.77 f
+  ALU_dut/div_32/U38/Y (CLKINVX6M)                        0.05       5.82 r
+  ALU_dut/div_32/U96/Y (NAND2BX2M)                        0.12       5.94 r
+  ALU_dut/div_32/U78/Y (INVX3M)                           0.07       6.01 f
+  ALU_dut/div_32/U10/Y (MXI2X1M)                          0.14       6.14 r
+  ALU_dut/div_32/U73/Y (INVX2M)                           0.11       6.26 f
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_1_2/CO (ADDFHX4M)
+                                                          0.35       6.61 f
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_1_3/CO (ADDFHX4M)
+                                                          0.22       6.83 f
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_1_4/CO (ADDFHX4M)
+                                                          0.22       7.05 f
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_1_5/CO (ADDFHX4M)
+                                                          0.22       7.27 f
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_1_6/CO (ADDFHX4M)
+                                                          0.21       7.48 f
+  ALU_dut/div_32/U123/Y (NAND2BX2M)                       0.09       7.57 r
+  ALU_dut/div_32/U80/Y (INVX4M)                           0.07       7.65 f
+  ALU_dut/div_32/quotient[1] (ALU_00000008_00000004_DW_div_uns_1)
+                                                          0.00       7.65 f
+  ALU_dut/U80/Y (AO22X1M)                                 0.34       7.98 f
+  ALU_dut/U78/Y (AOI211X2M)                               0.18       8.17 r
+  ALU_dut/U111/Y (AO2B2X2M)                               0.35       8.52 f
+  ALU_dut/U108/Y (NAND4BX1M)                              0.24       8.75 f
+  ALU_dut/ALU_OUT_reg[1]/D (SDFFRQX2M)                    0.00       8.75 f
+  data arrival time                                                  8.75
+
+  clock REF_CLK (rise edge)                              10.00      10.00
+  clock network delay (ideal)                             0.00      10.00
+  clock uncertainty                                      -0.20       9.80
+  ALU_dut/ALU_OUT_reg[1]/CK (SDFFRQX2M)                   0.00       9.80 r
+  library setup time                                     -0.42       9.38
+  data required time                                                 9.38
+  --------------------------------------------------------------------------
+  data required time                                                 9.38
+  data arrival time                                                 -8.75
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.62
+
+
+  Startpoint: Reg_file_dut/reg_file_reg[0][0]
+              (rising edge-triggered flip-flop clocked by REF_CLK)
+  Endpoint: ALU_dut/ALU_OUT_reg[15]
+            (rising edge-triggered flip-flop clocked by REF_CLK)
+  Path Group: REF_CLK
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock REF_CLK (rise edge)                               0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  Reg_file_dut/reg_file_reg[0][0]/CK (SDFFRQX2M)          0.00       0.00 r
+  Reg_file_dut/reg_file_reg[0][0]/Q (SDFFRQX2M)           0.70       0.70 r
+  Reg_file_dut/REG0[0] (Register_File_10_0_1_test_1)      0.00       0.70 r
+  ALU_dut/A[0] (ALU_00000008_00000004_test_1)             0.00       0.70 r
+  ALU_dut/mult_31/A[0] (ALU_00000008_00000004_DW02_mult_0)
+                                                          0.00       0.70 r
+  ALU_dut/mult_31/U43/Y (INVX2M)                          0.19       0.90 f
+  ALU_dut/mult_31/U115/Y (NOR2X1M)                        0.19       1.09 r
+  ALU_dut/mult_31/U5/Y (AND2X2M)                          0.16       1.25 r
+  ALU_dut/mult_31/S2_2_2/CO (ADDFX2M)                     0.54       1.79 r
+  ALU_dut/mult_31/S2_3_2/CO (ADDFX2M)                     0.55       2.34 r
+  ALU_dut/mult_31/S2_4_2/CO (ADDFX2M)                     0.55       2.89 r
+  ALU_dut/mult_31/S2_5_2/CO (ADDFX2M)                     0.55       3.44 r
+  ALU_dut/mult_31/S2_6_2/CO (ADDFX2M)                     0.55       3.99 r
+  ALU_dut/mult_31/S4_2/S (ADDFX2M)                        0.58       4.57 f
+  ALU_dut/mult_31/U21/Y (CLKXOR2X2M)                      0.31       4.88 r
+  ALU_dut/mult_31/FS_1/A[7] (ALU_00000008_00000004_DW01_add_1)
+                                                          0.00       4.88 r
+  ALU_dut/mult_31/FS_1/U2/Y (NAND2X2M)                    0.07       4.95 f
+  ALU_dut/mult_31/FS_1/U31/Y (OA21X1M)                    0.37       5.32 f
+  ALU_dut/mult_31/FS_1/U28/Y (AOI2BB1X1M)                 0.26       5.58 f
+  ALU_dut/mult_31/FS_1/U26/Y (OA21X1M)                    0.40       5.98 f
+  ALU_dut/mult_31/FS_1/U21/Y (OAI21BX1M)                  0.25       6.23 r
+  ALU_dut/mult_31/FS_1/U19/Y (OAI21X1M)                   0.13       6.36 f
+  ALU_dut/mult_31/FS_1/U3/Y (AOI21BX2M)                   0.17       6.53 f
+  ALU_dut/mult_31/FS_1/U5/Y (XNOR2X2M)                    0.16       6.69 f
+  ALU_dut/mult_31/FS_1/SUM[13] (ALU_00000008_00000004_DW01_add_1)
+                                                          0.00       6.69 f
+  ALU_dut/mult_31/PRODUCT[15] (ALU_00000008_00000004_DW02_mult_0)
+                                                          0.00       6.69 f
+  ALU_dut/U126/Y (AOI22X1M)                               0.16       6.84 r
+  ALU_dut/U125/Y (NAND2X2M)                               0.07       6.92 f
+  ALU_dut/ALU_OUT_reg[15]/D (SDFFRQX2M)                   0.00       6.92 f
+  data arrival time                                                  6.92
+
+  clock REF_CLK (rise edge)                              10.00      10.00
+  clock network delay (ideal)                             0.00      10.00
+  clock uncertainty                                      -0.20       9.80
+  ALU_dut/ALU_OUT_reg[15]/CK (SDFFRQX2M)                  0.00       9.80 r
+  library setup time                                     -0.41       9.39
+  data required time                                                 9.39
+  --------------------------------------------------------------------------
+  data required time                                                 9.39
+  data arrival time                                                 -6.92
+  --------------------------------------------------------------------------
+  slack (MET)                                                        2.48
+
+
+  Startpoint: Reg_file_dut/reg_file_reg[0][0]
+              (rising edge-triggered flip-flop clocked by REF_CLK)
+  Endpoint: ALU_dut/ALU_OUT_reg[14]
+            (rising edge-triggered flip-flop clocked by REF_CLK)
+  Path Group: REF_CLK
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock REF_CLK (rise edge)                               0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  Reg_file_dut/reg_file_reg[0][0]/CK (SDFFRQX2M)          0.00       0.00 r
+  Reg_file_dut/reg_file_reg[0][0]/Q (SDFFRQX2M)           0.70       0.70 r
+  Reg_file_dut/REG0[0] (Register_File_10_0_1_test_1)      0.00       0.70 r
+  ALU_dut/A[0] (ALU_00000008_00000004_test_1)             0.00       0.70 r
+  ALU_dut/mult_31/A[0] (ALU_00000008_00000004_DW02_mult_0)
+                                                          0.00       0.70 r
+  ALU_dut/mult_31/U43/Y (INVX2M)                          0.19       0.90 f
+  ALU_dut/mult_31/U115/Y (NOR2X1M)                        0.19       1.09 r
+  ALU_dut/mult_31/U5/Y (AND2X2M)                          0.16       1.25 r
+  ALU_dut/mult_31/S2_2_2/CO (ADDFX2M)                     0.54       1.79 r
+  ALU_dut/mult_31/S2_3_2/CO (ADDFX2M)                     0.55       2.34 r
+  ALU_dut/mult_31/S2_4_2/CO (ADDFX2M)                     0.55       2.89 r
+  ALU_dut/mult_31/S2_5_2/CO (ADDFX2M)                     0.55       3.44 r
+  ALU_dut/mult_31/S2_6_2/CO (ADDFX2M)                     0.55       3.99 r
+  ALU_dut/mult_31/S4_2/S (ADDFX2M)                        0.58       4.57 f
+  ALU_dut/mult_31/U21/Y (CLKXOR2X2M)                      0.31       4.88 r
+  ALU_dut/mult_31/FS_1/A[7] (ALU_00000008_00000004_DW01_add_1)
+                                                          0.00       4.88 r
+  ALU_dut/mult_31/FS_1/U2/Y (NAND2X2M)                    0.07       4.95 f
+  ALU_dut/mult_31/FS_1/U31/Y (OA21X1M)                    0.37       5.32 f
+  ALU_dut/mult_31/FS_1/U28/Y (AOI2BB1X1M)                 0.26       5.58 f
+  ALU_dut/mult_31/FS_1/U26/Y (OA21X1M)                    0.40       5.98 f
+  ALU_dut/mult_31/FS_1/U21/Y (OAI21BX1M)                  0.25       6.23 r
+  ALU_dut/mult_31/FS_1/U20/Y (XOR3XLM)                    0.25       6.48 f
+  ALU_dut/mult_31/FS_1/SUM[12] (ALU_00000008_00000004_DW01_add_1)
+                                                          0.00       6.48 f
+  ALU_dut/mult_31/PRODUCT[14] (ALU_00000008_00000004_DW02_mult_0)
+                                                          0.00       6.48 f
+  ALU_dut/U124/Y (AOI22X1M)                               0.17       6.65 r
+  ALU_dut/U123/Y (NAND2X2M)                               0.07       6.72 f
+  ALU_dut/ALU_OUT_reg[14]/D (SDFFRQX2M)                   0.00       6.72 f
+  data arrival time                                                  6.72
+
+  clock REF_CLK (rise edge)                              10.00      10.00
+  clock network delay (ideal)                             0.00      10.00
+  clock uncertainty                                      -0.20       9.80
+  ALU_dut/ALU_OUT_reg[14]/CK (SDFFRQX2M)                  0.00       9.80 r
+  library setup time                                     -0.41       9.39
+  data required time                                                 9.39
+  --------------------------------------------------------------------------
+  data required time                                                 9.39
+  data arrival time                                                 -6.72
+  --------------------------------------------------------------------------
+  slack (MET)                                                        2.68
+
+
+  Startpoint: Reg_file_dut/reg_file_reg[1][2]
+              (rising edge-triggered flip-flop clocked by REF_CLK)
+  Endpoint: ALU_dut/ALU_OUT_reg[2]
+            (rising edge-triggered flip-flop clocked by REF_CLK)
+  Path Group: REF_CLK
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock REF_CLK (rise edge)                               0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  Reg_file_dut/reg_file_reg[1][2]/CK (SDFFRHQX2M)         0.00       0.00 r
+  Reg_file_dut/reg_file_reg[1][2]/Q (SDFFRHQX2M)          0.30       0.30 f
+  Reg_file_dut/REG1[2] (Register_File_10_0_1_test_1)      0.00       0.30 f
+  ALU_dut/B[2] (ALU_00000008_00000004_test_1)             0.00       0.30 f
+  ALU_dut/div_32/b[2] (ALU_00000008_00000004_DW_div_uns_1)
+                                                          0.00       0.30 f
+  ALU_dut/div_32/U15/Y (INVX4M)                           0.35       0.65 r
+  ALU_dut/div_32/U113/Y (AND3X4M)                         0.25       0.91 r
+  ALU_dut/div_32/U56/Y (NAND2X6M)                         0.07       0.97 f
+  ALU_dut/div_32/U55/Y (MXI2X6M)                          0.13       1.10 f
+  ALU_dut/div_32/U5/Y (INVX8M)                            0.07       1.17 r
+  ALU_dut/div_32/U21/Y (NAND2X3M)                         0.06       1.24 f
+  ALU_dut/div_32/U29/Y (NAND3X4M)                         0.09       1.33 r
+  ALU_dut/div_32/U28/Y (NAND2X4M)                         0.06       1.39 f
+  ALU_dut/div_32/U64/Y (CLKINVX3M)                        0.06       1.45 r
+  ALU_dut/div_32/U32/Y (NAND2X4M)                         0.06       1.51 f
+  ALU_dut/div_32/U66/Y (NAND2X6M)                         0.09       1.60 r
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_5_1/CO (ADDFHX8M)
+                                                          0.32       1.92 r
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_5_2/CO (ADDFHX4M)
+                                                          0.16       2.09 r
+  ALU_dut/div_32/U54/Y (NOR2BX4M)                         0.18       2.27 r
+  ALU_dut/div_32/U23/Y (MXI2X3M)                          0.16       2.43 r
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_4_2/CO (ADDFHX2M)
+                                                          0.43       2.86 r
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_4_3/CO (ADDFHX2M)
+                                                          0.15       3.01 r
+  ALU_dut/div_32/U30/Y (CLKINVX1M)                        0.07       3.09 f
+  ALU_dut/div_32/U60/Y (NAND2BX2M)                        0.18       3.27 f
+  ALU_dut/div_32/U58/Y (INVX3M)                           0.11       3.38 r
+  ALU_dut/div_32/U27/Y (NAND2X4M)                         0.07       3.44 f
+  ALU_dut/div_32/U45/Y (NAND2X4M)                         0.11       3.56 r
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_3_2/CO (ADDFHX4M)
+                                                          0.36       3.92 r
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_3_3/CO (ADDFHX2M)
+                                                          0.16       4.08 r
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_3_4/CO (ADDFHX2M)
+                                                          0.17       4.25 r
+  ALU_dut/div_32/U24/Y (CLKINVX3M)                        0.07       4.32 f
+  ALU_dut/div_32/U39/Y (OR2X4M)                           0.22       4.53 f
+  ALU_dut/div_32/U14/Y (MXI2X6M)                          0.13       4.66 f
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_2_1/CO (ADDFHX4M)
+                                                          0.23       4.89 f
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_2_2/CO (ADDFHX4M)
+                                                          0.22       5.11 f
+  ALU_dut/div_32/U44/Y (NAND2X1M)                         0.08       5.19 r
+  ALU_dut/div_32/U47/Y (NAND3X2M)                         0.13       5.32 f
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_2_4/CO (ADDFHX4M)
+                                                          0.24       5.55 f
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_2_5/CO (ADDFHX4M)
+                                                          0.22       5.77 f
+  ALU_dut/div_32/U38/Y (CLKINVX6M)                        0.05       5.82 r
+  ALU_dut/div_32/U96/Y (NAND2BX2M)                        0.12       5.94 r
+  ALU_dut/div_32/U78/Y (INVX3M)                           0.07       6.01 f
+  ALU_dut/div_32/quotient[2] (ALU_00000008_00000004_DW_div_uns_1)
+                                                          0.00       6.01 f
+  ALU_dut/U23/Y (AOI22XLM)                                0.18       6.18 r
+  ALU_dut/U22/Y (OAI2BB1X2M)                              0.09       6.27 f
+  ALU_dut/U116/Y (AOI222X1M)                              0.28       6.55 r
+  ALU_dut/U113/Y (NAND3BX2M)                              0.12       6.67 f
+  ALU_dut/ALU_OUT_reg[2]/D (SDFFRQX2M)                    0.00       6.67 f
+  data arrival time                                                  6.67
+
+  clock REF_CLK (rise edge)                              10.00      10.00
+  clock network delay (ideal)                             0.00      10.00
+  clock uncertainty                                      -0.20       9.80
+  ALU_dut/ALU_OUT_reg[2]/CK (SDFFRQX2M)                   0.00       9.80 r
+  library setup time                                     -0.42       9.38
+  data required time                                                 9.38
+  --------------------------------------------------------------------------
+  data required time                                                 9.38
+  data arrival time                                                 -6.67
+  --------------------------------------------------------------------------
+  slack (MET)                                                        2.71
+
+
+  Startpoint: Reg_file_dut/reg_file_reg[0][0]
+              (rising edge-triggered flip-flop clocked by REF_CLK)
+  Endpoint: ALU_dut/ALU_OUT_reg[13]
+            (rising edge-triggered flip-flop clocked by REF_CLK)
+  Path Group: REF_CLK
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock REF_CLK (rise edge)                               0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  Reg_file_dut/reg_file_reg[0][0]/CK (SDFFRQX2M)          0.00       0.00 r
+  Reg_file_dut/reg_file_reg[0][0]/Q (SDFFRQX2M)           0.70       0.70 r
+  Reg_file_dut/REG0[0] (Register_File_10_0_1_test_1)      0.00       0.70 r
+  ALU_dut/A[0] (ALU_00000008_00000004_test_1)             0.00       0.70 r
+  ALU_dut/mult_31/A[0] (ALU_00000008_00000004_DW02_mult_0)
+                                                          0.00       0.70 r
+  ALU_dut/mult_31/U43/Y (INVX2M)                          0.19       0.90 f
+  ALU_dut/mult_31/U115/Y (NOR2X1M)                        0.19       1.09 r
+  ALU_dut/mult_31/U5/Y (AND2X2M)                          0.16       1.25 r
+  ALU_dut/mult_31/S2_2_2/CO (ADDFX2M)                     0.54       1.79 r
+  ALU_dut/mult_31/S2_3_2/CO (ADDFX2M)                     0.55       2.34 r
+  ALU_dut/mult_31/S2_4_2/CO (ADDFX2M)                     0.55       2.89 r
+  ALU_dut/mult_31/S2_5_2/CO (ADDFX2M)                     0.55       3.44 r
+  ALU_dut/mult_31/S2_6_2/CO (ADDFX2M)                     0.55       3.99 r
+  ALU_dut/mult_31/S4_2/S (ADDFX2M)                        0.58       4.57 f
+  ALU_dut/mult_31/U21/Y (CLKXOR2X2M)                      0.31       4.88 r
+  ALU_dut/mult_31/FS_1/A[7] (ALU_00000008_00000004_DW01_add_1)
+                                                          0.00       4.88 r
+  ALU_dut/mult_31/FS_1/U2/Y (NAND2X2M)                    0.07       4.95 f
+  ALU_dut/mult_31/FS_1/U31/Y (OA21X1M)                    0.37       5.32 f
+  ALU_dut/mult_31/FS_1/U28/Y (AOI2BB1X1M)                 0.26       5.58 f
+  ALU_dut/mult_31/FS_1/U26/Y (OA21X1M)                    0.40       5.98 f
+  ALU_dut/mult_31/FS_1/U22/Y (XNOR2X1M)                   0.15       6.13 f
+  ALU_dut/mult_31/FS_1/SUM[11] (ALU_00000008_00000004_DW01_add_1)
+                                                          0.00       6.13 f
+  ALU_dut/mult_31/PRODUCT[13] (ALU_00000008_00000004_DW02_mult_0)
+                                                          0.00       6.13 f
+  ALU_dut/U122/Y (AOI22X1M)                               0.16       6.29 r
+  ALU_dut/U121/Y (NAND2X2M)                               0.07       6.36 f
+  ALU_dut/ALU_OUT_reg[13]/D (SDFFRQX2M)                   0.00       6.36 f
+  data arrival time                                                  6.36
+
+  clock REF_CLK (rise edge)                              10.00      10.00
+  clock network delay (ideal)                             0.00      10.00
+  clock uncertainty                                      -0.20       9.80
+  ALU_dut/ALU_OUT_reg[13]/CK (SDFFRQX2M)                  0.00       9.80 r
+  library setup time                                     -0.41       9.39
+  data required time                                                 9.39
+  --------------------------------------------------------------------------
+  data required time                                                 9.39
+  data arrival time                                                 -6.36
+  --------------------------------------------------------------------------
+  slack (MET)                                                        3.03
+
+
+  Startpoint: Reg_file_dut/reg_file_reg[0][0]
+              (rising edge-triggered flip-flop clocked by REF_CLK)
+  Endpoint: ALU_dut/ALU_OUT_reg[12]
+            (rising edge-triggered flip-flop clocked by REF_CLK)
+  Path Group: REF_CLK
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock REF_CLK (rise edge)                               0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  Reg_file_dut/reg_file_reg[0][0]/CK (SDFFRQX2M)          0.00       0.00 r
+  Reg_file_dut/reg_file_reg[0][0]/Q (SDFFRQX2M)           0.70       0.70 r
+  Reg_file_dut/REG0[0] (Register_File_10_0_1_test_1)      0.00       0.70 r
+  ALU_dut/A[0] (ALU_00000008_00000004_test_1)             0.00       0.70 r
+  ALU_dut/mult_31/A[0] (ALU_00000008_00000004_DW02_mult_0)
+                                                          0.00       0.70 r
+  ALU_dut/mult_31/U43/Y (INVX2M)                          0.19       0.90 f
+  ALU_dut/mult_31/U115/Y (NOR2X1M)                        0.19       1.09 r
+  ALU_dut/mult_31/U5/Y (AND2X2M)                          0.16       1.25 r
+  ALU_dut/mult_31/S2_2_2/CO (ADDFX2M)                     0.54       1.79 r
+  ALU_dut/mult_31/S2_3_2/CO (ADDFX2M)                     0.55       2.34 r
+  ALU_dut/mult_31/S2_4_2/CO (ADDFX2M)                     0.55       2.89 r
+  ALU_dut/mult_31/S2_5_2/CO (ADDFX2M)                     0.55       3.44 r
+  ALU_dut/mult_31/S2_6_2/CO (ADDFX2M)                     0.55       3.99 r
+  ALU_dut/mult_31/S4_2/S (ADDFX2M)                        0.58       4.57 f
+  ALU_dut/mult_31/U21/Y (CLKXOR2X2M)                      0.31       4.88 r
+  ALU_dut/mult_31/FS_1/A[7] (ALU_00000008_00000004_DW01_add_1)
+                                                          0.00       4.88 r
+  ALU_dut/mult_31/FS_1/U2/Y (NAND2X2M)                    0.07       4.95 f
+  ALU_dut/mult_31/FS_1/U31/Y (OA21X1M)                    0.37       5.32 f
+  ALU_dut/mult_31/FS_1/U28/Y (AOI2BB1X1M)                 0.26       5.58 f
+  ALU_dut/mult_31/FS_1/U27/Y (CLKXOR2X2M)                 0.23       5.81 f
+  ALU_dut/mult_31/FS_1/SUM[10] (ALU_00000008_00000004_DW01_add_1)
+                                                          0.00       5.81 f
+  ALU_dut/mult_31/PRODUCT[12] (ALU_00000008_00000004_DW02_mult_0)
+                                                          0.00       5.81 f
+  ALU_dut/U137/Y (AOI22X1M)                               0.15       5.96 r
+  ALU_dut/U136/Y (NAND2X2M)                               0.07       6.03 f
+  ALU_dut/ALU_OUT_reg[12]/D (SDFFRQX2M)                   0.00       6.03 f
+  data arrival time                                                  6.03
+
+  clock REF_CLK (rise edge)                              10.00      10.00
+  clock network delay (ideal)                             0.00      10.00
+  clock uncertainty                                      -0.20       9.80
+  ALU_dut/ALU_OUT_reg[12]/CK (SDFFRQX2M)                  0.00       9.80 r
+  library setup time                                     -0.41       9.39
+  data required time                                                 9.39
+  --------------------------------------------------------------------------
+  data required time                                                 9.39
+  data arrival time                                                 -6.03
+  --------------------------------------------------------------------------
+  slack (MET)                                                        3.36
+
+
+  Startpoint: Reg_file_dut/reg_file_reg[0][0]
+              (rising edge-triggered flip-flop clocked by REF_CLK)
+  Endpoint: ALU_dut/ALU_OUT_reg[11]
+            (rising edge-triggered flip-flop clocked by REF_CLK)
+  Path Group: REF_CLK
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock REF_CLK (rise edge)                               0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  Reg_file_dut/reg_file_reg[0][0]/CK (SDFFRQX2M)          0.00       0.00 r
+  Reg_file_dut/reg_file_reg[0][0]/Q (SDFFRQX2M)           0.70       0.70 r
+  Reg_file_dut/REG0[0] (Register_File_10_0_1_test_1)      0.00       0.70 r
+  ALU_dut/A[0] (ALU_00000008_00000004_test_1)             0.00       0.70 r
+  ALU_dut/mult_31/A[0] (ALU_00000008_00000004_DW02_mult_0)
+                                                          0.00       0.70 r
+  ALU_dut/mult_31/U43/Y (INVX2M)                          0.19       0.90 f
+  ALU_dut/mult_31/U115/Y (NOR2X1M)                        0.19       1.09 r
+  ALU_dut/mult_31/U5/Y (AND2X2M)                          0.16       1.25 r
+  ALU_dut/mult_31/S2_2_2/CO (ADDFX2M)                     0.54       1.79 r
+  ALU_dut/mult_31/S2_3_2/CO (ADDFX2M)                     0.55       2.34 r
+  ALU_dut/mult_31/S2_4_2/CO (ADDFX2M)                     0.55       2.89 r
+  ALU_dut/mult_31/S2_5_2/CO (ADDFX2M)                     0.55       3.44 r
+  ALU_dut/mult_31/S2_6_2/CO (ADDFX2M)                     0.55       3.99 r
+  ALU_dut/mult_31/S4_2/S (ADDFX2M)                        0.58       4.57 f
+  ALU_dut/mult_31/U21/Y (CLKXOR2X2M)                      0.31       4.88 r
+  ALU_dut/mult_31/FS_1/A[7] (ALU_00000008_00000004_DW01_add_1)
+                                                          0.00       4.88 r
+  ALU_dut/mult_31/FS_1/U2/Y (NAND2X2M)                    0.07       4.95 f
+  ALU_dut/mult_31/FS_1/U31/Y (OA21X1M)                    0.37       5.32 f
+  ALU_dut/mult_31/FS_1/U15/Y (XNOR2X1M)                   0.15       5.47 f
+  ALU_dut/mult_31/FS_1/SUM[9] (ALU_00000008_00000004_DW01_add_1)
+                                                          0.00       5.47 f
+  ALU_dut/mult_31/PRODUCT[11] (ALU_00000008_00000004_DW02_mult_0)
+                                                          0.00       5.47 f
+  ALU_dut/U133/Y (AOI22X1M)                               0.16       5.63 r
+  ALU_dut/U132/Y (NAND2X2M)                               0.07       5.70 f
+  ALU_dut/ALU_OUT_reg[11]/D (SDFFRQX2M)                   0.00       5.70 f
+  data arrival time                                                  5.70
+
+  clock REF_CLK (rise edge)                              10.00      10.00
+  clock network delay (ideal)                             0.00      10.00
+  clock uncertainty                                      -0.20       9.80
+  ALU_dut/ALU_OUT_reg[11]/CK (SDFFRQX2M)                  0.00       9.80 r
+  library setup time                                     -0.41       9.39
+  data required time                                                 9.39
+  --------------------------------------------------------------------------
+  data required time                                                 9.39
+  data arrival time                                                 -5.70
+  --------------------------------------------------------------------------
+  slack (MET)                                                        3.69
+
+
+  Startpoint: Reg_file_dut/reg_file_reg[0][0]
+              (rising edge-triggered flip-flop clocked by REF_CLK)
+  Endpoint: ALU_dut/ALU_OUT_reg[10]
+            (rising edge-triggered flip-flop clocked by REF_CLK)
+  Path Group: REF_CLK
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock REF_CLK (rise edge)                               0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  Reg_file_dut/reg_file_reg[0][0]/CK (SDFFRQX2M)          0.00       0.00 r
+  Reg_file_dut/reg_file_reg[0][0]/Q (SDFFRQX2M)           0.70       0.70 r
+  Reg_file_dut/REG0[0] (Register_File_10_0_1_test_1)      0.00       0.70 r
+  ALU_dut/A[0] (ALU_00000008_00000004_test_1)             0.00       0.70 r
+  ALU_dut/mult_31/A[0] (ALU_00000008_00000004_DW02_mult_0)
+                                                          0.00       0.70 r
+  ALU_dut/mult_31/U43/Y (INVX2M)                          0.19       0.90 f
+  ALU_dut/mult_31/U114/Y (NOR2X1M)                        0.19       1.09 r
+  ALU_dut/mult_31/U7/Y (AND2X2M)                          0.16       1.25 r
+  ALU_dut/mult_31/S2_2_3/CO (ADDFX2M)                     0.54       1.79 r
+  ALU_dut/mult_31/S2_3_3/CO (ADDFX2M)                     0.55       2.34 r
+  ALU_dut/mult_31/S2_4_3/CO (ADDFX2M)                     0.55       2.89 r
+  ALU_dut/mult_31/S2_5_3/CO (ADDFX2M)                     0.55       3.44 r
+  ALU_dut/mult_31/S2_6_3/CO (ADDFX2M)                     0.55       3.99 r
+  ALU_dut/mult_31/S4_3/S (ADDFX2M)                        0.58       4.57 f
+  ALU_dut/mult_31/U11/Y (CLKXOR2X2M)                      0.26       4.83 f
+  ALU_dut/mult_31/FS_1/A[8] (ALU_00000008_00000004_DW01_add_1)
+                                                          0.00       4.83 f
+  ALU_dut/mult_31/FS_1/U33/Y (NOR2X1M)                    0.13       4.96 r
+  ALU_dut/mult_31/FS_1/U18/Y (NAND2BX1M)                  0.15       5.11 r
+  ALU_dut/mult_31/FS_1/U17/Y (CLKXOR2X2M)                 0.21       5.32 f
+  ALU_dut/mult_31/FS_1/SUM[8] (ALU_00000008_00000004_DW01_add_1)
+                                                          0.00       5.32 f
+  ALU_dut/mult_31/PRODUCT[10] (ALU_00000008_00000004_DW02_mult_0)
+                                                          0.00       5.32 f
+  ALU_dut/U135/Y (AOI22X1M)                               0.15       5.47 r
+  ALU_dut/U134/Y (NAND2X2M)                               0.07       5.54 f
+  ALU_dut/ALU_OUT_reg[10]/D (SDFFRQX2M)                   0.00       5.54 f
+  data arrival time                                                  5.54
+
+  clock REF_CLK (rise edge)                              10.00      10.00
+  clock network delay (ideal)                             0.00      10.00
+  clock uncertainty                                      -0.20       9.80
+  ALU_dut/ALU_OUT_reg[10]/CK (SDFFRQX2M)                  0.00       9.80 r
+  library setup time                                     -0.41       9.39
+  data required time                                                 9.39
+  --------------------------------------------------------------------------
+  data required time                                                 9.39
+  data arrival time                                                 -5.54
+  --------------------------------------------------------------------------
+  slack (MET)                                                        3.85
+
+
+  Startpoint: Reg_file_dut/reg_file_reg[1][2]
+              (rising edge-triggered flip-flop clocked by REF_CLK)
+  Endpoint: ALU_dut/ALU_OUT_reg[3]
+            (rising edge-triggered flip-flop clocked by REF_CLK)
+  Path Group: REF_CLK
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock REF_CLK (rise edge)                               0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  Reg_file_dut/reg_file_reg[1][2]/CK (SDFFRHQX2M)         0.00       0.00 r
+  Reg_file_dut/reg_file_reg[1][2]/Q (SDFFRHQX2M)          0.30       0.30 f
+  Reg_file_dut/REG1[2] (Register_File_10_0_1_test_1)      0.00       0.30 f
+  ALU_dut/B[2] (ALU_00000008_00000004_test_1)             0.00       0.30 f
+  ALU_dut/div_32/b[2] (ALU_00000008_00000004_DW_div_uns_1)
+                                                          0.00       0.30 f
+  ALU_dut/div_32/U15/Y (INVX4M)                           0.35       0.65 r
+  ALU_dut/div_32/U113/Y (AND3X4M)                         0.25       0.91 r
+  ALU_dut/div_32/U56/Y (NAND2X6M)                         0.07       0.97 f
+  ALU_dut/div_32/U55/Y (MXI2X6M)                          0.13       1.10 f
+  ALU_dut/div_32/U5/Y (INVX8M)                            0.07       1.17 r
+  ALU_dut/div_32/U21/Y (NAND2X3M)                         0.06       1.24 f
+  ALU_dut/div_32/U29/Y (NAND3X4M)                         0.09       1.33 r
+  ALU_dut/div_32/U28/Y (NAND2X4M)                         0.06       1.39 f
+  ALU_dut/div_32/U64/Y (CLKINVX3M)                        0.06       1.45 r
+  ALU_dut/div_32/U32/Y (NAND2X4M)                         0.06       1.51 f
+  ALU_dut/div_32/U66/Y (NAND2X6M)                         0.09       1.60 r
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_5_1/CO (ADDFHX8M)
+                                                          0.32       1.92 r
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_5_2/CO (ADDFHX4M)
+                                                          0.16       2.09 r
+  ALU_dut/div_32/U54/Y (NOR2BX4M)                         0.18       2.27 r
+  ALU_dut/div_32/U23/Y (MXI2X3M)                          0.16       2.43 r
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_4_2/CO (ADDFHX2M)
+                                                          0.43       2.86 r
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_4_3/CO (ADDFHX2M)
+                                                          0.15       3.01 r
+  ALU_dut/div_32/U30/Y (CLKINVX1M)                        0.07       3.09 f
+  ALU_dut/div_32/U75/Y (OR2X2M)                           0.22       3.30 f
+  ALU_dut/div_32/U7/Y (MXI2X4M)                           0.14       3.45 f
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_3_1/CO (ADDFHX4M)
+                                                          0.23       3.68 f
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_3_2/CO (ADDFHX4M)
+                                                          0.21       3.88 f
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_3_3/CO (ADDFHX2M)
+                                                          0.23       4.11 f
+  ALU_dut/div_32/u_div/u_fa_PartRem_0_3_4/CO (ADDFHX2M)
+                                                          0.23       4.34 f
+  ALU_dut/div_32/U24/Y (CLKINVX3M)                        0.06       4.40 r
+  ALU_dut/div_32/U51/Y (OR2X4M)                           0.12       4.52 r
+  ALU_dut/div_32/U53/Y (INVX2M)                           0.08       4.60 f
+  ALU_dut/div_32/quotient[3] (ALU_00000008_00000004_DW_div_uns_1)
+                                                          0.00       4.60 f
+  ALU_dut/U25/Y (AOI22XLM)                                0.18       4.78 r
+  ALU_dut/U24/Y (OAI2BB1X2M)                              0.09       4.87 f
+  ALU_dut/U120/Y (AOI222X1M)                              0.28       5.15 r
+  ALU_dut/U118/Y (NAND3BX2M)                              0.12       5.27 f
+  ALU_dut/ALU_OUT_reg[3]/D (SDFFRQX2M)                    0.00       5.27 f
+  data arrival time                                                  5.27
+
+  clock REF_CLK (rise edge)                              10.00      10.00
+  clock network delay (ideal)                             0.00      10.00
+  clock uncertainty                                      -0.20       9.80
+  ALU_dut/ALU_OUT_reg[3]/CK (SDFFRQX2M)                   0.00       9.80 r
+  library setup time                                     -0.42       9.38
+  data required time                                                 9.38
+  --------------------------------------------------------------------------
+  data required time                                                 9.38
+  data arrival time                                                 -5.27
+  --------------------------------------------------------------------------
+  slack (MET)                                                        4.11
+
+
+  Startpoint: Reg_file_dut/reg_file_reg[0][0]
+              (rising edge-triggered flip-flop clocked by REF_CLK)
+  Endpoint: ALU_dut/ALU_OUT_reg[9]
+            (rising edge-triggered flip-flop clocked by REF_CLK)
+  Path Group: REF_CLK
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock REF_CLK (rise edge)                               0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  Reg_file_dut/reg_file_reg[0][0]/CK (SDFFRQX2M)          0.00       0.00 r
+  Reg_file_dut/reg_file_reg[0][0]/Q (SDFFRQX2M)           0.70       0.70 r
+  Reg_file_dut/REG0[0] (Register_File_10_0_1_test_1)      0.00       0.70 r
+  ALU_dut/A[0] (ALU_00000008_00000004_test_1)             0.00       0.70 r
+  ALU_dut/mult_31/A[0] (ALU_00000008_00000004_DW02_mult_0)
+                                                          0.00       0.70 r
+  ALU_dut/mult_31/U43/Y (INVX2M)                          0.19       0.90 f
+  ALU_dut/mult_31/U115/Y (NOR2X1M)                        0.19       1.09 r
+  ALU_dut/mult_31/U5/Y (AND2X2M)                          0.16       1.25 r
+  ALU_dut/mult_31/S2_2_2/CO (ADDFX2M)                     0.54       1.79 r
+  ALU_dut/mult_31/S2_3_2/CO (ADDFX2M)                     0.55       2.34 r
+  ALU_dut/mult_31/S2_4_2/CO (ADDFX2M)                     0.55       2.89 r
+  ALU_dut/mult_31/S2_5_2/CO (ADDFX2M)                     0.55       3.44 r
+  ALU_dut/mult_31/S2_6_2/CO (ADDFX2M)                     0.55       3.99 r
+  ALU_dut/mult_31/S4_2/S (ADDFX2M)                        0.58       4.57 f
+  ALU_dut/mult_31/U21/Y (CLKXOR2X2M)                      0.27       4.85 f
+  ALU_dut/mult_31/FS_1/A[7] (ALU_00000008_00000004_DW01_add_1)
+                                                          0.00       4.85 f
+  ALU_dut/mult_31/FS_1/U7/Y (XNOR2X2M)                    0.13       4.98 f
+  ALU_dut/mult_31/FS_1/SUM[7] (ALU_00000008_00000004_DW01_add_1)
+                                                          0.00       4.98 f
+  ALU_dut/mult_31/PRODUCT[9] (ALU_00000008_00000004_DW02_mult_0)
+                                                          0.00       4.98 f
+  ALU_dut/U162/Y (AOI22X1M)                               0.16       5.14 r
+  ALU_dut/U161/Y (NAND2X2M)                               0.07       5.21 f
+  ALU_dut/ALU_OUT_reg[9]/D (SDFFRQX2M)                    0.00       5.21 f
+  data arrival time                                                  5.21
+
+  clock REF_CLK (rise edge)                              10.00      10.00
+  clock network delay (ideal)                             0.00      10.00
+  clock uncertainty                                      -0.20       9.80
+  ALU_dut/ALU_OUT_reg[9]/CK (SDFFRQX2M)                   0.00       9.80 r
+  library setup time                                     -0.41       9.39
+  data required time                                                 9.39
+  --------------------------------------------------------------------------
+  data required time                                                 9.39
+  data arrival time                                                 -5.21
+  --------------------------------------------------------------------------
+  slack (MET)                                                        4.19
+
+
+  Startpoint: Reg_file_dut/reg_file_reg[0][0]
+              (rising edge-triggered flip-flop clocked by REF_CLK)
+  Endpoint: ALU_dut/ALU_OUT_reg[8]
+            (rising edge-triggered flip-flop clocked by REF_CLK)
+  Path Group: REF_CLK
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock REF_CLK (rise edge)                               0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  Reg_file_dut/reg_file_reg[0][0]/CK (SDFFRQX2M)          0.00       0.00 r
+  Reg_file_dut/reg_file_reg[0][0]/Q (SDFFRQX2M)           0.70       0.70 r
+  Reg_file_dut/REG0[0] (Register_File_10_0_1_test_1)      0.00       0.70 r
+  ALU_dut/A[0] (ALU_00000008_00000004_test_1)             0.00       0.70 r
+  ALU_dut/mult_31/A[0] (ALU_00000008_00000004_DW02_mult_0)
+                                                          0.00       0.70 r
+  ALU_dut/mult_31/U43/Y (INVX2M)                          0.19       0.90 f
+  ALU_dut/mult_31/U116/Y (NOR2X1M)                        0.19       1.09 r
+  ALU_dut/mult_31/U4/Y (AND2X2M)                          0.16       1.25 r
+  ALU_dut/mult_31/S2_2_1/CO (ADDFX2M)                     0.54       1.79 r
+  ALU_dut/mult_31/S2_3_1/CO (ADDFX2M)                     0.55       2.34 r
+  ALU_dut/mult_31/S2_4_1/CO (ADDFX2M)                     0.55       2.89 r
+  ALU_dut/mult_31/S2_5_1/CO (ADDFX2M)                     0.55       3.44 r
+  ALU_dut/mult_31/S2_6_1/CO (ADDFX2M)                     0.55       3.99 r
+  ALU_dut/mult_31/S4_1/S (ADDFX2M)                        0.59       4.58 f
+  ALU_dut/mult_31/U30/Y (INVX2M)                          0.08       4.66 r
+  ALU_dut/mult_31/U29/Y (XNOR2X2M)                        0.09       4.75 f
+  ALU_dut/mult_31/FS_1/A[6] (ALU_00000008_00000004_DW01_add_1)
+                                                          0.00       4.75 f
+  ALU_dut/mult_31/FS_1/U4/Y (INVX2M)                      0.07       4.82 r
+  ALU_dut/mult_31/FS_1/U6/Y (INVX2M)                      0.03       4.85 f
+  ALU_dut/mult_31/FS_1/SUM[6] (ALU_00000008_00000004_DW01_add_1)
+                                                          0.00       4.85 f
+  ALU_dut/mult_31/PRODUCT[8] (ALU_00000008_00000004_DW02_mult_0)
+                                                          0.00       4.85 f
+  ALU_dut/U204/Y (AOI32XLM)                               0.20       5.06 r
+  ALU_dut/U138/Y (OAI2B11X2M)                             0.13       5.19 f
+  ALU_dut/ALU_OUT_reg[8]/D (SDFFRQX2M)                    0.00       5.19 f
+  data arrival time                                                  5.19
+
+  clock REF_CLK (rise edge)                              10.00      10.00
+  clock network delay (ideal)                             0.00      10.00
+  clock uncertainty                                      -0.20       9.80
+  ALU_dut/ALU_OUT_reg[8]/CK (SDFFRQX2M)                   0.00       9.80 r
+  library setup time                                     -0.42       9.38
+  data required time                                                 9.38
+  --------------------------------------------------------------------------
+  data required time                                                 9.38
+  data arrival time                                                 -5.19
+  --------------------------------------------------------------------------
+  slack (MET)                                                        4.19
+
+
+  Startpoint: Reg_file_dut/reg_file_reg[0][0]
+              (rising edge-triggered flip-flop clocked by REF_CLK)
+  Endpoint: ALU_dut/ALU_OUT_reg[7]
+            (rising edge-triggered flip-flop clocked by REF_CLK)
+  Path Group: REF_CLK
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock REF_CLK (rise edge)                               0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  Reg_file_dut/reg_file_reg[0][0]/CK (SDFFRQX2M)          0.00       0.00 r
+  Reg_file_dut/reg_file_reg[0][0]/Q (SDFFRQX2M)           0.70       0.70 r
+  Reg_file_dut/REG0[0] (Register_File_10_0_1_test_1)      0.00       0.70 r
+  ALU_dut/A[0] (ALU_00000008_00000004_test_1)             0.00       0.70 r
+  ALU_dut/mult_31/A[0] (ALU_00000008_00000004_DW02_mult_0)
+                                                          0.00       0.70 r
+  ALU_dut/mult_31/U43/Y (INVX2M)                          0.19       0.90 f
+  ALU_dut/mult_31/U117/Y (NOR2X1M)                        0.19       1.09 r
+  ALU_dut/mult_31/U6/Y (AND2X2M)                          0.16       1.25 r
+  ALU_dut/mult_31/S1_2_0/CO (ADDFX2M)                     0.54       1.79 r
+  ALU_dut/mult_31/S1_3_0/CO (ADDFX2M)                     0.55       2.34 r
+  ALU_dut/mult_31/S1_4_0/CO (ADDFX2M)                     0.55       2.89 r
+  ALU_dut/mult_31/S1_5_0/CO (ADDFX2M)                     0.55       3.44 r
+  ALU_dut/mult_31/S1_6_0/CO (ADDFX2M)                     0.55       3.99 r
+  ALU_dut/mult_31/S4_0/S (ADDFX2M)                        0.56       4.55 f
+  ALU_dut/mult_31/FS_1/A[5] (ALU_00000008_00000004_DW01_add_1)
+                                                          0.00       4.55 f
+  ALU_dut/mult_31/FS_1/U14/Y (BUFX2M)                     0.15       4.70 f
+  ALU_dut/mult_31/FS_1/SUM[5] (ALU_00000008_00000004_DW01_add_1)
+                                                          0.00       4.70 f
+  ALU_dut/mult_31/PRODUCT[7] (ALU_00000008_00000004_DW02_mult_0)
+                                                          0.00       4.70 f
+  ALU_dut/U163/Y (AOI222X1M)                              0.25       4.95 r
+  ALU_dut/U188/Y (NAND3BX2M)                              0.12       5.07 f
+  ALU_dut/ALU_OUT_reg[7]/D (SDFFRQX2M)                    0.00       5.07 f
+  data arrival time                                                  5.07
+
+  clock REF_CLK (rise edge)                              10.00      10.00
+  clock network delay (ideal)                             0.00      10.00
+  clock uncertainty                                      -0.20       9.80
+  ALU_dut/ALU_OUT_reg[7]/CK (SDFFRQX2M)                   0.00       9.80 r
+  library setup time                                     -0.42       9.38
+  data required time                                                 9.38
+  --------------------------------------------------------------------------
+  data required time                                                 9.38
+  data arrival time                                                 -5.07
+  --------------------------------------------------------------------------
+  slack (MET)                                                        4.31
+
+
+  Startpoint: Rst_Sync_D1_dut/FF_Stage_reg[1]
+              (rising edge-triggered flip-flop clocked by REF_CLK)
+  Endpoint: ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][6]
+            (rising edge-triggered flip-flop clocked by REF_CLK)
+  Path Group: REF_CLK
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock REF_CLK (rise edge)                               0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  Rst_Sync_D1_dut/FF_Stage_reg[1]/CK (SDFFRQX1M)          0.00       0.00 r
+  Rst_Sync_D1_dut/FF_Stage_reg[1]/Q (SDFFRQX1M)           0.37       0.37 r
+  Rst_Sync_D1_dut/U6/Y (AND2X2M)                          0.12       0.49 r
+  Rst_Sync_D1_dut/SYNC_RST (Rst_Sync_NUM_STAGES2_ACTIVE_TYPLOW_test_0)
+                                                          0.00       0.49 r
+  U5_mux2X1/IN_0 (mux2X1_2)                               0.00       0.49 r
+  U5_mux2X1/U1/Y (AO2B2X2M)                               0.14       0.63 r
+  U5_mux2X1/OUT (mux2X1_2)                                0.00       0.63 r
+  U7/Y (INVX2M)                                           0.05       0.69 f
+  U3/Y (INVX4M)                                           0.67       1.36 r
+  ASYNC_FIFO_dut/W_RST (ASYNC_FIFO_test_1)                0.00       1.36 r
+  ASYNC_FIFO_dut/U5/Y (INVX2M)                            0.10       1.46 f
+  ASYNC_FIFO_dut/U4/Y (INVX2M)                            0.64       2.11 r
+  ASYNC_FIFO_dut/sync_r2w/RST_n (Bit_Sync_00000002_00000005_test_0)
+                                                          0.00       2.11 r
+  ASYNC_FIFO_dut/sync_r2w/U15/Y (AND2X2M)                 0.25       2.36 r
+  ASYNC_FIFO_dut/sync_r2w/SYNC[3] (Bit_Sync_00000002_00000005_test_0)
+                                                          0.00       2.36 r
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/gray_Rptr[3] (fifo_wrptr_full_00000008_00000010_test_1)
+                                                          0.00       2.36 r
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U11/Y (CLKXOR2X2M)
+                                                          0.35       2.71 f
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U9/Y (AOI22X1M)      0.26       2.96 r
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U20/Y (OAI2B2X1M)
+                                                          0.22       3.19 f
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U23/Y (NAND2BX2M)
+                                                          0.19       3.38 f
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U22/Y (AOI22X1M)     0.13       3.51 r
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U27/Y (OAI2BB2X1M)
+                                                          0.13       3.63 f
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U24/Y (AND4X2M)      0.22       3.85 f
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/WFULL (fifo_wrptr_full_00000008_00000010_test_1)
+                                                          0.00       3.85 f
+  ASYNC_FIFO_dut/FULL (ASYNC_FIFO_test_1)                 0.00       3.85 f
+  SYS_CTRL_dut/FIFO_FULL (SYS_CTRL_test_1)                0.00       3.85 f
+  SYS_CTRL_dut/U33/Y (NOR2X2M)                            0.12       3.97 r
+  SYS_CTRL_dut/WR_INC (SYS_CTRL_test_1)                   0.00       3.97 r
+  ASYNC_FIFO_dut/W_INC (ASYNC_FIFO_test_1)                0.00       3.97 r
+  ASYNC_FIFO_dut/U2/Y (AND3X2M)                           0.29       4.27 r
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/wclk_en (FIFO_MEMORY_00000008_00000010_test_1)
+                                                          0.00       4.27 r
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/U29/Y (INVX2M)           0.13       4.39 f
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/U75/Y (AOI22X1M)         0.19       4.59 r
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/U74/Y (BUFX2M)           0.30       4.89 r
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/U90/Y (OAI2BB2X1M)       0.11       5.01 f
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][6]/D (SDFFRQX2M)
+                                                          0.00       5.01 f
+  data arrival time                                                  5.01
+
+  clock REF_CLK (rise edge)                              10.00      10.00
+  clock network delay (ideal)                             0.00      10.00
+  clock uncertainty                                      -0.20       9.80
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][6]/CK (SDFFRQX2M)
+                                                          0.00       9.80 r
+  library setup time                                     -0.41       9.39
+  data required time                                                 9.39
+  --------------------------------------------------------------------------
+  data required time                                                 9.39
+  data arrival time                                                 -5.01
+  --------------------------------------------------------------------------
+  slack (MET)                                                        4.38
+
+
+  Startpoint: Rst_Sync_D1_dut/FF_Stage_reg[1]
+              (rising edge-triggered flip-flop clocked by REF_CLK)
+  Endpoint: ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][5]
+            (rising edge-triggered flip-flop clocked by REF_CLK)
+  Path Group: REF_CLK
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock REF_CLK (rise edge)                               0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  Rst_Sync_D1_dut/FF_Stage_reg[1]/CK (SDFFRQX1M)          0.00       0.00 r
+  Rst_Sync_D1_dut/FF_Stage_reg[1]/Q (SDFFRQX1M)           0.37       0.37 r
+  Rst_Sync_D1_dut/U6/Y (AND2X2M)                          0.12       0.49 r
+  Rst_Sync_D1_dut/SYNC_RST (Rst_Sync_NUM_STAGES2_ACTIVE_TYPLOW_test_0)
+                                                          0.00       0.49 r
+  U5_mux2X1/IN_0 (mux2X1_2)                               0.00       0.49 r
+  U5_mux2X1/U1/Y (AO2B2X2M)                               0.14       0.63 r
+  U5_mux2X1/OUT (mux2X1_2)                                0.00       0.63 r
+  U7/Y (INVX2M)                                           0.05       0.69 f
+  U3/Y (INVX4M)                                           0.67       1.36 r
+  ASYNC_FIFO_dut/W_RST (ASYNC_FIFO_test_1)                0.00       1.36 r
+  ASYNC_FIFO_dut/U5/Y (INVX2M)                            0.10       1.46 f
+  ASYNC_FIFO_dut/U4/Y (INVX2M)                            0.64       2.11 r
+  ASYNC_FIFO_dut/sync_r2w/RST_n (Bit_Sync_00000002_00000005_test_0)
+                                                          0.00       2.11 r
+  ASYNC_FIFO_dut/sync_r2w/U15/Y (AND2X2M)                 0.25       2.36 r
+  ASYNC_FIFO_dut/sync_r2w/SYNC[3] (Bit_Sync_00000002_00000005_test_0)
+                                                          0.00       2.36 r
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/gray_Rptr[3] (fifo_wrptr_full_00000008_00000010_test_1)
+                                                          0.00       2.36 r
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U11/Y (CLKXOR2X2M)
+                                                          0.35       2.71 f
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U9/Y (AOI22X1M)      0.26       2.96 r
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U20/Y (OAI2B2X1M)
+                                                          0.22       3.19 f
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U23/Y (NAND2BX2M)
+                                                          0.19       3.38 f
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U22/Y (AOI22X1M)     0.13       3.51 r
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U27/Y (OAI2BB2X1M)
+                                                          0.13       3.63 f
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U24/Y (AND4X2M)      0.22       3.85 f
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/WFULL (fifo_wrptr_full_00000008_00000010_test_1)
+                                                          0.00       3.85 f
+  ASYNC_FIFO_dut/FULL (ASYNC_FIFO_test_1)                 0.00       3.85 f
+  SYS_CTRL_dut/FIFO_FULL (SYS_CTRL_test_1)                0.00       3.85 f
+  SYS_CTRL_dut/U33/Y (NOR2X2M)                            0.12       3.97 r
+  SYS_CTRL_dut/WR_INC (SYS_CTRL_test_1)                   0.00       3.97 r
+  ASYNC_FIFO_dut/W_INC (ASYNC_FIFO_test_1)                0.00       3.97 r
+  ASYNC_FIFO_dut/U2/Y (AND3X2M)                           0.29       4.27 r
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/wclk_en (FIFO_MEMORY_00000008_00000010_test_1)
+                                                          0.00       4.27 r
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/U29/Y (INVX2M)           0.13       4.39 f
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/U73/Y (AOI22X1M)         0.19       4.59 r
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/U72/Y (BUFX2M)           0.30       4.89 r
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/U88/Y (OAI2BB2X1M)       0.11       5.01 f
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][5]/D (SDFFRQX2M)
+                                                          0.00       5.01 f
+  data arrival time                                                  5.01
+
+  clock REF_CLK (rise edge)                              10.00      10.00
+  clock network delay (ideal)                             0.00      10.00
+  clock uncertainty                                      -0.20       9.80
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][5]/CK (SDFFRQX2M)
+                                                          0.00       9.80 r
+  library setup time                                     -0.41       9.39
+  data required time                                                 9.39
+  --------------------------------------------------------------------------
+  data required time                                                 9.39
+  data arrival time                                                 -5.01
+  --------------------------------------------------------------------------
+  slack (MET)                                                        4.38
+
+
+  Startpoint: Rst_Sync_D1_dut/FF_Stage_reg[1]
+              (rising edge-triggered flip-flop clocked by REF_CLK)
+  Endpoint: ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][4]
+            (rising edge-triggered flip-flop clocked by REF_CLK)
+  Path Group: REF_CLK
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock REF_CLK (rise edge)                               0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  Rst_Sync_D1_dut/FF_Stage_reg[1]/CK (SDFFRQX1M)          0.00       0.00 r
+  Rst_Sync_D1_dut/FF_Stage_reg[1]/Q (SDFFRQX1M)           0.37       0.37 r
+  Rst_Sync_D1_dut/U6/Y (AND2X2M)                          0.12       0.49 r
+  Rst_Sync_D1_dut/SYNC_RST (Rst_Sync_NUM_STAGES2_ACTIVE_TYPLOW_test_0)
+                                                          0.00       0.49 r
+  U5_mux2X1/IN_0 (mux2X1_2)                               0.00       0.49 r
+  U5_mux2X1/U1/Y (AO2B2X2M)                               0.14       0.63 r
+  U5_mux2X1/OUT (mux2X1_2)                                0.00       0.63 r
+  U7/Y (INVX2M)                                           0.05       0.69 f
+  U3/Y (INVX4M)                                           0.67       1.36 r
+  ASYNC_FIFO_dut/W_RST (ASYNC_FIFO_test_1)                0.00       1.36 r
+  ASYNC_FIFO_dut/U5/Y (INVX2M)                            0.10       1.46 f
+  ASYNC_FIFO_dut/U4/Y (INVX2M)                            0.64       2.11 r
+  ASYNC_FIFO_dut/sync_r2w/RST_n (Bit_Sync_00000002_00000005_test_0)
+                                                          0.00       2.11 r
+  ASYNC_FIFO_dut/sync_r2w/U15/Y (AND2X2M)                 0.25       2.36 r
+  ASYNC_FIFO_dut/sync_r2w/SYNC[3] (Bit_Sync_00000002_00000005_test_0)
+                                                          0.00       2.36 r
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/gray_Rptr[3] (fifo_wrptr_full_00000008_00000010_test_1)
+                                                          0.00       2.36 r
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U11/Y (CLKXOR2X2M)
+                                                          0.35       2.71 f
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U9/Y (AOI22X1M)      0.26       2.96 r
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U20/Y (OAI2B2X1M)
+                                                          0.22       3.19 f
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U23/Y (NAND2BX2M)
+                                                          0.19       3.38 f
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U22/Y (AOI22X1M)     0.13       3.51 r
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U27/Y (OAI2BB2X1M)
+                                                          0.13       3.63 f
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U24/Y (AND4X2M)      0.22       3.85 f
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/WFULL (fifo_wrptr_full_00000008_00000010_test_1)
+                                                          0.00       3.85 f
+  ASYNC_FIFO_dut/FULL (ASYNC_FIFO_test_1)                 0.00       3.85 f
+  SYS_CTRL_dut/FIFO_FULL (SYS_CTRL_test_1)                0.00       3.85 f
+  SYS_CTRL_dut/U33/Y (NOR2X2M)                            0.12       3.97 r
+  SYS_CTRL_dut/WR_INC (SYS_CTRL_test_1)                   0.00       3.97 r
+  ASYNC_FIFO_dut/W_INC (ASYNC_FIFO_test_1)                0.00       3.97 r
+  ASYNC_FIFO_dut/U2/Y (AND3X2M)                           0.29       4.27 r
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/wclk_en (FIFO_MEMORY_00000008_00000010_test_1)
+                                                          0.00       4.27 r
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/U29/Y (INVX2M)           0.13       4.39 f
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/U71/Y (AOI22X1M)         0.19       4.59 r
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/U70/Y (BUFX2M)           0.30       4.89 r
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/U86/Y (OAI2BB2X1M)       0.11       5.01 f
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][4]/D (SDFFRQX2M)
+                                                          0.00       5.01 f
+  data arrival time                                                  5.01
+
+  clock REF_CLK (rise edge)                              10.00      10.00
+  clock network delay (ideal)                             0.00      10.00
+  clock uncertainty                                      -0.20       9.80
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][4]/CK (SDFFRQX2M)
+                                                          0.00       9.80 r
+  library setup time                                     -0.41       9.39
+  data required time                                                 9.39
+  --------------------------------------------------------------------------
+  data required time                                                 9.39
+  data arrival time                                                 -5.01
+  --------------------------------------------------------------------------
+  slack (MET)                                                        4.38
+
+
+  Startpoint: Rst_Sync_D1_dut/FF_Stage_reg[1]
+              (rising edge-triggered flip-flop clocked by REF_CLK)
+  Endpoint: ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][3]
+            (rising edge-triggered flip-flop clocked by REF_CLK)
+  Path Group: REF_CLK
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock REF_CLK (rise edge)                               0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  Rst_Sync_D1_dut/FF_Stage_reg[1]/CK (SDFFRQX1M)          0.00       0.00 r
+  Rst_Sync_D1_dut/FF_Stage_reg[1]/Q (SDFFRQX1M)           0.37       0.37 r
+  Rst_Sync_D1_dut/U6/Y (AND2X2M)                          0.12       0.49 r
+  Rst_Sync_D1_dut/SYNC_RST (Rst_Sync_NUM_STAGES2_ACTIVE_TYPLOW_test_0)
+                                                          0.00       0.49 r
+  U5_mux2X1/IN_0 (mux2X1_2)                               0.00       0.49 r
+  U5_mux2X1/U1/Y (AO2B2X2M)                               0.14       0.63 r
+  U5_mux2X1/OUT (mux2X1_2)                                0.00       0.63 r
+  U7/Y (INVX2M)                                           0.05       0.69 f
+  U3/Y (INVX4M)                                           0.67       1.36 r
+  ASYNC_FIFO_dut/W_RST (ASYNC_FIFO_test_1)                0.00       1.36 r
+  ASYNC_FIFO_dut/U5/Y (INVX2M)                            0.10       1.46 f
+  ASYNC_FIFO_dut/U4/Y (INVX2M)                            0.64       2.11 r
+  ASYNC_FIFO_dut/sync_r2w/RST_n (Bit_Sync_00000002_00000005_test_0)
+                                                          0.00       2.11 r
+  ASYNC_FIFO_dut/sync_r2w/U15/Y (AND2X2M)                 0.25       2.36 r
+  ASYNC_FIFO_dut/sync_r2w/SYNC[3] (Bit_Sync_00000002_00000005_test_0)
+                                                          0.00       2.36 r
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/gray_Rptr[3] (fifo_wrptr_full_00000008_00000010_test_1)
+                                                          0.00       2.36 r
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U11/Y (CLKXOR2X2M)
+                                                          0.35       2.71 f
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U9/Y (AOI22X1M)      0.26       2.96 r
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U20/Y (OAI2B2X1M)
+                                                          0.22       3.19 f
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U23/Y (NAND2BX2M)
+                                                          0.19       3.38 f
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U22/Y (AOI22X1M)     0.13       3.51 r
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U27/Y (OAI2BB2X1M)
+                                                          0.13       3.63 f
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U24/Y (AND4X2M)      0.22       3.85 f
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/WFULL (fifo_wrptr_full_00000008_00000010_test_1)
+                                                          0.00       3.85 f
+  ASYNC_FIFO_dut/FULL (ASYNC_FIFO_test_1)                 0.00       3.85 f
+  SYS_CTRL_dut/FIFO_FULL (SYS_CTRL_test_1)                0.00       3.85 f
+  SYS_CTRL_dut/U33/Y (NOR2X2M)                            0.12       3.97 r
+  SYS_CTRL_dut/WR_INC (SYS_CTRL_test_1)                   0.00       3.97 r
+  ASYNC_FIFO_dut/W_INC (ASYNC_FIFO_test_1)                0.00       3.97 r
+  ASYNC_FIFO_dut/U2/Y (AND3X2M)                           0.29       4.27 r
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/wclk_en (FIFO_MEMORY_00000008_00000010_test_1)
+                                                          0.00       4.27 r
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/U29/Y (INVX2M)           0.13       4.39 f
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/U69/Y (AOI22X1M)         0.19       4.59 r
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/U68/Y (BUFX2M)           0.30       4.89 r
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/U84/Y (OAI2BB2X1M)       0.11       5.01 f
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][3]/D (SDFFRQX2M)
+                                                          0.00       5.01 f
+  data arrival time                                                  5.01
+
+  clock REF_CLK (rise edge)                              10.00      10.00
+  clock network delay (ideal)                             0.00      10.00
+  clock uncertainty                                      -0.20       9.80
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][3]/CK (SDFFRQX2M)
+                                                          0.00       9.80 r
+  library setup time                                     -0.41       9.39
+  data required time                                                 9.39
+  --------------------------------------------------------------------------
+  data required time                                                 9.39
+  data arrival time                                                 -5.01
+  --------------------------------------------------------------------------
+  slack (MET)                                                        4.38
+
+
+  Startpoint: Rst_Sync_D1_dut/FF_Stage_reg[1]
+              (rising edge-triggered flip-flop clocked by REF_CLK)
+  Endpoint: ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][2]
+            (rising edge-triggered flip-flop clocked by REF_CLK)
+  Path Group: REF_CLK
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock REF_CLK (rise edge)                               0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  Rst_Sync_D1_dut/FF_Stage_reg[1]/CK (SDFFRQX1M)          0.00       0.00 r
+  Rst_Sync_D1_dut/FF_Stage_reg[1]/Q (SDFFRQX1M)           0.37       0.37 r
+  Rst_Sync_D1_dut/U6/Y (AND2X2M)                          0.12       0.49 r
+  Rst_Sync_D1_dut/SYNC_RST (Rst_Sync_NUM_STAGES2_ACTIVE_TYPLOW_test_0)
+                                                          0.00       0.49 r
+  U5_mux2X1/IN_0 (mux2X1_2)                               0.00       0.49 r
+  U5_mux2X1/U1/Y (AO2B2X2M)                               0.14       0.63 r
+  U5_mux2X1/OUT (mux2X1_2)                                0.00       0.63 r
+  U7/Y (INVX2M)                                           0.05       0.69 f
+  U3/Y (INVX4M)                                           0.67       1.36 r
+  ASYNC_FIFO_dut/W_RST (ASYNC_FIFO_test_1)                0.00       1.36 r
+  ASYNC_FIFO_dut/U5/Y (INVX2M)                            0.10       1.46 f
+  ASYNC_FIFO_dut/U4/Y (INVX2M)                            0.64       2.11 r
+  ASYNC_FIFO_dut/sync_r2w/RST_n (Bit_Sync_00000002_00000005_test_0)
+                                                          0.00       2.11 r
+  ASYNC_FIFO_dut/sync_r2w/U15/Y (AND2X2M)                 0.25       2.36 r
+  ASYNC_FIFO_dut/sync_r2w/SYNC[3] (Bit_Sync_00000002_00000005_test_0)
+                                                          0.00       2.36 r
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/gray_Rptr[3] (fifo_wrptr_full_00000008_00000010_test_1)
+                                                          0.00       2.36 r
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U11/Y (CLKXOR2X2M)
+                                                          0.35       2.71 f
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U9/Y (AOI22X1M)      0.26       2.96 r
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U20/Y (OAI2B2X1M)
+                                                          0.22       3.19 f
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U23/Y (NAND2BX2M)
+                                                          0.19       3.38 f
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U22/Y (AOI22X1M)     0.13       3.51 r
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U27/Y (OAI2BB2X1M)
+                                                          0.13       3.63 f
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U24/Y (AND4X2M)      0.22       3.85 f
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/WFULL (fifo_wrptr_full_00000008_00000010_test_1)
+                                                          0.00       3.85 f
+  ASYNC_FIFO_dut/FULL (ASYNC_FIFO_test_1)                 0.00       3.85 f
+  SYS_CTRL_dut/FIFO_FULL (SYS_CTRL_test_1)                0.00       3.85 f
+  SYS_CTRL_dut/U33/Y (NOR2X2M)                            0.12       3.97 r
+  SYS_CTRL_dut/WR_INC (SYS_CTRL_test_1)                   0.00       3.97 r
+  ASYNC_FIFO_dut/W_INC (ASYNC_FIFO_test_1)                0.00       3.97 r
+  ASYNC_FIFO_dut/U2/Y (AND3X2M)                           0.29       4.27 r
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/wclk_en (FIFO_MEMORY_00000008_00000010_test_1)
+                                                          0.00       4.27 r
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/U29/Y (INVX2M)           0.13       4.39 f
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/U67/Y (AOI22X1M)         0.19       4.59 r
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/U66/Y (BUFX2M)           0.30       4.89 r
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/U82/Y (OAI2BB2X1M)       0.11       5.01 f
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][2]/D (SDFFRQX2M)
+                                                          0.00       5.01 f
+  data arrival time                                                  5.01
+
+  clock REF_CLK (rise edge)                              10.00      10.00
+  clock network delay (ideal)                             0.00      10.00
+  clock uncertainty                                      -0.20       9.80
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][2]/CK (SDFFRQX2M)
+                                                          0.00       9.80 r
+  library setup time                                     -0.41       9.39
+  data required time                                                 9.39
+  --------------------------------------------------------------------------
+  data required time                                                 9.39
+  data arrival time                                                 -5.01
+  --------------------------------------------------------------------------
+  slack (MET)                                                        4.38
+
+
+  Startpoint: Rst_Sync_D1_dut/FF_Stage_reg[1]
+              (rising edge-triggered flip-flop clocked by REF_CLK)
+  Endpoint: ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][1]
+            (rising edge-triggered flip-flop clocked by REF_CLK)
+  Path Group: REF_CLK
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock REF_CLK (rise edge)                               0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  Rst_Sync_D1_dut/FF_Stage_reg[1]/CK (SDFFRQX1M)          0.00       0.00 r
+  Rst_Sync_D1_dut/FF_Stage_reg[1]/Q (SDFFRQX1M)           0.37       0.37 r
+  Rst_Sync_D1_dut/U6/Y (AND2X2M)                          0.12       0.49 r
+  Rst_Sync_D1_dut/SYNC_RST (Rst_Sync_NUM_STAGES2_ACTIVE_TYPLOW_test_0)
+                                                          0.00       0.49 r
+  U5_mux2X1/IN_0 (mux2X1_2)                               0.00       0.49 r
+  U5_mux2X1/U1/Y (AO2B2X2M)                               0.14       0.63 r
+  U5_mux2X1/OUT (mux2X1_2)                                0.00       0.63 r
+  U7/Y (INVX2M)                                           0.05       0.69 f
+  U3/Y (INVX4M)                                           0.67       1.36 r
+  ASYNC_FIFO_dut/W_RST (ASYNC_FIFO_test_1)                0.00       1.36 r
+  ASYNC_FIFO_dut/U5/Y (INVX2M)                            0.10       1.46 f
+  ASYNC_FIFO_dut/U4/Y (INVX2M)                            0.64       2.11 r
+  ASYNC_FIFO_dut/sync_r2w/RST_n (Bit_Sync_00000002_00000005_test_0)
+                                                          0.00       2.11 r
+  ASYNC_FIFO_dut/sync_r2w/U15/Y (AND2X2M)                 0.25       2.36 r
+  ASYNC_FIFO_dut/sync_r2w/SYNC[3] (Bit_Sync_00000002_00000005_test_0)
+                                                          0.00       2.36 r
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/gray_Rptr[3] (fifo_wrptr_full_00000008_00000010_test_1)
+                                                          0.00       2.36 r
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U11/Y (CLKXOR2X2M)
+                                                          0.35       2.71 f
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U9/Y (AOI22X1M)      0.26       2.96 r
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U20/Y (OAI2B2X1M)
+                                                          0.22       3.19 f
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U23/Y (NAND2BX2M)
+                                                          0.19       3.38 f
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U22/Y (AOI22X1M)     0.13       3.51 r
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U27/Y (OAI2BB2X1M)
+                                                          0.13       3.63 f
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U24/Y (AND4X2M)      0.22       3.85 f
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/WFULL (fifo_wrptr_full_00000008_00000010_test_1)
+                                                          0.00       3.85 f
+  ASYNC_FIFO_dut/FULL (ASYNC_FIFO_test_1)                 0.00       3.85 f
+  SYS_CTRL_dut/FIFO_FULL (SYS_CTRL_test_1)                0.00       3.85 f
+  SYS_CTRL_dut/U33/Y (NOR2X2M)                            0.12       3.97 r
+  SYS_CTRL_dut/WR_INC (SYS_CTRL_test_1)                   0.00       3.97 r
+  ASYNC_FIFO_dut/W_INC (ASYNC_FIFO_test_1)                0.00       3.97 r
+  ASYNC_FIFO_dut/U2/Y (AND3X2M)                           0.29       4.27 r
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/wclk_en (FIFO_MEMORY_00000008_00000010_test_1)
+                                                          0.00       4.27 r
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/U29/Y (INVX2M)           0.13       4.39 f
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/U65/Y (AOI22X1M)         0.19       4.59 r
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/U64/Y (BUFX2M)           0.30       4.89 r
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/U80/Y (OAI2BB2X1M)       0.11       5.01 f
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][1]/D (SDFFRQX2M)
+                                                          0.00       5.01 f
+  data arrival time                                                  5.01
+
+  clock REF_CLK (rise edge)                              10.00      10.00
+  clock network delay (ideal)                             0.00      10.00
+  clock uncertainty                                      -0.20       9.80
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][1]/CK (SDFFRQX2M)
+                                                          0.00       9.80 r
+  library setup time                                     -0.41       9.39
+  data required time                                                 9.39
+  --------------------------------------------------------------------------
+  data required time                                                 9.39
+  data arrival time                                                 -5.01
+  --------------------------------------------------------------------------
+  slack (MET)                                                        4.38
+
+
+  Startpoint: Rst_Sync_D1_dut/FF_Stage_reg[1]
+              (rising edge-triggered flip-flop clocked by REF_CLK)
+  Endpoint: ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][0]
+            (rising edge-triggered flip-flop clocked by REF_CLK)
+  Path Group: REF_CLK
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock REF_CLK (rise edge)                               0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  Rst_Sync_D1_dut/FF_Stage_reg[1]/CK (SDFFRQX1M)          0.00       0.00 r
+  Rst_Sync_D1_dut/FF_Stage_reg[1]/Q (SDFFRQX1M)           0.37       0.37 r
+  Rst_Sync_D1_dut/U6/Y (AND2X2M)                          0.12       0.49 r
+  Rst_Sync_D1_dut/SYNC_RST (Rst_Sync_NUM_STAGES2_ACTIVE_TYPLOW_test_0)
+                                                          0.00       0.49 r
+  U5_mux2X1/IN_0 (mux2X1_2)                               0.00       0.49 r
+  U5_mux2X1/U1/Y (AO2B2X2M)                               0.14       0.63 r
+  U5_mux2X1/OUT (mux2X1_2)                                0.00       0.63 r
+  U7/Y (INVX2M)                                           0.05       0.69 f
+  U3/Y (INVX4M)                                           0.67       1.36 r
+  ASYNC_FIFO_dut/W_RST (ASYNC_FIFO_test_1)                0.00       1.36 r
+  ASYNC_FIFO_dut/U5/Y (INVX2M)                            0.10       1.46 f
+  ASYNC_FIFO_dut/U4/Y (INVX2M)                            0.64       2.11 r
+  ASYNC_FIFO_dut/sync_r2w/RST_n (Bit_Sync_00000002_00000005_test_0)
+                                                          0.00       2.11 r
+  ASYNC_FIFO_dut/sync_r2w/U15/Y (AND2X2M)                 0.25       2.36 r
+  ASYNC_FIFO_dut/sync_r2w/SYNC[3] (Bit_Sync_00000002_00000005_test_0)
+                                                          0.00       2.36 r
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/gray_Rptr[3] (fifo_wrptr_full_00000008_00000010_test_1)
+                                                          0.00       2.36 r
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U11/Y (CLKXOR2X2M)
+                                                          0.35       2.71 f
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U9/Y (AOI22X1M)      0.26       2.96 r
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U20/Y (OAI2B2X1M)
+                                                          0.22       3.19 f
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U23/Y (NAND2BX2M)
+                                                          0.19       3.38 f
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U22/Y (AOI22X1M)     0.13       3.51 r
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U27/Y (OAI2BB2X1M)
+                                                          0.13       3.63 f
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/U24/Y (AND4X2M)      0.22       3.85 f
+  ASYNC_FIFO_dut/fifo_wrptr_full_dut/WFULL (fifo_wrptr_full_00000008_00000010_test_1)
+                                                          0.00       3.85 f
+  ASYNC_FIFO_dut/FULL (ASYNC_FIFO_test_1)                 0.00       3.85 f
+  SYS_CTRL_dut/FIFO_FULL (SYS_CTRL_test_1)                0.00       3.85 f
+  SYS_CTRL_dut/U33/Y (NOR2X2M)                            0.12       3.97 r
+  SYS_CTRL_dut/WR_INC (SYS_CTRL_test_1)                   0.00       3.97 r
+  ASYNC_FIFO_dut/W_INC (ASYNC_FIFO_test_1)                0.00       3.97 r
+  ASYNC_FIFO_dut/U2/Y (AND3X2M)                           0.29       4.27 r
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/wclk_en (FIFO_MEMORY_00000008_00000010_test_1)
+                                                          0.00       4.27 r
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/U29/Y (INVX2M)           0.13       4.39 f
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/U63/Y (AOI22X1M)         0.19       4.59 r
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/U62/Y (BUFX2M)           0.30       4.89 r
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/U78/Y (OAI2BB2X1M)       0.11       5.01 f
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][0]/D (SDFFRQX2M)
+                                                          0.00       5.01 f
+  data arrival time                                                  5.01
+
+  clock REF_CLK (rise edge)                              10.00      10.00
+  clock network delay (ideal)                             0.00      10.00
+  clock uncertainty                                      -0.20       9.80
+  ASYNC_FIFO_dut/FIFO_MEMORY_dut/FIFO_MEM_reg[0][0]/CK (SDFFRQX2M)
+                                                          0.00       9.80 r
+  library setup time                                     -0.41       9.39
+  data required time                                                 9.39
+  --------------------------------------------------------------------------
+  data required time                                                 9.39
+  data arrival time                                                 -5.01
+  --------------------------------------------------------------------------
+  slack (MET)                                                        4.38
+
+
+  Startpoint: Rst_Sync_D2_dut/FF_Stage_reg[1]
+              (rising edge-triggered flip-flop clocked by UART_CLK)
+  Endpoint: UART_RX_dut/out_next_reg[7]
+            (rising edge-triggered flip-flop clocked by UART_CLK)
+  Path Group: UART_CLK
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock UART_CLK (rise edge)                              0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  Rst_Sync_D2_dut/FF_Stage_reg[1]/CK (SDFFRQX1M)          0.00       0.00 r
+  Rst_Sync_D2_dut/FF_Stage_reg[1]/Q (SDFFRQX1M)           0.37       0.37 r
+  Rst_Sync_D2_dut/U6/Y (AND2X2M)                          0.12       0.49 r
+  Rst_Sync_D2_dut/SYNC_RST (Rst_Sync_NUM_STAGES2_ACTIVE_TYPLOW_test_1)
+                                                          0.00       0.49 r
+  U6_mux2X1/IN_0 (mux2X1_1)                               0.00       0.49 r
+  U6_mux2X1/U1/Y (AO2B2X2M)                               0.14       0.63 r
+  U6_mux2X1/OUT (mux2X1_1)                                0.00       0.63 r
+  U8/Y (INVX2M)                                           0.04       0.68 f
+  U4/Y (INVX2M)                                           0.33       1.00 r
+  UART_RX_dut/RST_n (UART_RX_10_test_1)                   0.00       1.00 r
+  UART_RX_dut/U32/Y (INVX2M)                              0.09       1.09 f
+  UART_RX_dut/U7/Y (INVX2M)                               0.70       1.79 r
+  UART_RX_dut/edge_bit_dut/RST_n (edge_bit_counter_10_test_1)
+                                                          0.00       1.79 r
+  UART_RX_dut/edge_bit_dut/U15/Y (INVX2M)                 0.32       2.11 f
+  UART_RX_dut/edge_bit_dut/U23/Y (NOR2X2M)                0.37       2.48 r
+  UART_RX_dut/edge_bit_dut/edge_cnt[1] (edge_bit_counter_10_test_1)
+                                                          0.00       2.48 r
+  UART_RX_dut/U128/Y (OAI2B2X1M)                          0.23       2.71 r
+  UART_RX_dut/U133/Y (AND4X1M)                            0.26       2.97 r
+  UART_RX_dut/U12/Y (INVX2M)                              0.07       3.04 f
+  UART_RX_dut/U46/Y (NAND2X2M)                            0.06       3.10 r
+  UART_RX_dut/U8/Y (OAI211X2M)                            0.24       3.33 f
+  UART_RX_dut/dut_sample/data_samp_en (data_sampling_10_test_1)
+                                                          0.00       3.33 f
+  UART_RX_dut/dut_sample/U10/Y (INVX2M)                   0.14       3.47 r
+  UART_RX_dut/dut_sample/U9/Y (NOR2X2M)                   0.05       3.52 f
+  UART_RX_dut/dut_sample/U8/Y (NOR4BX1M)                  0.19       3.71 f
+  UART_RX_dut/dut_sample/U7/Y (INVX2M)                    0.08       3.79 r
+  UART_RX_dut/dut_sample/U15/Y (AOI22X1M)                 0.09       3.88 f
+  UART_RX_dut/dut_sample/U14/Y (NOR2BX2M)                 0.17       4.05 f
+  UART_RX_dut/dut_sample/U6/Y (OAI2B2X1M)                 0.36       4.40 r
+  UART_RX_dut/dut_sample/sampled_bit (data_sampling_10_test_1)
+                                                          0.00       4.40 r
+  UART_RX_dut/parity_dut/sampled_bit (Parity_Check)       0.00       4.40 r
+  UART_RX_dut/parity_dut/U6/Y (XNOR2X2M)                  0.11       4.51 f
+  UART_RX_dut/parity_dut/U3/Y (XOR3XLM)                   0.27       4.78 r
+  UART_RX_dut/parity_dut/U2/Y (NOR2BX2M)                  0.06       4.85 f
+  UART_RX_dut/parity_dut/par_err (Parity_Check)           0.00       4.85 f
+  UART_RX_dut/U49/Y (OAI33X2M)                            0.32       5.17 r
+  UART_RX_dut/U48/Y (NAND2X2M)                            0.20       5.37 f
+  UART_RX_dut/U74/Y (AO22X1M)                             0.38       5.75 f
+  UART_RX_dut/U73/Y (AND2X2M)                             0.15       5.91 f
+  UART_RX_dut/U72/Y (MX2X2M)                              0.21       6.12 f
+  UART_RX_dut/out_next_reg[7]/D (SDFFRQX2M)               0.00       6.12 f
+  data arrival time                                                  6.12
+
+  clock UART_CLK (rise edge)                            271.27     271.27
+  clock network delay (ideal)                             0.00     271.27
+  clock uncertainty                                      -0.20     271.07
+  UART_RX_dut/out_next_reg[7]/CK (SDFFRQX2M)              0.00     271.07 r
+  library setup time                                     -0.41     270.66
+  data required time                                               270.66
+  --------------------------------------------------------------------------
+  data required time                                               270.66
+  data arrival time                                                 -6.12
+  --------------------------------------------------------------------------
+  slack (MET)                                                      264.54
+
+
+  Startpoint: Rst_Sync_D2_dut/FF_Stage_reg[1]
+              (rising edge-triggered flip-flop clocked by UART_CLK)
+  Endpoint: UART_RX_dut/out_next_reg[6]
+            (rising edge-triggered flip-flop clocked by UART_CLK)
+  Path Group: UART_CLK
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock UART_CLK (rise edge)                              0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  Rst_Sync_D2_dut/FF_Stage_reg[1]/CK (SDFFRQX1M)          0.00       0.00 r
+  Rst_Sync_D2_dut/FF_Stage_reg[1]/Q (SDFFRQX1M)           0.37       0.37 r
+  Rst_Sync_D2_dut/U6/Y (AND2X2M)                          0.12       0.49 r
+  Rst_Sync_D2_dut/SYNC_RST (Rst_Sync_NUM_STAGES2_ACTIVE_TYPLOW_test_1)
+                                                          0.00       0.49 r
+  U6_mux2X1/IN_0 (mux2X1_1)                               0.00       0.49 r
+  U6_mux2X1/U1/Y (AO2B2X2M)                               0.14       0.63 r
+  U6_mux2X1/OUT (mux2X1_1)                                0.00       0.63 r
+  U8/Y (INVX2M)                                           0.04       0.68 f
+  U4/Y (INVX2M)                                           0.33       1.00 r
+  UART_RX_dut/RST_n (UART_RX_10_test_1)                   0.00       1.00 r
+  UART_RX_dut/U32/Y (INVX2M)                              0.09       1.09 f
+  UART_RX_dut/U7/Y (INVX2M)                               0.70       1.79 r
+  UART_RX_dut/edge_bit_dut/RST_n (edge_bit_counter_10_test_1)
+                                                          0.00       1.79 r
+  UART_RX_dut/edge_bit_dut/U15/Y (INVX2M)                 0.32       2.11 f
+  UART_RX_dut/edge_bit_dut/U23/Y (NOR2X2M)                0.37       2.48 r
+  UART_RX_dut/edge_bit_dut/edge_cnt[1] (edge_bit_counter_10_test_1)
+                                                          0.00       2.48 r
+  UART_RX_dut/U128/Y (OAI2B2X1M)                          0.23       2.71 r
+  UART_RX_dut/U133/Y (AND4X1M)                            0.26       2.97 r
+  UART_RX_dut/U12/Y (INVX2M)                              0.07       3.04 f
+  UART_RX_dut/U46/Y (NAND2X2M)                            0.06       3.10 r
+  UART_RX_dut/U8/Y (OAI211X2M)                            0.24       3.33 f
+  UART_RX_dut/dut_sample/data_samp_en (data_sampling_10_test_1)
+                                                          0.00       3.33 f
+  UART_RX_dut/dut_sample/U10/Y (INVX2M)                   0.14       3.47 r
+  UART_RX_dut/dut_sample/U9/Y (NOR2X2M)                   0.05       3.52 f
+  UART_RX_dut/dut_sample/U8/Y (NOR4BX1M)                  0.19       3.71 f
+  UART_RX_dut/dut_sample/U7/Y (INVX2M)                    0.08       3.79 r
+  UART_RX_dut/dut_sample/U15/Y (AOI22X1M)                 0.09       3.88 f
+  UART_RX_dut/dut_sample/U14/Y (NOR2BX2M)                 0.17       4.05 f
+  UART_RX_dut/dut_sample/U6/Y (OAI2B2X1M)                 0.36       4.40 r
+  UART_RX_dut/dut_sample/sampled_bit (data_sampling_10_test_1)
+                                                          0.00       4.40 r
+  UART_RX_dut/parity_dut/sampled_bit (Parity_Check)       0.00       4.40 r
+  UART_RX_dut/parity_dut/U6/Y (XNOR2X2M)                  0.11       4.51 f
+  UART_RX_dut/parity_dut/U3/Y (XOR3XLM)                   0.27       4.78 r
+  UART_RX_dut/parity_dut/U2/Y (NOR2BX2M)                  0.06       4.85 f
+  UART_RX_dut/parity_dut/par_err (Parity_Check)           0.00       4.85 f
+  UART_RX_dut/U49/Y (OAI33X2M)                            0.32       5.17 r
+  UART_RX_dut/U48/Y (NAND2X2M)                            0.20       5.37 f
+  UART_RX_dut/U71/Y (AO22X1M)                             0.38       5.75 f
+  UART_RX_dut/U70/Y (AND2X2M)                             0.15       5.91 f
+  UART_RX_dut/U69/Y (MX2X2M)                              0.21       6.12 f
+  UART_RX_dut/out_next_reg[6]/D (SDFFRQX2M)               0.00       6.12 f
+  data arrival time                                                  6.12
+
+  clock UART_CLK (rise edge)                            271.27     271.27
+  clock network delay (ideal)                             0.00     271.27
+  clock uncertainty                                      -0.20     271.07
+  UART_RX_dut/out_next_reg[6]/CK (SDFFRQX2M)              0.00     271.07 r
+  library setup time                                     -0.41     270.66
+  data required time                                               270.66
+  --------------------------------------------------------------------------
+  data required time                                               270.66
+  data arrival time                                                 -6.12
+  --------------------------------------------------------------------------
+  slack (MET)                                                      264.54
+
+
+  Startpoint: Rst_Sync_D2_dut/FF_Stage_reg[1]
+              (rising edge-triggered flip-flop clocked by UART_CLK)
+  Endpoint: UART_RX_dut/out_next_reg[5]
+            (rising edge-triggered flip-flop clocked by UART_CLK)
+  Path Group: UART_CLK
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock UART_CLK (rise edge)                              0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  Rst_Sync_D2_dut/FF_Stage_reg[1]/CK (SDFFRQX1M)          0.00       0.00 r
+  Rst_Sync_D2_dut/FF_Stage_reg[1]/Q (SDFFRQX1M)           0.37       0.37 r
+  Rst_Sync_D2_dut/U6/Y (AND2X2M)                          0.12       0.49 r
+  Rst_Sync_D2_dut/SYNC_RST (Rst_Sync_NUM_STAGES2_ACTIVE_TYPLOW_test_1)
+                                                          0.00       0.49 r
+  U6_mux2X1/IN_0 (mux2X1_1)                               0.00       0.49 r
+  U6_mux2X1/U1/Y (AO2B2X2M)                               0.14       0.63 r
+  U6_mux2X1/OUT (mux2X1_1)                                0.00       0.63 r
+  U8/Y (INVX2M)                                           0.04       0.68 f
+  U4/Y (INVX2M)                                           0.33       1.00 r
+  UART_RX_dut/RST_n (UART_RX_10_test_1)                   0.00       1.00 r
+  UART_RX_dut/U32/Y (INVX2M)                              0.09       1.09 f
+  UART_RX_dut/U7/Y (INVX2M)                               0.70       1.79 r
+  UART_RX_dut/edge_bit_dut/RST_n (edge_bit_counter_10_test_1)
+                                                          0.00       1.79 r
+  UART_RX_dut/edge_bit_dut/U15/Y (INVX2M)                 0.32       2.11 f
+  UART_RX_dut/edge_bit_dut/U23/Y (NOR2X2M)                0.37       2.48 r
+  UART_RX_dut/edge_bit_dut/edge_cnt[1] (edge_bit_counter_10_test_1)
+                                                          0.00       2.48 r
+  UART_RX_dut/U128/Y (OAI2B2X1M)                          0.23       2.71 r
+  UART_RX_dut/U133/Y (AND4X1M)                            0.26       2.97 r
+  UART_RX_dut/U12/Y (INVX2M)                              0.07       3.04 f
+  UART_RX_dut/U46/Y (NAND2X2M)                            0.06       3.10 r
+  UART_RX_dut/U8/Y (OAI211X2M)                            0.24       3.33 f
+  UART_RX_dut/dut_sample/data_samp_en (data_sampling_10_test_1)
+                                                          0.00       3.33 f
+  UART_RX_dut/dut_sample/U10/Y (INVX2M)                   0.14       3.47 r
+  UART_RX_dut/dut_sample/U9/Y (NOR2X2M)                   0.05       3.52 f
+  UART_RX_dut/dut_sample/U8/Y (NOR4BX1M)                  0.19       3.71 f
+  UART_RX_dut/dut_sample/U7/Y (INVX2M)                    0.08       3.79 r
+  UART_RX_dut/dut_sample/U15/Y (AOI22X1M)                 0.09       3.88 f
+  UART_RX_dut/dut_sample/U14/Y (NOR2BX2M)                 0.17       4.05 f
+  UART_RX_dut/dut_sample/U6/Y (OAI2B2X1M)                 0.36       4.40 r
+  UART_RX_dut/dut_sample/sampled_bit (data_sampling_10_test_1)
+                                                          0.00       4.40 r
+  UART_RX_dut/parity_dut/sampled_bit (Parity_Check)       0.00       4.40 r
+  UART_RX_dut/parity_dut/U6/Y (XNOR2X2M)                  0.11       4.51 f
+  UART_RX_dut/parity_dut/U3/Y (XOR3XLM)                   0.27       4.78 r
+  UART_RX_dut/parity_dut/U2/Y (NOR2BX2M)                  0.06       4.85 f
+  UART_RX_dut/parity_dut/par_err (Parity_Check)           0.00       4.85 f
+  UART_RX_dut/U49/Y (OAI33X2M)                            0.32       5.17 r
+  UART_RX_dut/U48/Y (NAND2X2M)                            0.20       5.37 f
+  UART_RX_dut/U68/Y (AO22X1M)                             0.38       5.75 f
+  UART_RX_dut/U67/Y (AND2X2M)                             0.15       5.91 f
+  UART_RX_dut/U66/Y (MX2X2M)                              0.21       6.12 f
+  UART_RX_dut/out_next_reg[5]/D (SDFFRQX2M)               0.00       6.12 f
+  data arrival time                                                  6.12
+
+  clock UART_CLK (rise edge)                            271.27     271.27
+  clock network delay (ideal)                             0.00     271.27
+  clock uncertainty                                      -0.20     271.07
+  UART_RX_dut/out_next_reg[5]/CK (SDFFRQX2M)              0.00     271.07 r
+  library setup time                                     -0.41     270.66
+  data required time                                               270.66
+  --------------------------------------------------------------------------
+  data required time                                               270.66
+  data arrival time                                                 -6.12
+  --------------------------------------------------------------------------
+  slack (MET)                                                      264.54
+
+
+  Startpoint: Rst_Sync_D2_dut/FF_Stage_reg[1]
+              (rising edge-triggered flip-flop clocked by UART_CLK)
+  Endpoint: UART_RX_dut/out_next_reg[4]
+            (rising edge-triggered flip-flop clocked by UART_CLK)
+  Path Group: UART_CLK
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock UART_CLK (rise edge)                              0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  Rst_Sync_D2_dut/FF_Stage_reg[1]/CK (SDFFRQX1M)          0.00       0.00 r
+  Rst_Sync_D2_dut/FF_Stage_reg[1]/Q (SDFFRQX1M)           0.37       0.37 r
+  Rst_Sync_D2_dut/U6/Y (AND2X2M)                          0.12       0.49 r
+  Rst_Sync_D2_dut/SYNC_RST (Rst_Sync_NUM_STAGES2_ACTIVE_TYPLOW_test_1)
+                                                          0.00       0.49 r
+  U6_mux2X1/IN_0 (mux2X1_1)                               0.00       0.49 r
+  U6_mux2X1/U1/Y (AO2B2X2M)                               0.14       0.63 r
+  U6_mux2X1/OUT (mux2X1_1)                                0.00       0.63 r
+  U8/Y (INVX2M)                                           0.04       0.68 f
+  U4/Y (INVX2M)                                           0.33       1.00 r
+  UART_RX_dut/RST_n (UART_RX_10_test_1)                   0.00       1.00 r
+  UART_RX_dut/U32/Y (INVX2M)                              0.09       1.09 f
+  UART_RX_dut/U7/Y (INVX2M)                               0.70       1.79 r
+  UART_RX_dut/edge_bit_dut/RST_n (edge_bit_counter_10_test_1)
+                                                          0.00       1.79 r
+  UART_RX_dut/edge_bit_dut/U15/Y (INVX2M)                 0.32       2.11 f
+  UART_RX_dut/edge_bit_dut/U23/Y (NOR2X2M)                0.37       2.48 r
+  UART_RX_dut/edge_bit_dut/edge_cnt[1] (edge_bit_counter_10_test_1)
+                                                          0.00       2.48 r
+  UART_RX_dut/U128/Y (OAI2B2X1M)                          0.23       2.71 r
+  UART_RX_dut/U133/Y (AND4X1M)                            0.26       2.97 r
+  UART_RX_dut/U12/Y (INVX2M)                              0.07       3.04 f
+  UART_RX_dut/U46/Y (NAND2X2M)                            0.06       3.10 r
+  UART_RX_dut/U8/Y (OAI211X2M)                            0.24       3.33 f
+  UART_RX_dut/dut_sample/data_samp_en (data_sampling_10_test_1)
+                                                          0.00       3.33 f
+  UART_RX_dut/dut_sample/U10/Y (INVX2M)                   0.14       3.47 r
+  UART_RX_dut/dut_sample/U9/Y (NOR2X2M)                   0.05       3.52 f
+  UART_RX_dut/dut_sample/U8/Y (NOR4BX1M)                  0.19       3.71 f
+  UART_RX_dut/dut_sample/U7/Y (INVX2M)                    0.08       3.79 r
+  UART_RX_dut/dut_sample/U15/Y (AOI22X1M)                 0.09       3.88 f
+  UART_RX_dut/dut_sample/U14/Y (NOR2BX2M)                 0.17       4.05 f
+  UART_RX_dut/dut_sample/U6/Y (OAI2B2X1M)                 0.36       4.40 r
+  UART_RX_dut/dut_sample/sampled_bit (data_sampling_10_test_1)
+                                                          0.00       4.40 r
+  UART_RX_dut/parity_dut/sampled_bit (Parity_Check)       0.00       4.40 r
+  UART_RX_dut/parity_dut/U6/Y (XNOR2X2M)                  0.11       4.51 f
+  UART_RX_dut/parity_dut/U3/Y (XOR3XLM)                   0.27       4.78 r
+  UART_RX_dut/parity_dut/U2/Y (NOR2BX2M)                  0.06       4.85 f
+  UART_RX_dut/parity_dut/par_err (Parity_Check)           0.00       4.85 f
+  UART_RX_dut/U49/Y (OAI33X2M)                            0.32       5.17 r
+  UART_RX_dut/U48/Y (NAND2X2M)                            0.20       5.37 f
+  UART_RX_dut/U65/Y (AO22X1M)                             0.38       5.75 f
+  UART_RX_dut/U64/Y (AND2X2M)                             0.15       5.91 f
+  UART_RX_dut/U63/Y (MX2X2M)                              0.21       6.12 f
+  UART_RX_dut/out_next_reg[4]/D (SDFFRQX2M)               0.00       6.12 f
+  data arrival time                                                  6.12
+
+  clock UART_CLK (rise edge)                            271.27     271.27
+  clock network delay (ideal)                             0.00     271.27
+  clock uncertainty                                      -0.20     271.07
+  UART_RX_dut/out_next_reg[4]/CK (SDFFRQX2M)              0.00     271.07 r
+  library setup time                                     -0.41     270.66
+  data required time                                               270.66
+  --------------------------------------------------------------------------
+  data required time                                               270.66
+  data arrival time                                                 -6.12
+  --------------------------------------------------------------------------
+  slack (MET)                                                      264.54
+
+
+  Startpoint: Rst_Sync_D2_dut/FF_Stage_reg[1]
+              (rising edge-triggered flip-flop clocked by UART_CLK)
+  Endpoint: UART_RX_dut/out_next_reg[3]
+            (rising edge-triggered flip-flop clocked by UART_CLK)
+  Path Group: UART_CLK
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock UART_CLK (rise edge)                              0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  Rst_Sync_D2_dut/FF_Stage_reg[1]/CK (SDFFRQX1M)          0.00       0.00 r
+  Rst_Sync_D2_dut/FF_Stage_reg[1]/Q (SDFFRQX1M)           0.37       0.37 r
+  Rst_Sync_D2_dut/U6/Y (AND2X2M)                          0.12       0.49 r
+  Rst_Sync_D2_dut/SYNC_RST (Rst_Sync_NUM_STAGES2_ACTIVE_TYPLOW_test_1)
+                                                          0.00       0.49 r
+  U6_mux2X1/IN_0 (mux2X1_1)                               0.00       0.49 r
+  U6_mux2X1/U1/Y (AO2B2X2M)                               0.14       0.63 r
+  U6_mux2X1/OUT (mux2X1_1)                                0.00       0.63 r
+  U8/Y (INVX2M)                                           0.04       0.68 f
+  U4/Y (INVX2M)                                           0.33       1.00 r
+  UART_RX_dut/RST_n (UART_RX_10_test_1)                   0.00       1.00 r
+  UART_RX_dut/U32/Y (INVX2M)                              0.09       1.09 f
+  UART_RX_dut/U7/Y (INVX2M)                               0.70       1.79 r
+  UART_RX_dut/edge_bit_dut/RST_n (edge_bit_counter_10_test_1)
+                                                          0.00       1.79 r
+  UART_RX_dut/edge_bit_dut/U15/Y (INVX2M)                 0.32       2.11 f
+  UART_RX_dut/edge_bit_dut/U23/Y (NOR2X2M)                0.37       2.48 r
+  UART_RX_dut/edge_bit_dut/edge_cnt[1] (edge_bit_counter_10_test_1)
+                                                          0.00       2.48 r
+  UART_RX_dut/U128/Y (OAI2B2X1M)                          0.23       2.71 r
+  UART_RX_dut/U133/Y (AND4X1M)                            0.26       2.97 r
+  UART_RX_dut/U12/Y (INVX2M)                              0.07       3.04 f
+  UART_RX_dut/U46/Y (NAND2X2M)                            0.06       3.10 r
+  UART_RX_dut/U8/Y (OAI211X2M)                            0.24       3.33 f
+  UART_RX_dut/dut_sample/data_samp_en (data_sampling_10_test_1)
+                                                          0.00       3.33 f
+  UART_RX_dut/dut_sample/U10/Y (INVX2M)                   0.14       3.47 r
+  UART_RX_dut/dut_sample/U9/Y (NOR2X2M)                   0.05       3.52 f
+  UART_RX_dut/dut_sample/U8/Y (NOR4BX1M)                  0.19       3.71 f
+  UART_RX_dut/dut_sample/U7/Y (INVX2M)                    0.08       3.79 r
+  UART_RX_dut/dut_sample/U15/Y (AOI22X1M)                 0.09       3.88 f
+  UART_RX_dut/dut_sample/U14/Y (NOR2BX2M)                 0.17       4.05 f
+  UART_RX_dut/dut_sample/U6/Y (OAI2B2X1M)                 0.36       4.40 r
+  UART_RX_dut/dut_sample/sampled_bit (data_sampling_10_test_1)
+                                                          0.00       4.40 r
+  UART_RX_dut/parity_dut/sampled_bit (Parity_Check)       0.00       4.40 r
+  UART_RX_dut/parity_dut/U6/Y (XNOR2X2M)                  0.11       4.51 f
+  UART_RX_dut/parity_dut/U3/Y (XOR3XLM)                   0.27       4.78 r
+  UART_RX_dut/parity_dut/U2/Y (NOR2BX2M)                  0.06       4.85 f
+  UART_RX_dut/parity_dut/par_err (Parity_Check)           0.00       4.85 f
+  UART_RX_dut/U49/Y (OAI33X2M)                            0.32       5.17 r
+  UART_RX_dut/U48/Y (NAND2X2M)                            0.20       5.37 f
+  UART_RX_dut/U62/Y (AO22X1M)                             0.38       5.75 f
+  UART_RX_dut/U61/Y (AND2X2M)                             0.15       5.91 f
+  UART_RX_dut/U60/Y (MX2X2M)                              0.21       6.12 f
+  UART_RX_dut/out_next_reg[3]/D (SDFFRQX2M)               0.00       6.12 f
+  data arrival time                                                  6.12
+
+  clock UART_CLK (rise edge)                            271.27     271.27
+  clock network delay (ideal)                             0.00     271.27
+  clock uncertainty                                      -0.20     271.07
+  UART_RX_dut/out_next_reg[3]/CK (SDFFRQX2M)              0.00     271.07 r
+  library setup time                                     -0.41     270.66
+  data required time                                               270.66
+  --------------------------------------------------------------------------
+  data required time                                               270.66
+  data arrival time                                                 -6.12
+  --------------------------------------------------------------------------
+  slack (MET)                                                      264.54
+
+
+  Startpoint: Rst_Sync_D2_dut/FF_Stage_reg[1]
+              (rising edge-triggered flip-flop clocked by UART_CLK)
+  Endpoint: UART_RX_dut/out_next_reg[2]
+            (rising edge-triggered flip-flop clocked by UART_CLK)
+  Path Group: UART_CLK
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock UART_CLK (rise edge)                              0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  Rst_Sync_D2_dut/FF_Stage_reg[1]/CK (SDFFRQX1M)          0.00       0.00 r
+  Rst_Sync_D2_dut/FF_Stage_reg[1]/Q (SDFFRQX1M)           0.37       0.37 r
+  Rst_Sync_D2_dut/U6/Y (AND2X2M)                          0.12       0.49 r
+  Rst_Sync_D2_dut/SYNC_RST (Rst_Sync_NUM_STAGES2_ACTIVE_TYPLOW_test_1)
+                                                          0.00       0.49 r
+  U6_mux2X1/IN_0 (mux2X1_1)                               0.00       0.49 r
+  U6_mux2X1/U1/Y (AO2B2X2M)                               0.14       0.63 r
+  U6_mux2X1/OUT (mux2X1_1)                                0.00       0.63 r
+  U8/Y (INVX2M)                                           0.04       0.68 f
+  U4/Y (INVX2M)                                           0.33       1.00 r
+  UART_RX_dut/RST_n (UART_RX_10_test_1)                   0.00       1.00 r
+  UART_RX_dut/U32/Y (INVX2M)                              0.09       1.09 f
+  UART_RX_dut/U7/Y (INVX2M)                               0.70       1.79 r
+  UART_RX_dut/edge_bit_dut/RST_n (edge_bit_counter_10_test_1)
+                                                          0.00       1.79 r
+  UART_RX_dut/edge_bit_dut/U15/Y (INVX2M)                 0.32       2.11 f
+  UART_RX_dut/edge_bit_dut/U23/Y (NOR2X2M)                0.37       2.48 r
+  UART_RX_dut/edge_bit_dut/edge_cnt[1] (edge_bit_counter_10_test_1)
+                                                          0.00       2.48 r
+  UART_RX_dut/U128/Y (OAI2B2X1M)                          0.23       2.71 r
+  UART_RX_dut/U133/Y (AND4X1M)                            0.26       2.97 r
+  UART_RX_dut/U12/Y (INVX2M)                              0.07       3.04 f
+  UART_RX_dut/U46/Y (NAND2X2M)                            0.06       3.10 r
+  UART_RX_dut/U8/Y (OAI211X2M)                            0.24       3.33 f
+  UART_RX_dut/dut_sample/data_samp_en (data_sampling_10_test_1)
+                                                          0.00       3.33 f
+  UART_RX_dut/dut_sample/U10/Y (INVX2M)                   0.14       3.47 r
+  UART_RX_dut/dut_sample/U9/Y (NOR2X2M)                   0.05       3.52 f
+  UART_RX_dut/dut_sample/U8/Y (NOR4BX1M)                  0.19       3.71 f
+  UART_RX_dut/dut_sample/U7/Y (INVX2M)                    0.08       3.79 r
+  UART_RX_dut/dut_sample/U15/Y (AOI22X1M)                 0.09       3.88 f
+  UART_RX_dut/dut_sample/U14/Y (NOR2BX2M)                 0.17       4.05 f
+  UART_RX_dut/dut_sample/U6/Y (OAI2B2X1M)                 0.36       4.40 r
+  UART_RX_dut/dut_sample/sampled_bit (data_sampling_10_test_1)
+                                                          0.00       4.40 r
+  UART_RX_dut/parity_dut/sampled_bit (Parity_Check)       0.00       4.40 r
+  UART_RX_dut/parity_dut/U6/Y (XNOR2X2M)                  0.11       4.51 f
+  UART_RX_dut/parity_dut/U3/Y (XOR3XLM)                   0.27       4.78 r
+  UART_RX_dut/parity_dut/U2/Y (NOR2BX2M)                  0.06       4.85 f
+  UART_RX_dut/parity_dut/par_err (Parity_Check)           0.00       4.85 f
+  UART_RX_dut/U49/Y (OAI33X2M)                            0.32       5.17 r
+  UART_RX_dut/U48/Y (NAND2X2M)                            0.20       5.37 f
+  UART_RX_dut/U59/Y (AO22X1M)                             0.38       5.75 f
+  UART_RX_dut/U58/Y (AND2X2M)                             0.15       5.91 f
+  UART_RX_dut/U57/Y (MX2X2M)                              0.21       6.12 f
+  UART_RX_dut/out_next_reg[2]/D (SDFFRQX2M)               0.00       6.12 f
+  data arrival time                                                  6.12
+
+  clock UART_CLK (rise edge)                            271.27     271.27
+  clock network delay (ideal)                             0.00     271.27
+  clock uncertainty                                      -0.20     271.07
+  UART_RX_dut/out_next_reg[2]/CK (SDFFRQX2M)              0.00     271.07 r
+  library setup time                                     -0.41     270.66
+  data required time                                               270.66
+  --------------------------------------------------------------------------
+  data required time                                               270.66
+  data arrival time                                                 -6.12
+  --------------------------------------------------------------------------
+  slack (MET)                                                      264.54
+
+
+  Startpoint: Rst_Sync_D2_dut/FF_Stage_reg[1]
+              (rising edge-triggered flip-flop clocked by UART_CLK)
+  Endpoint: UART_RX_dut/out_next_reg[1]
+            (rising edge-triggered flip-flop clocked by UART_CLK)
+  Path Group: UART_CLK
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock UART_CLK (rise edge)                              0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  Rst_Sync_D2_dut/FF_Stage_reg[1]/CK (SDFFRQX1M)          0.00       0.00 r
+  Rst_Sync_D2_dut/FF_Stage_reg[1]/Q (SDFFRQX1M)           0.37       0.37 r
+  Rst_Sync_D2_dut/U6/Y (AND2X2M)                          0.12       0.49 r
+  Rst_Sync_D2_dut/SYNC_RST (Rst_Sync_NUM_STAGES2_ACTIVE_TYPLOW_test_1)
+                                                          0.00       0.49 r
+  U6_mux2X1/IN_0 (mux2X1_1)                               0.00       0.49 r
+  U6_mux2X1/U1/Y (AO2B2X2M)                               0.14       0.63 r
+  U6_mux2X1/OUT (mux2X1_1)                                0.00       0.63 r
+  U8/Y (INVX2M)                                           0.04       0.68 f
+  U4/Y (INVX2M)                                           0.33       1.00 r
+  UART_RX_dut/RST_n (UART_RX_10_test_1)                   0.00       1.00 r
+  UART_RX_dut/U32/Y (INVX2M)                              0.09       1.09 f
+  UART_RX_dut/U7/Y (INVX2M)                               0.70       1.79 r
+  UART_RX_dut/edge_bit_dut/RST_n (edge_bit_counter_10_test_1)
+                                                          0.00       1.79 r
+  UART_RX_dut/edge_bit_dut/U15/Y (INVX2M)                 0.32       2.11 f
+  UART_RX_dut/edge_bit_dut/U23/Y (NOR2X2M)                0.37       2.48 r
+  UART_RX_dut/edge_bit_dut/edge_cnt[1] (edge_bit_counter_10_test_1)
+                                                          0.00       2.48 r
+  UART_RX_dut/U128/Y (OAI2B2X1M)                          0.23       2.71 r
+  UART_RX_dut/U133/Y (AND4X1M)                            0.26       2.97 r
+  UART_RX_dut/U12/Y (INVX2M)                              0.07       3.04 f
+  UART_RX_dut/U46/Y (NAND2X2M)                            0.06       3.10 r
+  UART_RX_dut/U8/Y (OAI211X2M)                            0.24       3.33 f
+  UART_RX_dut/dut_sample/data_samp_en (data_sampling_10_test_1)
+                                                          0.00       3.33 f
+  UART_RX_dut/dut_sample/U10/Y (INVX2M)                   0.14       3.47 r
+  UART_RX_dut/dut_sample/U9/Y (NOR2X2M)                   0.05       3.52 f
+  UART_RX_dut/dut_sample/U8/Y (NOR4BX1M)                  0.19       3.71 f
+  UART_RX_dut/dut_sample/U7/Y (INVX2M)                    0.08       3.79 r
+  UART_RX_dut/dut_sample/U15/Y (AOI22X1M)                 0.09       3.88 f
+  UART_RX_dut/dut_sample/U14/Y (NOR2BX2M)                 0.17       4.05 f
+  UART_RX_dut/dut_sample/U6/Y (OAI2B2X1M)                 0.36       4.40 r
+  UART_RX_dut/dut_sample/sampled_bit (data_sampling_10_test_1)
+                                                          0.00       4.40 r
+  UART_RX_dut/parity_dut/sampled_bit (Parity_Check)       0.00       4.40 r
+  UART_RX_dut/parity_dut/U6/Y (XNOR2X2M)                  0.11       4.51 f
+  UART_RX_dut/parity_dut/U3/Y (XOR3XLM)                   0.27       4.78 r
+  UART_RX_dut/parity_dut/U2/Y (NOR2BX2M)                  0.06       4.85 f
+  UART_RX_dut/parity_dut/par_err (Parity_Check)           0.00       4.85 f
+  UART_RX_dut/U49/Y (OAI33X2M)                            0.32       5.17 r
+  UART_RX_dut/U48/Y (NAND2X2M)                            0.20       5.37 f
+  UART_RX_dut/U56/Y (AO22X1M)                             0.38       5.75 f
+  UART_RX_dut/U55/Y (AND2X2M)                             0.15       5.91 f
+  UART_RX_dut/U54/Y (MX2X2M)                              0.21       6.12 f
+  UART_RX_dut/out_next_reg[1]/D (SDFFRQX2M)               0.00       6.12 f
+  data arrival time                                                  6.12
+
+  clock UART_CLK (rise edge)                            271.27     271.27
+  clock network delay (ideal)                             0.00     271.27
+  clock uncertainty                                      -0.20     271.07
+  UART_RX_dut/out_next_reg[1]/CK (SDFFRQX2M)              0.00     271.07 r
+  library setup time                                     -0.41     270.66
+  data required time                                               270.66
+  --------------------------------------------------------------------------
+  data required time                                               270.66
+  data arrival time                                                 -6.12
+  --------------------------------------------------------------------------
+  slack (MET)                                                      264.54
+
+
+  Startpoint: Rst_Sync_D2_dut/FF_Stage_reg[1]
+              (rising edge-triggered flip-flop clocked by UART_CLK)
+  Endpoint: UART_RX_dut/out_next_reg[0]
+            (rising edge-triggered flip-flop clocked by UART_CLK)
+  Path Group: UART_CLK
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock UART_CLK (rise edge)                              0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  Rst_Sync_D2_dut/FF_Stage_reg[1]/CK (SDFFRQX1M)          0.00       0.00 r
+  Rst_Sync_D2_dut/FF_Stage_reg[1]/Q (SDFFRQX1M)           0.37       0.37 r
+  Rst_Sync_D2_dut/U6/Y (AND2X2M)                          0.12       0.49 r
+  Rst_Sync_D2_dut/SYNC_RST (Rst_Sync_NUM_STAGES2_ACTIVE_TYPLOW_test_1)
+                                                          0.00       0.49 r
+  U6_mux2X1/IN_0 (mux2X1_1)                               0.00       0.49 r
+  U6_mux2X1/U1/Y (AO2B2X2M)                               0.14       0.63 r
+  U6_mux2X1/OUT (mux2X1_1)                                0.00       0.63 r
+  U8/Y (INVX2M)                                           0.04       0.68 f
+  U4/Y (INVX2M)                                           0.33       1.00 r
+  UART_RX_dut/RST_n (UART_RX_10_test_1)                   0.00       1.00 r
+  UART_RX_dut/U32/Y (INVX2M)                              0.09       1.09 f
+  UART_RX_dut/U7/Y (INVX2M)                               0.70       1.79 r
+  UART_RX_dut/edge_bit_dut/RST_n (edge_bit_counter_10_test_1)
+                                                          0.00       1.79 r
+  UART_RX_dut/edge_bit_dut/U15/Y (INVX2M)                 0.32       2.11 f
+  UART_RX_dut/edge_bit_dut/U23/Y (NOR2X2M)                0.37       2.48 r
+  UART_RX_dut/edge_bit_dut/edge_cnt[1] (edge_bit_counter_10_test_1)
+                                                          0.00       2.48 r
+  UART_RX_dut/U128/Y (OAI2B2X1M)                          0.23       2.71 r
+  UART_RX_dut/U133/Y (AND4X1M)                            0.26       2.97 r
+  UART_RX_dut/U12/Y (INVX2M)                              0.07       3.04 f
+  UART_RX_dut/U46/Y (NAND2X2M)                            0.06       3.10 r
+  UART_RX_dut/U8/Y (OAI211X2M)                            0.24       3.33 f
+  UART_RX_dut/dut_sample/data_samp_en (data_sampling_10_test_1)
+                                                          0.00       3.33 f
+  UART_RX_dut/dut_sample/U10/Y (INVX2M)                   0.14       3.47 r
+  UART_RX_dut/dut_sample/U9/Y (NOR2X2M)                   0.05       3.52 f
+  UART_RX_dut/dut_sample/U8/Y (NOR4BX1M)                  0.19       3.71 f
+  UART_RX_dut/dut_sample/U7/Y (INVX2M)                    0.08       3.79 r
+  UART_RX_dut/dut_sample/U15/Y (AOI22X1M)                 0.09       3.88 f
+  UART_RX_dut/dut_sample/U14/Y (NOR2BX2M)                 0.17       4.05 f
+  UART_RX_dut/dut_sample/U6/Y (OAI2B2X1M)                 0.36       4.40 r
+  UART_RX_dut/dut_sample/sampled_bit (data_sampling_10_test_1)
+                                                          0.00       4.40 r
+  UART_RX_dut/parity_dut/sampled_bit (Parity_Check)       0.00       4.40 r
+  UART_RX_dut/parity_dut/U6/Y (XNOR2X2M)                  0.11       4.51 f
+  UART_RX_dut/parity_dut/U3/Y (XOR3XLM)                   0.27       4.78 r
+  UART_RX_dut/parity_dut/U2/Y (NOR2BX2M)                  0.06       4.85 f
+  UART_RX_dut/parity_dut/par_err (Parity_Check)           0.00       4.85 f
+  UART_RX_dut/U49/Y (OAI33X2M)                            0.32       5.17 r
+  UART_RX_dut/U48/Y (NAND2X2M)                            0.20       5.37 f
+  UART_RX_dut/U53/Y (AO22X1M)                             0.38       5.75 f
+  UART_RX_dut/U52/Y (AND2X2M)                             0.15       5.91 f
+  UART_RX_dut/U51/Y (MX2X2M)                              0.21       6.12 f
+  UART_RX_dut/out_next_reg[0]/D (SDFFRQX2M)               0.00       6.12 f
+  data arrival time                                                  6.12
+
+  clock UART_CLK (rise edge)                            271.27     271.27
+  clock network delay (ideal)                             0.00     271.27
+  clock uncertainty                                      -0.20     271.07
+  UART_RX_dut/out_next_reg[0]/CK (SDFFRQX2M)              0.00     271.07 r
+  library setup time                                     -0.41     270.66
+  data required time                                               270.66
+  --------------------------------------------------------------------------
+  data required time                                               270.66
+  data arrival time                                                 -6.12
+  --------------------------------------------------------------------------
+  slack (MET)                                                      264.54
+
+
+  Startpoint: Rst_Sync_D2_dut/FF_Stage_reg[1]
+              (rising edge-triggered flip-flop clocked by UART_CLK)
+  Endpoint: UART_RX_dut/srt_dut/strt_glitch_reg
+            (rising edge-triggered flip-flop clocked by UART_CLK)
+  Path Group: UART_CLK
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock UART_CLK (rise edge)                              0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  Rst_Sync_D2_dut/FF_Stage_reg[1]/CK (SDFFRQX1M)          0.00       0.00 r
+  Rst_Sync_D2_dut/FF_Stage_reg[1]/Q (SDFFRQX1M)           0.37       0.37 r
+  Rst_Sync_D2_dut/U6/Y (AND2X2M)                          0.12       0.49 r
+  Rst_Sync_D2_dut/SYNC_RST (Rst_Sync_NUM_STAGES2_ACTIVE_TYPLOW_test_1)
+                                                          0.00       0.49 r
+  U6_mux2X1/IN_0 (mux2X1_1)                               0.00       0.49 r
+  U6_mux2X1/U1/Y (AO2B2X2M)                               0.14       0.63 r
+  U6_mux2X1/OUT (mux2X1_1)                                0.00       0.63 r
+  U8/Y (INVX2M)                                           0.04       0.68 f
+  U4/Y (INVX2M)                                           0.33       1.00 r
+  UART_RX_dut/RST_n (UART_RX_10_test_1)                   0.00       1.00 r
+  UART_RX_dut/U32/Y (INVX2M)                              0.09       1.09 f
+  UART_RX_dut/U7/Y (INVX2M)                               0.70       1.79 r
+  UART_RX_dut/edge_bit_dut/RST_n (edge_bit_counter_10_test_1)
+                                                          0.00       1.79 r
+  UART_RX_dut/edge_bit_dut/U15/Y (INVX2M)                 0.32       2.11 f
+  UART_RX_dut/edge_bit_dut/U23/Y (NOR2X2M)                0.37       2.48 r
+  UART_RX_dut/edge_bit_dut/edge_cnt[1] (edge_bit_counter_10_test_1)
+                                                          0.00       2.48 r
+  UART_RX_dut/U128/Y (OAI2B2X1M)                          0.23       2.71 r
+  UART_RX_dut/U133/Y (AND4X1M)                            0.26       2.97 r
+  UART_RX_dut/U12/Y (INVX2M)                              0.07       3.04 f
+  UART_RX_dut/U46/Y (NAND2X2M)                            0.06       3.10 r
+  UART_RX_dut/U8/Y (OAI211X2M)                            0.24       3.33 f
+  UART_RX_dut/dut_sample/data_samp_en (data_sampling_10_test_1)
+                                                          0.00       3.33 f
+  UART_RX_dut/dut_sample/U10/Y (INVX2M)                   0.14       3.47 r
+  UART_RX_dut/dut_sample/U9/Y (NOR2X2M)                   0.05       3.52 f
+  UART_RX_dut/dut_sample/U8/Y (NOR4BX1M)                  0.19       3.71 f
+  UART_RX_dut/dut_sample/U15/Y (AOI22X1M)                 0.24       3.95 r
+  UART_RX_dut/dut_sample/U14/Y (NOR2BX2M)                 0.17       4.12 r
+  UART_RX_dut/dut_sample/U6/Y (OAI2B2X1M)                 0.23       4.35 f
+  UART_RX_dut/dut_sample/sampled_bit (data_sampling_10_test_1)
+                                                          0.00       4.35 f
+  UART_RX_dut/srt_dut/sampled_bit (Start_Check_test_1)
+                                                          0.00       4.35 f
+  UART_RX_dut/srt_dut/U2/Y (AO2B2X2M)                     0.37       4.72 f
+  UART_RX_dut/srt_dut/strt_glitch_reg/D (SDFFRQX2M)       0.00       4.72 f
+  data arrival time                                                  4.72
+
+  clock UART_CLK (rise edge)                            271.27     271.27
+  clock network delay (ideal)                             0.00     271.27
+  clock uncertainty                                      -0.20     271.07
+  UART_RX_dut/srt_dut/strt_glitch_reg/CK (SDFFRQX2M)      0.00     271.07 r
+  library setup time                                     -0.41     270.66
+  data required time                                               270.66
+  --------------------------------------------------------------------------
+  data required time                                               270.66
+  data arrival time                                                 -4.72
+  --------------------------------------------------------------------------
+  slack (MET)                                                      265.94
+
+
+  Startpoint: Rst_Sync_D2_dut/FF_Stage_reg[1]
+              (rising edge-triggered flip-flop clocked by UART_CLK)
+  Endpoint: UART_RX_dut/deser_dut/P_DATA_reg[0]
+            (rising edge-triggered flip-flop clocked by UART_CLK)
+  Path Group: UART_CLK
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock UART_CLK (rise edge)                              0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  Rst_Sync_D2_dut/FF_Stage_reg[1]/CK (SDFFRQX1M)          0.00       0.00 r
+  Rst_Sync_D2_dut/FF_Stage_reg[1]/Q (SDFFRQX1M)           0.37       0.37 r
+  Rst_Sync_D2_dut/U6/Y (AND2X2M)                          0.12       0.49 r
+  Rst_Sync_D2_dut/SYNC_RST (Rst_Sync_NUM_STAGES2_ACTIVE_TYPLOW_test_1)
+                                                          0.00       0.49 r
+  U6_mux2X1/IN_0 (mux2X1_1)                               0.00       0.49 r
+  U6_mux2X1/U1/Y (AO2B2X2M)                               0.14       0.63 r
+  U6_mux2X1/OUT (mux2X1_1)                                0.00       0.63 r
+  U8/Y (INVX2M)                                           0.04       0.68 f
+  U4/Y (INVX2M)                                           0.33       1.00 r
+  UART_RX_dut/RST_n (UART_RX_10_test_1)                   0.00       1.00 r
+  UART_RX_dut/U32/Y (INVX2M)                              0.09       1.09 f
+  UART_RX_dut/U7/Y (INVX2M)                               0.70       1.79 r
+  UART_RX_dut/edge_bit_dut/RST_n (edge_bit_counter_10_test_1)
+                                                          0.00       1.79 r
+  UART_RX_dut/edge_bit_dut/U15/Y (INVX2M)                 0.32       2.11 f
+  UART_RX_dut/edge_bit_dut/U23/Y (NOR2X2M)                0.37       2.48 r
+  UART_RX_dut/edge_bit_dut/edge_cnt[1] (edge_bit_counter_10_test_1)
+                                                          0.00       2.48 r
+  UART_RX_dut/U128/Y (OAI2B2X1M)                          0.23       2.71 r
+  UART_RX_dut/U133/Y (AND4X1M)                            0.26       2.97 r
+  UART_RX_dut/U12/Y (INVX2M)                              0.07       3.04 f
+  UART_RX_dut/U46/Y (NAND2X2M)                            0.06       3.10 r
+  UART_RX_dut/U8/Y (OAI211X2M)                            0.24       3.33 f
+  UART_RX_dut/dut_sample/data_samp_en (data_sampling_10_test_1)
+                                                          0.00       3.33 f
+  UART_RX_dut/dut_sample/U10/Y (INVX2M)                   0.14       3.47 r
+  UART_RX_dut/dut_sample/U9/Y (NOR2X2M)                   0.05       3.52 f
+  UART_RX_dut/dut_sample/U8/Y (NOR4BX1M)                  0.19       3.71 f
+  UART_RX_dut/dut_sample/U15/Y (AOI22X1M)                 0.24       3.95 r
+  UART_RX_dut/dut_sample/U14/Y (NOR2BX2M)                 0.17       4.12 r
+  UART_RX_dut/dut_sample/U6/Y (OAI2B2X1M)                 0.23       4.35 f
+  UART_RX_dut/dut_sample/sampled_bit (data_sampling_10_test_1)
+                                                          0.00       4.35 f
+  UART_RX_dut/deser_dut/sampled_bit (deserializer_test_1)
+                                                          0.00       4.35 f
+  UART_RX_dut/deser_dut/U18/Y (INVX2M)                    0.19       4.54 r
+  UART_RX_dut/deser_dut/U22/Y (OAI2BB2X1M)                0.12       4.65 f
+  UART_RX_dut/deser_dut/P_DATA_reg[0]/D (SDFFRQX2M)       0.00       4.65 f
+  data arrival time                                                  4.65
+
+  clock UART_CLK (rise edge)                            271.27     271.27
+  clock network delay (ideal)                             0.00     271.27
+  clock uncertainty                                      -0.20     271.07
+  UART_RX_dut/deser_dut/P_DATA_reg[0]/CK (SDFFRQX2M)      0.00     271.07 r
+  library setup time                                     -0.41     270.65
+  data required time                                               270.65
+  --------------------------------------------------------------------------
+  data required time                                               270.65
+  data arrival time                                                 -4.65
+  --------------------------------------------------------------------------
+  slack (MET)                                                      266.00
+
+
+  Startpoint: Rst_Sync_D2_dut/FF_Stage_reg[1]
+              (rising edge-triggered flip-flop clocked by UART_CLK)
+  Endpoint: UART_RX_dut/deser_dut/P_DATA_reg[5]
+            (rising edge-triggered flip-flop clocked by UART_CLK)
+  Path Group: UART_CLK
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock UART_CLK (rise edge)                              0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  Rst_Sync_D2_dut/FF_Stage_reg[1]/CK (SDFFRQX1M)          0.00       0.00 r
+  Rst_Sync_D2_dut/FF_Stage_reg[1]/Q (SDFFRQX1M)           0.37       0.37 r
+  Rst_Sync_D2_dut/U6/Y (AND2X2M)                          0.12       0.49 r
+  Rst_Sync_D2_dut/SYNC_RST (Rst_Sync_NUM_STAGES2_ACTIVE_TYPLOW_test_1)
+                                                          0.00       0.49 r
+  U6_mux2X1/IN_0 (mux2X1_1)                               0.00       0.49 r
+  U6_mux2X1/U1/Y (AO2B2X2M)                               0.14       0.63 r
+  U6_mux2X1/OUT (mux2X1_1)                                0.00       0.63 r
+  U8/Y (INVX2M)                                           0.04       0.68 f
+  U4/Y (INVX2M)                                           0.33       1.00 r
+  UART_RX_dut/RST_n (UART_RX_10_test_1)                   0.00       1.00 r
+  UART_RX_dut/U32/Y (INVX2M)                              0.09       1.09 f
+  UART_RX_dut/U7/Y (INVX2M)                               0.70       1.79 r
+  UART_RX_dut/edge_bit_dut/RST_n (edge_bit_counter_10_test_1)
+                                                          0.00       1.79 r
+  UART_RX_dut/edge_bit_dut/U15/Y (INVX2M)                 0.32       2.11 f
+  UART_RX_dut/edge_bit_dut/U23/Y (NOR2X2M)                0.37       2.48 r
+  UART_RX_dut/edge_bit_dut/edge_cnt[1] (edge_bit_counter_10_test_1)
+                                                          0.00       2.48 r
+  UART_RX_dut/U128/Y (OAI2B2X1M)                          0.23       2.71 r
+  UART_RX_dut/U133/Y (AND4X1M)                            0.26       2.97 r
+  UART_RX_dut/U12/Y (INVX2M)                              0.07       3.04 f
+  UART_RX_dut/U46/Y (NAND2X2M)                            0.06       3.10 r
+  UART_RX_dut/U8/Y (OAI211X2M)                            0.24       3.33 f
+  UART_RX_dut/dut_sample/data_samp_en (data_sampling_10_test_1)
+                                                          0.00       3.33 f
+  UART_RX_dut/dut_sample/U10/Y (INVX2M)                   0.14       3.47 r
+  UART_RX_dut/dut_sample/U9/Y (NOR2X2M)                   0.05       3.52 f
+  UART_RX_dut/dut_sample/U8/Y (NOR4BX1M)                  0.19       3.71 f
+  UART_RX_dut/dut_sample/U15/Y (AOI22X1M)                 0.24       3.95 r
+  UART_RX_dut/dut_sample/U14/Y (NOR2BX2M)                 0.17       4.12 r
+  UART_RX_dut/dut_sample/U6/Y (OAI2B2X1M)                 0.23       4.35 f
+  UART_RX_dut/dut_sample/sampled_bit (data_sampling_10_test_1)
+                                                          0.00       4.35 f
+  UART_RX_dut/deser_dut/sampled_bit (deserializer_test_1)
+                                                          0.00       4.35 f
+  UART_RX_dut/deser_dut/U18/Y (INVX2M)                    0.19       4.54 r
+  UART_RX_dut/deser_dut/U32/Y (OAI2BB2X1M)                0.10       4.63 f
+  UART_RX_dut/deser_dut/P_DATA_reg[5]/D (SDFFRQX2M)       0.00       4.63 f
+  data arrival time                                                  4.63
+
+  clock UART_CLK (rise edge)                            271.27     271.27
+  clock network delay (ideal)                             0.00     271.27
+  clock uncertainty                                      -0.20     271.07
+  UART_RX_dut/deser_dut/P_DATA_reg[5]/CK (SDFFRQX2M)      0.00     271.07 r
+  library setup time                                     -0.41     270.65
+  data required time                                               270.65
+  --------------------------------------------------------------------------
+  data required time                                               270.65
+  data arrival time                                                 -4.63
+  --------------------------------------------------------------------------
+  slack (MET)                                                      266.02
+
+
+  Startpoint: Rst_Sync_D2_dut/FF_Stage_reg[1]
+              (rising edge-triggered flip-flop clocked by UART_CLK)
+  Endpoint: UART_RX_dut/deser_dut/P_DATA_reg[1]
+            (rising edge-triggered flip-flop clocked by UART_CLK)
+  Path Group: UART_CLK
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock UART_CLK (rise edge)                              0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  Rst_Sync_D2_dut/FF_Stage_reg[1]/CK (SDFFRQX1M)          0.00       0.00 r
+  Rst_Sync_D2_dut/FF_Stage_reg[1]/Q (SDFFRQX1M)           0.37       0.37 r
+  Rst_Sync_D2_dut/U6/Y (AND2X2M)                          0.12       0.49 r
+  Rst_Sync_D2_dut/SYNC_RST (Rst_Sync_NUM_STAGES2_ACTIVE_TYPLOW_test_1)
+                                                          0.00       0.49 r
+  U6_mux2X1/IN_0 (mux2X1_1)                               0.00       0.49 r
+  U6_mux2X1/U1/Y (AO2B2X2M)                               0.14       0.63 r
+  U6_mux2X1/OUT (mux2X1_1)                                0.00       0.63 r
+  U8/Y (INVX2M)                                           0.04       0.68 f
+  U4/Y (INVX2M)                                           0.33       1.00 r
+  UART_RX_dut/RST_n (UART_RX_10_test_1)                   0.00       1.00 r
+  UART_RX_dut/U32/Y (INVX2M)                              0.09       1.09 f
+  UART_RX_dut/U7/Y (INVX2M)                               0.70       1.79 r
+  UART_RX_dut/edge_bit_dut/RST_n (edge_bit_counter_10_test_1)
+                                                          0.00       1.79 r
+  UART_RX_dut/edge_bit_dut/U15/Y (INVX2M)                 0.32       2.11 f
+  UART_RX_dut/edge_bit_dut/U23/Y (NOR2X2M)                0.37       2.48 r
+  UART_RX_dut/edge_bit_dut/edge_cnt[1] (edge_bit_counter_10_test_1)
+                                                          0.00       2.48 r
+  UART_RX_dut/U128/Y (OAI2B2X1M)                          0.23       2.71 r
+  UART_RX_dut/U133/Y (AND4X1M)                            0.26       2.97 r
+  UART_RX_dut/U12/Y (INVX2M)                              0.07       3.04 f
+  UART_RX_dut/U46/Y (NAND2X2M)                            0.06       3.10 r
+  UART_RX_dut/U8/Y (OAI211X2M)                            0.24       3.33 f
+  UART_RX_dut/dut_sample/data_samp_en (data_sampling_10_test_1)
+                                                          0.00       3.33 f
+  UART_RX_dut/dut_sample/U10/Y (INVX2M)                   0.14       3.47 r
+  UART_RX_dut/dut_sample/U9/Y (NOR2X2M)                   0.05       3.52 f
+  UART_RX_dut/dut_sample/U8/Y (NOR4BX1M)                  0.19       3.71 f
+  UART_RX_dut/dut_sample/U15/Y (AOI22X1M)                 0.24       3.95 r
+  UART_RX_dut/dut_sample/U14/Y (NOR2BX2M)                 0.17       4.12 r
+  UART_RX_dut/dut_sample/U6/Y (OAI2B2X1M)                 0.23       4.35 f
+  UART_RX_dut/dut_sample/sampled_bit (data_sampling_10_test_1)
+                                                          0.00       4.35 f
+  UART_RX_dut/deser_dut/sampled_bit (deserializer_test_1)
+                                                          0.00       4.35 f
+  UART_RX_dut/deser_dut/U18/Y (INVX2M)                    0.19       4.54 r
+  UART_RX_dut/deser_dut/U24/Y (OAI2BB2X1M)                0.10       4.63 f
+  UART_RX_dut/deser_dut/P_DATA_reg[1]/D (SDFFRQX2M)       0.00       4.63 f
+  data arrival time                                                  4.63
+
+  clock UART_CLK (rise edge)                            271.27     271.27
+  clock network delay (ideal)                             0.00     271.27
+  clock uncertainty                                      -0.20     271.07
+  UART_RX_dut/deser_dut/P_DATA_reg[1]/CK (SDFFRQX2M)      0.00     271.07 r
+  library setup time                                     -0.41     270.65
+  data required time                                               270.65
+  --------------------------------------------------------------------------
+  data required time                                               270.65
+  data arrival time                                                 -4.63
+  --------------------------------------------------------------------------
+  slack (MET)                                                      266.02
+
+
+  Startpoint: Rst_Sync_D2_dut/FF_Stage_reg[1]
+              (rising edge-triggered flip-flop clocked by UART_CLK)
+  Endpoint: UART_RX_dut/deser_dut/P_DATA_reg[4]
+            (rising edge-triggered flip-flop clocked by UART_CLK)
+  Path Group: UART_CLK
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock UART_CLK (rise edge)                              0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  Rst_Sync_D2_dut/FF_Stage_reg[1]/CK (SDFFRQX1M)          0.00       0.00 r
+  Rst_Sync_D2_dut/FF_Stage_reg[1]/Q (SDFFRQX1M)           0.37       0.37 r
+  Rst_Sync_D2_dut/U6/Y (AND2X2M)                          0.12       0.49 r
+  Rst_Sync_D2_dut/SYNC_RST (Rst_Sync_NUM_STAGES2_ACTIVE_TYPLOW_test_1)
+                                                          0.00       0.49 r
+  U6_mux2X1/IN_0 (mux2X1_1)                               0.00       0.49 r
+  U6_mux2X1/U1/Y (AO2B2X2M)                               0.14       0.63 r
+  U6_mux2X1/OUT (mux2X1_1)                                0.00       0.63 r
+  U8/Y (INVX2M)                                           0.04       0.68 f
+  U4/Y (INVX2M)                                           0.33       1.00 r
+  UART_RX_dut/RST_n (UART_RX_10_test_1)                   0.00       1.00 r
+  UART_RX_dut/U32/Y (INVX2M)                              0.09       1.09 f
+  UART_RX_dut/U7/Y (INVX2M)                               0.70       1.79 r
+  UART_RX_dut/edge_bit_dut/RST_n (edge_bit_counter_10_test_1)
+                                                          0.00       1.79 r
+  UART_RX_dut/edge_bit_dut/U15/Y (INVX2M)                 0.32       2.11 f
+  UART_RX_dut/edge_bit_dut/U23/Y (NOR2X2M)                0.37       2.48 r
+  UART_RX_dut/edge_bit_dut/edge_cnt[1] (edge_bit_counter_10_test_1)
+                                                          0.00       2.48 r
+  UART_RX_dut/U128/Y (OAI2B2X1M)                          0.23       2.71 r
+  UART_RX_dut/U133/Y (AND4X1M)                            0.26       2.97 r
+  UART_RX_dut/U12/Y (INVX2M)                              0.07       3.04 f
+  UART_RX_dut/U46/Y (NAND2X2M)                            0.06       3.10 r
+  UART_RX_dut/U8/Y (OAI211X2M)                            0.24       3.33 f
+  UART_RX_dut/dut_sample/data_samp_en (data_sampling_10_test_1)
+                                                          0.00       3.33 f
+  UART_RX_dut/dut_sample/U10/Y (INVX2M)                   0.14       3.47 r
+  UART_RX_dut/dut_sample/U9/Y (NOR2X2M)                   0.05       3.52 f
+  UART_RX_dut/dut_sample/U8/Y (NOR4BX1M)                  0.19       3.71 f
+  UART_RX_dut/dut_sample/U15/Y (AOI22X1M)                 0.24       3.95 r
+  UART_RX_dut/dut_sample/U14/Y (NOR2BX2M)                 0.17       4.12 r
+  UART_RX_dut/dut_sample/U6/Y (OAI2B2X1M)                 0.23       4.35 f
+  UART_RX_dut/dut_sample/sampled_bit (data_sampling_10_test_1)
+                                                          0.00       4.35 f
+  UART_RX_dut/deser_dut/sampled_bit (deserializer_test_1)
+                                                          0.00       4.35 f
+  UART_RX_dut/deser_dut/U18/Y (INVX2M)                    0.19       4.54 r
+  UART_RX_dut/deser_dut/U30/Y (OAI2BB2X1M)                0.10       4.63 f
+  UART_RX_dut/deser_dut/P_DATA_reg[4]/D (SDFFRQX2M)       0.00       4.63 f
+  data arrival time                                                  4.63
+
+  clock UART_CLK (rise edge)                            271.27     271.27
+  clock network delay (ideal)                             0.00     271.27
+  clock uncertainty                                      -0.20     271.07
+  UART_RX_dut/deser_dut/P_DATA_reg[4]/CK (SDFFRQX2M)      0.00     271.07 r
+  library setup time                                     -0.41     270.65
+  data required time                                               270.65
+  --------------------------------------------------------------------------
+  data required time                                               270.65
+  data arrival time                                                 -4.63
+  --------------------------------------------------------------------------
+  slack (MET)                                                      266.02
+
+
+  Startpoint: Rst_Sync_D2_dut/FF_Stage_reg[1]
+              (rising edge-triggered flip-flop clocked by UART_CLK)
+  Endpoint: UART_RX_dut/deser_dut/P_DATA_reg[7]
+            (rising edge-triggered flip-flop clocked by UART_CLK)
+  Path Group: UART_CLK
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock UART_CLK (rise edge)                              0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  Rst_Sync_D2_dut/FF_Stage_reg[1]/CK (SDFFRQX1M)          0.00       0.00 r
+  Rst_Sync_D2_dut/FF_Stage_reg[1]/Q (SDFFRQX1M)           0.37       0.37 r
+  Rst_Sync_D2_dut/U6/Y (AND2X2M)                          0.12       0.49 r
+  Rst_Sync_D2_dut/SYNC_RST (Rst_Sync_NUM_STAGES2_ACTIVE_TYPLOW_test_1)
+                                                          0.00       0.49 r
+  U6_mux2X1/IN_0 (mux2X1_1)                               0.00       0.49 r
+  U6_mux2X1/U1/Y (AO2B2X2M)                               0.14       0.63 r
+  U6_mux2X1/OUT (mux2X1_1)                                0.00       0.63 r
+  U8/Y (INVX2M)                                           0.04       0.68 f
+  U4/Y (INVX2M)                                           0.33       1.00 r
+  UART_RX_dut/RST_n (UART_RX_10_test_1)                   0.00       1.00 r
+  UART_RX_dut/U32/Y (INVX2M)                              0.09       1.09 f
+  UART_RX_dut/U7/Y (INVX2M)                               0.70       1.79 r
+  UART_RX_dut/edge_bit_dut/RST_n (edge_bit_counter_10_test_1)
+                                                          0.00       1.79 r
+  UART_RX_dut/edge_bit_dut/U15/Y (INVX2M)                 0.32       2.11 f
+  UART_RX_dut/edge_bit_dut/U23/Y (NOR2X2M)                0.37       2.48 r
+  UART_RX_dut/edge_bit_dut/edge_cnt[1] (edge_bit_counter_10_test_1)
+                                                          0.00       2.48 r
+  UART_RX_dut/U128/Y (OAI2B2X1M)                          0.23       2.71 r
+  UART_RX_dut/U133/Y (AND4X1M)                            0.26       2.97 r
+  UART_RX_dut/U12/Y (INVX2M)                              0.07       3.04 f
+  UART_RX_dut/U46/Y (NAND2X2M)                            0.06       3.10 r
+  UART_RX_dut/U8/Y (OAI211X2M)                            0.24       3.33 f
+  UART_RX_dut/dut_sample/data_samp_en (data_sampling_10_test_1)
+                                                          0.00       3.33 f
+  UART_RX_dut/dut_sample/U10/Y (INVX2M)                   0.14       3.47 r
+  UART_RX_dut/dut_sample/U9/Y (NOR2X2M)                   0.05       3.52 f
+  UART_RX_dut/dut_sample/U8/Y (NOR4BX1M)                  0.19       3.71 f
+  UART_RX_dut/dut_sample/U15/Y (AOI22X1M)                 0.24       3.95 r
+  UART_RX_dut/dut_sample/U14/Y (NOR2BX2M)                 0.17       4.12 r
+  UART_RX_dut/dut_sample/U6/Y (OAI2B2X1M)                 0.23       4.35 f
+  UART_RX_dut/dut_sample/sampled_bit (data_sampling_10_test_1)
+                                                          0.00       4.35 f
+  UART_RX_dut/deser_dut/sampled_bit (deserializer_test_1)
+                                                          0.00       4.35 f
+  UART_RX_dut/deser_dut/U18/Y (INVX2M)                    0.19       4.54 r
+  UART_RX_dut/deser_dut/U36/Y (OAI2BB2X1M)                0.10       4.63 f
+  UART_RX_dut/deser_dut/P_DATA_reg[7]/D (SDFFRQX2M)       0.00       4.63 f
+  data arrival time                                                  4.63
+
+  clock UART_CLK (rise edge)                            271.27     271.27
+  clock network delay (ideal)                             0.00     271.27
+  clock uncertainty                                      -0.20     271.07
+  UART_RX_dut/deser_dut/P_DATA_reg[7]/CK (SDFFRQX2M)      0.00     271.07 r
+  library setup time                                     -0.41     270.65
+  data required time                                               270.65
+  --------------------------------------------------------------------------
+  data required time                                               270.65
+  data arrival time                                                 -4.63
+  --------------------------------------------------------------------------
+  slack (MET)                                                      266.02
+
+
+  Startpoint: Rst_Sync_D2_dut/FF_Stage_reg[1]
+              (rising edge-triggered flip-flop clocked by UART_CLK)
+  Endpoint: UART_RX_dut/deser_dut/P_DATA_reg[3]
+            (rising edge-triggered flip-flop clocked by UART_CLK)
+  Path Group: UART_CLK
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock UART_CLK (rise edge)                              0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  Rst_Sync_D2_dut/FF_Stage_reg[1]/CK (SDFFRQX1M)          0.00       0.00 r
+  Rst_Sync_D2_dut/FF_Stage_reg[1]/Q (SDFFRQX1M)           0.37       0.37 r
+  Rst_Sync_D2_dut/U6/Y (AND2X2M)                          0.12       0.49 r
+  Rst_Sync_D2_dut/SYNC_RST (Rst_Sync_NUM_STAGES2_ACTIVE_TYPLOW_test_1)
+                                                          0.00       0.49 r
+  U6_mux2X1/IN_0 (mux2X1_1)                               0.00       0.49 r
+  U6_mux2X1/U1/Y (AO2B2X2M)                               0.14       0.63 r
+  U6_mux2X1/OUT (mux2X1_1)                                0.00       0.63 r
+  U8/Y (INVX2M)                                           0.04       0.68 f
+  U4/Y (INVX2M)                                           0.33       1.00 r
+  UART_RX_dut/RST_n (UART_RX_10_test_1)                   0.00       1.00 r
+  UART_RX_dut/U32/Y (INVX2M)                              0.09       1.09 f
+  UART_RX_dut/U7/Y (INVX2M)                               0.70       1.79 r
+  UART_RX_dut/edge_bit_dut/RST_n (edge_bit_counter_10_test_1)
+                                                          0.00       1.79 r
+  UART_RX_dut/edge_bit_dut/U15/Y (INVX2M)                 0.32       2.11 f
+  UART_RX_dut/edge_bit_dut/U23/Y (NOR2X2M)                0.37       2.48 r
+  UART_RX_dut/edge_bit_dut/edge_cnt[1] (edge_bit_counter_10_test_1)
+                                                          0.00       2.48 r
+  UART_RX_dut/U128/Y (OAI2B2X1M)                          0.23       2.71 r
+  UART_RX_dut/U133/Y (AND4X1M)                            0.26       2.97 r
+  UART_RX_dut/U12/Y (INVX2M)                              0.07       3.04 f
+  UART_RX_dut/U46/Y (NAND2X2M)                            0.06       3.10 r
+  UART_RX_dut/U8/Y (OAI211X2M)                            0.24       3.33 f
+  UART_RX_dut/dut_sample/data_samp_en (data_sampling_10_test_1)
+                                                          0.00       3.33 f
+  UART_RX_dut/dut_sample/U10/Y (INVX2M)                   0.14       3.47 r
+  UART_RX_dut/dut_sample/U9/Y (NOR2X2M)                   0.05       3.52 f
+  UART_RX_dut/dut_sample/U8/Y (NOR4BX1M)                  0.19       3.71 f
+  UART_RX_dut/dut_sample/U15/Y (AOI22X1M)                 0.24       3.95 r
+  UART_RX_dut/dut_sample/U14/Y (NOR2BX2M)                 0.17       4.12 r
+  UART_RX_dut/dut_sample/U6/Y (OAI2B2X1M)                 0.23       4.35 f
+  UART_RX_dut/dut_sample/sampled_bit (data_sampling_10_test_1)
+                                                          0.00       4.35 f
+  UART_RX_dut/deser_dut/sampled_bit (deserializer_test_1)
+                                                          0.00       4.35 f
+  UART_RX_dut/deser_dut/U18/Y (INVX2M)                    0.19       4.54 r
+  UART_RX_dut/deser_dut/U28/Y (OAI2BB2X1M)                0.10       4.63 f
+  UART_RX_dut/deser_dut/P_DATA_reg[3]/D (SDFFRQX2M)       0.00       4.63 f
+  data arrival time                                                  4.63
+
+  clock UART_CLK (rise edge)                            271.27     271.27
+  clock network delay (ideal)                             0.00     271.27
+  clock uncertainty                                      -0.20     271.07
+  UART_RX_dut/deser_dut/P_DATA_reg[3]/CK (SDFFRQX2M)      0.00     271.07 r
+  library setup time                                     -0.41     270.65
+  data required time                                               270.65
+  --------------------------------------------------------------------------
+  data required time                                               270.65
+  data arrival time                                                 -4.63
+  --------------------------------------------------------------------------
+  slack (MET)                                                      266.02
+
+
+  Startpoint: Rst_Sync_D2_dut/FF_Stage_reg[1]
+              (rising edge-triggered flip-flop clocked by UART_CLK)
+  Endpoint: UART_RX_dut/deser_dut/P_DATA_reg[6]
+            (rising edge-triggered flip-flop clocked by UART_CLK)
+  Path Group: UART_CLK
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock UART_CLK (rise edge)                              0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  Rst_Sync_D2_dut/FF_Stage_reg[1]/CK (SDFFRQX1M)          0.00       0.00 r
+  Rst_Sync_D2_dut/FF_Stage_reg[1]/Q (SDFFRQX1M)           0.37       0.37 r
+  Rst_Sync_D2_dut/U6/Y (AND2X2M)                          0.12       0.49 r
+  Rst_Sync_D2_dut/SYNC_RST (Rst_Sync_NUM_STAGES2_ACTIVE_TYPLOW_test_1)
+                                                          0.00       0.49 r
+  U6_mux2X1/IN_0 (mux2X1_1)                               0.00       0.49 r
+  U6_mux2X1/U1/Y (AO2B2X2M)                               0.14       0.63 r
+  U6_mux2X1/OUT (mux2X1_1)                                0.00       0.63 r
+  U8/Y (INVX2M)                                           0.04       0.68 f
+  U4/Y (INVX2M)                                           0.33       1.00 r
+  UART_RX_dut/RST_n (UART_RX_10_test_1)                   0.00       1.00 r
+  UART_RX_dut/U32/Y (INVX2M)                              0.09       1.09 f
+  UART_RX_dut/U7/Y (INVX2M)                               0.70       1.79 r
+  UART_RX_dut/edge_bit_dut/RST_n (edge_bit_counter_10_test_1)
+                                                          0.00       1.79 r
+  UART_RX_dut/edge_bit_dut/U15/Y (INVX2M)                 0.32       2.11 f
+  UART_RX_dut/edge_bit_dut/U23/Y (NOR2X2M)                0.37       2.48 r
+  UART_RX_dut/edge_bit_dut/edge_cnt[1] (edge_bit_counter_10_test_1)
+                                                          0.00       2.48 r
+  UART_RX_dut/U128/Y (OAI2B2X1M)                          0.23       2.71 r
+  UART_RX_dut/U133/Y (AND4X1M)                            0.26       2.97 r
+  UART_RX_dut/U12/Y (INVX2M)                              0.07       3.04 f
+  UART_RX_dut/U46/Y (NAND2X2M)                            0.06       3.10 r
+  UART_RX_dut/U8/Y (OAI211X2M)                            0.24       3.33 f
+  UART_RX_dut/dut_sample/data_samp_en (data_sampling_10_test_1)
+                                                          0.00       3.33 f
+  UART_RX_dut/dut_sample/U10/Y (INVX2M)                   0.14       3.47 r
+  UART_RX_dut/dut_sample/U9/Y (NOR2X2M)                   0.05       3.52 f
+  UART_RX_dut/dut_sample/U8/Y (NOR4BX1M)                  0.19       3.71 f
+  UART_RX_dut/dut_sample/U15/Y (AOI22X1M)                 0.24       3.95 r
+  UART_RX_dut/dut_sample/U14/Y (NOR2BX2M)                 0.17       4.12 r
+  UART_RX_dut/dut_sample/U6/Y (OAI2B2X1M)                 0.23       4.35 f
+  UART_RX_dut/dut_sample/sampled_bit (data_sampling_10_test_1)
+                                                          0.00       4.35 f
+  UART_RX_dut/deser_dut/sampled_bit (deserializer_test_1)
+                                                          0.00       4.35 f
+  UART_RX_dut/deser_dut/U18/Y (INVX2M)                    0.19       4.54 r
+  UART_RX_dut/deser_dut/U34/Y (OAI2BB2X1M)                0.10       4.63 f
+  UART_RX_dut/deser_dut/P_DATA_reg[6]/D (SDFFRQX2M)       0.00       4.63 f
+  data arrival time                                                  4.63
+
+  clock UART_CLK (rise edge)                            271.27     271.27
+  clock network delay (ideal)                             0.00     271.27
+  clock uncertainty                                      -0.20     271.07
+  UART_RX_dut/deser_dut/P_DATA_reg[6]/CK (SDFFRQX2M)      0.00     271.07 r
+  library setup time                                     -0.41     270.65
+  data required time                                               270.65
+  --------------------------------------------------------------------------
+  data required time                                               270.65
+  data arrival time                                                 -4.63
+  --------------------------------------------------------------------------
+  slack (MET)                                                      266.02
+
+
+  Startpoint: Rst_Sync_D2_dut/FF_Stage_reg[1]
+              (rising edge-triggered flip-flop clocked by UART_CLK)
+  Endpoint: UART_RX_dut/deser_dut/P_DATA_reg[2]
+            (rising edge-triggered flip-flop clocked by UART_CLK)
+  Path Group: UART_CLK
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock UART_CLK (rise edge)                              0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  Rst_Sync_D2_dut/FF_Stage_reg[1]/CK (SDFFRQX1M)          0.00       0.00 r
+  Rst_Sync_D2_dut/FF_Stage_reg[1]/Q (SDFFRQX1M)           0.37       0.37 r
+  Rst_Sync_D2_dut/U6/Y (AND2X2M)                          0.12       0.49 r
+  Rst_Sync_D2_dut/SYNC_RST (Rst_Sync_NUM_STAGES2_ACTIVE_TYPLOW_test_1)
+                                                          0.00       0.49 r
+  U6_mux2X1/IN_0 (mux2X1_1)                               0.00       0.49 r
+  U6_mux2X1/U1/Y (AO2B2X2M)                               0.14       0.63 r
+  U6_mux2X1/OUT (mux2X1_1)                                0.00       0.63 r
+  U8/Y (INVX2M)                                           0.04       0.68 f
+  U4/Y (INVX2M)                                           0.33       1.00 r
+  UART_RX_dut/RST_n (UART_RX_10_test_1)                   0.00       1.00 r
+  UART_RX_dut/U32/Y (INVX2M)                              0.09       1.09 f
+  UART_RX_dut/U7/Y (INVX2M)                               0.70       1.79 r
+  UART_RX_dut/edge_bit_dut/RST_n (edge_bit_counter_10_test_1)
+                                                          0.00       1.79 r
+  UART_RX_dut/edge_bit_dut/U15/Y (INVX2M)                 0.32       2.11 f
+  UART_RX_dut/edge_bit_dut/U23/Y (NOR2X2M)                0.37       2.48 r
+  UART_RX_dut/edge_bit_dut/edge_cnt[1] (edge_bit_counter_10_test_1)
+                                                          0.00       2.48 r
+  UART_RX_dut/U128/Y (OAI2B2X1M)                          0.23       2.71 r
+  UART_RX_dut/U133/Y (AND4X1M)                            0.26       2.97 r
+  UART_RX_dut/U12/Y (INVX2M)                              0.07       3.04 f
+  UART_RX_dut/U46/Y (NAND2X2M)                            0.06       3.10 r
+  UART_RX_dut/U8/Y (OAI211X2M)                            0.24       3.33 f
+  UART_RX_dut/dut_sample/data_samp_en (data_sampling_10_test_1)
+                                                          0.00       3.33 f
+  UART_RX_dut/dut_sample/U10/Y (INVX2M)                   0.14       3.47 r
+  UART_RX_dut/dut_sample/U9/Y (NOR2X2M)                   0.05       3.52 f
+  UART_RX_dut/dut_sample/U8/Y (NOR4BX1M)                  0.19       3.71 f
+  UART_RX_dut/dut_sample/U15/Y (AOI22X1M)                 0.24       3.95 r
+  UART_RX_dut/dut_sample/U14/Y (NOR2BX2M)                 0.17       4.12 r
+  UART_RX_dut/dut_sample/U6/Y (OAI2B2X1M)                 0.23       4.35 f
+  UART_RX_dut/dut_sample/sampled_bit (data_sampling_10_test_1)
+                                                          0.00       4.35 f
+  UART_RX_dut/deser_dut/sampled_bit (deserializer_test_1)
+                                                          0.00       4.35 f
+  UART_RX_dut/deser_dut/U18/Y (INVX2M)                    0.19       4.54 r
+  UART_RX_dut/deser_dut/U26/Y (OAI2BB2X1M)                0.10       4.63 f
+  UART_RX_dut/deser_dut/P_DATA_reg[2]/D (SDFFRQX2M)       0.00       4.63 f
+  data arrival time                                                  4.63
+
+  clock UART_CLK (rise edge)                            271.27     271.27
+  clock network delay (ideal)                             0.00     271.27
+  clock uncertainty                                      -0.20     271.07
+  UART_RX_dut/deser_dut/P_DATA_reg[2]/CK (SDFFRQX2M)      0.00     271.07 r
+  library setup time                                     -0.41     270.65
+  data required time                                               270.65
+  --------------------------------------------------------------------------
+  data required time                                               270.65
+  data arrival time                                                 -4.63
+  --------------------------------------------------------------------------
+  slack (MET)                                                      266.02
+
+
+  Startpoint: Rst_Sync_D2_dut/FF_Stage_reg[1]
+              (rising edge-triggered flip-flop clocked by UART_CLK)
+  Endpoint: UART_RX_dut/stp_dut/stp_err_reg
+            (rising edge-triggered flip-flop clocked by UART_CLK)
+  Path Group: UART_CLK
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock UART_CLK (rise edge)                              0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  Rst_Sync_D2_dut/FF_Stage_reg[1]/CK (SDFFRQX1M)          0.00       0.00 r
+  Rst_Sync_D2_dut/FF_Stage_reg[1]/Q (SDFFRQX1M)           0.37       0.37 r
+  Rst_Sync_D2_dut/U6/Y (AND2X2M)                          0.12       0.49 r
+  Rst_Sync_D2_dut/SYNC_RST (Rst_Sync_NUM_STAGES2_ACTIVE_TYPLOW_test_1)
+                                                          0.00       0.49 r
+  U6_mux2X1/IN_0 (mux2X1_1)                               0.00       0.49 r
+  U6_mux2X1/U1/Y (AO2B2X2M)                               0.14       0.63 r
+  U6_mux2X1/OUT (mux2X1_1)                                0.00       0.63 r
+  U8/Y (INVX2M)                                           0.04       0.68 f
+  U4/Y (INVX2M)                                           0.33       1.00 r
+  UART_RX_dut/RST_n (UART_RX_10_test_1)                   0.00       1.00 r
+  UART_RX_dut/U32/Y (INVX2M)                              0.09       1.09 f
+  UART_RX_dut/U7/Y (INVX2M)                               0.70       1.79 r
+  UART_RX_dut/edge_bit_dut/RST_n (edge_bit_counter_10_test_1)
+                                                          0.00       1.79 r
+  UART_RX_dut/edge_bit_dut/U15/Y (INVX2M)                 0.32       2.11 f
+  UART_RX_dut/edge_bit_dut/U23/Y (NOR2X2M)                0.37       2.48 r
+  UART_RX_dut/edge_bit_dut/edge_cnt[1] (edge_bit_counter_10_test_1)
+                                                          0.00       2.48 r
+  UART_RX_dut/U128/Y (OAI2B2X1M)                          0.23       2.71 r
+  UART_RX_dut/U133/Y (AND4X1M)                            0.26       2.97 r
+  UART_RX_dut/U12/Y (INVX2M)                              0.07       3.04 f
+  UART_RX_dut/U46/Y (NAND2X2M)                            0.06       3.10 r
+  UART_RX_dut/U8/Y (OAI211X2M)                            0.24       3.33 f
+  UART_RX_dut/dut_sample/data_samp_en (data_sampling_10_test_1)
+                                                          0.00       3.33 f
+  UART_RX_dut/dut_sample/U10/Y (INVX2M)                   0.14       3.47 r
+  UART_RX_dut/dut_sample/U9/Y (NOR2X2M)                   0.05       3.52 f
+  UART_RX_dut/dut_sample/U8/Y (NOR4BX1M)                  0.19       3.71 f
+  UART_RX_dut/dut_sample/U7/Y (INVX2M)                    0.08       3.79 r
+  UART_RX_dut/dut_sample/U15/Y (AOI22X1M)                 0.09       3.88 f
+  UART_RX_dut/dut_sample/U14/Y (NOR2BX2M)                 0.17       4.05 f
+  UART_RX_dut/dut_sample/U6/Y (OAI2B2X1M)                 0.36       4.40 r
+  UART_RX_dut/dut_sample/sampled_bit (data_sampling_10_test_1)
+                                                          0.00       4.40 r
+  UART_RX_dut/stp_dut/sampled_bit (Stop_Check_test_1)     0.00       4.40 r
+  UART_RX_dut/stp_dut/U4/Y (NOR2BX2M)                     0.08       4.49 f
+  UART_RX_dut/stp_dut/stp_err_reg/D (SDFFRQX2M)           0.00       4.49 f
+  data arrival time                                                  4.49
+
+  clock UART_CLK (rise edge)                            271.27     271.27
+  clock network delay (ideal)                             0.00     271.27
+  clock uncertainty                                      -0.20     271.07
+  UART_RX_dut/stp_dut/stp_err_reg/CK (SDFFRQX2M)          0.00     271.07 r
+  library setup time                                     -0.42     270.65
+  data required time                                               270.65
+  --------------------------------------------------------------------------
+  data required time                                               270.65
+  data arrival time                                                 -4.49
+  --------------------------------------------------------------------------
+  slack (MET)                                                      266.16
+
+
+  Startpoint: Rst_Sync_D2_dut/FF_Stage_reg[1]
+              (rising edge-triggered flip-flop clocked by UART_CLK)
+  Endpoint: UART_RX_dut/current_state_reg[0]
+            (rising edge-triggered flip-flop clocked by UART_CLK)
+  Path Group: UART_CLK
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock UART_CLK (rise edge)                              0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  Rst_Sync_D2_dut/FF_Stage_reg[1]/CK (SDFFRQX1M)          0.00       0.00 r
+  Rst_Sync_D2_dut/FF_Stage_reg[1]/Q (SDFFRQX1M)           0.37       0.37 r
+  Rst_Sync_D2_dut/U6/Y (AND2X2M)                          0.12       0.49 r
+  Rst_Sync_D2_dut/SYNC_RST (Rst_Sync_NUM_STAGES2_ACTIVE_TYPLOW_test_1)
+                                                          0.00       0.49 r
+  U6_mux2X1/IN_0 (mux2X1_1)                               0.00       0.49 r
+  U6_mux2X1/U1/Y (AO2B2X2M)                               0.14       0.63 r
+  U6_mux2X1/OUT (mux2X1_1)                                0.00       0.63 r
+  U8/Y (INVX2M)                                           0.04       0.68 f
+  U4/Y (INVX2M)                                           0.33       1.00 r
+  UART_RX_dut/RST_n (UART_RX_10_test_1)                   0.00       1.00 r
+  UART_RX_dut/U32/Y (INVX2M)                              0.09       1.09 f
+  UART_RX_dut/U7/Y (INVX2M)                               0.70       1.79 r
+  UART_RX_dut/edge_bit_dut/RST_n (edge_bit_counter_10_test_1)
+                                                          0.00       1.79 r
+  UART_RX_dut/edge_bit_dut/U15/Y (INVX2M)                 0.32       2.11 f
+  UART_RX_dut/edge_bit_dut/U26/Y (NOR2X2M)                0.32       2.43 r
+  UART_RX_dut/edge_bit_dut/edge_cnt[3] (edge_bit_counter_10_test_1)
+                                                          0.00       2.43 r
+  UART_RX_dut/U121/Y (CLKXOR2X2M)                         0.36       2.79 f
+  UART_RX_dut/U123/Y (NOR2X1M)                            0.10       2.89 r
+  UART_RX_dut/U124/Y (NAND4BX1M)                          0.21       3.10 f
+  UART_RX_dut/U125/Y (CLKINVX1M)                          0.16       3.26 r
+  UART_RX_dut/U21/Y (NOR3BX2M)                            0.33       3.59 r
+  UART_RX_dut/U22/Y (NAND3BX2M)                           0.14       3.74 f
+  UART_RX_dut/U76/Y (AOI2BB2XLM)                          0.21       3.94 r
+  UART_RX_dut/U75/Y (OAI31X1M)                            0.12       4.06 f
+  UART_RX_dut/U80/Y (AOI31X2M)                            0.15       4.21 r
+  UART_RX_dut/U77/Y (OAI221X1M)                           0.14       4.35 f
+  UART_RX_dut/current_state_reg[0]/D (SDFFRQX2M)          0.00       4.35 f
+  data arrival time                                                  4.35
+
+  clock UART_CLK (rise edge)                            271.27     271.27
+  clock network delay (ideal)                             0.00     271.27
+  clock uncertainty                                      -0.20     271.07
+  UART_RX_dut/current_state_reg[0]/CK (SDFFRQX2M)         0.00     271.07 r
+  library setup time                                     -0.43     270.64
+  data required time                                               270.64
+  --------------------------------------------------------------------------
+  data required time                                               270.64
+  data arrival time                                                 -4.35
+  --------------------------------------------------------------------------
+  slack (MET)                                                      266.29
+
+
+  Startpoint: Rst_Sync_D2_dut/FF_Stage_reg[1]
+              (rising edge-triggered flip-flop clocked by UART_CLK)
+  Endpoint: UART_TX_dut/current_state_reg[1]
+            (rising edge-triggered flip-flop clocked by UART_CLK)
+  Path Group: UART_CLK
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock UART_CLK (rise edge)                              0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  Rst_Sync_D2_dut/FF_Stage_reg[1]/CK (SDFFRQX1M)          0.00       0.00 r
+  Rst_Sync_D2_dut/FF_Stage_reg[1]/Q (SDFFRQX1M)           0.37       0.37 r
+  Rst_Sync_D2_dut/U6/Y (AND2X2M)                          0.12       0.49 r
+  Rst_Sync_D2_dut/SYNC_RST (Rst_Sync_NUM_STAGES2_ACTIVE_TYPLOW_test_1)
+                                                          0.00       0.49 r
+  U6_mux2X1/IN_0 (mux2X1_1)                               0.00       0.49 r
+  U6_mux2X1/U1/Y (AO2B2X2M)                               0.14       0.63 r
+  U6_mux2X1/OUT (mux2X1_1)                                0.00       0.63 r
+  U8/Y (INVX2M)                                           0.04       0.68 f
+  U4/Y (INVX2M)                                           0.33       1.00 r
+  ASYNC_FIFO_dut/R_RST (ASYNC_FIFO_test_1)                0.00       1.00 r
+  ASYNC_FIFO_dut/U8/Y (INVX2M)                            0.09       1.09 f
+  ASYNC_FIFO_dut/U7/Y (INVX2M)                            0.63       1.72 r
+  ASYNC_FIFO_dut/sync_w2r/RST_n (Bit_Sync_00000002_00000005_test_1)
+                                                          0.00       1.72 r
+  ASYNC_FIFO_dut/sync_w2r/U17/Y (AND2X2M)                 0.24       1.96 r
+  ASYNC_FIFO_dut/sync_w2r/SYNC[3] (Bit_Sync_00000002_00000005_test_1)
+                                                          0.00       1.96 r
+  ASYNC_FIFO_dut/fifo_rdptr_empty_dut/gray_Wptr[3] (fifo_rdptr_empty_00000008_00000010_test_1)
+                                                          0.00       1.96 r
+  ASYNC_FIFO_dut/fifo_rdptr_empty_dut/U18/Y (XOR3XLM)     0.48       2.44 r
+  ASYNC_FIFO_dut/fifo_rdptr_empty_dut/U9/Y (NOR2BX2M)     0.19       2.63 r
+  ASYNC_FIFO_dut/fifo_rdptr_empty_dut/U17/Y (INVX2M)      0.05       2.69 f
+  ASYNC_FIFO_dut/fifo_rdptr_empty_dut/U15/Y (OAI32X1M)
+                                                          0.13       2.82 r
+  ASYNC_FIFO_dut/fifo_rdptr_empty_dut/U53/Y (CLKXOR2X2M)
+                                                          0.37       3.19 f
+  ASYNC_FIFO_dut/fifo_rdptr_empty_dut/U54/Y (NOR4X1M)     0.40       3.58 r
+  ASYNC_FIFO_dut/fifo_rdptr_empty_dut/REMPTY (fifo_rdptr_empty_00000008_00000010_test_1)
+                                                          0.00       3.58 r
+  ASYNC_FIFO_dut/EMPTY (ASYNC_FIFO_test_1)                0.00       3.58 r
+  UART_TX_dut/DATA_VALID (UART_TX_test_1)                 0.00       3.58 r
+  UART_TX_dut/U11/Y (NOR2X2M)                             0.11       3.69 f
+  UART_TX_dut/U9/Y (INVX2M)                               0.10       3.80 r
+  UART_TX_dut/U21/Y (AOI211X2M)                           0.09       3.89 f
+  UART_TX_dut/U30/Y (AOI221XLM)                           0.33       4.22 r
+  UART_TX_dut/U29/Y (INVX2M)                              0.07       4.29 f
+  UART_TX_dut/current_state_reg[1]/D (SDFFRQX2M)          0.00       4.29 f
+  data arrival time                                                  4.29
+
+  clock UART_CLK (rise edge)                            271.27     271.27
+  clock network delay (ideal)                             0.00     271.27
+  clock uncertainty                                      -0.20     271.07
+  UART_TX_dut/current_state_reg[1]/CK (SDFFRQX2M)         0.00     271.07 r
+  library setup time                                     -0.41     270.65
+  data required time                                               270.65
+  --------------------------------------------------------------------------
+  data required time                                               270.65
+  data arrival time                                                 -4.29
+  --------------------------------------------------------------------------
+  slack (MET)                                                      266.37
+
+
+1
