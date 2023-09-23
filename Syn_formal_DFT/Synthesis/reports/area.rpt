@@ -1,0 +1,69 @@
+ 
+****************************************
+Report : area
+Design : SYS_TOP
+Version: K-2015.06
+Date   : Thu Sep 21 04:41:07 2023
+****************************************
+
+Library(s) Used:
+
+    scmetro_tsmc_cl013g_rvt_ss_1p08v_125c (File: /home/IC/tsmc_fb_cl013g_sc/aci/sc-m/synopsys/scmetro_tsmc_cl013g_rvt_ss_1p08v_125c.db)
+
+Number of ports:                          442
+Number of nets:                          2581
+Number of cells:                         2230
+Number of combinational cells:           1751
+Number of sequential cells:               455
+Number of macros/black boxes:               0
+Number of buf/inv:                        241
+Number of references:                      13
+
+Combinational area:              11812.891555
+Buf/Inv area:                      856.637626
+Noncombinational area:           11324.560671
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (No wire load specified)
+
+Total cell area:                 23137.452226
+Total area:                 undefined
+
+Hierarchical area distribution
+------------------------------
+
+                                  Global cell area            Local cell area
+                                  -------------------  ------------------------------ 
+Hierarchical cell                 Absolute    Percent  Combi-      Noncombi-   Black-
+                                  Total       Total    national    national    boxes   Design
+--------------------------------  ----------  -------  ----------  ----------  ------  ------------------------------------
+SYS_TOP                           23137.4522    100.0      0.0000      0.0000  0.0000  SYS_TOP
+ALU_dut                            3643.0632     15.7   3406.5465    236.5167  0.0000  ALU_00000008_00000004
+ASYNC_FIFO_dut                     7913.3076     34.2     21.1806      0.0000  0.0000  ASYNC_FIFO
+ASYNC_FIFO_dut/FIFO_MEMORY_dut     6427.1354     27.8   2640.5149   3786.6206  0.0000  FIFO_MEMORY_00000008_00000010
+ASYNC_FIFO_dut/fifo_rdptr_empty_dut
+                                    500.0975      2.2    267.1109    232.9866  0.0000  fifo_rdptr_empty_00000008_00000010
+ASYNC_FIFO_dut/fifo_wrptr_full_dut
+                                    496.5674      2.1    263.5808    232.9866  0.0000  fifo_wrptr_full_00000008_00000010
+ASYNC_FIFO_dut/sync_r2w             230.6332      1.0     23.5340    207.0992  0.0000  Bit_Sync_00000002_00000005_1
+ASYNC_FIFO_dut/sync_w2r             237.6934      1.0     30.5942    207.0992  0.0000  Bit_Sync_00000002_00000005_0
+CLK_DIV_RX_dut                      565.9927      2.4    229.4565    336.5362  0.0000  ClkDiv___1
+CLK_DIV_TX_dut                     2160.4212      9.3   1047.2630   1113.1582  0.0000  ClkDiv___0
+CLK_GATE_dut                         16.4738      0.1      0.0000     16.4738  0.0000  CLK_GATE
+Data_Sync_dut                       427.1421      1.8     90.6059    336.5362  0.0000  Data_Sync_NUM_STAGES2_BUS_WIDTH8
+Reg_file_dut                       5032.7459     21.8   1889.7803   3142.9657  0.0000  Register_File_10_0_1
+Rst_Sync_D1_dut                      71.7787      0.3     20.0039     51.7748  0.0000  Rst_Sync_NUM_STAGES2_ACTIVE_TYPLOW_0
+Rst_Sync_D2_dut                      61.1884      0.3      9.4136     51.7748  0.0000  Rst_Sync_NUM_STAGES2_ACTIVE_TYPLOW_1
+SYS_CTRL_dut                        820.1599      3.5    535.3985    284.7614  0.0000  SYS_CTRL
+UART_RX_dut                        1908.6074      8.2    381.2508    297.7051  0.0000  UART_RX_10
+UART_RX_dut/deser_dut               416.5518      1.8    209.4526    207.0992  0.0000  deserializer
+UART_RX_dut/dut_sample              176.5050      0.8     85.8991     90.6059  0.0000  data_sampling_10
+UART_RX_dut/edge_bit_dut            480.0936      2.1    247.1070    232.9866  0.0000  edge_bit_counter_10
+UART_RX_dut/parity_dut               87.0758      0.4     87.0758      0.0000  0.0000  Parity_Check
+UART_RX_dut/srt_dut                  37.6544      0.2     11.7670     25.8874  0.0000  Start_Check
+UART_RX_dut/stp_dut                  31.7709      0.1      5.8835     25.8874  0.0000  Stop_Check
+UART_TX_dut                         458.9130      2.0    303.5886    155.3244  0.0000  UART_TX
+pulse_gen_dut                        57.6583      0.2      5.8835     51.7748  0.0000  PULSE_GENERATOR
+--------------------------------  ----------  -------  ----------  ----------  ------  ------------------------------------
+Total                                                  11812.8916  11324.5607  0.0000
+
+1
