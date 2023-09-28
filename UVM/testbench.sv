@@ -24,7 +24,7 @@ module top ;
   
 
  bfm_if  dut_if();
- internal_sig_if  internal_if();
+ //internal_sig_if  internal_if();
  
 
   SYS_TOP #(.PRESCALE(PRESCALE) , .PAR_TYP(PARITY_TYP) , .PAR_EN(PARITY_EN)) dut (.REF_CLK(dut_if.REF_CLK)  ,
@@ -35,30 +35,30 @@ module top ;
  
 
 
-// bind dut internal_sig_if  dut_if_int_sig (dut.CLK_DIV_TX_dut.o_div_clk ,  dut.CLK_DIV_RX_dut.o_div_clk);
+bind dut internal_sig_if  dut_if_int_sig (dut.CLK_DIV_TX_dut.o_div_clk ,  dut.CLK_DIV_RX_dut.o_div_clk);
 
   
  
-ClkDiv__ CLK_DIV_RX_dut
-(
-.i_ref_clk   (dut_if.UART_CLK),
-.i_rst_n     ( dut_if.RST),
-  .i_div_ratio (2),                          // 1 ---> Prescale 32    ,  2 --> Prescale 16
-  .o_div_clk(internal_if.rx_clk)
-);
+// ClkDiv__ CLK_DIV_RX_dut
+// (
+// .i_ref_clk   (dut_if.UART_CLK),
+// .i_rst_n     ( dut_if.RST),
+//   .i_div_ratio (2),                          // 1 ---> Prescale 32    ,  2 --> Prescale 16
+//   .o_div_clk(internal_if.rx_clk)
+// );
 
 
-ClkDiv__ CLK_DIV_TX_dut
-(
-.i_ref_clk   (dut_if.UART_CLK),
-.i_rst_n     (dut_if.RST),
-.i_div_ratio (32),
- .o_div_clk(internal_if.tx_clk)
-);
+// ClkDiv__ CLK_DIV_TX_dut
+// (
+// .i_ref_clk   (dut_if.UART_CLK),
+// .i_rst_n     (dut_if.RST),
+// .i_div_ratio (32),
+//  .o_div_clk(internal_if.tx_clk)
+// );
 
  
- assign tx =  internal_if.tx_clk ;
- assign rx = internal_if.rx_clk  ;
+ // assign tx =  internal_if.tx_clk ;
+ // assign rx = internal_if.rx_clk  ;
   
   
   
@@ -95,17 +95,12 @@ end
 
 
   
-  initial begin
-  #130;
-    `uvm_info("top" , $sformatf("rx_clk = %h" , internal_if.rx_clk) , UVM_LOW) ;  
-end  
-  
   
     
 initial begin 
   uvm_config_db #(virtual  bfm_if) :: set(null,"*","dut_vif",dut_if) ;
   
-  uvm_config_db #(virtual internal_sig_if) :: set(null , "*" , "internal_if" , internal_if) ;  // BINDED INTERFACE FOR INTERNAL SIGNALS
+  uvm_config_db #(virtual internal_sig_if) :: set(null , "*" , "internal_if" , dut.dut_if_int_sig) ;  // BINDED INTERFACE FOR INTERNAL SIGNALS
 
 end  
  
@@ -118,7 +113,7 @@ end
 
 
 initial begin
- repeat(200) @(posedge tx);
+ repeat(200) @(posedge dut.dut_if_int_sig.tx_clk);
   $stop;
 end    
   
