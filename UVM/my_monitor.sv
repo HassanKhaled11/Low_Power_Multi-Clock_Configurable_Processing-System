@@ -37,7 +37,7 @@ endfunction
 
  task run_phase (uvm_phase phase);
 forever begin
-  @(posedge internal_if.tx_clk);
+  @(posedge internal_if.rx_clk);
 	data_collected.TX_OUT = dut_vif.TX_OUT ;
 	item_collected_port.write(data_collected);
 

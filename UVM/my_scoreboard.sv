@@ -53,7 +53,7 @@ forever begin
 
 for(int i =0 ; i < 11 ; i++) begin
 	@(posedge internal_if.tx_clk);
-	data_collected [i] = dut_vif.TX_OUT;
+	data_collected [i] = data_to_check.TX_OUT;
  end
 
 
