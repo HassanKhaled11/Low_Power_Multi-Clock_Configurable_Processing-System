@@ -15,7 +15,7 @@ module top ;
  parameter REF_CLK_PERIOD  =  10           ;          //100MHZ
  parameter UART_CLK_PERIOD =  271.2673611  ;          // 3.6864 MHZ  , FOR PRESCALE = 1 -> 271.2673611 , PRESCALE = 2 -> 135.6336806
  parameter RX_CLK_PERIOD   =  135.6336806  ;          // in case of prescale = 16
-// //parameter RX_CLK_PERIOD =  271.2673611  ;        // in case of prescale = 32 
+//parameter RX_CLK_PERIOD =  271.2673611   ;          // in case of prescale = 32 
  parameter TX_CLK_PERIOD   =  8680.555556    ;        // 115.200 KHZ 
 
  parameter PRESCALE        =  6'd16          ;
@@ -35,7 +35,7 @@ module top ;
  
 
 
-bind dut internal_sig_if  dut_if_int_sig (dut.CLK_DIV_TX_dut.o_div_clk ,  dut.CLK_DIV_RX_dut.o_div_clk);
+bind dut internal_sig_if  dut_if_int_sig (dut.TX_CLK ,  dut.RX_CLK , dut.PAR_EN , dut.PAR_TYP);
 
   
  
@@ -114,7 +114,7 @@ end
 
 initial begin
  repeat(200) @(posedge dut.dut_if_int_sig.tx_clk);
-  $stop;
+  $finish;
 end    
   
   

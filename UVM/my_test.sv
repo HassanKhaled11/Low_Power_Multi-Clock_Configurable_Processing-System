@@ -31,7 +31,7 @@ task run_phase(uvm_phase phase);
     	end
 
     	begin
-    		`uvm_warning("" , "Starting TEST_1");
+    		`uvm_warning("" , "Starting TEST_1 -- PARITY_ENABLED_EVEN_PARITY -- ");
     	end
     join
 

@@ -16,6 +16,7 @@ int j ;
 int k ;
 int n ;
 
+logic RX_IN  ;
 logic TX_OUT ;
 
 operation_e operation;

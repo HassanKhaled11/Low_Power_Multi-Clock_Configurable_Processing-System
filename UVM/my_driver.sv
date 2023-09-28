@@ -31,10 +31,19 @@ endfunction
 task run_phase(uvm_phase phase);
        forever begin
               seq_item_port.get_next_item(req);
-              
-     //    `uvm_info("DRIVER" , "ENTERING DRIVING SECTION" , UVM_LOW);
-        // `uvm_info("DRIVER" , $sformatf("DATA = %h" , req.Data_Seed_Write_RF_h[req.i]) , UVM_LOW) ;
-        // `uvm_info("DRIVER" , $sformatf("i = %h" , req.i) , UVM_LOW) ;
+
+              drive();
+ 
+              seq_item_port.item_done(req); 
+      end
+endtask
+
+
+
+
+
+task drive();
+   
          
               if(req.operation == RF_W) begin
                  // dut_vif.RX_IN = req.Data_Seed_Write_RF_h[req.i];
@@ -82,6 +91,7 @@ task run_phase(uvm_phase phase);
                // `uvm_info("DRIVER_k_incrementation" , $sformatf("k = %h" , req.k) , UVM_LOW) ;
               end
 
+
         else if(req.operation == ALU_WNC && req.n < 22) begin
              //   `uvm_info("DRIVER" , "IN ALU-WNC-OP" , UVM_LOW) ;
                  // dut_vif.RX_IN = req.Data_Seed_Write_RF_h[req.i];
@@ -100,10 +110,10 @@ task run_phase(uvm_phase phase);
               dut_vif.RX_IN = 1           ;
             repeat(internal_if.PRESCALE) @(negedge internal_if.rx_clk);               
          end
-     //    `uvm_info("DRIVER","_item_done" , UVM_LOW) ;
-              seq_item_port.item_done(req); 
-      end
+
+
 endtask
+
 
 
 

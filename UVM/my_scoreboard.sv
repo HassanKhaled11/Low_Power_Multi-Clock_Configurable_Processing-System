@@ -39,7 +39,7 @@ endfunction
 
 
 virtual function void write(my_transaction pkt);
-  `uvm_info("SCOREBOARD" , "pkt recieved from monitor to scoreboard" , UVM_MEDIUM);
+ // `uvm_info("SCOREBOARD" , "pkt recieved from monitor to scoreboard" , UVM_MEDIUM);
 	data_to_check = pkt ;
 endfunction
 

@@ -2,13 +2,14 @@
 interface internal_sig_if
  (
 input logic tx_clk ,
-input logic rx_clk 
+input logic rx_clk ,
+input logic PAR_EN ,
+input logic PAR_TYP
  );
   
   
 parameter PRESCALE = 6'd16 ;  
 
-  
 endinterface
 
 
