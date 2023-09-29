@@ -17,7 +17,7 @@ endfunction
 
 function void build_phase(uvm_phase phase);
    super.build_phase(phase);
- env = my_env :: type_id :: create("env" ,this);
+  env = my_env :: type_id :: create("env" ,this);
   seq = my_sequence::type_id::create("seq",this);
 endfunction
 
@@ -29,6 +29,10 @@ task run_phase(uvm_phase phase);
     	begin
           seq.start(env.agent.seq);
     	end
+
+      begin
+          seq.start(env.agent2.seq2);
+      end
 
     	begin
     		`uvm_warning("" , "Starting TEST_1 -- PARITY_ENABLED_EVEN_PARITY -- ");
