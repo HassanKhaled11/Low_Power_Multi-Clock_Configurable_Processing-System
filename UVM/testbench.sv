@@ -22,9 +22,6 @@ module top ;
  parameter TX_CLK_PERIOD   =  8680.555556    ;        // 115.200 KHZ 
 
  parameter PRESCALE        =  6'd16          ;
- parameter PARITY_EN       =  1'b1           ;
- parameter PARITY_TYP      =  1'b0           ;
-  
 
  bfm_if          dut_if() ;
  bfm_if_oddp     dut_if2();
@@ -32,7 +29,7 @@ module top ;
        
 
 
-  SYS_TOP #(.PRESCALE(6'd16) , .PAR_TYP(1'b0) , .PAR_EN(1'b1)) dut (.REF_CLK(dut_if.REF_CLK)  ,
+  SYS_TOP #(.PRESCALE(6'd16) , .PAR_TYP(dut_if.PARITY_TYPE) , .PAR_EN(dut_if.PARITY_ENABLE)) dut (.REF_CLK(dut_if.REF_CLK)  ,
                .UART_CLK(dut_if.UART_CLK),
                .RST(dut_if.RST)          ,
                .RX_IN(dut_if.RX_IN)      ,
@@ -40,7 +37,7 @@ module top ;
 
 
 
-  SYS_TOP #(.PRESCALE(6'd16) , .PAR_TYP(1'b1) , .PAR_EN(1'b1)) dut2 (.REF_CLK(dut_if2.REF_CLK)  ,
+  SYS_TOP #(.PRESCALE(6'd16) , .PAR_TYP(dut_if2.PARITY_TYPE) , .PAR_EN(dut_if2.PARITY_ENABLE)) dut2 (.REF_CLK(dut_if2.REF_CLK)  ,
                .UART_CLK(dut_if2.UART_CLK),
                .RST(dut_if2.RST)          ,
                .RX_IN(dut_if2.RX_IN)      ,
@@ -48,7 +45,7 @@ module top ;
 
 
 
-    SYS_TOP #(.PRESCALE(6'd16) , .PAR_TYP(1'b1) , .PAR_EN(1'b0)) dut3 (.REF_CLK(dut_if3.REF_CLK)  ,
+    SYS_TOP #(.PRESCALE(6'd16) , .PAR_TYP(dut_if3.PARITY_TYPE) , .PAR_EN(dut_if3.PARITY_ENABLE)) dut3 (.REF_CLK(dut_if3.REF_CLK)  ,
                .UART_CLK(dut_if3.UART_CLK),
                .RST(dut_if3.RST)          ,
                .RX_IN(dut_if3.RX_IN)      ,
@@ -206,7 +203,7 @@ end
 
 
 
-///////////////////////////////////////////////////////////////////////////  
+// ///////////////////////////////////////////////////////////////////////////  
 
   
 initial begin
@@ -239,7 +236,8 @@ end
 
 
 initial begin
-  run_test("my_test") ;  
+      run_test("my_test") ;    // my_test for even parity chech , my_test2  for odd , my_test3 for parity disabled
+   
 end  
 
 
@@ -252,8 +250,8 @@ initial begin
   uvm_config_db #(virtual  bfm_if_nop) :: set(null,"*","dut_vif3",dut_if3)  ;
   
   uvm_config_db #(virtual internal_sig_if)  :: set(null , "*" , "internal_if" , dut.dut_if_int_sig)   ;  // BINDED INTERFACE FOR INTERNAL SIGNALS
-  uvm_config_db #(virtual internal_sig_if_oddp) :: set(null , "*" , "internal_if2" , dut.dut_if_int_sig2) ;
-  uvm_config_db #(virtual internal_sig_if_nop) :: set(null , "*" , "internal_if3" , dut.dut_if_int_sig3) ;   
+  uvm_config_db #(virtual internal_sig_if_oddp) :: set(null , "*" , "internal_if2" , dut2.dut_if_int_sig2) ;
+  uvm_config_db #(virtual internal_sig_if_nop) :: set(null , "*" , "internal_if3" , dut3.dut_if_int_sig3) ;   
 end  
  
  
