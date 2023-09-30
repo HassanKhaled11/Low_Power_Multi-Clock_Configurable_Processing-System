@@ -1,3 +1,0 @@
-do run_sim_even_parity.txt
-do run_sim_odd_parity.txt
-do run_sim_no_parity.txt

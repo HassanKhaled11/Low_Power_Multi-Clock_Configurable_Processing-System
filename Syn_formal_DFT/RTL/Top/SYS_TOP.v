@@ -108,32 +108,6 @@ CLK_GATE  CLK_GATE_dut
 
 
 
-// ClkDiv__ #( 
-// .RATIO_WD(8) 
-// )  CLK_DIV_TX_dut
-// (
-//  .i_ref_clk (UART_CLK) ,             // Reference clock
-//  .i_rst_n   (RST_D2) ,                 // Reset Signal
-//  .i_clk_en   (1'b1),               // clock divider enable
-//  .i_div_ratio (REG3)  ,            // clock division ratio
-//  .o_div_clk (TX_CLK)               // Divided clock
-// );
-
-
-
-// ClkDiv__ #( 
-// .RATIO_WD (8) 
-// ) CLK_DIV_RX_dut
-// (
-//  .i_ref_clk (UART_CLK) ,             // Reference clock
-//  .i_rst_n   (RST_D2) ,                 // Reset Signal
-//  .i_clk_en   (1'b1),               // clock divider enable
-//  .i_div_ratio (rx_div_ratio)  ,            // clock division ratio
-//  .o_div_clk (RX_CLK)               // Divided clock
-// );
-
-
-
 
 ClkDiv__  CLK_DIV_TX_dut
 (
