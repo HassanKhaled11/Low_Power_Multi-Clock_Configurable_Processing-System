@@ -1,4 +1,80 @@
 
+
+/////////////////////////////////////////////////////////////////////
+///////////////////////////////// BFM ///////////////////////////////
+/////////////////////////////////////////////////////////////////////
+
+
+
+
+
+interface bfm_if;
+
+parameter PARITY_ENABLE = 1'b1    ;
+parameter PARITY_TYPE   = 1'b0    ;
+              
+
+logic REF_CLK    ;
+logic UART_CLK   ;
+logic RST        ;
+logic RX_IN      ;
+
+
+logic TX_OUT     ;
+
+
+endinterface
+
+
+
+
+interface bfm_if_oddp;
+
+parameter PARITY_ENABLE = 1'b1    ;
+parameter PARITY_TYPE   = 1'b1    ;
+
+logic REF_CLK    ;
+logic UART_CLK   ;
+logic RST        ;
+logic RX_IN      ;
+
+
+logic TX_OUT     ;
+  
+endinterface
+
+
+
+
+
+
+interface bfm_if_nop;
+
+parameter PARITY_ENABLE = 1'b0    ;
+parameter PARITY_TYPE   = 1'b1    ;	
+
+logic REF_CLK    ;
+logic UART_CLK   ;
+logic RST        ;
+logic RX_IN      ;
+
+
+logic TX_OUT     ;
+  
+endinterface
+
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////
+///////////////////// Internal signals and CLOCKS ///////////////////
+/////////////////////////////////////////////////////////////////////
+
+
+
 interface internal_sig_if
  (
 input logic tx_clk                 ,
@@ -84,72 +160,6 @@ parameter PRESCALE = 6'd16 ;
 
 endinterface
 
-
-
-
-
-
-
-//////////////////////////////////////////////////////////////////
-
-
-
-
-
-interface bfm_if;
-
-parameter PARITY_ENABLE = 1'b1    ;
-parameter PARITY_TYPE   = 1'b0    ;
-              
-
-logic REF_CLK    ;
-logic UART_CLK   ;
-logic RST        ;
-logic RX_IN      ;
-
-
-logic TX_OUT     ;
-
-
-endinterface
-
-
-
-
-interface bfm_if_oddp;
-
-parameter PARITY_ENABLE = 1'b1    ;
-parameter PARITY_TYPE   = 1'b1    ;
-
-logic REF_CLK    ;
-logic UART_CLK   ;
-logic RST        ;
-logic RX_IN      ;
-
-
-logic TX_OUT     ;
-  
-endinterface
-
-
-
-
-
-
-interface bfm_if_nop;
-
-parameter PARITY_ENABLE = 1'b0    ;
-parameter PARITY_TYPE   = 1'b1    ;	
-
-logic REF_CLK    ;
-logic UART_CLK   ;
-logic RST        ;
-logic RX_IN      ;
-
-
-logic TX_OUT     ;
-  
-endinterface
 
 
 

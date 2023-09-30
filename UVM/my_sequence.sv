@@ -2,7 +2,13 @@
 import uvm_pkg ::*;
 import my_transaction_pkg::*;
 `include "uvm_macros.svh"
-//`include "my_transaction.sv"
+
+
+
+/////////////////////////////////////////////////////////////////////
+//////////////////////// SEQUENCE TEST_1 ////////////////////////////
+/////////////////////////////////////////////////////////////////////
+
 
 class my_sequence extends uvm_sequence #(my_transaction);
 `uvm_object_utils(my_sequence);
@@ -22,9 +28,9 @@ task body();
      start_item(req);
 
 
-      finish_item(req);          // get response.
-      get_response(req);  
-
+      finish_item(req);          
+      get_response(req);  // get response.
+   //`uvm_info("SEQ" , $sformatf("req_i = %h , req_j = %h , req_k = %h , req_n = %h ", req.i , req.j , req.k , req.n) , UVM_LOW);   //Tracking incrementation
 end
 
 endtask	
@@ -35,6 +41,9 @@ endclass
 
 
 
+/////////////////////////////////////////////////////////////////////
+//////////////////////// SEQUENCE TEST_2 ////////////////////////////
+/////////////////////////////////////////////////////////////////////
 
 
 class my_sequence2 extends uvm_sequence #(my_transaction2);
@@ -52,11 +61,11 @@ task body();
 
   
   
-     start_item(req);
+      start_item(req);
 
-      finish_item(req);          // get response.
-      get_response(req);  
-
+      finish_item(req);          
+      get_response(req);   // get response.
+//`uvm_info("SEQ" , $sformatf("req_i = %h , req_j = %h , req_k = %h , req_n = %h ", req.i , req.j , req.k , req.n) , UVM_LOW);
 end
 
 endtask 
@@ -67,7 +76,9 @@ endclass
 
 
 
-
+/////////////////////////////////////////////////////////////////////
+//////////////////////// SEQUENCE TEST_3 ////////////////////////////
+/////////////////////////////////////////////////////////////////////
 
 
 
@@ -91,7 +102,7 @@ task body();
 
       finish_item(req);          // get response.
       get_response(req);  
-
+//`uvm_info("SEQ" , $sformatf("req_i = %h , req_j = %h , req_k = %h , req_n = %h ", req.i , req.j , req.k , req.n) , UVM_LOW);   
 end
 
 endtask 
