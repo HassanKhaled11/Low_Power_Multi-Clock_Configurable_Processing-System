@@ -1,1 +1,1 @@
-# Full_Integrated_System
+# LOW_Power_Multi-Clock_Configurable_Processing_System
