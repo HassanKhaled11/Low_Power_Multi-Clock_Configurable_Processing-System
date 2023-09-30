@@ -26,6 +26,8 @@
 
 ### - Formal verification post logic synthesis using Synopsys Formality.
 
+<img src ="https://github.com/HassanKhaled11/Low_Power_Multi-Clock_Configurable_Processing-System/assets/95179055/7fa9e676-5842-4ade-a4cf-13215d5a5e4c" >
+
 ### - Design for testability (DFT) using Synopsys DFT Compiler.
 
 ### - Formal verification post DFT using Synopsys Formality.
@@ -62,4 +64,4 @@
 
 ### - Continuous Improvement --> Iteratively refined the verification environment based on feedback and results.
 
-## -- For More Details and Documentation Check System_Documentation pdf in the main repo --
+## - For More Details and Documentation Check System_Documentation pdf in the main repo -
