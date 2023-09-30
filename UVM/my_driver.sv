@@ -2,15 +2,7 @@ import uvm_pkg ::*;
 import parameters_pkg::*;
 import my_transaction_pkg::*;
 `include "uvm_macros.svh"
-
-
-
-
-
-/////////////////////////////////////////////////////////////////////
-//////////////////////////// Driver TEST_1 //////////////////////////
-/////////////////////////////////////////////////////////////////////
-
+//`include "my_transaction.sv"
 
 class my_driver extends uvm_driver #(my_transaction) ;
 
@@ -134,7 +126,9 @@ endtask
 
 task transmit(input Data_in);
  begin
-
+  // `uvm_info("DRIVER_transmit","to send to rx", UVM_LOW) ;
+   //`uvm_info("DRIVER" , $sformatf("PRESCALE = %h" , internal_if.PRESCALE) , UVM_LOW) ;
+   //`uvm_info("DRIVER" , $sformatf("rx_clk = %h" , internal_if.rx_clk) , UVM_LOW) ;
        @(negedge internal_if.rx_clk);
        dut_vif.RX_IN = Data_in           ;
    
@@ -154,11 +148,8 @@ endclass
 
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-/////////////////////////////////////////////////////////////////////
-//////////////////////////// Driver TEST_2 //////////////////////////
-/////////////////////////////////////////////////////////////////////
 
 
 
@@ -279,6 +270,8 @@ endtask
 task transmit(input Data_in);
  begin
   // `uvm_info("DRIVER_transmit","to send to rx", UVM_LOW) ;
+   //`uvm_info("DRIVER" , $sformatf("PRESCALE = %h" , internal_if.PRESCALE) , UVM_LOW) ;
+   //`uvm_info("DRIVER" , $sformatf("rx_clk = %h" , internal_if.rx_clk) , UVM_LOW) ;
        @(negedge internal_if.rx_clk);
        dut_vif.RX_IN = Data_in           ;
    
@@ -299,9 +292,7 @@ endclass
 
 
 
-/////////////////////////////////////////////////////////////////////
-//////////////////////////// Driver TEST_3 //////////////////////////
-/////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -346,9 +337,8 @@ task drive();
    
          
               if(req.operation == RF_W) begin
-                `uvm_info("DRIVER_i_" , $sformatf("i = %h" , req.Data_Seed_Write_RF_NO_h[req.i]) , UVM_LOW) ;  
-                  @(negedge  internal_if.rx_clk)
-
+                 // dut_vif.RX_IN = req.Data_Seed_Write_RF_h[req.i];
+                 // @(negedge  internal_if.rx_clk)
                  transmit(req.Data_Seed_Write_RF_NO_h[req.i]);
                  if(req.i == 9) #(RX_CLK_PERIOD);
                  if(req.i == 18) #(RX_CLK_PERIOD);
@@ -365,13 +355,11 @@ task drive();
               else if(req.operation == ALU_WC) begin
           //      `uvm_info("DRIVER" , "IN ALU-WC-OP" , UVM_LOW) ;       
                  // dut_vif.RX_IN = req.Data_Seed_Write_RF_h[req.i];
-                 //`uvm_info("DRIVER_i_" , $sformatf("req[j] = %h" , req.j) , UVM_LOW) ; 
                  transmit(req.Data_Seed_Write_ALU_CMD_NO_h[req.j]);
-                 //`uvm_info("DRIVER_j_" , $sformatf("j = %h" , req.Data_Seed_Write_ALU_CMD_NO_h[req.j]) , UVM_LOW) ; 
                  if(req.j  == 9)  #(RX_CLK_PERIOD);
                  if(req.j  == 18)  #(RX_CLK_PERIOD);
                  if(req.j  == 29)  #(RX_CLK_PERIOD);
-                 if(req.j  == 39)  #(RX_CLK_PERIOD)
+                 if(req.j  == 39)  #(RX_CLK_PERIOD);
                    begin
                     req.operation = RF_R;
                     #(RX_CLK_PERIOD);    
@@ -384,12 +372,9 @@ task drive();
        else if(req.operation == RF_R) begin    
              //  `uvm_info("DRIVER" , "IN RF-R-OP" , UVM_LOW) ;
                  // dut_vif.RX_IN = req.Data_Seed_Write_RF_h[req.i];
-             
-                   @(negedge  internal_if.rx_clk)
                  transmit(req.Data_Seed_Read_RF_NO_h[req.k]);
-                // `uvm_info("DRIVER_k_" , $sformatf("j = %h" , req.Data_Seed_Read_RF_NO_h[req.k]) , UVM_LOW) ; 
                  if(req.k == 9) #(RX_CLK_PERIOD);
-                 if(req.k == 18)
+                 if(req.k == 19)
                    begin
                     req.operation = ALU_WNC;
                     #(RX_CLK_PERIOD);    
@@ -402,11 +387,9 @@ task drive();
         else if(req.operation == ALU_WNC && req.n < 20) begin
              //   `uvm_info("DRIVER" , "IN ALU-WNC-OP" , UVM_LOW) ;
                  // dut_vif.RX_IN = req.Data_Seed_Write_RF_h[req.i];
-            
                  transmit(req.Data_Seed_Write_ALU_No_CMD_NO_h[req.n]);
-                 // `uvm_info("DRIVER_k_" , $sformatf("j = %h" , req.Data_Seed_Write_ALU_No_CMD_NO_h[req.n]) , UVM_LOW) ; 
                  if(req.n == 9) #(RX_CLK_PERIOD);
-                 if(req.n == 18) begin
+                 if(req.n == 19) begin
                     #(RX_CLK_PERIOD);    
                  end            
                 req.n++ ;
@@ -428,12 +411,16 @@ endtask
 
 task transmit(input Data_in);
  begin
-
+  // `uvm_info("DRIVER_transmit","to send to rx", UVM_LOW) ;
+   //`uvm_info("DRIVER" , $sformatf("PRESCALE = %h" , internal_if.PRESCALE) , UVM_LOW) ;
+   //`uvm_info("DRIVER" , $sformatf("rx_clk = %h" , internal_if.rx_clk) , UVM_LOW) ;
        @(negedge internal_if.rx_clk);
        dut_vif.RX_IN = Data_in           ;
+   
   // `uvm_info("DRIVER" , $sformatf("rx_clk = %h" , internal_if.rx_clk) , UVM_LOW) ;  
  repeat(internal_if.PRESCALE) @(negedge internal_if.rx_clk);
   // `uvm_info("DRIVER_transmit","_sent_to_rx" , UVM_LOW) ;
+
  end
 endtask
 

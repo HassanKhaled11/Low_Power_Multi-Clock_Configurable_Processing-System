@@ -2,13 +2,7 @@
 import uvm_pkg ::*;
 import my_transaction_pkg::*;
 `include "uvm_macros.svh"
-
-
-
-/////////////////////////////////////////////////////////////////////
-//////////////////////// SEQUENCE TEST_1 ////////////////////////////
-/////////////////////////////////////////////////////////////////////
-
+//`include "my_transaction.sv"
 
 class my_sequence extends uvm_sequence #(my_transaction);
 `uvm_object_utils(my_sequence);
@@ -26,11 +20,17 @@ task body();
 	
  	
      start_item(req);
+     // `uvm_info("SEQUENCE" , "After start item" , UVM_LOW) ;
+      
+
+     //req.i = i ;
+     // if (! req.randomize());
+     //  `uvm_error(get_item_type(),"ERROR RANDOMIZATION") ;
 
 
-      finish_item(req);          
-      get_response(req);  // get response.
-   //`uvm_info("SEQ" , $sformatf("req_i = %h , req_j = %h , req_k = %h , req_n = %h ", req.i , req.j , req.k , req.n) , UVM_LOW);   //Tracking incrementation
+      finish_item(req);          // get response.
+       get_response(req);  
+
 end
 
 endtask	
@@ -41,9 +41,6 @@ endclass
 
 
 
-/////////////////////////////////////////////////////////////////////
-//////////////////////// SEQUENCE TEST_2 ////////////////////////////
-/////////////////////////////////////////////////////////////////////
 
 
 class my_sequence2 extends uvm_sequence #(my_transaction2);
@@ -61,11 +58,18 @@ task body();
 
   
   
-      start_item(req);
+     start_item(req);
+     // `uvm_info("SEQUENCE" , "After start item" , UVM_LOW) ;
+      
 
-      finish_item(req);          
-      get_response(req);   // get response.
-//`uvm_info("SEQ" , $sformatf("req_i = %h , req_j = %h , req_k = %h , req_n = %h ", req.i , req.j , req.k , req.n) , UVM_LOW);
+     //req.i = i ;
+     // if (! req.randomize());
+     //  `uvm_error(get_item_type(),"ERROR RANDOMIZATION") ;
+
+
+      finish_item(req);          // get response.
+       get_response(req);  
+
 end
 
 endtask 
@@ -76,9 +80,7 @@ endclass
 
 
 
-/////////////////////////////////////////////////////////////////////
-//////////////////////// SEQUENCE TEST_3 ////////////////////////////
-/////////////////////////////////////////////////////////////////////
+
 
 
 
@@ -98,11 +100,17 @@ task body();
   
   
      start_item(req);
+     // `uvm_info("SEQUENCE" , "After start item" , UVM_LOW) ;
+      
+
+     //req.i = i ;
+     // if (! req.randomize());
+     //  `uvm_error(get_item_type(),"ERROR RANDOMIZATION") ;
 
 
       finish_item(req);          // get response.
-      get_response(req);  
-//`uvm_info("SEQ" , $sformatf("req_i = %h , req_j = %h , req_k = %h , req_n = %h ", req.i , req.j , req.k , req.n) , UVM_LOW);   
+       get_response(req);  
+
 end
 
 endtask 

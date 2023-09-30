@@ -4,14 +4,6 @@ import my_transaction_pkg::*;
 `include "uvm_macros.svh"
 
 
-
-
-
-/////////////////////////////////////////////////////////////////////
-//////////////////////////// COVERAGE TEST_1 ////////////////////////
-/////////////////////////////////////////////////////////////////////
-
-
 class my_coverage extends uvm_subscriber #(my_transaction);
 `uvm_component_utils (my_coverage);
 
@@ -53,13 +45,15 @@ TX_cvp: coverpoint data_to_cover.TX_OUT iff(dut_vif.RST)
 Par_en : coverpoint internal_if.PAR_EN  iff(dut_vif.RST)
 {
   bins par_enabled   = {1};
+  bins par_disabled  = {0};
 }
 
 
 
-Par_typ : coverpoint internal_if.PAR_TYP  iff(dut_vif.RST)
+Par_typ : coverpoint internal_if.PAR_EN  iff(dut_vif.RST)
 {
-  bins even_parity   = {0};
+  bins even_parity   = {1};
+  bins odd_parity    = {0};
 }
 
 
@@ -98,7 +92,8 @@ endfunction
 
 function void write(my_transaction t);
 
-$cast(data_to_cover , t);     // Ensuring THE Correctness of the coming data
+
+$cast(data_to_cover , t);
 cg.sample();
 
 endfunction  
@@ -110,11 +105,9 @@ endclass
 
 
 
-
-/////////////////////////////////////////////////////////////////////
-//////////////////////////// COVERAGE TEST_2 ////////////////////////
-/////////////////////////////////////////////////////////////////////
-
+///////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -132,7 +125,7 @@ virtual internal_sig_if_oddp internal_if ;
 
 covergroup cg_oddp ;
 
-
+//type_option.merge_instances = 1;
 
 RX_cvp: coverpoint data_to_cover.RX_IN iff(dut_vif.RST) 
 {
@@ -163,7 +156,7 @@ Par_en : coverpoint internal_if.PAR_EN  iff(dut_vif.RST)
 
 
 
-Par_typ : coverpoint internal_if.PAR_TYP  iff(dut_vif.RST)
+Par_typ : coverpoint internal_if.PAR_EN  iff(dut_vif.RST)
 {
   bins odd_parity    = {1};
 }
@@ -193,6 +186,8 @@ endfunction
 
 
 
+
+
   
 function new(string name = "my_coverage2" , uvm_component parent);
  super.new(name , parent);
@@ -204,7 +199,8 @@ endfunction
 
 function void write(my_transaction2 t);
 
-$cast(data_to_cover , t);      // Ensuring THE Correctness of the coming data
+
+$cast(data_to_cover , t);
 cg_oddp.sample();
 
 endfunction  
@@ -216,10 +212,9 @@ endclass
 
 
 
-
-/////////////////////////////////////////////////////////////////////
-//////////////////////////// COVERAGE TEST_3 ////////////////////////
-/////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -238,7 +233,7 @@ virtual internal_sig_if_nop internal_if ;
 
 covergroup cg_no_parity ;
 
-
+//type_option.merge_instances = 1;
 
 RX_cvp: coverpoint data_to_cover.RX_IN iff(dut_vif.RST) 
 {
